@@ -1,6 +1,8 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { InfoCircledIcon } from "@radix-ui/react-icons";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import type { CalculationResult } from "@shared/schema";
 
 interface Props {
@@ -9,54 +11,88 @@ interface Props {
 
 export default function ResultsDisplay({ results }: Props) {
   const formatCurrency = (value: number) => 
-    new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
+    new Intl.NumberFormat('en-US', { 
+      style: 'currency', 
+      currency: 'USD',
+      maximumFractionDigits: 0
+    }).format(value);
 
   const formatNumber = (value: number) => 
-    new Intl.NumberFormat('en-US').format(Math.round(value));
+    new Intl.NumberFormat('en-US', {
+      maximumFractionDigits: 0
+    }).format(Math.round(value));
 
-  const getScenarioData = (scenarioIndex: number) => [
-    { 
-      title: 'Current Costs',
-      emoji: '💰',
-      value: formatCurrency(results[0].totalFuelCost),
-      subtitle: 'Annual fuel expenditure',
-      color: 'border-gray-200 bg-white'
+  const scenarios = {
+    conservative: {
+      title: "Conservative Estimate",
+      description: "Minimum expected savings of 4% based on real-world data",
+      data: getScenarioData(1)
     },
-    { 
-      title: 'Potential Savings',
-      emoji: '✨',
-      value: formatCurrency(results[scenarioIndex].estimatedSavings),
-      subtitle: 'With Wayfinder optimization',
-      color: 'border-green-200 bg-green-50/50'
+    average: {
+      title: "Average Performance",
+      description: "Typical savings of 6% observed across our customer base",
+      data: getScenarioData(1)
     },
-    { 
-      title: 'CO₂ Reduction',
-      emoji: '🌱',
-      value: formatNumber(results[scenarioIndex].co2Reduction) + ' MT',
-      subtitle: 'Annual emissions saved',
-      color: 'border-blue-200 bg-blue-50/50'
-    },
-    { 
-      title: 'Optimized Cost',
-      emoji: '📊',
-      value: formatCurrency(results[scenarioIndex].fuelCostWithWayfinder),
-      subtitle: 'With Wayfinder routing',
-      color: 'border-purple-200 bg-purple-50/50'
+    optimal: {
+      title: "Optimal Scenario",
+      description: "Maximum potential savings of 8% with full optimization",
+      data: getScenarioData(2)
     }
-  ];
+  };
+
+  function getScenarioData(scenarioIndex: number) {
+    return [
+      { 
+        title: 'Current Costs',
+        emoji: '💰',
+        value: formatCurrency(results[0].totalFuelCost),
+        subtitle: 'Annual fuel expenditure',
+        color: 'border-gray-200 bg-white'
+      },
+      { 
+        title: 'Potential Savings',
+        emoji: '✨',
+        value: formatCurrency(results[scenarioIndex].estimatedSavings),
+        subtitle: 'With Wayfinder optimization',
+        color: 'border-green-200 bg-green-50/50'
+      },
+      { 
+        title: 'CO₂ Reduction',
+        emoji: '🌱',
+        value: formatNumber(results[scenarioIndex].co2Reduction) + ' MT',
+        subtitle: 'Annual emissions saved',
+        color: 'border-blue-200 bg-blue-50/50'
+      },
+      { 
+        title: 'Optimized Cost',
+        emoji: '📊',
+        value: formatCurrency(results[scenarioIndex].fuelCostWithWayfinder),
+        subtitle: 'With Wayfinder routing',
+        color: 'border-purple-200 bg-purple-50/50'
+      }
+    ];
+  }
 
   return (
     <div className="space-y-4">
       <Tabs defaultValue="conservative" className="w-full">
         <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="conservative">Conservative</TabsTrigger>
-          <TabsTrigger value="average">Average</TabsTrigger>
-          <TabsTrigger value="optimal">Optimal</TabsTrigger>
+          {Object.entries(scenarios).map(([key, scenario]) => (
+            <TabsTrigger value={key} key={key} className="relative">
+              {scenario.title}
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <InfoCircledIcon className="h-4 w-4 ml-1 inline-block" />
+                </TooltipTrigger>
+                <TooltipContent>{scenario.description}</TooltipContent>
+              </Tooltip>
+            </TabsTrigger>
+          ))}
         </TabsList>
-        {['conservative', 'average', 'optimal'].map((scenario, index) => (
-          <TabsContent key={scenario} value={scenario}>
+        {Object.entries(scenarios).map(([key, scenario]) => (
+          <TabsContent key={key} value={key}>
             <div className="grid grid-cols-2 gap-4">
-              {getScenarioData(index).map((item, i) => (
+              {scenario.data.map((item, i) => (
                 <Card 
                   key={i} 
                   className={`transform transition-all duration-200 hover:scale-102 ${item.color} border-2`}
