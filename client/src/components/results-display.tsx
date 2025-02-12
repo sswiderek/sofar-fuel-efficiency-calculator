@@ -104,8 +104,6 @@ export default function ResultsDisplay({ results }: Props) {
                       : item.title === 'CO₂ Reduction'
                       ? 'bg-gradient-to-br from-blue-50 to-sky-50 border-blue-200'
                       : 'bg-gradient-to-br from-purple-50 to-violet-50 border-purple-200'
-                  }`}200'
-                      : 'bg-gradient-to-br from-violet-50 to-purple-50 border-purple-200'
                   } border-2 animate-fade-in`}
                   style={{ animationDelay: `${i * 150}ms` }}
                 >
