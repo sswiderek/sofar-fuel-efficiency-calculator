@@ -27,31 +27,44 @@ export default function CalculatorForm() {
     }
   });
 
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  async function onSubmit(formEvent: React.FormEvent) {
+    formEvent.preventDefault();
     setIsCalculating(true);
     try {
-      const formData = form.getValues();
+      const values = form.getValues();
+      const formData = {
+        fleetSize: Number(values.fleetSize),
+        voyageLength: Number(values.voyageLength),
+        fuelConsumption: Number(values.fuelConsumption),
+        fuelPrice: Number(values.fuelPrice),
+        estimatedSavings: Number(values.estimatedSavings)
+      };
+
+      if (Object.values(formData).some(isNaN)) {
+        console.error("Invalid form data");
+        return;
+      }
+
       const scenarios = [
         { savings: 0, label: 'Current Operations (Baseline)' },
         { savings: 4, label: '4% Fuel Savings' },
         { savings: 8, label: '8% Fuel Savings' }
       ];
-      
-      const responses = await Promise.all(scenarios.map(async (scenario) => {
-        const data = {
-          fleetSize: Number(formData.fleetSize),
-          voyageLength: Number(formData.voyageLength),
-          fuelConsumption: Number(formData.fuelConsumption),
-          fuelPrice: Number(formData.fuelPrice),
-          estimatedSavings: scenario.savings
-        };
-        const res = await apiRequest("POST", "/api/calculate", data);
-        const json = await res.json();
-        return { ...json, label: scenario.label };
-      }));
-      
-      setResults(responses);
+
+      try {
+        const responses = await Promise.all(
+          scenarios.map(async (scenario) => {
+            const data = { ...formData, estimatedSavings: scenario.savings };
+            const res = await apiRequest("POST", "/api/calculate", data);
+            if (!res.ok) throw new Error('API request failed');
+            const json = await res.json();
+            return { ...json, label: scenario.label };
+          })
+        );
+        setResults(responses);
+      } catch (error) {
+        console.error("API error:", error);
+      }
     } catch (error) {
       console.error("Calculation failed:", error);
     } finally {
