@@ -45,31 +45,31 @@ export default function ResultsDisplay({ results }: Props) {
     return [
       { 
         title: 'Current Costs',
-        emoji: <BanknoteIcon className="h-4 w-4" />, // Replaced emoji
+        emoji: <BanknoteIcon className="h-4 w-4" />,
         value: formatCurrency(results[0].totalFuelCost),
         subtitle: 'Annual fuel expenditure',
         color: 'border-gray-200 bg-white'
       },
       { 
+        title: 'Optimized Cost',
+        emoji: <BanknoteIcon className="h-4 w-4" />,
+        value: formatCurrency(results[scenarioIndex].fuelCostWithWayfinder),
+        subtitle: 'With Wayfinder routing',
+        color: 'border-purple-200 bg-purple-50/50'
+      },
+      { 
         title: 'Potential Savings',
-        emoji: <LeafIcon className="h-4 w-4" />, // Replaced emoji
+        emoji: <LeafIcon className="h-4 w-4" />,
         value: formatCurrency(results[scenarioIndex].estimatedSavings),
         subtitle: 'With Wayfinder optimization',
         color: 'border-green-200 bg-green-50/50'
       },
       { 
         title: 'CO₂ Reduction',
-        emoji: <LeafIcon className="h-4 w-4" />, // Replaced emoji
+        emoji: <GlobeIcon className="h-4 w-4" />,
         value: formatNumber(results[scenarioIndex].co2Reduction) + ' MT',
         subtitle: 'Annual emissions saved',
         color: 'border-blue-200 bg-blue-50/50'
-      },
-      { 
-        title: 'Optimized Cost',
-        emoji: <BanknoteIcon className="h-4 w-4" />, // Replaced emoji
-        value: formatCurrency(results[scenarioIndex].fuelCostWithWayfinder),
-        subtitle: 'With Wayfinder routing',
-        color: 'border-purple-200 bg-purple-50/50'
       }
     ];
   }
@@ -98,7 +98,7 @@ export default function ResultsDisplay({ results }: Props) {
                   key={i} 
                   className={`transform transition-all duration-300 hover:scale-102 hover:shadow-lg ${
                     item.title === 'Potential Savings' 
-                      ? 'col-span-2 bg-gradient-to-br from-cyan-50 to-teal-50 border-teal-200' 
+                      ? 'bg-gradient-to-br from-emerald-50 to-teal-50 border-teal-200 ring-2 ring-teal-200 ring-opacity-50' 
                       : item.title === 'Current Costs'
                       ? 'bg-white border-slate-200'
                       : item.title === 'CO₂ Reduction'
@@ -107,7 +107,7 @@ export default function ResultsDisplay({ results }: Props) {
                   } border-2 animate-fade-in`}
                   style={{ animationDelay: `${i * 150}ms` }}
                 >
-                  <CardContent className={`p-6 ${item.title === 'Potential Savings' ? 'py-8' : ''}`}>
+                  <CardContent className="p-6">
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
                         <p className={`font-semibold ${
