@@ -252,13 +252,14 @@ export default function CalculatorForm() {
           ) : (
             <div className="h-full flex flex-col items-center justify-center gap-8 text-muted-foreground mt-8">
               <div className="ship-container">
-                <svg viewBox="0 0 100 100" className="w-full h-full fill-slate-600">
-                  <path d="M15,60 L85,60 L75,75 L25,75 Z" /> {/* Hull */}
-                  <path d="M40,60 L40,35 L60,35 L60,60" /> {/* Cabin */}
-                  <path d="M45,35 L45,20 L55,20 L55,35" /> {/* Bridge */}
-                  <path d="M30,45 L70,45" strokeWidth="2" className="stroke-slate-600" fill="none"/> {/* Deck line */}
+                <svg viewBox="0 0 100 100" className="w-full h-full fill-slate-700">
+                  <path d="M20,60 L80,60 L70,80 L30,80 Z" /> {/* Hull - wider and taller */}
+                  <path d="M35,60 L35,40 L65,40 L65,60" /> {/* Main cabin - adjusted proportions */}
+                  <path d="M42,40 L42,25 L58,25 L58,40" /> {/* Bridge - better proportions */}
+                  <path d="M48,25 L48,15 L52,15 L52,25" /> {/* Smokestack */}
+                  <path d="M25,50 L75,50" strokeWidth="1.5" className="stroke-slate-700" fill="none"/> {/* Deck line */}
                 </svg>
-                <div className="waves"></div>
+                <div className="waves opacity-75"></div>
               </div>
               <span>Enter values and calculate to see results</span>
             </div>

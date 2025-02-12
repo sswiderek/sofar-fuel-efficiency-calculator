@@ -31,8 +31,8 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(-1deg); }
-  50% { transform: translateY(-10px) rotate(1deg); }
+  0%, 100% { transform: translateY(0px) rotate(-0.5deg); }
+  50% { transform: translateY(-8px) rotate(0.5deg); }
 }
 
 @keyframes wave {
