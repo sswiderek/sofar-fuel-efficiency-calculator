@@ -204,36 +204,36 @@ export default function CalculatorForm() {
             </form>
           </Form>
 
-          <div className="mt-8 border-t border-slate-300 pt-6">
-            <h4 className="text-sm font-semibold mb-4 text-slate-800">Calculator Assumptions</h4>
-            <div className="grid grid-cols-1 gap-4 text-xs text-slate-600">
-              <div className="space-y-4">
-                <div className="flex items-start gap-3 pl-1">
-                  <FuelIcon className="h-4 w-4 flex-shrink-0 text-slate-500" />
+          <div className="mt-4 border-t pt-4">
+            <h4 className="text-sm font-medium mb-4">Calculator Assumptions</h4>
+            <div className="grid grid-cols-1 gap-4 text-xs text-muted-foreground">
+              <div className="space-y-2">
+                <div className="flex items-start gap-2">
+                  <FuelIcon className="h-4 w-4 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-slate-700">Fuel Consumption</p>
-                    <p className="mt-0.5">Assumes constant fuel consumption rate (MT/day) for entire voyage</p>
+                    <p className="font-medium">Fuel Consumption</p>
+                    <p>Assumes constant fuel consumption rate (MT/day) for entire voyage</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 pl-1">
-                  <DollarSignIcon className="h-4 w-4 flex-shrink-0 text-slate-500" />
+                <div className="flex items-start gap-2">
+                  <DollarSignIcon className="h-4 w-4 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-slate-700">Fuel Price</p>
-                    <p className="mt-0.5">Fixed fuel price for voyage duration, no price fluctuations</p>
+                    <p className="font-medium">Fuel Price</p>
+                    <p>Fixed fuel price for voyage duration, no price fluctuations</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 pl-1">
-                  <LeafIcon className="h-4 w-4 flex-shrink-0 text-slate-500" />
+                <div className="flex items-start gap-2">
+                  <LeafIcon className="h-4 w-4 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-slate-700">Savings Range</p>
-                    <p className="mt-0.5">4-10% typical savings based on Wayfinder platform results</p>
+                    <p className="font-medium">Savings Range</p>
+                    <p>4-10% typical savings based on Wayfinder platform results</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 pl-1">
-                  <GlobeIcon className="h-4 w-4 flex-shrink-0 text-slate-500" />
+                <div className="flex items-start gap-2">
+                  <GlobeIcon className="h-4 w-4 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-slate-700">CO₂ Calculation</p>
-                    <p className="mt-0.5">3.15 metric tons of CO₂ per metric ton of fuel burned</p>
+                    <p className="font-medium">CO₂ Calculation</p>
+                    <p>3.15 metric tons of CO₂ per metric ton of fuel burned</p>
                   </div>
                 </div>
               </div>
