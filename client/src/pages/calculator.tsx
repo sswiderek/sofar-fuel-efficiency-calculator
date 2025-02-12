@@ -31,8 +31,8 @@ export default function Calculator() {
               <div className="space-y-8">
                 <CalculatorForm />
               </div>
-              <div className="flex flex-col">
-                <div className="mt-4">
+              <div className="flex flex-col justify-start mt-[480px]">
+                <div>
                   <Card className="w-72 transform transition-transform hover:scale-105 cursor-pointer bg-gradient-to-br from-blue-900 to-blue-800 text-white shadow-xl">
                     <a href="https://www.sofarocean.com/posts/weather-maritime-shipping-white-paper" target="_blank" rel="noopener noreferrer">
                       <CardHeader className="space-y-1">
