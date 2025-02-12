@@ -7,7 +7,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-import { InfoIcon } from "lucide-react";
+import { InfoIcon, ShipIcon, TimerIcon, FuelIcon, DollarSignIcon } from "lucide-react"; // Added icons
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import ResultsDisplay from "./results-display";
 import { apiRequest } from "@/lib/queryClient";
@@ -84,14 +84,16 @@ export default function CalculatorForm() {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-4">
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="space-y-4"> {/* Changed to vertical stacking */}
             <FormField
               control={form.control}
               name="fleetSize"
               render={({ field }) => (
                 <FormItem>
                   <div className="flex items-center gap-2">
-                    <FormLabel>Fleet Size</FormLabel>
+                    <FormLabel>
+                      <ShipIcon className="h-4 w-4 mr-2" /> Fleet Size
+                    </FormLabel>
                     <Tooltip>
                       <TooltipTrigger>
                         <InfoIcon className="h-4 w-4 text-muted-foreground" />
@@ -113,7 +115,9 @@ export default function CalculatorForm() {
               render={({ field }) => (
                 <FormItem>
                   <div className="flex items-center gap-2">
-                    <FormLabel>Average Voyage Length (Days)</FormLabel>
+                    <FormLabel>
+                      <TimerIcon className="h-4 w-4 mr-2" /> Average Voyage Length (Days)
+                    </FormLabel>
                     <Tooltip>
                       <TooltipTrigger>
                         <InfoIcon className="h-4 w-4 text-muted-foreground" />
@@ -135,7 +139,9 @@ export default function CalculatorForm() {
               render={({ field }) => (
                 <FormItem>
                   <div className="flex items-center gap-2">
-                    <FormLabel>Fuel Consumption (MT/Day)</FormLabel>
+                    <FormLabel>
+                      <FuelIcon className="h-4 w-4 mr-2" /> Fuel Consumption (MT/Day)
+                    </FormLabel>
                     <Tooltip>
                       <TooltipTrigger>
                         <InfoIcon className="h-4 w-4 text-muted-foreground" />
@@ -157,7 +163,9 @@ export default function CalculatorForm() {
               render={({ field }) => (
                 <FormItem>
                   <div className="flex items-center gap-2">
-                    <FormLabel>Fuel Price (USD/MT)</FormLabel>
+                    <FormLabel>
+                      <DollarSignIcon className="h-4 w-4 mr-2" /> Fuel Price (USD/MT)
+                    </FormLabel>
                     <Tooltip>
                       <TooltipTrigger>
                         <InfoIcon className="h-4 w-4 text-muted-foreground" />
@@ -178,8 +186,8 @@ export default function CalculatorForm() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               className="w-full"
               disabled={isCalculating}
               onClick={onSubmit}
