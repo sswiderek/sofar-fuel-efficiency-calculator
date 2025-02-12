@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
@@ -25,17 +24,17 @@ export default function ResultsDisplay({ results }: Props) {
   const scenarios = {
     conservative: {
       title: "Conservative Estimate",
-      description: "Minimum expected savings of 4% based on real-world data",
-      data: getScenarioData(1)
+      description: "A cautious 4% fuel savings estimate based on minimal route optimization and weather routing",
+      data: getScenarioData(0)
     },
     average: {
       title: "Average Performance",
-      description: "Typical savings of 6% observed across our customer base",
+      description: "Typical 6% fuel savings achieved by most vessels using standard weather routing and speed optimization",
       data: getScenarioData(1)
     },
     optimal: {
       title: "Optimal Scenario",
-      description: "Maximum potential savings of 8% with full optimization",
+      description: "Maximum 8% fuel savings possible with full implementation of all optimization strategies and perfect compliance",
       data: getScenarioData(2)
     }
   };
