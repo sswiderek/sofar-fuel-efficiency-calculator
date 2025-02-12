@@ -204,15 +204,15 @@ export default function CalculatorForm() {
             </form>
           </Form>
 
-          <div className="mt-4 border-t pt-4">
-            <h4 className="text-sm font-medium mb-4">Calculator Assumptions</h4>
-            <div className="grid grid-cols-1 gap-4 text-xs text-muted-foreground">
+          <div className="mt-4 border-t border-slate-200 pt-4">
+            <h4 className="text-sm font-semibold mb-4 text-slate-900">Calculator Assumptions</h4>
+            <div className="grid grid-cols-1 gap-4 text-xs text-slate-800">
               <div className="space-y-2">
                 <div className="flex items-start gap-2">
-                  <FuelIcon className="h-4 w-4 flex-shrink-0" />
+                  <FuelIcon className="h-4 w-4 flex-shrink-0 text-slate-700" />
                   <div>
-                    <p className="font-medium">Fuel Consumption</p>
-                    <p>Assumes constant fuel consumption rate (MT/day) for entire voyage</p>
+                    <p className="font-semibold text-slate-900">Fuel Consumption</p>
+                    <p className="text-slate-800">Assumes constant fuel consumption rate (MT/day) for entire voyage</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
