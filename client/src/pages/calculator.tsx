@@ -17,7 +17,7 @@ export default function Calculator() {
             <div className="flex items-center gap-4 py-3">
               <img src="/images/sofar-logo.png" alt="Sofar Logo" className="h-10 w-auto" />
               <div className="border-l pl-4 border-slate-200">
-                <CardTitle className="text-2xl font-medium tracking-tight text-slate-900">
+                <CardTitle className="text-2xl font-light tracking-tight text-slate-900">
                   Fuel Savings Calculator
                 </CardTitle>
                 <p className="text-xs text-slate-500 mt-1 tracking-wide">
@@ -26,26 +26,20 @@ export default function Calculator() {
               </div>
             </div>
           </CardHeader>
-          <CardContent className="p-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 relative">
-              <div className="space-y-12">
-                <CalculatorForm />
-              </div>
-              <div className="flex flex-col justify-start h-full">
-                <div>
-                  <Card className="w-72 transform transition-transform hover:scale-105 cursor-pointer bg-gradient-to-br from-blue-900 to-blue-800 text-white shadow-xl">
-                    <a href="https://www.sofarocean.com/posts/weather-maritime-shipping-white-paper" target="_blank" rel="noopener noreferrer">
-                      <CardHeader className="space-y-1">
-                        <CardTitle className="text-base">Validate Your Savings</CardTitle>
-                        <p className="text-xs text-blue-200">Case Study & Analysis</p>
-                      </CardHeader>
-                      <CardContent className="pt-2">
-                        <p className="text-xs">See how leading shipping companies achieve 4-8% fuel savings using weather routing technology.</p>
-                      </CardContent>
-                    </a>
-                  </Card>
-                </div>
-              </div>
+          <CardContent>
+            <CalculatorForm />
+            <div className="mt-8 flex justify-end">
+              <Card className="w-72 transform transition-transform hover:scale-105 cursor-pointer bg-gradient-to-br from-blue-900 to-blue-800 text-white shadow-xl">
+                <a href="https://www.sofarocean.com/posts/weather-maritime-shipping-white-paper" target="_blank" rel="noopener noreferrer">
+                  <CardHeader className="space-y-1">
+                    <CardTitle className="text-lg">Validate Your Savings</CardTitle>
+                    <p className="text-sm text-blue-200">Case Study & Analysis</p>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm">See how leading shipping companies achieve 4-8% fuel savings using weather routing technology.</p>
+                  </CardContent>
+                </a>
+              </Card>
             </div>
           </CardContent>
         </Card>
