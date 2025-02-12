@@ -252,14 +252,25 @@ export default function CalculatorForm() {
           ) : (
             <div className="h-full flex flex-col items-center justify-center gap-8 text-muted-foreground mt-8">
               <div className="ship-container">
-                <svg viewBox="0 0 100 100" className="w-full h-full fill-slate-700">
-                  <path d="M20,60 L80,60 L70,80 L30,80 Z" /> {/* Hull - wider and taller */}
-                  <path d="M35,60 L35,40 L65,40 L65,60" /> {/* Main cabin - adjusted proportions */}
-                  <path d="M42,40 L42,25 L58,25 L58,40" /> {/* Bridge - better proportions */}
-                  <path d="M48,25 L48,15 L52,15 L52,25" /> {/* Smokestack */}
-                  <path d="M25,50 L75,50" strokeWidth="1.5" className="stroke-slate-700" fill="none"/> {/* Deck line */}
+                <svg viewBox="0 0 100 100" className="w-full h-full">
+                  {/* Hull */}
+                  <path d="M15,60 L85,60 L75,85 L25,85 Z" className="fill-slate-800" />
+                  {/* Container Stack 1 */}
+                  <rect x="25" y="35" width="15" height="25" className="fill-blue-500" />
+                  <rect x="42" y="35" width="15" height="25" className="fill-green-500" />
+                  <rect x="59" y="35" width="15" height="25" className="fill-red-500" />
+                  {/* Container Stack 2 */}
+                  <rect x="25" y="20" width="15" height="15" className="fill-yellow-500" />
+                  <rect x="42" y="20" width="15" height="15" className="fill-purple-500" />
+                  {/* Bridge */}
+                  <path d="M65,15 L75,15 L75,35 L65,35 Z" className="fill-slate-700" />
+                  {/* Smokestack */}
+                  <path d="M68,12 L72,12 L72,20 L68,20 Z" className="fill-orange-500" />
+                  {/* Details */}
+                  <line x1="20" y1="70" x2="80" y2="70" strokeWidth="1" className="stroke-slate-600" />
+                  <line x1="25" y1="75" x2="75" y2="75" strokeWidth="1" className="stroke-slate-600" />
                 </svg>
-                <div className="waves opacity-75"></div>
+                <div className="waves"></div>
               </div>
               <span>Enter values and calculate to see results</span>
             </div>
