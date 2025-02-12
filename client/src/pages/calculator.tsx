@@ -29,6 +29,18 @@ export default function Calculator() {
             <CalculatorForm />
           </CardContent>
         </Card>
+      <div className="fixed bottom-4 right-4">
+        <Card className="w-72 transform transition-transform hover:scale-105 cursor-pointer bg-gradient-to-br from-blue-900 to-blue-800 text-white shadow-xl">
+          <a href="https://www.sofarocean.com/posts/weather-maritime-shipping-white-paper" target="_blank" rel="noopener noreferrer">
+            <CardHeader className="space-y-1">
+              <CardTitle className="text-lg">Weather & Maritime Shipping</CardTitle>
+              <p className="text-sm text-blue-200">Free White Paper</p>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm">Learn how weather routing can optimize your fleet operations and reduce fuel consumption.</p>
+            </CardContent>
+          </a>
+        </Card>
       </div>
     </div>
   );
