@@ -82,8 +82,8 @@ export default function CalculatorForm() {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
+        <div className="space-y-8">
           <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-4">
           <div className="space-y-4"> {/* Changed to vertical stacking */}
@@ -218,8 +218,6 @@ export default function CalculatorForm() {
             Enter values and calculate to see results
           </div>
         )}
-      </div>
-      
       <div className="mt-4 border-t pt-4">
         <h4 className="text-sm font-medium mb-4">Calculator Assumptions</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-muted-foreground">
