@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
@@ -25,7 +26,7 @@ export default function ResultsDisplay({ results }: Props) {
     conservative: {
       title: "Conservative Estimate",
       description: "Minimum expected savings of 4% based on real-world data",
-      data: getScenarioData(0) //Corrected index here
+      data: getScenarioData(1)
     },
     average: {
       title: "Average Performance",
@@ -96,22 +97,16 @@ export default function ResultsDisplay({ results }: Props) {
                   key={i} 
                   className={`transform transition-all duration-200 hover:scale-102 ${item.color} border-2`}
                 >
-                  <CardContent className="p-6">
-                    <div className="space-y-3">
+                  <CardContent className="p-4">
+                    <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <p className="text-sm font-semibold text-muted-foreground">{item.title}</p>
-                        <span className="text-2xl">{item.emoji}</span>
+                        <p className="text-sm font-medium text-muted-foreground">{item.title}</p>
+                        <span className="text-xl">{item.emoji}</span>
                       </div>
-                      <p className="text-3xl font-bold tracking-tight">
+                      <p className="text-2xl font-bold tracking-tight">
                         {item.value}
-                        {item.title === 'Potential Savings' && 
-                          <span className="text-lg text-green-600 ml-2">(4%)</span>
-                        }
-                        {item.title === 'CO₂ Reduction' && 
-                          <span className="text-lg text-blue-600 ml-2">(4%)</span>
-                        }
                       </p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xs text-muted-foreground">
                         {item.subtitle}
                       </p>
                     </div>
