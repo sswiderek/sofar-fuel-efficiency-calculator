@@ -75,7 +75,7 @@ export default function ResultsDisplay({ results }: Props) {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 pt-6">
       <Tabs defaultValue="average" className="w-full">
         <TabsList className="grid w-full grid-cols-3 gap-2 p-1">
           {Object.entries(scenarios).map(([key, scenario]) => (
