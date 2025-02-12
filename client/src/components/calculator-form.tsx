@@ -250,8 +250,15 @@ export default function CalculatorForm() {
               <ResultsDisplay results={results} />
             </motion.div>
           ) : (
-            <div className="h-full flex items-center justify-center text-muted-foreground mt-8"> {/* Added margin-top here */}
-              Enter values and calculate to see results
+            <div className="h-full flex flex-col items-center justify-center gap-8 text-muted-foreground mt-8">
+              <div className="ship-container">
+                <svg viewBox="0 0 100 100" className="w-full h-full fill-slate-600">
+                  <path d="M20,50 L40,50 L50,30 L60,50 L80,50 L80,60 L20,60 Z" />
+                  <path d="M45,25 L50,20 L55,25 L55,45 L45,45 Z" opacity="0.9" />
+                </svg>
+                <div className="waves"></div>
+              </div>
+              <span>Enter values and calculate to see results</span>
             </div>
           )}
         </div>

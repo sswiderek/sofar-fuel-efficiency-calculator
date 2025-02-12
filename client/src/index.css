@@ -30,6 +30,37 @@
   background: rgba(255, 255, 255, 0.95);
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+@keyframes wave {
+  0% { transform: translateX(0) scaleY(1); }
+  50% { transform: translateX(-25%) scaleY(0.95); }
+  100% { transform: translateX(-50%) scaleY(1); }
+}
+
+.ship-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  animation: float 6s ease-in-out infinite;
+}
+
+.waves {
+  position: absolute;
+  bottom: 0;
+  width: 200%;
+  height: 20px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.2) 100%);
+  background-size: 200% 100%;
+  animation: wave 8s linear infinite;
+  border-radius: 40%;
+}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
