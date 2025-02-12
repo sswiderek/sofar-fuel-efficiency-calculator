@@ -91,8 +91,9 @@ export default function CalculatorForm() {
               render={({ field }) => (
                 <FormItem>
                   <div className="flex items-center gap-2">
-                    <FormLabel>
-                      <ShipIcon className="h-4 w-4 mr-2" /> Fleet Size
+                    <FormLabel className="flex items-center gap-2">
+                      <ShipIcon className="h-4 w-4" />
+                      <span>Fleet Size</span>
                     </FormLabel>
                     <Tooltip>
                       <TooltipTrigger>
@@ -115,8 +116,9 @@ export default function CalculatorForm() {
               render={({ field }) => (
                 <FormItem>
                   <div className="flex items-center gap-2">
-                    <FormLabel>
-                      <TimerIcon className="h-4 w-4 mr-2" /> Average Voyage Length (Days)
+                    <FormLabel className="flex items-center gap-2">
+                      <TimerIcon className="h-4 w-4" />
+                      <span>Average Voyage Length (Days)</span>
                     </FormLabel>
                     <Tooltip>
                       <TooltipTrigger>
@@ -139,8 +141,9 @@ export default function CalculatorForm() {
               render={({ field }) => (
                 <FormItem>
                   <div className="flex items-center gap-2">
-                    <FormLabel>
-                      <FuelIcon className="h-4 w-4 mr-2" /> Fuel Consumption (MT/Day)
+                    <FormLabel className="flex items-center gap-2">
+                      <FuelIcon className="h-4 w-4" />
+                      <span>Fuel Consumption (MT/Day)</span>
                     </FormLabel>
                     <Tooltip>
                       <TooltipTrigger>
@@ -163,8 +166,9 @@ export default function CalculatorForm() {
               render={({ field }) => (
                 <FormItem>
                   <div className="flex items-center gap-2">
-                    <FormLabel>
-                      <DollarSignIcon className="h-4 w-4 mr-2" /> Fuel Price (USD/MT)
+                    <FormLabel className="flex items-center gap-2">
+                      <DollarSignIcon className="h-4 w-4" />
+                      <span>Fuel Price (USD/MT)</span>
                     </FormLabel>
                     <Tooltip>
                       <TooltipTrigger>
