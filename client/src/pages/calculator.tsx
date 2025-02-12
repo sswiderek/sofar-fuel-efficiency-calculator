@@ -26,12 +26,12 @@ export default function Calculator() {
               </div>
             </div>
           </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
-              <div className="space-y-8">
+          <CardContent className="p-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 relative">
+              <div className="space-y-12">
                 <CalculatorForm />
               </div>
-              <div className="flex flex-col justify-end h-full mt-8">
+              <div className="flex flex-col justify-start h-full">
                 <div>
                   <Card className="w-72 transform transition-transform hover:scale-105 cursor-pointer bg-gradient-to-br from-blue-900 to-blue-800 text-white shadow-xl">
                     <a href="https://www.sofarocean.com/posts/weather-maritime-shipping-white-paper" target="_blank" rel="noopener noreferrer">
