@@ -250,7 +250,7 @@ export default function CalculatorForm() {
               <ResultsDisplay results={results} />
             </motion.div>
           ) : (
-            <div className="h-full flex flex-col items-center justify-center gap-8 text-muted-foreground mt-8">
+            <div className="h-full flex flex-col items-center justify-center gap-4 text-muted-foreground">
               <div className="ship-container">
                 <svg viewBox="0 0 100 100" className="w-full h-full">
                   {/* Hull */}
@@ -267,7 +267,7 @@ export default function CalculatorForm() {
                 </svg>
                 <div className="waves-small"></div>
               </div>
-              <span>Enter values and calculate to see results</span>
+              <p className="text-slate-600 text-sm">Fill in your fleet details above to calculate potential fuel savings</p>
             </div>
           )}
         </div>
