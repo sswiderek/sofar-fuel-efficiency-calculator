@@ -7,11 +7,12 @@ export default function Calculator() {
     <div className="min-h-screen w-full p-4 md:p-8" style={{ 
       backgroundImage: 'url(/images/ocean.jpg)',
       backgroundSize: 'cover',
-      backgroundPosition: 'center'
+      backgroundPosition: 'center',
+      backgroundAttachment: 'fixed'
     }}>
-      <div className="max-w-4xl mx-auto">
-        <Card className="w-full shadow-lg bg-white/95">
-          <CardHeader className="space-y-2">
+      <div className="max-w-6xl mx-auto">
+        <Card className="w-full shadow-2xl bg-white/95 backdrop-blur-sm">
+          <CardHeader className="space-y-4 pb-8 border-b">
             <div className="flex items-center gap-2">
               <img src="/images/sofar-logo.png" alt="Sofar Logo" className="h-8 w-auto" />
               <CardTitle className="text-2xl font-bold">

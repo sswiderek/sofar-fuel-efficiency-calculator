@@ -18,15 +18,15 @@ export default function ResultsDisplay({ results }: Props) {
   const scenarios = ['Current Operations (Baseline)', '4% Fuel Savings', '8% Fuel Savings'];
 
   return (
-    <div className="space-y-6">
-      <div className="grid gap-4 md:grid-cols-3">
+    <div className="space-y-8">
+      <div className="grid gap-6 md:grid-cols-3">
         {results.map((result, index) => (
-          <Card key={index} className={`bg-gradient-to-r ${
-            index === 0 ? 'from-gray-50 to-gray-100' :
-            index === 1 ? 'from-blue-50 to-blue-100' :
-            'from-green-50 to-green-100'
+          <Card key={index} className={`transform transition-all duration-200 hover:scale-105 shadow-lg ${
+            index === 0 ? 'bg-white border-2 border-gray-200' :
+            index === 1 ? 'bg-blue-50 border-2 border-blue-200' :
+            'bg-green-50 border-2 border-green-200'
           }`}>
-            <CardContent className="p-6">
+            <CardContent className="p-8">
               <h3 className="text-lg font-semibold mb-4">{scenarios[index]}</h3>
               <div className="space-y-4">
                 <div>

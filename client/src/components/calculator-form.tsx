@@ -81,10 +81,10 @@ export default function CalculatorForm() {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid gap-6 md:grid-cols-2">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-4">
+          <div className="grid gap-8 md:grid-cols-2">
             <FormField
               control={form.control}
               name="fleetSize"
