@@ -258,5 +258,6 @@ export default function CalculatorForm() {
         </div>
       </div>
     </div>
+    </div>
   );
 }
