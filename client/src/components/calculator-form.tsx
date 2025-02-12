@@ -220,7 +220,7 @@ export default function CalculatorForm() {
         )}
       </div>
       
-      <div className="mt-8 border-t pt-4">
+      <div className="mt-4 border-t pt-4">
         <h4 className="text-sm font-medium mb-4">Calculator Assumptions</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-muted-foreground">
           <div className="space-y-2">
