@@ -65,7 +65,11 @@ export default function CalculatorForm() {
           })
         );
         console.log("All responses:", responses);
-        setResults(responses);
+        if (Array.isArray(responses)) {
+          setResults(responses);
+        } else {
+          console.error("Responses is not an array:", responses);
+        }
       } catch (error) {
         console.error("API error:", error);
       }
