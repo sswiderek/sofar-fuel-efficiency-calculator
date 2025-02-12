@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import type { CalculationResult } from "@shared/schema";
 
@@ -14,32 +15,32 @@ export default function ResultsDisplay({ results }: Props) {
 
   const scenarios = [
     { 
-      title: 'Annual Cost Savings',
+      title: 'Current Costs',
       emoji: '💰',
+      value: formatCurrency(results[0].totalFuelCost),
+      subtitle: 'Annual fuel expenditure',
+      color: 'border-gray-200 bg-white'
+    },
+    { 
+      title: 'Potential Savings',
+      emoji: '✨',
       value: formatCurrency(results[2].estimatedSavings),
-      subtitle: 'Maximum potential savings',
+      subtitle: 'With Wayfinder optimization',
       color: 'border-green-200 bg-green-50/50'
     },
     { 
-      title: 'Labor Hours Saved',
-      emoji: '⏰',
-      value: '240 hrs/year',
-      subtitle: 'Time saved through automation',
+      title: 'CO₂ Reduction',
+      emoji: '🌱',
+      value: formatNumber(results[2].co2Reduction) + ' MT',
+      subtitle: 'Annual emissions saved',
       color: 'border-blue-200 bg-blue-50/50'
     },
     { 
-      title: 'Monthly Impressions',
-      emoji: '👥',
-      value: '9,583,333',
-      subtitle: 'Expected with optimization',
+      title: 'Optimized Cost',
+      emoji: '📊',
+      value: formatCurrency(results[2].fuelCostWithWayfinder),
+      subtitle: 'With Wayfinder routing',
       color: 'border-purple-200 bg-purple-50/50'
-    },
-    { 
-      title: 'ROI Multiple',
-      emoji: '🚀',
-      value: '18.0x',
-      subtitle: 'Return on investment ratio',
-      color: 'border-amber-200 bg-amber-50/50'
     }
   ];
 
