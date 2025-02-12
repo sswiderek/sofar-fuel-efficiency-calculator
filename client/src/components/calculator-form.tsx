@@ -27,7 +27,8 @@ export default function CalculatorForm() {
     }
   });
 
-  async function onSubmit() {
+  async function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
     setIsCalculating(true);
     try {
       const scenarios = [
@@ -36,15 +37,15 @@ export default function CalculatorForm() {
         { savings: 8, label: '8% Fuel Savings' }
       ];
       
-      const allResults = await Promise.all(
-        scenarios.map(async (scenario) => {
-          const data = { ...form.getValues(), estimatedSavings: scenario.savings };
-          const res = await apiRequest("POST", "/api/calculate", data);
-          return res.json();
-        })
-      );
+      const results = [];
+      for (const scenario of scenarios) {
+        const data = { ...form.getValues(), estimatedSavings: scenario.savings };
+        const res = await apiRequest("POST", "/api/calculate", data);
+        const json = await res.json();
+        results.push(json);
+      }
       
-      setResults(allResults);
+      setResults(results);
     } catch (error) {
       console.error("Calculation failed:", error);
     } finally {
