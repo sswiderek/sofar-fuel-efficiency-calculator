@@ -90,7 +90,6 @@ export default function ResultsDisplay({ results }: Props) {
         </TabsList>
         {Object.entries(scenarios).map(([key, scenario]) => (
           <TabsContent key={key} value={key}>
-            <p className="text-sm text-muted-foreground mb-4">{scenario.description}</p>
             <div className="grid grid-cols-2 gap-4">
               {scenario.data.map((item, i) => (
                 <Card 
