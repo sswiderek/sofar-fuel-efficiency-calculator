@@ -11,8 +11,6 @@ import { InfoIcon, ShipIcon, TimerIcon, FuelIcon, DollarSignIcon, LeafIcon, Glob
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import ResultsDisplay from "./results-display";
 import { apiRequest } from "@/lib/queryClient";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"; // Import Card component
-
 
 export default function CalculatorForm() {
   const [results, setResults] = useState<CalculationResult[] | null>(null);
@@ -85,10 +83,10 @@ export default function CalculatorForm() {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-4">
+        <div className="space-y-8 pt-4">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-4">
-              <div className="space-y-4">
+              <div className="space-y-4"> {/* Changed to vertical stacking */}
                 <FormField
                   control={form.control}
                   name="fleetSize"
@@ -206,54 +204,40 @@ export default function CalculatorForm() {
             </form>
           </Form>
 
-          <div className="space-y-8">
-            <div className="border-l border-slate-200 pl-4">
-              <h4 className="text-sm font-semibold mb-4 text-slate-900">Calculator Assumptions</h4>
-              <div className="grid grid-cols-1 gap-4 text-xs text-slate-800">
-                <div className="space-y-2">
-                  <div className="flex items-start gap-2">
-                    <FuelIcon className="h-4 w-4 flex-shrink-0 text-slate-700" />
-                    <div>
-                      <p className="font-semibold text-slate-900">Fuel Consumption</p>
-                      <p className="text-slate-800">Assumes constant fuel consumption rate (MT/day) for entire voyage</p>
-                    </div>
+          <div className="mt-4 border-t border-slate-200 pt-4">
+            <h4 className="text-sm font-semibold mb-4 text-slate-900">Calculator Assumptions</h4>
+            <div className="grid grid-cols-1 gap-4 text-xs text-slate-800">
+              <div className="space-y-2">
+                <div className="flex items-start gap-2">
+                  <FuelIcon className="h-4 w-4 flex-shrink-0 text-slate-700" />
+                  <div>
+                    <p className="font-semibold text-slate-900">Fuel Consumption</p>
+                    <p className="text-slate-800">Assumes constant fuel consumption rate (MT/day) for entire voyage</p>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <DollarSignIcon className="h-4 w-4 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium">Fuel Price</p>
-                      <p>Fixed fuel price for voyage duration, no price fluctuations</p>
-                    </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <DollarSignIcon className="h-4 w-4 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium">Fuel Price</p>
+                    <p>Fixed fuel price for voyage duration, no price fluctuations</p>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <LeafIcon className="h-4 w-4 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium">Savings Range</p>
-                      <p>4-10% typical savings based on Wayfinder platform results</p>
-                    </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <LeafIcon className="h-4 w-4 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium">Savings Range</p>
+                    <p>4-10% typical savings based on Wayfinder platform results</p>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <GlobeIcon className="h-4 w-4 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium">CO₂ Calculation</p>
-                      <p>3.15 metric tons of CO₂ per metric ton of fuel burned</p>
-                    </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <GlobeIcon className="h-4 w-4 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium">CO₂ Calculation</p>
+                    <p>3.15 metric tons of CO₂ per metric ton of fuel burned</p>
                   </div>
                 </div>
               </div>
             </div>
-
-            <Card className="w-full transform transition-transform hover:scale-105 cursor-pointer bg-gradient-to-br from-blue-900 to-blue-800 text-white shadow-xl mt-8">
-              <a href="https://www.sofarocean.com/posts/weather-maritime-shipping-white-paper" target="_blank" rel="noopener noreferrer">
-                <CardHeader className="space-y-1">
-                  <CardTitle className="text-lg">Validate Your Savings</CardTitle>
-                  <p className="text-sm text-blue-200">Case Study & Analysis</p>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm">See how leading shipping companies achieve 4-8% fuel savings using weather routing technology.</p>
-                </CardContent>
-              </a>
-            </Card>
           </div>
         </div>
         <div>
