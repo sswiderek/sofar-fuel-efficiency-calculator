@@ -203,53 +203,55 @@ export default function CalculatorForm() {
           </motion.div>
         </form>
       </Form>
-      </div>
-      <div>
-        {results ? (
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <ResultsDisplay results={results} />
-          </motion.div>
-        ) : (
-          <div className="h-full flex items-center justify-center text-muted-foreground">
-            Enter values and calculate to see results
-          </div>
-        )}
-      <div className="mt-4 border-t pt-4">
-        <h4 className="text-sm font-medium mb-4">Calculator Assumptions</h4>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-muted-foreground">
-          <div className="space-y-2">
-            <div className="flex items-start gap-2">
-              <span>⛽</span>
-              <div>
-                <p className="font-medium">Fuel Consumption</p>
-                <p>Assumes constant fuel consumption rate (MT/day) for entire voyage</p>
-              </div>
+        </div>
+        <div>
+          {results ? (
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <ResultsDisplay results={results} />
+            </motion.div>
+          ) : (
+            <div className="h-full flex items-center justify-center text-muted-foreground">
+              Enter values and calculate to see results
             </div>
-            <div className="flex items-start gap-2">
-              <span>💰</span>
-              <div>
-                <p className="font-medium">Fuel Price</p>
-                <p>Fixed fuel price for voyage duration, no price fluctuations</p>
+          )}
+          <div className="mt-4 border-t pt-4">
+            <h4 className="text-sm font-medium mb-4">Calculator Assumptions</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-muted-foreground">
+              <div className="space-y-2">
+                <div className="flex items-start gap-2">
+                  <span>⛽</span>
+                  <div>
+                    <p className="font-medium">Fuel Consumption</p>
+                    <p>Assumes constant fuel consumption rate (MT/day) for entire voyage</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span>💰</span>
+                  <div>
+                    <p className="font-medium">Fuel Price</p>
+                    <p>Fixed fuel price for voyage duration, no price fluctuations</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="space-y-2">
-            <div className="flex items-start gap-2">
-              <span>🌱</span>
-              <div>
-                <p className="font-medium">Savings Range</p>
-                <p>4-10% typical savings based on Wayfinder platform results</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-2">
-              <span>🌍</span>
-              <div>
-                <p className="font-medium">CO₂ Calculation</p>
-                <p>3.15 metric tons of CO₂ per metric ton of fuel burned</p>
+              <div className="space-y-2">
+                <div className="flex items-start gap-2">
+                  <span>🌱</span>
+                  <div>
+                    <p className="font-medium">Savings Range</p>
+                    <p>4-10% typical savings based on Wayfinder platform results</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span>🌍</span>
+                  <div>
+                    <p className="font-medium">CO₂ Calculation</p>
+                    <p>3.15 metric tons of CO₂ per metric ton of fuel burned</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
