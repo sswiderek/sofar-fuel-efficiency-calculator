@@ -31,19 +31,24 @@ export default function CalculatorForm() {
     e.preventDefault();
     setIsCalculating(true);
     try {
+      const formData = form.getValues();
       const scenarios = [
         { savings: 0, label: 'Current Operations (Baseline)' },
         { savings: 4, label: '4% Fuel Savings' },
         { savings: 8, label: '8% Fuel Savings' }
       ];
       
-      const results = [];
-      for (const scenario of scenarios) {
-        const data = { ...form.getValues(), estimatedSavings: scenario.savings };
+      const results = await Promise.all(scenarios.map(async (scenario) => {
+        const data = {
+          fleetSize: Number(formData.fleetSize),
+          voyageLength: Number(formData.voyageLength),
+          fuelConsumption: Number(formData.fuelConsumption),
+          fuelPrice: Number(formData.fuelPrice),
+          estimatedSavings: scenario.savings
+        };
         const res = await apiRequest("POST", "/api/calculate", data);
-        const json = await res.json();
-        results.push(json);
-      }
+        return res.json();
+      }));
       
       setResults(results);
     } catch (error) {
