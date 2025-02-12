@@ -2,7 +2,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { DollarSign, Leaf, Ship } from "lucide-react";
 import type { CalculationResult } from "@shared/schema";
-import CostComparisonChart from "./cost-comparison-chart";
 
 interface ResultsDisplayProps {
   results: CalculationResult;
@@ -28,7 +27,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   return (
     <div className="space-y-6">
       <Separator />
-
+      
       <div className="grid gap-4 md:grid-cols-3">
         <Card className="bg-primary/5">
           <CardContent className="p-6">
@@ -66,8 +65,6 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           </CardContent>
         </Card>
       </div>
-
-      <CostComparisonChart results={results} />
 
       <Card className="bg-gradient-to-r from-primary/10 to-primary/5">
         <CardContent className="p-6">
