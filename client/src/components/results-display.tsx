@@ -96,24 +96,37 @@ export default function ResultsDisplay({ results }: Props) {
               {scenario.data.map((item, i) => (
                 <Card 
                   key={i} 
-                  className={`transform transition-all duration-200 hover:scale-102 ${item.color} border-2 ${
-                    item.title === 'Potential Savings' ? 'col-span-2 bg-green-100' : ''
-                  }`}
+                  className={`transform transition-all duration-300 hover:scale-102 hover:shadow-lg ${
+                    item.title === 'Potential Savings' 
+                      ? 'col-span-2 bg-gradient-to-br from-cyan-50 to-teal-50 border-teal-200' 
+                      : item.title === 'Current Costs'
+                      ? 'bg-white border-slate-200'
+                      : item.title === 'CO₂ Reduction'
+                      ? 'bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200'
+                      : 'bg-gradient-to-br from-violet-50 to-purple-50 border-purple-200'
+                  } border-2 animate-fade-in`}
+                  style={{ animationDelay: `${i * 150}ms` }}
                 >
-                  <CardContent className={`p-4 ${item.title === 'Potential Savings' ? 'py-6' : ''}`}>
-                    <div className="space-y-2">
+                  <CardContent className={`p-6 ${item.title === 'Potential Savings' ? 'py-8' : ''}`}>
+                    <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <p className={`font-medium ${item.title === 'Potential Savings' ? 'text-base' : 'text-sm'} text-muted-foreground`}>
+                        <p className={`font-semibold ${
+                          item.title === 'Potential Savings' ? 'text-lg' : 'text-base'
+                        } text-slate-700`}>
                           {item.title}
                         </p>
                         <span className={`${item.title === 'Potential Savings' ? 'text-2xl' : 'text-xl'}`}>
                           {item.emoji}
                         </span>
                       </div>
-                      <p className={`${item.title === 'Potential Savings' ? 'text-3xl' : 'text-2xl'} font-bold tracking-tight`}>
+                      <p className={`${
+                        item.title === 'Potential Savings' ? 'text-4xl' : 'text-2xl'
+                      } font-bold tracking-tight text-slate-900`}>
                         {item.value}
                       </p>
-                      <p className={`${item.title === 'Potential Savings' ? 'text-sm' : 'text-xs'} text-muted-foreground`}>
+                      <p className={`${
+                        item.title === 'Potential Savings' ? 'text-sm' : 'text-xs'
+                      } text-slate-600`}>
                         {item.subtitle}
                       </p>
                     </div>
