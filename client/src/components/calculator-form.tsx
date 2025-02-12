@@ -253,8 +253,10 @@ export default function CalculatorForm() {
             <div className="h-full flex flex-col items-center justify-center gap-8 text-muted-foreground mt-8">
               <div className="ship-container">
                 <svg viewBox="0 0 100 100" className="w-full h-full fill-slate-600">
-                  <path d="M20,50 L40,50 L50,30 L60,50 L80,50 L80,60 L20,60 Z" />
-                  <path d="M45,25 L50,20 L55,25 L55,45 L45,45 Z" opacity="0.9" />
+                  <path d="M15,60 L85,60 L75,75 L25,75 Z" /> {/* Hull */}
+                  <path d="M40,60 L40,35 L60,35 L60,60" /> {/* Cabin */}
+                  <path d="M45,35 L45,20 L55,20 L55,35" /> {/* Bridge */}
+                  <path d="M30,45 L70,45" strokeWidth="2" className="stroke-slate-600" fill="none"/> {/* Deck line */}
                 </svg>
                 <div className="waves"></div>
               </div>
