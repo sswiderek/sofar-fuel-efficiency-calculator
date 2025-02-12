@@ -52,34 +52,34 @@ export default function ResultsDisplay({ results }: Props) {
   ];
 
   return (
-    <div className="space-y-4">
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+    <div className="space-y-6">
+      <div className="grid gap-6">
         {allResults.map((result, index) => (
           <Card 
             key={index} 
             className={`transform transition-all duration-200 hover:scale-102 ${scenarios[index].color} border-2`}
           >
-            <CardContent className="p-4">
-              <div className="space-y-3">
-                <div>
-                  <h3 className="text-lg font-bold">{scenarios[index].title}</h3>
+            <CardContent className="p-6">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="col-span-2">
+                  <h3 className="text-xl font-bold mb-1">{scenarios[index].title}</h3>
                   <p className="text-sm font-medium text-muted-foreground">{scenarios[index].subtitle}</p>
                 </div>
                 
-                <div className="pt-1">
-                  <p className="text-3xl font-bold tracking-tight">
+                <div className="col-span-2 border-t pt-4">
+                  <p className="text-4xl font-bold tracking-tight mb-2">
                     {formatCurrency(result.totalFuelCost - result.estimatedSavings)}
                   </p>
                   {index > 0 && (
-                    <p className="text-sm font-medium text-green-600 mt-1">
+                    <p className="text-base font-medium text-green-600">
                       Save {formatCurrency(result.estimatedSavings)}/year
                     </p>
                   )}
                 </div>
                 
-                <div className="pt-1 flex items-baseline gap-1">
-                  <p className="text-xl font-semibold">{formatNumber(result.co2Reduction)}</p>
-                  <p className="text-sm text-muted-foreground">MT CO₂/year</p>
+                <div className="col-span-2 border-t pt-4">
+                  <p className="text-2xl font-semibold mb-1">{formatNumber(result.co2Reduction)}</p>
+                  <p className="text-sm text-muted-foreground">MT CO₂/year reduction</p>
                 </div>
               </div>
             </CardContent>
