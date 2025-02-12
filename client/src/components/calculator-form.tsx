@@ -81,7 +81,7 @@ export default function CalculatorForm() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid gap-6 md:grid-cols-2">
@@ -189,16 +189,21 @@ export default function CalculatorForm() {
           </motion.div>
         </form>
       </Form>
-
-      {results && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <ResultsDisplay results={results} />
-        </motion.div>
-      )}
+      <div className="md:border-l md:pl-8">
+        {results ? (
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <ResultsDisplay results={results} />
+          </motion.div>
+        ) : (
+          <div className="h-full flex items-center justify-center text-muted-foreground">
+            Enter values and calculate to see results
+          </div>
+        )}
+      </div>
     </div>
   );
 }
