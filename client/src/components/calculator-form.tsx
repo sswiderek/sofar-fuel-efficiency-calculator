@@ -38,7 +38,7 @@ export default function CalculatorForm() {
         { savings: 8, label: '8% Fuel Savings' }
       ];
       
-      const results = await Promise.all(scenarios.map(async (scenario) => {
+      const responses = await Promise.all(scenarios.map(async (scenario) => {
         const data = {
           fleetSize: Number(formData.fleetSize),
           voyageLength: Number(formData.voyageLength),
@@ -47,10 +47,11 @@ export default function CalculatorForm() {
           estimatedSavings: scenario.savings
         };
         const res = await apiRequest("POST", "/api/calculate", data);
-        return res.json();
+        const json = await res.json();
+        return { ...json, label: scenario.label };
       }));
       
-      setResults(results);
+      setResults(responses);
     } catch (error) {
       console.error("Calculation failed:", error);
     } finally {
