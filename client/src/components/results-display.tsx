@@ -3,6 +3,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import type { CalculationResult } from "@shared/schema";
+import { BanknoteIcon, LeafIcon, GlobeIcon } from 'lucide-react'; // Assumed import
+
 
 interface Props {
   results: CalculationResult[];
@@ -43,28 +45,28 @@ export default function ResultsDisplay({ results }: Props) {
     return [
       { 
         title: 'Current Costs',
-        emoji: '💰',
+        emoji: <BanknoteIcon className="h-4 w-4" />, // Replaced emoji
         value: formatCurrency(results[0].totalFuelCost),
         subtitle: 'Annual fuel expenditure',
         color: 'border-gray-200 bg-white'
       },
       { 
         title: 'Potential Savings',
-        emoji: '✨',
+        emoji: <LeafIcon className="h-4 w-4" />, // Replaced emoji
         value: formatCurrency(results[scenarioIndex].estimatedSavings),
         subtitle: 'With Wayfinder optimization',
         color: 'border-green-200 bg-green-50/50'
       },
       { 
         title: 'CO₂ Reduction',
-        emoji: '🌱',
+        emoji: <LeafIcon className="h-4 w-4" />, // Replaced emoji
         value: formatNumber(results[scenarioIndex].co2Reduction) + ' MT',
         subtitle: 'Annual emissions saved',
         color: 'border-blue-200 bg-blue-50/50'
       },
       { 
         title: 'Optimized Cost',
-        emoji: '📊',
+        emoji: <BanknoteIcon className="h-4 w-4" />, // Replaced emoji
         value: formatCurrency(results[scenarioIndex].fuelCostWithWayfinder),
         subtitle: 'With Wayfinder routing',
         color: 'border-purple-200 bg-purple-50/50'
