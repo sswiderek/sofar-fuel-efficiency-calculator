@@ -74,7 +74,7 @@ export default function ResultsDisplay({ results }: Props) {
 
   return (
     <div className="space-y-4">
-      <Tabs defaultValue="conservative" className="w-full">
+      <Tabs defaultValue="average" className="w-full">
         <TabsList className="grid w-full grid-cols-3 gap-2 p-1">
           {Object.entries(scenarios).map(([key, scenario]) => (
             <TabsTrigger value={key} key={key} className="relative px-3 py-1.5 text-sm font-medium">

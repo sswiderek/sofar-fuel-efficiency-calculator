@@ -83,8 +83,9 @@ export default function CalculatorForm() {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-4">
+        <div>
+          <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-4">
           <div className="space-y-4"> {/* Changed to vertical stacking */}
             <FormField
               control={form.control}
@@ -203,7 +204,7 @@ export default function CalculatorForm() {
         </form>
       </Form>
       </div>
-      <div className="md:border-l md:pl-8">
+      <div>
         {results ? (
           <motion.div
             initial={{ opacity: 0, x: 20 }}
