@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import type { CalculationResult } from "@shared/schema";
-import { BanknoteIcon, LeafIcon, GlobeIcon, DollarSignIcon } from 'lucide-react'; // Assumed import
+import { BanknoteIcon, LeafIcon, GlobeIcon, DollarSignIcon } from 'lucide-react';
 
 
 interface Props {
@@ -62,7 +62,7 @@ export default function ResultsDisplay({ results }: Props) {
         emoji: <DollarSignIcon className="h-4 w-4" />,
         value: formatCurrency(results[scenarioIndex].estimatedSavings),
         subtitle: 'With Wayfinder optimization',
-        color: 'border-emerald-300 bg-gradient-to-br from-emerald-50 to-teal-50 shadow-lg ring-2 ring-emerald-200/50'
+        color: 'border-emerald-300 bg-gradient-to-br from-emerald-50 to-teal-50 shadow-lg ring-2 ring-emerald-200/50 hover:shadow-emerald-100'
       },
       { 
         title: 'CO₂ Reduction',
@@ -110,23 +110,17 @@ export default function ResultsDisplay({ results }: Props) {
                   <CardContent className="p-6">
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <p className={`font-semibold ${
-                          item.title === 'Potential Savings' ? 'text-lg' : 'text-base'
-                        } text-slate-700`}>
+                        <p className="text-base text-slate-700">
                           {item.title}
                         </p>
-                        <span className={`${item.title === 'Potential Savings' ? 'text-2xl' : 'text-xl'}`}>
+                        <span className="text-xl">
                           {item.emoji}
                         </span>
                       </div>
-                      <p className={`${
-                        item.title === 'Potential Savings' ? 'text-4xl' : 'text-2xl'
-                      } font-bold tracking-tight text-slate-900`}>
+                      <p className="text-2xl font-bold tracking-tight text-slate-900">
                         {item.value}
                       </p>
-                      <p className={`${
-                        item.title === 'Potential Savings' ? 'text-sm' : 'text-xs'
-                      } text-slate-600`}>
+                      <p className="text-xs text-slate-600">
                         {item.subtitle}
                       </p>
                     </div>
