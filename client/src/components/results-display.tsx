@@ -23,17 +23,17 @@ export default function ResultsDisplay({ results }: Props) {
 
   const scenarios = {
     conservative: {
-      title: "Conservative Estimate",
+      title: "Conservative",
       description: "A cautious 4% fuel savings estimate based on minimal route optimization and weather routing",
       data: getScenarioData(0)
     },
     average: {
-      title: "Average Performance",
+      title: "Average",
       description: "Typical 6% fuel savings achieved by most vessels using standard weather routing and speed optimization",
       data: getScenarioData(1)
     },
     optimal: {
-      title: "Optimal Scenario",
+      title: "Optimal",
       description: "Maximum 8% fuel savings possible with full implementation of all optimization strategies and perfect compliance",
       data: getScenarioData(2)
     }
@@ -90,6 +90,7 @@ export default function ResultsDisplay({ results }: Props) {
         </TabsList>
         {Object.entries(scenarios).map(([key, scenario]) => (
           <TabsContent key={key} value={key}>
+            <p className="text-sm text-muted-foreground mb-4">{scenario.description}</p>
             <div className="grid grid-cols-2 gap-4">
               {scenario.data.map((item, i) => (
                 <Card 
