@@ -250,7 +250,7 @@ export default function CalculatorForm() {
               <ResultsDisplay results={results} />
             </motion.div>
           ) : (
-            <div className="h-full flex items-center justify-center text-muted-foreground">
+            <div className="h-full flex items-center justify-center text-muted-foreground mt-8"> {/* Added margin-top here */}
               Enter values and calculate to see results
             </div>
           )}
