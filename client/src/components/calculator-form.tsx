@@ -254,23 +254,18 @@ export default function CalculatorForm() {
               <div className="ship-container">
                 <svg viewBox="0 0 100 100" className="w-full h-full">
                   {/* Hull */}
-                  <path d="M15,60 L85,60 L75,85 L25,85 Z" className="fill-slate-800" />
-                  {/* Container Stack 1 */}
-                  <rect x="25" y="35" width="15" height="25" className="fill-blue-500" />
-                  <rect x="42" y="35" width="15" height="25" className="fill-green-500" />
-                  <rect x="59" y="35" width="15" height="25" className="fill-red-500" />
-                  {/* Container Stack 2 */}
-                  <rect x="25" y="20" width="15" height="15" className="fill-yellow-500" />
-                  <rect x="42" y="20" width="15" height="15" className="fill-purple-500" />
+                  <path d="M20,60 L80,60 L70,80 L30,80 Z" className="fill-slate-700" />
+                  {/* Cabin */}
+                  <rect x="35" y="35" width="30" height="25" className="fill-slate-600" />
                   {/* Bridge */}
-                  <path d="M65,15 L75,15 L75,35 L65,35 Z" className="fill-slate-700" />
-                  {/* Smokestack */}
-                  <path d="M68,12 L72,12 L72,20 L68,20 Z" className="fill-orange-500" />
-                  {/* Details */}
-                  <line x1="20" y1="70" x2="80" y2="70" strokeWidth="1" className="stroke-slate-600" />
-                  <line x1="25" y1="75" x2="75" y2="75" strokeWidth="1" className="stroke-slate-600" />
+                  <path d="M40,25 L60,25 L60,35 L40,35 Z" className="fill-slate-800" />
+                  {/* Windows */}
+                  <rect x="42" y="40" width="6" height="6" className="fill-sky-200" />
+                  <rect x="52" y="40" width="6" height="6" className="fill-sky-200" />
+                  {/* Flag */}
+                  <rect x="65" y="20" width="8" height="5" className="fill-sky-400" />
                 </svg>
-                <div className="waves"></div>
+                <div className="waves-small"></div>
               </div>
               <span>Enter values and calculate to see results</span>
             </div>
