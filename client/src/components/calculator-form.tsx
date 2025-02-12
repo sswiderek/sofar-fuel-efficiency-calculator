@@ -13,7 +13,7 @@ import ResultsDisplay from "./results-display";
 import { apiRequest } from "@/lib/queryClient";
 
 export default function CalculatorForm() {
-  const [results, setResults] = useState<CalculationResult | null>(null);
+  const [results, setResults] = useState<CalculationResult[] | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
 
   const form = useForm<CalculatorInput>({
@@ -27,12 +27,24 @@ export default function CalculatorForm() {
     }
   });
 
-  async function onSubmit(data: CalculatorInput) {
+  async function onSubmit() {
     setIsCalculating(true);
     try {
-      const res = await apiRequest("POST", "/api/calculate", data);
-      const results = await res.json();
-      setResults(results);
+      const scenarios = [
+        { savings: 4, label: 'Conservative' },
+        { savings: 6, label: 'Average' },
+        { savings: 8, label: 'Optimal' }
+      ];
+      
+      const allResults = await Promise.all(
+        scenarios.map(async (scenario) => {
+          const data = { ...form.getValues(), estimatedSavings: scenario.savings };
+          const res = await apiRequest("POST", "/api/calculate", data);
+          return res.json();
+        })
+      );
+      
+      setResults(allResults);
     } catch (error) {
       console.error("Calculation failed:", error);
     } finally {
@@ -142,18 +154,7 @@ export default function CalculatorForm() {
               type="submit" 
               className="w-full"
               disabled={isCalculating}
-              onClick={() => {
-                // Calculate for all three scenarios
-                const scenarios = [
-                  { savings: 4, label: 'Conservative' },
-                  { savings: 6, label: 'Average' },
-                  { savings: 8, label: 'Optimal' }
-                ];
-                
-                Promise.all(scenarios.map(scenario => 
-                  onSubmit({ ...form.getValues(), estimatedSavings: scenario.savings })
-                ));
-              }}
+              onClick={onSubmit}
             >
               {isCalculating ? "Calculating..." : "View Potential Savings"}
             </Button>
