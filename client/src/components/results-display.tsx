@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import type { CalculationResult } from "@shared/schema";
-import { BanknoteIcon, LeafIcon, GlobeIcon } from 'lucide-react'; // Assumed import
+import { BanknoteIcon, LeafIcon, GlobeIcon, DollarSignIcon } from 'lucide-react'; // Assumed import
 
 
 interface Props {
@@ -59,14 +59,14 @@ export default function ResultsDisplay({ results }: Props) {
       },
       { 
         title: 'Potential Savings',
-        emoji: <LeafIcon className="h-4 w-4" />,
+        emoji: <DollarSignIcon className="h-4 w-4" />,
         value: formatCurrency(results[scenarioIndex].estimatedSavings),
         subtitle: 'With Wayfinder optimization',
-        color: 'border-green-200 bg-green-50/50'
+        color: 'border-emerald-300 bg-gradient-to-br from-emerald-50 to-teal-50 shadow-lg ring-2 ring-emerald-200/50'
       },
       { 
         title: 'CO₂ Reduction',
-        emoji: <GlobeIcon className="h-4 w-4" />,
+        emoji: <LeafIcon className="h-4 w-4" />,
         value: formatNumber(results[scenarioIndex].co2Reduction) + ' MT',
         subtitle: 'Annual emissions saved',
         color: 'border-blue-200 bg-blue-50/50'
