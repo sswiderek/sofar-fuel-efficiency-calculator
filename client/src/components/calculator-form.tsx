@@ -31,9 +31,9 @@ export default function CalculatorForm() {
     setIsCalculating(true);
     try {
       const scenarios = [
-        { savings: 4, label: 'Conservative' },
-        { savings: 6, label: 'Average' },
-        { savings: 8, label: 'Optimal' }
+        { savings: 0, label: 'Current Operations (Baseline)' },
+        { savings: 4, label: '4% Fuel Savings' },
+        { savings: 8, label: '8% Fuel Savings' }
       ];
       
       const allResults = await Promise.all(
