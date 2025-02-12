@@ -3,79 +3,44 @@ import { Separator } from "@/components/ui/separator";
 import { DollarSign, Leaf, Ship } from "lucide-react";
 import type { CalculationResult } from "@shared/schema";
 
-interface ResultsDisplayProps {
-  results: CalculationResult;
+interface Props {
+  results: CalculationResult[];
 }
 
-export default function ResultsDisplay({ results }: ResultsDisplayProps) {
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(value);
-  };
+export default function ResultsDisplay({ results }: Props) {
+  const formatCurrency = (value: number) => 
+    new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
 
-  const formatNumber = (value: number) => {
-    return new Intl.NumberFormat('en-US', {
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(value);
-  };
+  const formatNumber = (value: number) => 
+    new Intl.NumberFormat('en-US').format(Math.round(value));
+
+  const scenarios = ['Conservative', 'Average', 'Optimal'];
 
   return (
     <div className="space-y-6">
-      <Separator />
-      
       <div className="grid gap-4 md:grid-cols-3">
-        <Card className="bg-primary/5">
-          <CardContent className="p-6">
-            <div className="flex items-center gap-3">
-              <DollarSign className="h-8 w-8 text-primary" />
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">Current Fuel Cost</p>
-                <p className="text-2xl font-bold">{formatCurrency(results.totalFuelCost)}</p>
+        {results.map((result, index) => (
+          <Card key={index} className={`bg-gradient-to-r ${
+            index === 0 ? 'from-blue-50 to-blue-100' :
+            index === 1 ? 'from-green-50 to-green-100' :
+            'from-purple-50 to-purple-100'
+          }`}>
+            <CardContent className="p-6">
+              <h3 className="text-lg font-semibold mb-4">{scenarios[index]} Scenario</h3>
+              <div className="space-y-4">
+                <div>
+                  <p className="text-sm text-muted-foreground">Annual Savings</p>
+                  <p className="text-2xl font-bold">{formatCurrency(result.estimatedSavings)}</p>
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">CO₂ Reduction</p>
+                  <p className="text-xl font-semibold">{formatNumber(result.co2Reduction)} MT</p>
+                </div>
               </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-green-50">
-          <CardContent className="p-6">
-            <div className="flex items-center gap-3">
-              <Ship className="h-8 w-8 text-green-600" />
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">With Wayfinder</p>
-                <p className="text-2xl font-bold">{formatCurrency(results.fuelCostWithWayfinder)}</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-blue-50">
-          <CardContent className="p-6">
-            <div className="flex items-center gap-3">
-              <Leaf className="h-8 w-8 text-blue-600" />
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">CO₂ Reduction</p>
-                <p className="text-2xl font-bold">{formatNumber(results.co2Reduction)} MT</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        ))}
       </div>
-
-      <Card className="bg-gradient-to-r from-primary/10 to-primary/5">
-        <CardContent className="p-6">
-          <div className="text-center">
-            <h3 className="text-lg font-semibold mb-2">Estimated Annual Savings</h3>
-            <p className="text-3xl font-bold text-primary">
-              {formatCurrency(results.estimatedSavings)}
-            </p>
-          </div>
-        </CardContent>
-      </Card>
     </div>
   );
 }

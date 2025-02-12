@@ -134,40 +134,6 @@ export default function CalculatorForm() {
             />
           </div>
 
-          <FormField
-            control={form.control}
-            name="estimatedSavings"
-            render={({ field }) => (
-              <FormItem>
-                <div className="flex items-center gap-2">
-                  <FormLabel>Estimated Savings (%)</FormLabel>
-                  <Tooltip>
-                    <TooltipTrigger>
-                      <InfoIcon className="h-4 w-4 text-muted-foreground" />
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      Estimated fuel savings between 4% to 10% based on real-world results
-                    </TooltipContent>
-                  </Tooltip>
-                </div>
-                <FormControl>
-                  <Slider
-                    min={1}
-                    max={10}
-                    step={1}
-                    value={[field.value]}
-                    onValueChange={([value]) => field.onChange(value)}
-                    className="py-4"
-                  />
-                </FormControl>
-                <div className="text-sm text-muted-foreground text-center">
-                  {field.value}%
-                </div>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
           <motion.div
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -176,8 +142,20 @@ export default function CalculatorForm() {
               type="submit" 
               className="w-full"
               disabled={isCalculating}
+              onClick={() => {
+                // Calculate for all three scenarios
+                const scenarios = [
+                  { savings: 4, label: 'Conservative' },
+                  { savings: 6, label: 'Average' },
+                  { savings: 8, label: 'Optimal' }
+                ];
+                
+                Promise.all(scenarios.map(scenario => 
+                  onSubmit({ ...form.getValues(), estimatedSavings: scenario.savings })
+                ));
+              }}
             >
-              {isCalculating ? "Calculating..." : "Calculate Savings"}
+              {isCalculating ? "Calculating..." : "View Potential Savings"}
             </Button>
           </motion.div>
         </form>
