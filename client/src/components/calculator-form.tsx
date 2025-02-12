@@ -84,156 +84,158 @@ export default function CalculatorForm() {
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
         <div className="space-y-8 pt-4">
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-4">
-              <div className="space-y-4"> {/* Changed to vertical stacking */}
-                <FormField
-                  control={form.control}
-                  name="fleetSize"
-                  render={({ field }) => (
-                    <FormItem>
-                      <div className="flex items-center gap-2">
-                        <FormLabel className="flex items-center gap-2">
-                          <ShipIcon className="h-4 w-4" />
-                          <span>Fleet Size</span>
-                        </FormLabel>
-                        <Tooltip>
-                          <TooltipTrigger>
-                            <InfoIcon className="h-4 w-4 text-muted-foreground" />
-                          </TooltipTrigger>
-                          <TooltipContent>Number of ships in your fleet</TooltipContent>
-                        </Tooltip>
-                      </div>
-                      <FormControl>
-                        <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+          <div className="space-y-8">
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-4">
+                <div className="space-y-4">
+                  <FormField
+                    control={form.control}
+                    name="fleetSize"
+                    render={({ field }) => (
+                      <FormItem>
+                        <div className="flex items-center gap-2">
+                          <FormLabel className="flex items-center gap-2">
+                            <ShipIcon className="h-4 w-4" />
+                            <span>Fleet Size</span>
+                          </FormLabel>
+                          <Tooltip>
+                            <TooltipTrigger>
+                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                            </TooltipTrigger>
+                            <TooltipContent>Number of ships in your fleet</TooltipContent>
+                          </Tooltip>
+                        </div>
+                        <FormControl>
+                          <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                <FormField
-                  control={form.control}
-                  name="voyageLength"
-                  render={({ field }) => (
-                    <FormItem>
-                      <div className="flex items-center gap-2">
-                        <FormLabel className="flex items-center gap-2">
-                          <TimerIcon className="h-4 w-4" />
-                          <span>Average Voyage Length (Days)</span>
-                        </FormLabel>
-                        <Tooltip>
-                          <TooltipTrigger>
-                            <InfoIcon className="h-4 w-4 text-muted-foreground" />
-                          </TooltipTrigger>
-                          <TooltipContent>Average duration of voyages</TooltipContent>
-                        </Tooltip>
-                      </div>
-                      <FormControl>
-                        <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                  <FormField
+                    control={form.control}
+                    name="voyageLength"
+                    render={({ field }) => (
+                      <FormItem>
+                        <div className="flex items-center gap-2">
+                          <FormLabel className="flex items-center gap-2">
+                            <TimerIcon className="h-4 w-4" />
+                            <span>Average Voyage Length (Days)</span>
+                          </FormLabel>
+                          <Tooltip>
+                            <TooltipTrigger>
+                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                            </TooltipTrigger>
+                            <TooltipContent>Average duration of voyages</TooltipContent>
+                          </Tooltip>
+                        </div>
+                        <FormControl>
+                          <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                <FormField
-                  control={form.control}
-                  name="fuelConsumption"
-                  render={({ field }) => (
-                    <FormItem>
-                      <div className="flex items-center gap-2">
-                        <FormLabel className="flex items-center gap-2">
-                          <FuelIcon className="h-4 w-4" />
-                          <span>Fuel Consumption (MT/Day)</span>
-                        </FormLabel>
-                        <Tooltip>
-                          <TooltipTrigger>
-                            <InfoIcon className="h-4 w-4 text-muted-foreground" />
-                          </TooltipTrigger>
-                          <TooltipContent>Average daily fuel consumption in metric tons</TooltipContent>
-                        </Tooltip>
-                      </div>
-                      <FormControl>
-                        <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                  <FormField
+                    control={form.control}
+                    name="fuelConsumption"
+                    render={({ field }) => (
+                      <FormItem>
+                        <div className="flex items-center gap-2">
+                          <FormLabel className="flex items-center gap-2">
+                            <FuelIcon className="h-4 w-4" />
+                            <span>Fuel Consumption (MT/Day)</span>
+                          </FormLabel>
+                          <Tooltip>
+                            <TooltipTrigger>
+                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                            </TooltipTrigger>
+                            <TooltipContent>Average daily fuel consumption in metric tons</TooltipContent>
+                          </Tooltip>
+                        </div>
+                        <FormControl>
+                          <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                <FormField
-                  control={form.control}
-                  name="fuelPrice"
-                  render={({ field }) => (
-                    <FormItem>
-                      <div className="flex items-center gap-2">
-                        <FormLabel className="flex items-center gap-2">
-                          <DollarSignIcon className="h-4 w-4" />
-                          <span>Fuel Price (USD/MT)</span>
-                        </FormLabel>
-                        <Tooltip>
-                          <TooltipTrigger>
-                            <InfoIcon className="h-4 w-4 text-muted-foreground" />
-                          </TooltipTrigger>
-                          <TooltipContent>Current fuel price per metric ton</TooltipContent>
-                        </Tooltip>
-                      </div>
-                      <FormControl>
-                        <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
+                  <FormField
+                    control={form.control}
+                    name="fuelPrice"
+                    render={({ field }) => (
+                      <FormItem>
+                        <div className="flex items-center gap-2">
+                          <FormLabel className="flex items-center gap-2">
+                            <DollarSignIcon className="h-4 w-4" />
+                            <span>Fuel Price (USD/MT)</span>
+                          </FormLabel>
+                          <Tooltip>
+                            <TooltipTrigger>
+                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                            </TooltipTrigger>
+                            <TooltipContent>Current fuel price per metric ton</TooltipContent>
+                          </Tooltip>
+                        </div>
+                        <FormControl>
+                          <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
 
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Button
-                  type="submit"
-                  className="w-full"
-                  disabled={isCalculating}
-                  onClick={onSubmit}
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  {isCalculating ? "Calculating..." : "View Potential Savings"}
-                </Button>
-              </motion.div>
-            </form>
-          </Form>
+                  <Button
+                    type="submit"
+                    className="w-full"
+                    disabled={isCalculating}
+                    onClick={onSubmit}
+                  >
+                    {isCalculating ? "Calculating..." : "View Potential Savings"}
+                  </Button>
+                </motion.div>
+              </form>
+            </Form>
 
-          <div className="mt-4 border-t border-slate-200 pt-4">
-            <h4 className="text-sm font-semibold mb-4 text-slate-900">Calculator Assumptions</h4>
-            <div className="grid grid-cols-1 gap-4 text-xs text-slate-800">
-              <div className="space-y-2">
-                <div className="flex items-start gap-2">
-                  <FuelIcon className="h-4 w-4 flex-shrink-0 text-slate-700" />
-                  <div>
-                    <p className="font-semibold text-slate-900">Fuel Consumption</p>
-                    <p className="text-slate-800">Assumes constant fuel consumption rate (MT/day) for entire voyage</p>
+            <div className="mt-4 border-t border-slate-200 pt-4">
+              <h4 className="text-sm font-semibold mb-4 text-slate-900">Calculator Assumptions</h4>
+              <div className="grid grid-cols-1 gap-4 text-xs text-slate-800">
+                <div className="space-y-2">
+                  <div className="flex items-start gap-2">
+                    <FuelIcon className="h-4 w-4 flex-shrink-0 text-slate-700" />
+                    <div>
+                      <p className="font-semibold text-slate-900">Fuel Consumption</p>
+                      <p className="text-slate-800">Assumes constant fuel consumption rate (MT/day) for entire voyage</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-2">
-                  <DollarSignIcon className="h-4 w-4 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium">Fuel Price</p>
-                    <p>Fixed fuel price for voyage duration, no price fluctuations</p>
+                  <div className="flex items-start gap-2">
+                    <DollarSignIcon className="h-4 w-4 flex-shrink-0" />
+                    <div>
+                      <p className="font-medium">Fuel Price</p>
+                      <p>Fixed fuel price for voyage duration, no price fluctuations</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-2">
-                  <LeafIcon className="h-4 w-4 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium">Savings Range</p>
-                    <p>4-10% typical savings based on Wayfinder platform results</p>
+                  <div className="flex items-start gap-2">
+                    <LeafIcon className="h-4 w-4 flex-shrink-0" />
+                    <div>
+                      <p className="font-medium">Savings Range</p>
+                      <p>4-10% typical savings based on Wayfinder platform results</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-2">
-                  <GlobeIcon className="h-4 w-4 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium">CO₂ Calculation</p>
-                    <p>3.15 metric tons of CO₂ per metric ton of fuel burned</p>
+                  <div className="flex items-start gap-2">
+                    <GlobeIcon className="h-4 w-4 flex-shrink-0" />
+                    <div>
+                      <p className="font-medium">CO₂ Calculation</p>
+                      <p>3.15 metric tons of CO₂ per metric ton of fuel burned</p>
+                    </div>
                   </div>
                 </div>
               </div>
