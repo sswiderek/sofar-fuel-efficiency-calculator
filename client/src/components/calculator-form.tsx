@@ -267,7 +267,7 @@ export default function CalculatorForm() {
                 </svg>
                 <div className="waves-small"></div>
               </div>
-              <p className="text-slate-700 text-lg font-medium">Fill in your fleet details to calculate potential fuel savings</p>
+              <p className="text-slate-700 text-base">Fill in your fleet details to calculate potential fuel savings</p>
             </div>
           )}
         </div>
