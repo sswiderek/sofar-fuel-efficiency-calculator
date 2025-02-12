@@ -5,7 +5,7 @@ import { WavesIcon } from "lucide-react";
 export default function Calculator() {
   return (
     <div className="min-h-screen w-full p-4 md:p-8" style={{ 
-      backgroundImage: 'url(/images/ocean.jpg)',
+      backgroundImage: 'url(/public/images/ocean.jpg)',
       backgroundSize: 'cover',
       backgroundPosition: 'center'
     }}>
@@ -13,7 +13,7 @@ export default function Calculator() {
         <Card className="w-full shadow-lg bg-white/95">
           <CardHeader className="space-y-2">
             <div className="flex items-center gap-2">
-              <img src="/images/sofar-logo.png" alt="Sofar Logo" className="h-8 w-auto" />
+              <img src="/public/images/sofar-logo.png" alt="Sofar Logo" className="h-8 w-auto" />
               <CardTitle className="text-2xl font-bold">
                 Fuel Savings Calculator
               </CardTitle>
