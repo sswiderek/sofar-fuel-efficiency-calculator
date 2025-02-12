@@ -11,15 +11,15 @@ export default function Calculator() {
       backgroundAttachment: 'fixed'
     }}>
       <div className="max-w-6xl mx-auto">
-        <Card className="w-full shadow-2xl bg-white/90 backdrop-blur-sm">
-          <CardHeader className="space-y-4 pb-8 border-b bg-gradient-to-r from-blue-50/95 to-cyan-50/95">
-            <div className="flex items-center gap-3 py-4">
-              <img src="/images/sofar-logo.png" alt="Sofar Logo" className="h-10 w-auto" />
-              <div>
-                <CardTitle className="text-3xl font-bold text-slate-800">
+        <Card className="w-full shadow-xl bg-white/95 backdrop-blur-sm ring-1 ring-slate-100">
+          <CardHeader className="space-y-4 pb-8 border-b">
+            <div className="flex items-center gap-6 py-6">
+              <img src="/images/sofar-logo.png" alt="Sofar Logo" className="h-12 w-auto" />
+              <div className="border-l pl-6 border-slate-200">
+                <CardTitle className="text-3xl font-light tracking-tight text-slate-900">
                   Fuel Savings Calculator
                 </CardTitle>
-                <p className="text-sm text-slate-600 mt-1">
+                <p className="text-sm text-slate-500 mt-2 tracking-wide">
                   Estimate potential fuel cost savings and CO₂ emission reductions using Sofar Ocean's Wayfinder platform
                 </p>
               </div>
