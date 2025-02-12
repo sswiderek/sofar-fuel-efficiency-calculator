@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import type { CalculationResult } from "@shared/schema";
-import { BanknoteIcon, LeafIcon, GlobeIcon, DollarSignIcon } from 'lucide-react';
+import { BanknoteIcon, LeafIcon, GlobeIcon, DollarSignIcon, ArrowDownCircleIcon } from 'lucide-react';
 
 
 interface Props {
@@ -52,7 +52,7 @@ export default function ResultsDisplay({ results }: Props) {
       },
       { 
         title: 'Optimized Cost',
-        emoji: <BanknoteIcon className="h-4 w-4" />,
+        emoji: <ArrowDownCircleIcon className="h-4 w-4" />,
         value: formatCurrency(results[scenarioIndex].fuelCostWithWayfinder),
         subtitle: 'With Wayfinder routing',
         color: 'border-purple-200 bg-purple-50/50'
