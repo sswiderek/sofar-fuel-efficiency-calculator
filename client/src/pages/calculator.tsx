@@ -17,7 +17,7 @@ export default function Calculator() {
             <div className="flex items-center gap-4 py-3">
               <img src="/images/sofar-logo.png" alt="Sofar Logo" className="h-10 w-auto" />
               <div className="border-l pl-4 border-slate-200">
-                <CardTitle className="text-2xl font-light tracking-tight text-slate-900">
+                <CardTitle className="text-2xl font-medium tracking-tight text-slate-900">
                   Fuel Savings Calculator
                 </CardTitle>
                 <p className="text-xs text-slate-500 mt-1 tracking-wide">
@@ -27,9 +27,13 @@ export default function Calculator() {
             </div>
           </CardHeader>
           <CardContent>
-            <CalculatorForm />
-            <div className="mt-8 flex justify-end">
-              <Card className="w-72 transform transition-transform hover:scale-105 cursor-pointer bg-gradient-to-br from-blue-900 to-blue-800 text-white shadow-xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
+              <div className="space-y-8">
+                <CalculatorForm />
+              </div>
+              <div className="flex flex-col">
+                <div className="mt-4">
+                  <Card className="w-72 transform transition-transform hover:scale-105 cursor-pointer bg-gradient-to-br from-blue-900 to-blue-800 text-white shadow-xl">
                 <a href="https://www.sofarocean.com/posts/weather-maritime-shipping-white-paper" target="_blank" rel="noopener noreferrer">
                   <CardHeader className="space-y-1">
                     <CardTitle className="text-lg">Validate Your Savings</CardTitle>
