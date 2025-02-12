@@ -82,41 +82,6 @@ export default function CalculatorForm() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-blue-50 rounded-lg p-6 shadow-sm">
-        <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-          Assumptions Made in This Calculator <span className="text-blue-500">⚙️</span>
-        </h3>
-        <ul className="space-y-4">
-          <li className="flex items-start gap-2">
-            <span className="text-blue-500 mt-1">⛽</span>
-            <div>
-              <p className="font-medium">Fuel Consumption is Based on Daily Averages</p>
-              <p className="text-sm text-muted-foreground">The calculator assumes a constant fuel consumption rate (MT/day) for the entire voyage duration.</p>
-            </div>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="text-blue-500 mt-1">💰</span>
-            <div>
-              <p className="font-medium">Fuel Price is Static</p>
-              <p className="text-sm text-muted-foreground">The fuel price entered is considered fixed for the voyage. Fluctuations in fuel prices are not accounted for.</p>
-            </div>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="text-blue-500 mt-1">🌱</span>
-            <div>
-              <p className="font-medium">Estimated Savings Range</p>
-              <p className="text-sm text-muted-foreground">The fuel savings percentage is estimated between 4% to 10%, based on typical results from Wayfinder platform. Actual savings may vary depending on weather conditions, route complexity, and vessel type.</p>
-            </div>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="text-blue-500 mt-1">🌍</span>
-            <div>
-              <p className="font-medium">CO₂ Emissions Reduction</p>
-              <p className="text-sm text-muted-foreground">The calculator assumes that each metric ton of fuel burned produces 3.15 metric tons of CO₂, based on standard shipping industry benchmarks.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-4">
@@ -252,6 +217,44 @@ export default function CalculatorForm() {
             Enter values and calculate to see results
           </div>
         )}
+      </div>
+      
+      <div className="mt-8 border-t pt-4">
+        <h4 className="text-sm font-medium mb-4">Calculator Assumptions</h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-muted-foreground">
+          <div className="space-y-2">
+            <div className="flex items-start gap-2">
+              <span>⛽</span>
+              <div>
+                <p className="font-medium">Fuel Consumption</p>
+                <p>Assumes constant fuel consumption rate (MT/day) for entire voyage</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-2">
+              <span>💰</span>
+              <div>
+                <p className="font-medium">Fuel Price</p>
+                <p>Fixed fuel price for voyage duration, no price fluctuations</p>
+              </div>
+            </div>
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-start gap-2">
+              <span>🌱</span>
+              <div>
+                <p className="font-medium">Savings Range</p>
+                <p>4-10% typical savings based on Wayfinder platform results</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-2">
+              <span>🌍</span>
+              <div>
+                <p className="font-medium">CO₂ Calculation</p>
+                <p>3.15 metric tons of CO₂ per metric ton of fuel burned</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
