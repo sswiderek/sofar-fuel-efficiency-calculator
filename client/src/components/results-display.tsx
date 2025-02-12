@@ -96,18 +96,24 @@ export default function ResultsDisplay({ results }: Props) {
               {scenario.data.map((item, i) => (
                 <Card 
                   key={i} 
-                  className={`transform transition-all duration-200 hover:scale-102 ${item.color} border-2`}
+                  className={`transform transition-all duration-200 hover:scale-102 ${item.color} border-2 ${
+                    item.title === 'Potential Savings' ? 'col-span-2 bg-green-100' : ''
+                  }`}
                 >
-                  <CardContent className="p-4">
+                  <CardContent className={`p-4 ${item.title === 'Potential Savings' ? 'py-6' : ''}`}>
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <p className="text-sm font-medium text-muted-foreground">{item.title}</p>
-                        <span className="text-xl">{item.emoji}</span>
+                        <p className={`font-medium ${item.title === 'Potential Savings' ? 'text-base' : 'text-sm'} text-muted-foreground`}>
+                          {item.title}
+                        </p>
+                        <span className={`${item.title === 'Potential Savings' ? 'text-2xl' : 'text-xl'}`}>
+                          {item.emoji}
+                        </span>
                       </div>
-                      <p className="text-2xl font-bold tracking-tight">
+                      <p className={`${item.title === 'Potential Savings' ? 'text-3xl' : 'text-2xl'} font-bold tracking-tight`}>
                         {item.value}
                       </p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className={`${item.title === 'Potential Savings' ? 'text-sm' : 'text-xs'} text-muted-foreground`}>
                         {item.subtitle}
                       </p>
                     </div>
