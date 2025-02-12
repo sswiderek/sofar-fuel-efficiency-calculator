@@ -5,6 +5,7 @@ import { calculatorInputSchema, type CalculationResult } from "@shared/schema";
 export function registerRoutes(app: Express): Server {
   app.post("/api/calculate", (req, res) => {
     try {
+      console.log("Received calculation request:", req.body);
       const data = calculatorInputSchema.parse(req.body);
       
       // Calculate total fuel cost

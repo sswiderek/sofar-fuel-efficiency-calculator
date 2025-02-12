@@ -31,7 +31,9 @@ export default function CalculatorForm() {
     formEvent.preventDefault();
     setIsCalculating(true);
     try {
+      console.log("Form submission started");
       const values = form.getValues();
+      console.log("Form values:", values);
       const formData = {
         fleetSize: Number(values.fleetSize),
         voyageLength: Number(values.voyageLength),
@@ -58,9 +60,11 @@ export default function CalculatorForm() {
             const res = await apiRequest("POST", "/api/calculate", data);
             if (!res.ok) throw new Error('API request failed');
             const json = await res.json();
+            console.log("API Response:", json);
             return { ...json, label: scenario.label };
           })
         );
+        console.log("All responses:", responses);
         setResults(responses);
       } catch (error) {
         console.error("API error:", error);

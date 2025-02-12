@@ -8,6 +8,7 @@ interface Props {
 }
 
 export default function ResultsDisplay({ results }: Props) {
+  console.log("ResultsDisplay received:", results);
   const formatCurrency = (value: number) => 
     new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
 
