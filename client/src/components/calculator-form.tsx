@@ -180,18 +180,20 @@ export default function CalculatorForm() {
                     <FormLabel className="flex items-center gap-2">
                       <FuelIcon className="h-4 w-4" />
                       <span>Fuel Consumption (MT/Day)</span>
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Assumes a constant fuel consumption rate for the entire voyage duration</p>
+                        </TooltipContent>
+                      </Tooltip>
                     </FormLabel>
-                    <Tooltip>
-                      <TooltipTrigger>
-                        <InfoIcon className="h-4 w-4 text-muted-foreground" />
-                      </TooltipTrigger>
-                      <TooltipContent>Average daily fuel consumption in metric tons</TooltipContent>
-                    </Tooltip>
+                    <FormControl>
+                      <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
+                    </FormControl>
+                    <FormMessage />
                   </div>
-                  <FormControl>
-                    <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
-                  </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -205,18 +207,20 @@ export default function CalculatorForm() {
                     <FormLabel className="flex items-center gap-2">
                       <DollarSignIcon className="h-4 w-4" />
                       <span>Fuel Price (USD/MT)</span>
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Price is considered fixed for the voyage duration</p>
+                        </TooltipContent>
+                      </Tooltip>
                     </FormLabel>
-                    <Tooltip>
-                      <TooltipTrigger>
-                        <InfoIcon className="h-4 w-4 text-muted-foreground" />
-                      </TooltipTrigger>
-                      <TooltipContent>Current fuel price per metric ton</TooltipContent>
-                    </Tooltip>
+                    <FormControl>
+                      <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
+                    </FormControl>
+                    <FormMessage />
                   </div>
-                  <FormControl>
-                    <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
-                  </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
