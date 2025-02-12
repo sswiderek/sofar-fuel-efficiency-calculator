@@ -62,7 +62,7 @@ export default function ResultsDisplay({ results }: Props) {
         emoji: <DollarSignIcon className="h-4 w-4" />,
         value: formatCurrency(results[scenarioIndex].estimatedSavings),
         subtitle: 'With Wayfinder optimization',
-        color: 'border-emerald-300 bg-gradient-to-br from-emerald-50 to-teal-50 shadow-lg ring-2 ring-emerald-200/50 hover:shadow-emerald-100'
+        color: 'bg-gradient-to-br from-emerald-600 to-teal-600 text-white shadow-lg ring-2 ring-emerald-100/50 hover:shadow-emerald-500'
       },
       { 
         title: 'CO₂ Reduction',
@@ -98,7 +98,7 @@ export default function ResultsDisplay({ results }: Props) {
                   key={i} 
                   className={`transform transition-all duration-300 hover:scale-102 hover:shadow-lg ${
                     item.title === 'Potential Savings' 
-                      ? 'bg-gradient-to-br from-emerald-50 to-green-50 border-emerald-200 ring-1 ring-emerald-200' 
+                      ? 'bg-gradient-to-br from-emerald-600 to-teal-600 text-white shadow-lg ring-2 ring-emerald-100/50 hover:shadow-emerald-500' 
                       : item.title === 'Current Costs'
                       ? 'bg-gradient-to-br from-red-50 to-orange-50 border-red-200'
                       : item.title === 'CO₂ Reduction'
