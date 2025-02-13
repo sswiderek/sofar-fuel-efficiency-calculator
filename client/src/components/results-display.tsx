@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import type { CalculationResult } from "@shared/schema";
-import { ArrowTrendingUpIcon, DollarSignIcon, LeafIcon } from 'lucide-react';
+import { TrendingUp, DollarSign, Leaf } from 'lucide-react';
 
 interface Props {
   results: CalculationResult[];
@@ -84,12 +84,12 @@ export default function ResultsDisplay({ results }: Props) {
                 <CardContent className="p-6">
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-blue-600">
-                      <DollarSignIcon className="h-5 w-5" />
+                      <DollarSign className="h-5 w-5" />
                       <h3 className="text-lg font-medium">Optimized Cost</h3>
                     </div>
                     <p className="text-3xl font-bold text-slate-900">{formatCurrency(scenario.data.optimizedCost)}</p>
                     <p className="text-sm font-medium text-blue-600">
-                      <ArrowTrendingUpIcon className="h-4 w-4 inline mr-1" />
+                      <TrendingUp className="h-4 w-4 inline mr-1" />
                       {scenario.data.improvement}% improvement
                     </p>
                   </div>
@@ -111,7 +111,7 @@ export default function ResultsDisplay({ results }: Props) {
               <CardContent className="p-6">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-emerald-700">
-                    <LeafIcon className="h-5 w-5" />
+                    <Leaf className="h-5 w-5" />
                     <h3 className="text-lg font-medium">CO₂ Reduction</h3>
                   </div>
                   <p className="text-3xl font-bold text-emerald-800">{formatNumber(scenario.data.co2Reduction)} MT</p>
