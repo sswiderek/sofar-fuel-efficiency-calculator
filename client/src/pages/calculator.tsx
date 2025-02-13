@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CalculatorForm from "@/components/calculator-form";
-import { WavesIcon, Fuel as FuelIcon, DollarSign as DollarSignIcon, LeafIcon, Globe as GlobeIcon } from "lucide-react";
+import { WavesIcon, Fuel as FuelIcon, DollarSign as DollarSignIcon, LeafIcon, Globe as GlobeIcon, SettingsIcon, BarChartIcon, TrendingUpIcon } from "lucide-react";
 
 export default function Calculator() {
   return (
@@ -35,58 +35,40 @@ export default function Calculator() {
               </ul>
             </div>
             <CalculatorForm />
-            <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="bg-gradient-to-br from-sky-100 to-white/80 rounded-lg p-6 space-y-6 w-full">
-                <h3 className="text-lg font-semibold text-slate-900 flex items-center gap-2">
+            <div className="mt-8">
+              <div className="bg-gradient-to-br from-sky-100 to-white/80 rounded-lg p-4 w-full">
+                <h3 className="text-lg font-semibold text-slate-900 flex items-center gap-2 mb-4">
                   Assumptions Made in This Calculator
-                  <span className="text-sky-600">⚙️</span>
+                  <SettingsIcon className="h-5 w-5 text-sky-600" />
                 </h3>
-                <div className="space-y-6">
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <span className="text-2xl">📊</span>
-                      <div>
-                        <p className="font-medium text-slate-900">Fuel Consumption is Based on Daily Averages</p>
-                        <p className="text-sm text-slate-600">The calculator assumes a constant fuel consumption rate (MT/day) for the entire voyage duration.</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <span className="text-2xl">💰</span>
-                      <div>
-                        <p className="font-medium text-slate-900">Fuel Price is Static</p>
-                        <p className="text-sm text-slate-600">The fuel price entered is considered fixed for the voyage. Fluctuations in fuel prices are not accounted for.</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <span className="text-2xl">📈</span>
-                      <div>
-                        <p className="font-medium text-slate-900">Estimated Savings Range</p>
-                        <p className="text-sm text-slate-600">The fuel savings percentage is estimated between 4% to 10%, based on typical results from Sofar Ocean's Wayfinder platform. Actual savings may vary depending on weather conditions, route complexity, and vessel type.</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <span className="text-2xl">🌱</span>
-                      <div>
-                        <p className="font-medium text-slate-900">CO₂ Emissions Reduction</p>
-                        <p className="text-sm text-slate-600">The calculator assumes that each metric ton of fuel burned produces 3.15 metric tons of CO₂ based on standard shipping industry benchmarks.</p>
-                      </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="flex items-start gap-3">
+                    <BarChartIcon className="h-5 w-5 text-slate-700 mt-1 shrink-0" />
+                    <div>
+                      <p className="font-medium text-slate-900">Fuel Consumption is Based on Daily Averages</p>
+                      <p className="text-sm text-slate-600">The calculator assumes a constant fuel consumption rate (MT/day) for the entire voyage duration.</p>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <LeafIcon className="h-5 w-5 text-slate-700 mt-1" />
-                  <div>
-                    <p className="font-medium text-slate-900">Savings Range</p>
-                    <p className="text-sm text-slate-600">4-10% typical savings based on Wayfinder platform results</p>
+                  <div className="flex items-start gap-3">
+                    <DollarSignIcon className="h-5 w-5 text-slate-700 mt-1 shrink-0" />
+                    <div>
+                      <p className="font-medium text-slate-900">Fuel Price is Static</p>
+                      <p className="text-sm text-slate-600">The fuel price entered is considered fixed for the voyage. Fluctuations in fuel prices are not accounted for.</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <GlobeIcon className="h-5 w-5 text-slate-700 mt-1" />
-                  <div>
-                    <p className="font-medium text-slate-900">CO₂ Calculation</p>
-                    <p className="text-sm text-slate-600">3.15 metric tons of CO₂ per metric ton of fuel burned</p>
+                  <div className="flex items-start gap-3">
+                    <TrendingUpIcon className="h-5 w-5 text-slate-700 mt-1 shrink-0" />
+                    <div>
+                      <p className="font-medium text-slate-900">Estimated Savings Range</p>
+                      <p className="text-sm text-slate-600">The fuel savings percentage is estimated between 4% to 10%, based on typical results from Sofar Ocean's Wayfinder platform.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <LeafIcon className="h-5 w-5 text-slate-700 mt-1 shrink-0" />
+                    <div>
+                      <p className="font-medium text-slate-900">CO₂ Emissions Reduction</p>
+                      <p className="text-sm text-slate-600">Each metric ton of fuel burned produces 3.15 metric tons of CO₂ based on standard shipping benchmarks.</p>
+                    </div>
                   </div>
                 </div>
               </div>
