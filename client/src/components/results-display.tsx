@@ -106,9 +106,9 @@ export default function ResultsDisplay({ results }: Props) {
               key={key} 
               className={cn(
                 "relative px-3 py-1.5 text-sm font-medium transition-all duration-200",
-                key === 'conservative' && 'data-[state=active]:bg-[#43464D] data-[state=active]:text-white data-[state=active]:shadow-sm',
-                key === 'average' && 'data-[state=active]:bg-[#096ED3] data-[state=active]:text-white data-[state=active]:shadow-sm',
-                key === 'optimal' && 'data-[state=active]:bg-[#43464D] data-[state=active]:text-white data-[state=active]:shadow-sm'
+                key === 'conservative' && 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-100 data-[state=active]:to-sky-100 data-[state=active]:text-blue-900 data-[state=active]:shadow-sm',
+                key === 'average' && 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-100 data-[state=active]:to-purple-100 data-[state=active]:text-violet-900 data-[state=active]:shadow-sm',
+                key === 'optimal' && 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-100 data-[state=active]:to-teal-100 data-[state=active]:text-emerald-900 data-[state=active]:shadow-sm'
               )}
             >
               {scenario.title}
