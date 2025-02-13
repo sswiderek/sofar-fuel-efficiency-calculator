@@ -14,9 +14,11 @@ import ResultsDisplay from "./results-display";
 import { apiRequest } from "@/lib/queryClient";
 
 interface VLSFOPrice {
-  price: number;
+  price: number | null;
   month: string;
   year: number;
+  isError: boolean;
+  errorMessage?: string;
 }
 
 export default function CalculatorForm() {
@@ -33,7 +35,7 @@ export default function CalculatorForm() {
       fleetSize: undefined,
       voyageLength: undefined,
       fuelConsumption: undefined,
-      fuelPrice: 750, // Default value if no data is available
+      fuelPrice: 750, // Industry standard default
       estimatedSavings: 5
     }
   });
@@ -211,12 +213,12 @@ export default function CalculatorForm() {
                           </TooltipTrigger>
                           <TooltipContent>
                             <p className="max-w-xs text-sm">
-                              {isFuelPriceError ? (
-                                "Current global VLSFO price temporarily unavailable"
+                              {fuelPriceData?.isError ? (
+                                "Unable to fetch current VLSFO price"
+                              ) : fuelPriceData?.price ? (
+                                `Global VLSFO Price: $${fuelPriceData.price}/MT (${fuelPriceData.month} ${fuelPriceData.year})`
                               ) : (
-                                fuelPriceData 
-                                  ? `Global VLSFO Price: $${fuelPriceData.price}/MT (${fuelPriceData.month} ${fuelPriceData.year})`
-                                  : "Loading current global VLSFO price..."
+                                "Loading current global VLSFO price..."
                               )}
                               <br />
                               Based on Ship & Bunker's Global 20 Ports Average
@@ -233,12 +235,12 @@ export default function CalculatorForm() {
                         />
                       </FormControl>
                       <div className="text-xs text-slate-500 mt-1">
-                        {isFuelPriceError ? (
-                          "Using default price: $750/MT"
+                        {fuelPriceData?.isError ? (
+                          "Using industry standard price: $750/MT"
+                        ) : fuelPriceData?.price ? (
+                          `Default price: $${fuelPriceData.price}/MT (${fuelPriceData.month} ${fuelPriceData.year})`
                         ) : (
-                          fuelPriceData && (
-                            `Default price: $${fuelPriceData.price}/MT (${fuelPriceData.month} ${fuelPriceData.year})`
-                          )
+                          "Loading price data..."
                         )}
                       </div>
                       <FormMessage />

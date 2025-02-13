@@ -4,9 +4,11 @@ import OpenAI from "openai";
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 interface VLSFOPrice {
-  price: number;
+  price: number | null;
   month: string;
   year: number;
+  isError: boolean;
+  errorMessage?: string;
 }
 
 export async function getVLSFOPrice(): Promise<VLSFOPrice> {
@@ -45,15 +47,17 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
     return {
       price: result.price,
       month: monthName,
-      year: year
+      year: year,
+      isError: false
     };
   } catch (error) {
     console.error('Error fetching VLSFO price:', error);
-    // Return fallback data in case of error
     return {
-      price: 603, // Fallback price
+      price: null,
       month: monthName,
-      year: year
+      year: year,
+      isError: true,
+      errorMessage: 'Unable to fetch current VLSFO price'
     };
   }
 }
