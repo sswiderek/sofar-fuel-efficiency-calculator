@@ -15,6 +15,26 @@ import { apiRequest } from "@/lib/queryClient";
 export default function CalculatorForm() {
   const [results, setResults] = useState<CalculationResult[] | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
+  const [isFetchingPrice, setIsFetchingPrice] = useState(false);
+
+  useEffect(() => {
+    const fetchFuelPrice = async () => {
+      setIsFetchingPrice(true);
+      try {
+        const response = await fetch('/api/fuel-price');
+        const data = await response.json();
+        if (data.price) {
+          form.setValue('fuelPrice', data.price);
+        }
+      } catch (error) {
+        console.error('Failed to fetch fuel price:', error);
+      } finally {
+        setIsFetchingPrice(false);
+      }
+    };
+
+    fetchFuelPrice();
+  }, []);
 
   const form = useForm<CalculatorInput>({
     resolver: zodResolver(calculatorInputSchema),
@@ -203,7 +223,7 @@ export default function CalculatorForm() {
                       <div className="flex items-center gap-2">
                         <FormLabel className="flex items-center gap-2">
                           <DollarSignIcon className="h-4 w-4" />
-                          <span>Fuel Price (USD/MT)</span>
+                          <span>Fuel Price (USD/MT){isFetchingPrice ? " - Loading..." : ""}</span>
                         </FormLabel>
                         <Tooltip>
                           <TooltipTrigger>
