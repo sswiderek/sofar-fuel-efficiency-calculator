@@ -220,9 +220,9 @@ export default function CalculatorForm() {
                           <TooltipTrigger>
                             <InfoIcon className="h-4 w-4 text-muted-foreground" />
                           </TooltipTrigger>
-                          <TooltipContent className="max-w-[300px]">
-                            <p>Monthly average VLSFO price in Singapore.</p>
-                            <p>Price data is estimated using AI analysis of market sources including Ship & Bunker.</p>
+                          <TooltipContent>
+                            <p className="text-sm mb-1">Monthly VLSFO price from Ship & Bunker (Singapore)</p>
+                            <p className="text-xs text-muted">Fuel price last updated: {new Date().toLocaleString('default', { month: 'long', year: 'numeric' })}</p>
                           </TooltipContent>
                         </Tooltip>
                       </div>
@@ -237,15 +237,9 @@ export default function CalculatorForm() {
                       </FormControl>
                       <FormMessage />
                       <div className="flex items-center gap-1 mt-1">
-                        <p className="text-[10px] text-slate-500">Source: AI-powered market analysis</p>
-                        <Tooltip>
-                          <TooltipTrigger>
-                            <InfoIcon className="h-3 w-3 text-slate-400" />
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p className="text-xs">Last updated: {new Date().toLocaleString('default', { month: 'long', year: 'numeric' })}</p>
-                          </TooltipContent>
-                        </Tooltip>
+                        <p className="text-[10px] text-slate-500">Currently: ${field.value}/MT</p>
+                        <p className="text-[10px] text-slate-400 mx-1">|</p>
+                        <p className="text-[10px] text-slate-500">Source: Ship & Bunker (via AI analysis)</p>
                       </div>
                     </FormItem>
                   )}
