@@ -19,10 +19,10 @@ export default function CalculatorForm() {
   const form = useForm<CalculatorInput>({
     resolver: zodResolver(calculatorInputSchema),
     defaultValues: {
-      fleetSize: 10,
-      voyageLength: 30,
-      fuelConsumption: 50,
-      fuelPrice: 750,
+      fleetSize: undefined,
+      voyageLength: undefined,
+      fuelConsumption: undefined,
+      fuelPrice: undefined,
       estimatedSavings: 5
     }
   });
