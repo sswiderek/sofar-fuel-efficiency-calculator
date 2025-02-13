@@ -3,6 +3,17 @@ import OpenAI from "openai";
 // the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
+// In-memory cache for prices
+const priceCache: Record<string, number> = {};
+
+async function getCachedPrice(key: string): Promise<number | null> {
+  return priceCache[key] || null;
+}
+
+async function setCachedPrice(key: string, price: number): Promise<void> {
+  priceCache[key] = price;
+}
+
 interface VLSFOPrice {
   price: number | null;
   month: string;
@@ -19,8 +30,20 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
   const year = previousMonth.getFullYear();
 
   try {
+    // Check if we have a cached price
+    const cacheKey = `${monthName}-${year}`;
+    const cachedPrice = await getCachedPrice(cacheKey);
+    if (cachedPrice) {
+      return {
+        price: cachedPrice,
+        month: monthName,
+        year: year,
+        isError: false
+      };
+    }
+
     const response = await openai.chat.completions.create({
-      model: "gpt-4o",
+      model: "gpt-4",
       messages: [
         {
           role: "system",
@@ -55,6 +78,9 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
       throw new Error('Price outside expected range');
     }
 
+    // Cache the price before returning
+    await setCachedPrice(`${monthName}-${year}`, roundedPrice);
+    
     return {
       price: roundedPrice,
       month: monthName,
