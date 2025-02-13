@@ -20,7 +20,7 @@ export default function Calculator() {
                   Fuel Savings Calculator
                 </CardTitle>
                 <p className="text-xs text-slate-500 mt-1 tracking-wide">
-                  Estimate potential fuel cost savings and CO₂ emission reductions using Sofar Ocean's Wayfinder platform
+                  Estimate your cost savings and CO₂ reduction
                 </p>
               </div>
             </div>
