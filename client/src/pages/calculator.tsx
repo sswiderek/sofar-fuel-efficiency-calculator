@@ -39,44 +39,6 @@ export default function Calculator() {
               </div>
             </div>
             <CalculatorForm />
-            <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="bg-white/50 rounded-lg p-6 space-y-6">
-                <h3 className="text-lg font-semibold text-slate-900">Calculator Assumptions</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <FuelIcon className="h-5 w-5 text-slate-700 mt-1" />
-                      <div>
-                        <p className="font-medium text-slate-900">Fuel Consumption</p>
-                        <p className="text-sm text-slate-600">Assumes constant fuel consumption rate (MT/day) for entire voyage</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <DollarSignIcon className="h-5 w-5 text-slate-700 mt-1" />
-                      <div>
-                        <p className="font-medium text-slate-900">Fuel Price</p>
-                        <p className="text-sm text-slate-600">Fixed fuel price for voyage duration, no price fluctuations</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <LeafIcon className="h-5 w-5 text-slate-700 mt-1" />
-                      <div>
-                        <p className="font-medium text-slate-900">Savings Range</p>
-                        <p className="text-sm text-slate-600">4-10% typical savings based on Wayfinder platform results</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <GlobeIcon className="h-5 w-5 text-slate-700 mt-1" />
-                      <div>
-                        <p className="font-medium text-slate-900">CO₂ Calculation</p>
-                        <p className="text-sm text-slate-600">3.15 metric tons of CO₂ per metric ton of fuel burned</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <Card className="transform transition-transform hover:scale-105 cursor-pointer bg-gradient-to-br from-blue-900 to-blue-800 text-white shadow-xl">
                 <a href="https://www.sofarocean.com/posts/weather-maritime-shipping-white-paper" target="_blank" rel="noopener noreferrer">
                   <CardHeader className="space-y-2">
