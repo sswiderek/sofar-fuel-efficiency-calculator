@@ -231,9 +231,9 @@ export default function CalculatorForm() {
                       </FormControl>
                       <div className="text-xs text-slate-500 mt-1">
                         {fuelPriceData?.isError ? (
-                          "Enter current fuel price"
+                          "Enter fuel price"
                         ) : fuelPriceData?.price ? (
-                          `Current price: $${fuelPriceData.price}/MT (${fuelPriceData.month} ${fuelPriceData.year})`
+                          `Latest monthly average: $${fuelPriceData.price}/MT (${fuelPriceData.month} ${fuelPriceData.year})`
                         ) : (
                           "Loading price data..."
                         )}
