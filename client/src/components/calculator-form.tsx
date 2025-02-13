@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -7,7 +8,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-import { InfoIcon, ShipIcon, TimerIcon, FuelIcon, DollarSignIcon, LeafIcon, GlobeIcon } from "lucide-react"; // Added icons
+import { InfoIcon, ShipIcon, TimerIcon, FuelIcon, DollarSignIcon } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import ResultsDisplay from "./results-display";
 import { apiRequest } from "@/lib/queryClient";
@@ -31,9 +32,7 @@ export default function CalculatorForm() {
     formEvent.preventDefault();
     setIsCalculating(true);
     try {
-      console.log("Form submission started");
       const values = form.getValues();
-      console.log("Form values:", values);
       const formData = {
         fleetSize: Number(values.fleetSize),
         voyageLength: Number(values.voyageLength),
@@ -53,25 +52,18 @@ export default function CalculatorForm() {
         { savings: 8, label: 'Optimal Savings' }
       ];
 
-      try {
-        const responses = await Promise.all(
-          scenarios.map(async (scenario) => {
-            const data = { ...formData, estimatedSavings: scenario.savings };
-            const res = await apiRequest("POST", "/api/calculate", data);
-            if (!res.ok) throw new Error('API request failed');
-            const json = await res.json();
-            console.log("API Response:", json);
-            return { ...json, label: scenario.label };
-          })
-        );
-        console.log("All responses:", responses);
-        if (Array.isArray(responses)) {
-          setResults(responses);
-        } else {
-          console.error("Responses is not an array:", responses);
-        }
-      } catch (error) {
-        console.error("API error:", error);
+      const responses = await Promise.all(
+        scenarios.map(async (scenario) => {
+          const data = { ...formData, estimatedSavings: scenario.savings };
+          const res = await apiRequest("POST", "/api/calculate", data);
+          if (!res.ok) throw new Error('API request failed');
+          const json = await res.json();
+          return { ...json, label: scenario.label };
+        })
+      );
+      
+      if (Array.isArray(responses)) {
+        setResults(responses);
       }
     } catch (error) {
       console.error("Calculation failed:", error);
@@ -85,8 +77,8 @@ export default function CalculatorForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
         <div className="space-y-8 pt-4">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-4">
-              <div className="space-y-4"> {/* Changed to vertical stacking */}
+            <form onSubmit={onSubmit} className="space-y-8 p-4">
+              <div className="space-y-4">
                 <FormField
                   control={form.control}
                   name="fleetSize"
@@ -111,7 +103,7 @@ export default function CalculatorForm() {
                     </FormItem>
                   )}
                 />
-
+                
                 <FormField
                   control={form.control}
                   name="voyageLength"
@@ -196,7 +188,6 @@ export default function CalculatorForm() {
                   type="submit"
                   className="w-full"
                   disabled={isCalculating}
-                  onClick={onSubmit}
                 >
                   {isCalculating ? "Calculating..." : "View Potential Savings"}
                 </Button>
@@ -217,24 +208,20 @@ export default function CalculatorForm() {
             <div className="h-full flex flex-col items-center justify-center gap-2 text-muted-foreground mt-8">
               <div className="ship-container">
                 <svg viewBox="0 0 200 150" className="w-48 h-48">
-                  {/* Hull */}
                   <path d="M20,110 Q100,120 180,110 L160,140 Q100,150 40,140 Z" fill="#0EA5E9" />
-                  {/* Ship body */}
                   <path d="M40,60 L160,60 L160,110 L40,110 Z" fill="#0EA5E9" />
-                  {/* Bridge */}
                   <rect x="140" y="30" width="30" height="30" fill="#CBD5E1" />
                   <rect x="150" y="15" width="10" height="15" fill="#CBD5E1" />
-                  {/* Containers */}
                   <rect x="45" y="65" width="25" height="20" fill="#2563EB" />
                   <rect x="45" y="40" width="25" height="20" fill="#DC2626" />
                   <rect x="75" y="65" width="25" height="20" fill="#F59E0B" />
                   <rect x="75" y="40" width="25" height="20" fill="#16A34A" />
                   <rect x="105" y="65" width="25" height="20" fill="#16A34A" />
                   <rect x="105" y="40" width="25" height="20" fill="#2563EB" />
-                  {/* Water line */}
                   <circle cx="30" cy="125" r="3" fill="#DC2626" />
                   <circle cx="45" cy="125" r="3" fill="#DC2626" />
                 </svg>
+              </div>
               <p className="text-slate-700 text-base">Fill in your fleet details to calculate potential fuel savings</p>
             </div>
           )}
