@@ -42,34 +42,55 @@ export default function ResultsDisplay({ results }: Props) {
   };
 
   function getScenarioData(scenarioIndex: number) {
+    const themes = {
+      0: { // Conservative
+        current: 'border-blue-200 bg-blue-50/30',
+        optimized: 'border-blue-300 bg-blue-100/50',
+        savings: 'bg-gradient-to-br from-blue-600 to-sky-600 text-white shadow-lg ring-2 ring-blue-100/50',
+        reduction: 'border-blue-200 bg-blue-50/50'
+      },
+      1: { // Average
+        current: 'border-purple-200 bg-purple-50/30',
+        optimized: 'border-purple-300 bg-purple-100/50',
+        savings: 'bg-gradient-to-br from-purple-600 to-violet-600 text-white shadow-lg ring-2 ring-purple-100/50',
+        reduction: 'border-purple-200 bg-purple-50/50'
+      },
+      2: { // Optimal
+        current: 'border-emerald-200 bg-emerald-50/30',
+        optimized: 'border-emerald-300 bg-emerald-100/50',
+        savings: 'bg-gradient-to-br from-emerald-600 to-teal-600 text-white shadow-lg ring-2 ring-emerald-100/50',
+        reduction: 'border-emerald-200 bg-emerald-50/50'
+      }
+    };
+
     return [
       { 
         title: 'Current Costs',
         emoji: <BanknoteIcon className="h-4 w-4" />,
         value: formatCurrency(results[0].totalFuelCost),
         subtitle: 'Annual fuel expenditure',
-        color: 'border-gray-200 bg-white'
+        color: themes[scenarioIndex].current
       },
       { 
         title: 'Optimized Cost',
         emoji: <ArrowDownCircleIcon className="h-4 w-4" />,
         value: formatCurrency(results[scenarioIndex].fuelCostWithWayfinder),
         subtitle: 'With Wayfinder routing',
-        color: 'border-purple-200 bg-purple-50/50'
+        color: themes[scenarioIndex].optimized
       },
       { 
         title: 'Potential Savings',
         emoji: <DollarSignIcon className="h-4 w-4" />,
         value: formatCurrency(results[scenarioIndex].estimatedSavings),
         subtitle: 'With Wayfinder optimization',
-        color: 'bg-gradient-to-br from-emerald-600 to-teal-600 text-white shadow-lg ring-2 ring-emerald-100/50 hover:shadow-emerald-500'
+        color: themes[scenarioIndex].savings
       },
       { 
         title: 'CO₂ Reduction',
         emoji: <LeafIcon className="h-4 w-4" />,
         value: formatNumber(results[scenarioIndex].co2Reduction) + ' MT',
         subtitle: 'Annual emissions saved',
-        color: 'border-blue-200 bg-blue-50/50'
+        color: themes[scenarioIndex].reduction
       }
     ];
   }
@@ -79,7 +100,16 @@ export default function ResultsDisplay({ results }: Props) {
       <Tabs defaultValue="average" className="w-full">
         <TabsList className="grid w-full grid-cols-3 gap-2 p-1">
           {Object.entries(scenarios).map(([key, scenario]) => (
-            <TabsTrigger value={key} key={key} className="relative px-3 py-1.5 text-sm font-medium">
+            <TabsTrigger 
+              value={key} 
+              key={key} 
+              className={cn(
+                "relative px-3 py-1.5 text-sm font-medium transition-colors",
+                key === 'conservative' && 'data-[state=active]:bg-blue-50 data-[state=active]:text-blue-900',
+                key === 'average' && 'data-[state=active]:bg-purple-50 data-[state=active]:text-purple-900',
+                key === 'optimal' && 'data-[state=active]:bg-emerald-50 data-[state=active]:text-emerald-900'
+              )}
+            >
               {scenario.title}
               <Tooltip>
                 <TooltipTrigger asChild>
