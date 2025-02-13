@@ -221,8 +221,14 @@ export default function CalculatorForm() {
                             <InfoIcon className="h-4 w-4 text-muted-foreground" />
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p className="text-sm mb-1">Monthly VLSFO price from Ship & Bunker (Singapore)</p>
-                            <p className="text-xs text-muted">Fuel price last updated: {new Date().toLocaleString('default', { month: 'long', year: 'numeric' })}</p>
+                            <div className="space-y-2">
+                              <p className="text-sm font-medium">Monthly VLSFO Price</p>
+                              <div className="text-xs space-y-1 text-muted-foreground">
+                                <p>• Source: Ship & Bunker (Singapore)</p>
+                                <p>• Updated: {new Date().toLocaleString('default', { month: 'long', year: 'numeric' })}</p>
+                                <p>• Price is per metric ton (MT)</p>
+                              </div>
+                            </div>
                           </TooltipContent>
                         </Tooltip>
                       </div>
