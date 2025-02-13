@@ -198,7 +198,7 @@ export default function CalculatorForm() {
                   disabled={isCalculating}
                   onClick={onSubmit}
                 >
-                  {isCalculating ? "Calculating..." : "View Potential Savings"}
+                  {isCalculating ? "Calculating..." : "Calculate Savings"}
                 </Button>
               </motion.div>
             </form>
