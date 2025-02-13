@@ -215,15 +215,12 @@ export default function CalculatorForm() {
             </motion.div>
           ) : (
             <div className="h-full flex flex-col items-center justify-center gap-2 text-muted-foreground mt-8">
-              <div className="ship-container" style={{ transform: 'scale(0.4)' }}>
-                <svg viewBox="0 0 100 100" className="w-full h-full max-w-[120px]">
-                  {/* Hull */}
-                  <path d="M20,60 L80,60 L70,80 L30,80 Z" className="fill-slate-700" />
-                  {/* Cabin */}
-                  <rect x="35" y="35" width="30" height="25" className="fill-slate-600" />
-                  {/* Bridge */}
-                  <path d="M40,25 L60,25 L60,35 L40,35 Z" className="fill-slate-800" />
-                  {/* Windows */}
+              <div className="ship-container flex justify-center">
+                <img 
+                  src="/images/ship-icon.png" 
+                  alt="Ship Icon" 
+                  className="w-24 h-24 opacity-50"
+                />
                   <rect x="42" y="40" width="6" height="6" className="fill-sky-200" />
                   <rect x="52" y="40" width="6" height="6" className="fill-sky-200" />
                   {/* Flag */}
