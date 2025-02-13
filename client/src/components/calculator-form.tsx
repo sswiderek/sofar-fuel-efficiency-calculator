@@ -23,7 +23,7 @@ export default function CalculatorForm() {
   const [results, setResults] = useState<CalculationResult[] | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
 
-  const { data: fuelPriceData } = useQuery<VLSFOPrice>({
+  const { data: fuelPriceData, isError: isFuelPriceError } = useQuery<VLSFOPrice>({
     queryKey: ['/api/vlsfo-price'],
   });
 
@@ -33,7 +33,7 @@ export default function CalculatorForm() {
       fleetSize: undefined,
       voyageLength: undefined,
       fuelConsumption: undefined,
-      fuelPrice: undefined,
+      fuelPrice: 750, // Default value if no data is available
       estimatedSavings: 5
     }
   });
@@ -99,10 +99,7 @@ export default function CalculatorForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
         <div className="space-y-8 pt-4">
           <Form {...form}>
-            <form 
-              onSubmit={onSubmit}
-              className="space-y-8 p-4"
-            >
+            <form onSubmit={onSubmit} className="space-y-8 p-4">
               <div className="space-y-4">
                 {/* Fleet Size Field */}
                 <FormField
@@ -214,7 +211,13 @@ export default function CalculatorForm() {
                           </TooltipTrigger>
                           <TooltipContent>
                             <p className="max-w-xs text-sm">
-                              Global VLSFO Price: ${fuelPriceData?.price}/MT ({fuelPriceData?.month} {fuelPriceData?.year})
+                              {isFuelPriceError ? (
+                                "Current global VLSFO price temporarily unavailable"
+                              ) : (
+                                fuelPriceData 
+                                  ? `Global VLSFO Price: $${fuelPriceData.price}/MT (${fuelPriceData.month} ${fuelPriceData.year})`
+                                  : "Loading current global VLSFO price..."
+                              )}
                               <br />
                               Based on Ship & Bunker's Global 20 Ports Average
                             </p>
@@ -224,16 +227,20 @@ export default function CalculatorForm() {
                       <FormControl>
                         <Input 
                           type="number"
-                          placeholder={fuelPriceData ? `${fuelPriceData.price}` : "750"}
+                          placeholder="750"
                           {...field}
                           onChange={e => field.onChange(e.target.value ? Number(e.target.value) : undefined)}
                         />
                       </FormControl>
-                      {fuelPriceData && (
-                        <p className="text-xs text-slate-500 mt-1">
-                          Default price: ${fuelPriceData.price}/MT ({fuelPriceData.month} {fuelPriceData.year})
-                        </p>
-                      )}
+                      <div className="text-xs text-slate-500 mt-1">
+                        {isFuelPriceError ? (
+                          "Using default price: $750/MT"
+                        ) : (
+                          fuelPriceData && (
+                            `Default price: $${fuelPriceData.price}/MT (${fuelPriceData.month} ${fuelPriceData.year})`
+                          )
+                        )}
+                      </div>
                       <FormMessage />
                     </FormItem>
                   )}

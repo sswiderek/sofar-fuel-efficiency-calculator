@@ -12,7 +12,7 @@ interface VLSFOPrice {
 export async function getVLSFOPrice(): Promise<VLSFOPrice> {
   const currentDate = new Date();
   const previousMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1);
-  
+
   const monthName = previousMonth.toLocaleString('en-US', { month: 'long' });
   const year = previousMonth.getFullYear();
 
@@ -22,20 +22,28 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
       messages: [
         {
           role: "system",
-          content: "You are a maritime fuel price expert. Provide the global monthly average price of Very Low Sulfur Fuel Oil (VLSFO) based on Ship & Bunker's Global 20 Ports Average data."
+          content: "You are a maritime fuel price expert. Provide the global monthly average price of Very Low Sulfur Fuel Oil (VLSFO) based on Ship & Bunker's Global 20 Ports Average data. Always return a numerical price value."
         },
         {
           role: "user",
-          content: `What was the global monthly average price of Very Low Sulfur Fuel Oil (VLSFO) for ${monthName} ${year} according to Ship & Bunker's Global 20 Ports Average? Return the result as a JSON object with price in USD/MT.`
+          content: `What was the global monthly average price of Very Low Sulfur Fuel Oil (VLSFO) for ${monthName} ${year} according to Ship & Bunker's Global 20 Ports Average? Return only a JSON object with 'price' as a number in USD/MT.`
         }
       ],
       response_format: { type: "json_object" }
     });
 
+    if (!response.choices[0].message.content) {
+      throw new Error('No content in response');
+    }
+
     const result = JSON.parse(response.choices[0].message.content);
-    
+
+    if (typeof result.price !== 'number') {
+      throw new Error('Invalid price format in response');
+    }
+
     return {
-      price: result.price || 603, // Fallback price if not available
+      price: result.price,
       month: monthName,
       year: year
     };
@@ -43,7 +51,7 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
     console.error('Error fetching VLSFO price:', error);
     // Return fallback data in case of error
     return {
-      price: 603,
+      price: 603, // Fallback price
       month: monthName,
       year: year
     };
