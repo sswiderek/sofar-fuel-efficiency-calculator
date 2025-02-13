@@ -203,42 +203,6 @@ export default function CalculatorForm() {
               </motion.div>
             </form>
           </Form>
-
-          <div className="mt-4 border-t border-slate-200 pt-4">
-            <h4 className="text-sm font-semibold mb-4 text-slate-900">Calculator Assumptions</h4>
-            <div className="grid grid-cols-1 gap-4 text-xs text-slate-800">
-              <div className="space-y-2">
-                <div className="flex items-start gap-2">
-                  <FuelIcon className="h-4 w-4 flex-shrink-0 text-slate-700" />
-                  <div>
-                    <p className="font-semibold text-slate-900">Fuel Consumption</p>
-                    <p className="text-slate-800">Assumes constant fuel consumption rate (MT/day) for entire voyage</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2">
-                  <DollarSignIcon className="h-4 w-4 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium">Fuel Price</p>
-                    <p>Fixed fuel price for voyage duration, no price fluctuations</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2">
-                  <LeafIcon className="h-4 w-4 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium">Savings Range</p>
-                    <p>4-10% typical savings based on Wayfinder platform results</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2">
-                  <GlobeIcon className="h-4 w-4 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium">CO₂ Calculation</p>
-                    <p>3.15 metric tons of CO₂ per metric ton of fuel burned</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
         <div>
           {results ? (
