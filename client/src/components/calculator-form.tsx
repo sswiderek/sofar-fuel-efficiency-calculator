@@ -215,21 +215,26 @@ export default function CalculatorForm() {
             </motion.div>
           ) : (
             <div className="h-full flex flex-col items-center justify-center gap-2 text-muted-foreground mt-8">
-              <div className="ship-container" style={{ transform: 'scale(0.4)' }}>
-                <svg viewBox="0 0 100 100" className="w-full h-full max-w-[120px]">
+              <div className="ship-container">
+                <svg viewBox="0 0 200 150" className="w-48 h-48">
                   {/* Hull */}
-                  <path d="M15,65 L85,65 L80,85 L20,85 Z" className="fill-slate-900" />
-                  {/* Cargo Area */}
-                  <rect x="25" y="45" width="50" height="20" className="fill-slate-800" />
+                  <path d="M20,100 L180,100 L160,130 L40,130 Z" className="fill-navy-900" />
+                  {/* Main body */}
+                  <rect x="40" y="50" width="120" height="50" fill="#fff" />
                   {/* Bridge */}
-                  <rect x="35" y="25" width="30" height="20" className="fill-slate-700" />
+                  <rect x="50" y="20" width="40" height="30" fill="#1e3a8a" />
                   {/* Windows */}
-                  <rect x="40" y="30" width="6" height="6" className="fill-sky-200" />
-                  <rect x="54" y="30" width="6" height="6" className="fill-sky-200" />
-                  {/* Flag */}
-                  <rect x="60" y="15" width="8" height="5" className="fill-sky-400" />
+                  <rect x="55" y="25" width="6" height="6" fill="#fff" />
+                  <rect x="65" y="25" width="6" height="6" fill="#fff" />
+                  <rect x="75" y="25" width="6" height="6" fill="#fff" />
+                  {/* Containers */}
+                  <rect x="100" y="30" width="20" height="20" fill="#ef4444" />
+                  <rect x="120" y="30" width="20" height="20" fill="#3b82f6" />
+                  <rect x="100" y="50" width="20" height="20" fill="#f59e0b" />
+                  <rect x="120" y="50" width="20" height="20" fill="#10b981" />
+                  {/* Mast */}
+                  <rect x="65" y="5" width="2" height="15" fill="#64748b" />
                 </svg>
-                <div className="waves-small"></div>
               </div>
               <p className="text-slate-700 text-base">Fill in your fleet details to calculate potential fuel savings</p>
             </div>
