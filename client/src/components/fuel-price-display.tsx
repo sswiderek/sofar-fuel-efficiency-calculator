@@ -40,20 +40,21 @@ export default function FuelPriceDisplay() {
   }
 
   return (
-    <Card className="w-full bg-gradient-to-br from-white/95 to-white/85 backdrop-blur-md mb-6 shadow-lg border-slate-200/60">
-      <CardContent className="p-6">
+    <Card className="w-full bg-gradient-to-br from-blue-50 to-blue-100/90 backdrop-blur-md mb-6 shadow-xl border-blue-200 hover:shadow-2xl transition-all">
+      <CardContent className="p-8">
         <div className="flex items-start justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-slate-800 tracking-tight">
+            <h3 className="text-xl font-bold text-blue-900 tracking-tight">
               Current Global VLSFO Price
             </h3>
-            <p className="text-3xl font-bold text-blue-700 mt-2">
-              ${data?.price}/MT
-              <span className="text-sm font-medium text-slate-500 ml-2 tracking-wide">
+            <p className="text-4xl font-extrabold text-blue-700 mt-4 flex items-baseline">
+              ${data?.price}
+              <span className="text-xl font-semibold text-blue-600 ml-1">/MT</span>
+              <span className="text-sm font-medium text-blue-500 ml-3 tracking-wide">
                 ({data?.month} {data?.year})
               </span>
             </p>
-            <p className="text-xs font-medium text-slate-500 mt-2 tracking-wide">
+            <p className="text-sm font-medium text-blue-600 mt-4 tracking-wide">
               Based on Ship & Bunker's Global 20 Ports Average
             </p>
           </div>
