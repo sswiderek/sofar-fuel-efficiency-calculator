@@ -51,15 +51,15 @@ export default function CalculatorForm() {
 
   async function onSubmit(formEvent: React.FormEvent) {
     formEvent.preventDefault();
-    
+
     const values = form.getValues();
     const emptyFields = [];
-    
+
     if (!values.fleetSize) emptyFields.push("Fleet Size");
     if (!values.voyageLength) emptyFields.push("Voyage Length");
     if (!values.fuelConsumption) emptyFields.push("Fuel Consumption");
     if (!values.fuelPrice) emptyFields.push("Fuel Price");
-    
+
     if (emptyFields.length > 0) {
       toast({
         title: "Missing Information",
@@ -293,9 +293,9 @@ export default function CalculatorForm() {
               <ResultsDisplay results={results} />
             </motion.div>
           ) : (
-            <div className="h-full flex flex-col items-center justify-center gap-2 text-muted-foreground mt-8">
+            <div className="h-full flex flex-col items-center justify-center gap-2 text-muted-foreground mt-2">
               <div className="ship-container relative">
-                <img src="/images/cargo-ship.png" alt="Cargo Ship" className="w-48 h-48 object-contain mb-5" />
+                <img src="/images/cargo-ship.png" alt="Cargo Ship" className="w-48 h-48 object-contain mb-3" />
                 <div className="waves-small"></div>
               </div>
               <p className="text-slate-700 text-base">Fill in your fleet details to calculate potential fuel savings</p>
