@@ -214,7 +214,7 @@ export default function CalculatorForm() {
               <ResultsDisplay results={results} />
             </motion.div>
           ) : (
-            <div className="h-full flex flex-col items-center justify-center gap-2 text-muted-foreground -mt-36">
+            <div className="h-full flex flex-col items-center justify-center gap-2 text-muted-foreground mt-8">
               <div className="ship-container" style={{ transform: 'scale(0.4)' }}>
                 <svg viewBox="0 0 100 100" className="w-full h-full max-w-[120px]">
                   {/* Hull */}
