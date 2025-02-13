@@ -245,6 +245,7 @@ export default function CalculatorForm() {
                         />
                       </FormControl>
                       <FormMessage />
+                      <p className="text-[10px] text-slate-400 mt-1">Source: AI-powered market analysis</p>
                     </FormItem>
                   )}
                 />
