@@ -58,8 +58,11 @@ export function registerRoutes(app: Express): Server {
         model: "gpt-3.5-turbo",
       });
 
-      const price = parseFloat(completion.choices[0].message.content);
-      if (isNaN(price)) {
+      const content = completion.choices[0].message.content;
+      // Extract number from the response using regex
+      const match = content.match(/\d+(\.\d+)?/);
+      const price = match ? parseFloat(match[0]) : null;
+      if (!price) {
         throw new Error("Invalid price format received");
       }
 
