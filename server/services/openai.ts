@@ -49,13 +49,14 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
       throw new Error('Invalid price format in response');
     }
 
-    // Validate price is within reasonable range
-    if (result.price < 400 || result.price > 800) {
+    // Validate price is within reasonable range and round to whole number
+    const roundedPrice = Math.round(result.price);
+    if (roundedPrice < 400 || roundedPrice > 800) {
       throw new Error('Price outside expected range');
     }
 
     return {
-      price: result.price,
+      price: roundedPrice,
       month: monthName,
       year: year,
       isError: false
