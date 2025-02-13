@@ -215,7 +215,7 @@ export default function CalculatorForm() {
             </motion.div>
           ) : (
             <div className="h-full flex flex-col items-center justify-center gap-2 text-muted-foreground mt-8">
-              <div className="ship-container" style={{ transform: 'scale(0.25)', position: 'relative' }}>
+              <div className="ship-container" style={{ transform: 'scale(0.2)', position: 'relative' }}>
                 <svg viewBox="0 0 200 150" className="w-48 h-48" style={{ marginBottom: '20px' }}>
                   {/* Hull */}
                   <path d="M30,100 L170,100 L150,130 L50,130 Z" fill="#1E3A8A" stroke="#000" strokeWidth="2"/>

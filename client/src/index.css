@@ -54,15 +54,15 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 120px;
+  width: 100px;
   height: 12px;
   background: linear-gradient(90deg, 
     rgba(96, 165, 250, 0.1) 0%, 
     rgba(96, 165, 250, 0.2) 50%, 
     rgba(96, 165, 250, 0.1) 100%
   );
-  background-size: 200% 100%;
-  animation: wave 8s linear infinite;
+  background-size: 150% 100%;
+  animation: wave 6s linear infinite;
   border-radius: 40%;
   filter: blur(0.5px);
 }
