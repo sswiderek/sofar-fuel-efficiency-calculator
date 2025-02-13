@@ -62,9 +62,12 @@ export default function FuelPriceDisplay() {
               <InfoIcon className="h-5 w-5 text-slate-400" />
             </TooltipTrigger>
             <TooltipContent>
-              <p className="max-w-xs text-sm">
-                We use the global monthly average price for accuracy. This value updates on the 1st of each month based on data from the previous month.
-              </p>
+              <div className="space-y-2 p-1">
+                <h4 className="font-medium">Price Information</h4>
+                <p className="max-w-[200px] text-sm text-muted-foreground leading-snug">
+                  Global monthly average price, updated on the 1st of each month using previous month's data.
+                </p>
+              </div>
             </TooltipContent>
           </Tooltip>
         </div>
