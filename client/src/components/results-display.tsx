@@ -127,7 +127,10 @@ export default function ResultsDisplay({ results }: Props) {
               {scenario.data.map((item, i) => (
                 <Card 
                   key={i} 
-                  className="bg-white border shadow-sm hover:shadow transition-shadow duration-200 animate-fade-in"
+                  className={cn(
+                    "border shadow-sm hover:shadow transition-shadow duration-200 animate-fade-in",
+                    item.color
+                  )}
                   style={{ animationDelay: `${i * 150}ms` }}
                 >
                   <CardContent className="p-6">
