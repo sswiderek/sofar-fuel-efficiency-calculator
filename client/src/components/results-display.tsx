@@ -45,22 +45,22 @@ export default function ResultsDisplay({ results }: Props) {
   function getScenarioData(scenarioIndex: number) {
     const themes = {
         0: { // Conservative
-          current: 'border-teal-300 bg-gradient-to-br from-teal-50 to-teal-100 text-teal-900',
-          optimized: 'border-teal-400 bg-gradient-to-br from-teal-200 to-teal-300 text-teal-900',
+          current: 'border-teal-300 bg-gradient-to-br from-teal-50 to-teal-100 text-white',
+          optimized: 'border-teal-400 bg-gradient-to-br from-teal-200 to-teal-300 text-white',
           savings: 'bg-gradient-to-br from-teal-600 to-teal-700 text-white shadow-lg',
-          reduction: 'border-teal-300 bg-gradient-to-br from-teal-100 to-teal-200 text-teal-900'
+          reduction: 'border-teal-300 bg-gradient-to-br from-teal-100 to-teal-200 text-white'
         },
         1: { // Average
-          current: 'border-indigo-300 bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-900',
-          optimized: 'border-indigo-400 bg-gradient-to-br from-indigo-200 to-indigo-300 text-indigo-900',
+          current: 'border-indigo-300 bg-gradient-to-br from-indigo-50 to-indigo-100 text-white',
+          optimized: 'border-indigo-400 bg-gradient-to-br from-indigo-200 to-indigo-300 text-white',
           savings: 'bg-gradient-to-br from-indigo-600 to-indigo-700 text-white shadow-lg',
-          reduction: 'border-indigo-300 bg-gradient-to-br from-indigo-100 to-indigo-200 text-indigo-900'
+          reduction: 'border-indigo-300 bg-gradient-to-br from-indigo-100 to-indigo-200 text-white'
         },
         2: { // Optimal
-          current: 'border-sky-300 bg-gradient-to-br from-sky-50 to-sky-100 text-sky-900',
-          optimized: 'border-sky-400 bg-gradient-to-br from-sky-200 to-sky-300 text-sky-900',
+          current: 'border-sky-300 bg-gradient-to-br from-sky-50 to-sky-100 text-white',
+          optimized: 'border-sky-400 bg-gradient-to-br from-sky-200 to-sky-300 text-white',
           savings: 'bg-gradient-to-br from-sky-600 to-sky-700 text-white shadow-lg',
-          reduction: 'border-sky-300 bg-gradient-to-br from-sky-100 to-sky-200 text-sky-900'
+          reduction: 'border-sky-300 bg-gradient-to-br from-sky-100 to-sky-200 text-white'
         }
       };
 
