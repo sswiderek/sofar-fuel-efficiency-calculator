@@ -1,23 +1,30 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { calculatorInputSchema, type CalculationResult } from "@shared/schema";
+import OpenAI from "openai";
+
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
 
 export function registerRoutes(app: Express): Server {
   app.post("/api/calculate", (req, res) => {
     try {
       console.log("Received calculation request:", req.body);
       const data = calculatorInputSchema.parse(req.body);
-      
+
       // Calculate total fuel cost
       const totalFuelCost = data.fleetSize * data.voyageLength * data.fuelConsumption * data.fuelPrice;
-      
+
       // Calculate savings based on estimated percentage
       const savingsPercent = data.estimatedSavings / 100;
       const estimatedSavings = totalFuelCost * savingsPercent;
-      
+
       // Calculate fuel cost with Wayfinder
       const fuelCostWithWayfinder = totalFuelCost - estimatedSavings;
-      
+
       // Calculate CO2 reduction (assuming 3.15 MT of CO2 per MT of fuel)
       const fuelSaved = (data.fleetSize * data.voyageLength * data.fuelConsumption) * savingsPercent;
       const co2Reduction = fuelSaved * 3.15;
@@ -32,6 +39,34 @@ export function registerRoutes(app: Express): Server {
       res.json(results);
     } catch (error) {
       res.status(400).json({ error: "Invalid input data" });
+    }
+  });
+
+  app.get("/api/fuel-price", async (req, res) => {
+    try {
+      const completion = await openai.chat.completions.create({
+        messages: [
+          {
+            role: "system",
+            content: "You are a fuel price expert. Respond only with the current average VLSFO (Very Low Sulfur Fuel Oil) price per metric ton in USD as a number."
+          },
+          {
+            role: "user",
+            content: "What is the current VLSFO price?"
+          }
+        ],
+        model: "gpt-3.5-turbo",
+      });
+
+      const price = parseFloat(completion.choices[0].message.content);
+      if (isNaN(price)) {
+        throw new Error("Invalid price format received");
+      }
+
+      res.json({ price });
+    } catch (error) {
+      console.error("Failed to fetch fuel price:", error);
+      res.status(500).json({ error: "Failed to fetch fuel price" });
     }
   });
 
