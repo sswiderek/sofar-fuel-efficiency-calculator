@@ -37,25 +37,44 @@ export default function Calculator() {
             </div>
             <CalculatorForm />
             <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="bg-white/50 rounded-lg p-6 space-y-6">
-                <h3 className="text-lg font-semibold text-slate-900">Calculator Assumptions</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-gradient-to-br from-sky-100 to-white/80 rounded-lg p-6 space-y-6 w-full">
+                <h3 className="text-lg font-semibold text-slate-900 flex items-center gap-2">
+                  Assumptions Made in This Calculator
+                  <span className="text-sky-600">⚙️</span>
+                </h3>
+                <div className="space-y-6">
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
-                      <FuelIcon className="h-5 w-5 text-slate-700 mt-1" />
+                      <span className="text-2xl">📊</span>
                       <div>
-                        <p className="font-medium text-slate-900">Fuel Consumption</p>
-                        <p className="text-sm text-slate-600">Assumes constant fuel consumption rate (MT/day) for entire voyage</p>
+                        <p className="font-medium text-slate-900">Fuel Consumption is Based on Daily Averages</p>
+                        <p className="text-sm text-slate-600">The calculator assumes a constant fuel consumption rate (MT/day) for the entire voyage duration.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <DollarSignIcon className="h-5 w-5 text-slate-700 mt-1" />
+                      <span className="text-2xl">💰</span>
                       <div>
-                        <p className="font-medium text-slate-900">Fuel Price</p>
-                        <p className="text-sm text-slate-600">Fixed fuel price for voyage duration, no price fluctuations</p>
+                        <p className="font-medium text-slate-900">Fuel Price is Static</p>
+                        <p className="text-sm text-slate-600">The fuel price entered is considered fixed for the voyage. Fluctuations in fuel prices are not accounted for.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="text-2xl">📈</span>
+                      <div>
+                        <p className="font-medium text-slate-900">Estimated Savings Range</p>
+                        <p className="text-sm text-slate-600">The fuel savings percentage is estimated between 4% to 10%, based on typical results from Sofar Ocean's Wayfinder platform. Actual savings may vary depending on weather conditions, route complexity, and vessel type.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="text-2xl">🌱</span>
+                      <div>
+                        <p className="font-medium text-slate-900">CO₂ Emissions Reduction</p>
+                        <p className="text-sm text-slate-600">The calculator assumes that each metric ton of fuel burned produces 3.15 metric tons of CO₂ based on standard shipping industry benchmarks.</p>
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
                       <LeafIcon className="h-5 w-5 text-slate-700 mt-1" />
