@@ -212,8 +212,7 @@ export default function CalculatorForm() {
               </div>
             </div>
           </div>
-        </div>
-        <div>
+          <div>
           {results ? (
             <motion.div
               initial={{ opacity: 0, x: 20 }}
