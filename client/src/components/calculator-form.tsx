@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
@@ -22,6 +23,7 @@ interface VLSFOPrice {
 }
 
 export default function CalculatorForm() {
+  const { toast } = useToast();
   const [results, setResults] = useState<CalculationResult[] | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
 
