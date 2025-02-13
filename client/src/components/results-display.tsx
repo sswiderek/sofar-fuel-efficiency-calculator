@@ -96,7 +96,7 @@ export default function ResultsDisplay({ results }: Props) {
                     <div className={cn(
                       "flex items-center gap-1",
                       key === "conservative" && "text-sky-700",
-                      key === "average" && "text-orange-700",
+                      key === "average" && "text-amber-700",
                       key === "optimal" && "text-emerald-700"
                     )}>
                       <DollarSign className="h-3.5 w-3.5" />
@@ -106,7 +106,7 @@ export default function ResultsDisplay({ results }: Props) {
                     <p className={cn(
                       "text-[11px] font-medium",
                       key === "conservative" && "text-sky-700",
-                      key === "average" && "text-orange-700",
+                      key === "average" && "text-amber-700",
                       key === "optimal" && "text-emerald-700"
                     )}>
                       <TrendingUp className="h-2.5 w-2.5 inline mr-1" />
