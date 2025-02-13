@@ -44,28 +44,21 @@ export function registerRoutes(app: Express): Server {
 
   app.get("/api/fuel-price", async (req, res) => {
     try {
-      const completion = await openai.chat.completions.create({
-        messages: [
-          {
-            role: "system",
-            content: "You are a maritime fuel price expert. Respond only with the current average Very Low Sulfur Fuel Oil (VLSFO) bunker fuel price per metric ton in USD as a number. Base your response on recent global port average prices."
-          },
-          {
-            role: "user",
-            content: "What is the current global average VLSFO bunker fuel price per metric ton?"
-          }
-        ],
-        model: "gpt-3.5-turbo",
+      // Fetch from Ship & Bunker API
+      const response = await fetch('https://shipandbunker.com/api/v1/prices/global-20-ports-average', {
+        headers: {
+          'Authorization': `Bearer ${process.env.SHIPBUNKER_API_KEY}`,
+          'Accept': 'application/json'
+        }
       });
-
-      const content = completion.choices[0].message.content;
-      // Extract number from the response using regex
-      const match = content.match(/\d+(\.\d+)?/);
-      const price = match ? parseFloat(match[0]) : null;
-      if (!price) {
-        throw new Error("Invalid price format received");
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch from Ship & Bunker');
       }
-
+      
+      const data = await response.json();
+      const price = data.prices.vlsfo;
+      
       res.json({ price });
     } catch (error) {
       console.error("Failed to fetch fuel price:", error);
