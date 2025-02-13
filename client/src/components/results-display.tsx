@@ -45,22 +45,22 @@ export default function ResultsDisplay({ results }: Props) {
   function getScenarioData(scenarioIndex: number) {
     const themes = {
         0: { // Conservative
-          current: 'border-emerald-600 bg-gradient-to-br from-emerald-50 to-emerald-100/80',
-          optimized: 'border-emerald-600 bg-gradient-to-br from-emerald-50/80 to-emerald-100/60',
-          savings: 'bg-gradient-to-br from-emerald-600 to-emerald-500 text-white shadow-lg ring-2 ring-emerald-200',
-          reduction: 'border-emerald-600 bg-gradient-to-br from-emerald-50 to-emerald-100/80'
+          current: 'border-[#003D7C] bg-gradient-to-br from-[#003D7C]/5 to-[#003D7C]/10',
+          optimized: 'border-[#003D7C] bg-gradient-to-br from-[#003D7C]/10 to-[#003D7C]/15',
+          savings: 'bg-gradient-to-br from-[#003D7C] to-[#0056AE] text-white shadow-lg ring-2 ring-[#003D7C]/20',
+          reduction: 'border-[#003D7C] bg-gradient-to-br from-[#003D7C]/5 to-[#003D7C]/10'
         },
         1: { // Average
-          current: 'border-violet-600 bg-gradient-to-br from-violet-50 to-violet-100/80',
-          optimized: 'border-violet-600 bg-gradient-to-br from-violet-50/80 to-violet-100/60',
-          savings: 'bg-gradient-to-br from-violet-600 to-violet-500 text-white shadow-lg ring-2 ring-violet-200',
-          reduction: 'border-violet-600 bg-gradient-to-br from-violet-50 to-violet-100/80'
+          current: 'border-[#005BAD] bg-gradient-to-br from-[#005BAD]/5 to-[#005BAD]/10',
+          optimized: 'border-[#005BAD] bg-gradient-to-br from-[#005BAD]/10 to-[#005BAD]/15',
+          savings: 'bg-gradient-to-br from-[#005BAD] to-[#0077E0] text-white shadow-lg ring-2 ring-[#005BAD]/20',
+          reduction: 'border-[#005BAD] bg-gradient-to-br from-[#005BAD]/5 to-[#005BAD]/10'
         },
         2: { // Optimal
-          current: 'border-blue-600 bg-gradient-to-br from-blue-50 to-blue-100/80',
-          optimized: 'border-blue-600 bg-gradient-to-br from-blue-50/80 to-blue-100/60',
-          savings: 'bg-gradient-to-br from-blue-600 to-blue-500 text-white shadow-lg ring-2 ring-blue-200',
-          reduction: 'border-blue-600 bg-gradient-to-br from-blue-50 to-blue-100/80'
+          current: 'border-[#0077E0] bg-gradient-to-br from-[#0077E0]/5 to-[#0077E0]/10',
+          optimized: 'border-[#0077E0] bg-gradient-to-br from-[#0077E0]/10 to-[#0077E0]/15',
+          savings: 'bg-gradient-to-br from-[#0077E0] to-[#1E90FF] text-white shadow-lg ring-2 ring-[#0077E0]/20',
+          reduction: 'border-[#0077E0] bg-gradient-to-br from-[#0077E0]/5 to-[#0077E0]/10'
         }
       };
 
