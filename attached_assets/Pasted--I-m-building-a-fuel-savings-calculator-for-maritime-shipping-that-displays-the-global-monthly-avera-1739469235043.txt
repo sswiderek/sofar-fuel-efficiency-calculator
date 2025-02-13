@@ -1,0 +1,51 @@
+"I’m building a fuel savings calculator for maritime shipping that displays the global monthly average price of Very Low Sulfur Fuel Oil (VLSFO). I need to retrieve the average price for the previous month (e.g., if today is March 1st, I want February’s monthly average). Please fetch this data from Ship & Bunker’s Global 20 Ports Average or a similar reliable public source.
+
+Objective:
+Query OpenAI to retrieve the previous month’s global average VLSFO price.
+Example: On March 1st, I need the February global average.
+Format the response as "Global VLSFO Price: $603/MT (February 2025)".
+Error Handling: Use the last available price if no new data is found.
+Clarify the Date: Ensure that the response always includes the correct month and year for the price.
+Query Example:
+"What was the global monthly average price of Very Low Sulfur Fuel Oil (VLSFO) for February 2025 according to Ship & Bunker’s Global 20 Ports Average?"
+
+Ensure the date is accurate and reflects the previous month (not the current month).
+Return the price in USD/MT."
+UI/UX Design for the Calculator
+You want a clean, sharp design that’s informative but not cluttered. Here’s how you can improve it:
+
+UI Layout and Design Enhancements:
+Fuel Price Display Section
+
+Add a dedicated section at the top for the current global average VLSFO price.
+
+Example:
+
+pgsql
+Copy
+Edit
+Current Global VLSFO Price: $603/MT (February 2025)  
+Based on the Global 20 Ports Average
+Tooltip/Icon for More Info:
+Add an info icon (ℹ️) next to the price with a tooltip:
+"We use the global monthly average price for accuracy. This value updates on the 1st of each month based on data from the previous month."
+
+Fuel Price Field (Optional Pre-Fill)
+
+Auto-populate the Fuel Price (USD/MT) field with the global average fetched from OpenAI.
+Allow users to manually adjust it if they want to input a different value.
+Display a hint below the field:
+"Default price: $603/MT (February 2025). Adjust as needed."
+Error Handling in UI
+
+If OpenAI fails to retrieve the price, show a fallback message:
+"Price temporarily unavailable; using last known global average ($590/MT for January 2025)."
+Consistent Visual Style:
+
+Keep the UI minimal with soft color contrasts (e.g., blue and white).
+Use cards or sections to separate the calculator inputs from the fetched information.
+Summary Section (Post Calculation)
+
+After calculating savings, add a summary card that includes:
+Potential Savings
+Assumed Fuel Price (with a note if it’s the global average or custom value).
