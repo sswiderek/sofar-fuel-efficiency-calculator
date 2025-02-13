@@ -73,7 +73,7 @@ export default function ResultsDisplay({ results }: Props) {
               className={cn(
                 "text-sm font-medium",
                 key === "conservative" && "data-[state=active]:bg-sky-100 data-[state=active]:text-sky-900",
-                key === "average" && "data-[state=active]:bg-purple-100 data-[state=active]:text-purple-900",
+                key === "average" && "data-[state=active]:bg-orange-100 data-[state=active]:text-orange-900",
                 key === "optimal" && "data-[state=active]:bg-emerald-100 data-[state=active]:text-emerald-900"
               )}
             >
@@ -88,7 +88,7 @@ export default function ResultsDisplay({ results }: Props) {
               <Card className={cn(
                 "border shadow-sm",
                 key === "conservative" && "bg-sky-50",
-                key === "average" && "bg-purple-50",
+                key === "average" && "bg-orange-50",
                 key === "optimal" && "bg-emerald-50"
               )}>
                 <CardContent className="p-2.5">
@@ -96,7 +96,7 @@ export default function ResultsDisplay({ results }: Props) {
                     <div className={cn(
                       "flex items-center gap-1",
                       key === "conservative" && "text-sky-700",
-                      key === "average" && "text-purple-700",
+                      key === "average" && "text-orange-700",
                       key === "optimal" && "text-emerald-700"
                     )}>
                       <DollarSign className="h-3.5 w-3.5" />
@@ -106,7 +106,7 @@ export default function ResultsDisplay({ results }: Props) {
                     <p className={cn(
                       "text-[11px] font-medium",
                       key === "conservative" && "text-sky-700",
-                      key === "average" && "text-purple-700",
+                      key === "average" && "text-orange-700",
                       key === "optimal" && "text-emerald-700"
                     )}>
                       <TrendingUp className="h-2.5 w-2.5 inline mr-1" />
@@ -119,7 +119,7 @@ export default function ResultsDisplay({ results }: Props) {
               <Card className={cn(
                 "border shadow-sm text-white",
                 key === "conservative" && "bg-sky-700",
-                key === "average" && "bg-purple-700",
+                key === "average" && "bg-orange-700",
                 key === "optimal" && "bg-emerald-700"
               )}>
                 <CardContent className="p-2.5">
@@ -135,7 +135,7 @@ export default function ResultsDisplay({ results }: Props) {
             <Card className={cn(
               "mt-2 border shadow-sm",
               key === "conservative" && "bg-sky-50/50",
-              key === "average" && "bg-purple-50/50",
+              key === "average" && "bg-orange-50/50",
               key === "optimal" && "bg-emerald-50/50"
             )}>
               <CardContent className="p-2.5">
