@@ -231,7 +231,7 @@ export default function CalculatorForm() {
                       </FormControl>
                       <div className="text-xs text-slate-500 mt-1">
                         {fuelPriceData?.isError ? (
-                          "Enter fuel price"
+                          fuelPriceData.errorMessage || "Error fetching price data"
                         ) : fuelPriceData?.price ? (
                           `Latest monthly average: $${fuelPriceData.price}/MT (${fuelPriceData.month} ${fuelPriceData.year})`
                         ) : (

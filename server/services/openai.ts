@@ -80,7 +80,7 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
 
     // Cache the price before returning
     await setCachedPrice(`${monthName}-${year}`, roundedPrice);
-    
+
     return {
       price: roundedPrice,
       month: monthName,
