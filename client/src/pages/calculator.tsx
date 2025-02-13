@@ -39,8 +39,7 @@ export default function Calculator() {
             <div className="mt-8">
               <div className="space-y-6">
                 <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 border border-sky-100"> {/* Removed shadow-lg */}
-                  <h3 className="text-lg font-semibold text-slate-900 flex items-center gap-2 mb-4">
-                    <SettingsIcon className="h-5 w-5 text-sky-600" />
+                  <h3 className="text-lg font-semibold text-slate-900 mb-4">
                     Assumptions Made in This Calculator
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -95,12 +94,7 @@ export default function Calculator() {
                   <a href="https://www.sofarocean.com/posts/weather-maritime-shipping-white-paper" target="_blank" rel="noopener noreferrer" className="block relative">
                     <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-200"></div>
                     <CardHeader className="space-y-1.5 py-4">
-                      <div className="flex items-center gap-3">
-                        <div className="bg-blue-800/50 p-2 rounded-lg">
-                          <GlobeIcon className="h-5 w-5 text-blue-200" />
-                        </div>
-                        <CardTitle className="text-xl">Validate Your Savings</CardTitle>
-                      </div>
+                      <CardTitle className="text-xl">Validate Your Savings</CardTitle>
                       <p className="text-blue-200 text-base mb-1">Case Study & Analysis</p>
                     </CardHeader>
                     <CardContent className="pt-1">
