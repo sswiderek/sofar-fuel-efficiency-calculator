@@ -211,18 +211,15 @@ export default function CalculatorForm() {
                           <TooltipTrigger>
                             <InfoIcon className="h-4 w-4 text-muted-foreground" />
                           </TooltipTrigger>
-                          <TooltipContent>
-                            <p className="max-w-xs text-sm">
-                              {fuelPriceData?.isError ? (
-                                "Price data temporarily unavailable"
-                              ) : fuelPriceData?.price ? (
-                                `Current Global VLSFO Price: $${fuelPriceData.price}/MT (${fuelPriceData.month} ${fuelPriceData.year})`
-                              ) : (
-                                "Loading current VLSFO price..."
-                              )}
-                              <br />
-                              Based on Ship & Bunker's Global 20 Ports Average
-                            </p>
+                          <TooltipContent className="max-w-sm p-3">
+                            <div className="space-y-2">
+                              <h4 className="font-semibold">Current Global VLSFO Price</h4>
+                              <div className="text-lg font-medium">${fuelPriceData?.price}/MT</div>
+                              <div className="text-sm text-muted-foreground">
+                                <div>{fuelPriceData?.month} {fuelPriceData?.year}</div>
+                                <div>Based on Ship & Bunker's Global 20 Ports Average</div>
+                              </div>
+                            </div>
                           </TooltipContent>
                         </Tooltip>
                       </div>
