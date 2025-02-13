@@ -85,7 +85,13 @@ export default function CalculatorForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
         <div className="space-y-8 pt-4">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-4">
+            <form 
+              onSubmit={(e) => {
+                e.preventDefault();
+                onSubmit(e);
+              }} 
+              className="space-y-8 p-4"
+            >
               <div className="space-y-4"> {/* Changed to vertical stacking */}
                 <FormField
                   control={form.control}
@@ -232,7 +238,7 @@ export default function CalculatorForm() {
                   type="submit"
                   className="w-full"
                   disabled={isCalculating}
-                  onClick={onSubmit}
+                  type="submit"
                 >
                   {isCalculating ? "Calculating..." : "Calculate Savings"}
                 </Button>
