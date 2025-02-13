@@ -45,22 +45,22 @@ export default function ResultsDisplay({ results }: Props) {
   function getScenarioData(scenarioIndex: number) {
     const themes = {
         0: { // Conservative
-          current: 'border-emerald-200 bg-gradient-to-br from-emerald-50 to-emerald-100',
-          optimized: 'border-emerald-200 bg-gradient-to-br from-emerald-100 to-emerald-200',
-          savings: 'bg-gradient-to-br from-emerald-600 to-emerald-700 text-white shadow-lg',
-          reduction: 'border-emerald-200 bg-gradient-to-br from-emerald-50 to-emerald-100'
+          current: 'border-teal-300 bg-gradient-to-br from-teal-50 to-teal-100 text-teal-900',
+          optimized: 'border-teal-400 bg-gradient-to-br from-teal-200 to-teal-300 text-teal-900',
+          savings: 'bg-gradient-to-br from-teal-600 to-teal-700 text-white shadow-lg',
+          reduction: 'border-teal-300 bg-gradient-to-br from-teal-100 to-teal-200 text-teal-900'
         },
         1: { // Average
-          current: 'border-violet-200 bg-gradient-to-br from-violet-50 to-violet-100',
-          optimized: 'border-violet-200 bg-gradient-to-br from-violet-100 to-violet-200',
-          savings: 'bg-gradient-to-br from-violet-600 to-violet-700 text-white shadow-lg',
-          reduction: 'border-violet-200 bg-gradient-to-br from-violet-50 to-violet-100'
+          current: 'border-indigo-300 bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-900',
+          optimized: 'border-indigo-400 bg-gradient-to-br from-indigo-200 to-indigo-300 text-indigo-900',
+          savings: 'bg-gradient-to-br from-indigo-600 to-indigo-700 text-white shadow-lg',
+          reduction: 'border-indigo-300 bg-gradient-to-br from-indigo-100 to-indigo-200 text-indigo-900'
         },
         2: { // Optimal
-          current: 'border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100',
-          optimized: 'border-blue-200 bg-gradient-to-br from-blue-100 to-blue-200',
-          savings: 'bg-gradient-to-br from-blue-600 to-blue-700 text-white shadow-lg',
-          reduction: 'border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100'
+          current: 'border-sky-300 bg-gradient-to-br from-sky-50 to-sky-100 text-sky-900',
+          optimized: 'border-sky-400 bg-gradient-to-br from-sky-200 to-sky-300 text-sky-900',
+          savings: 'bg-gradient-to-br from-sky-600 to-sky-700 text-white shadow-lg',
+          reduction: 'border-sky-300 bg-gradient-to-br from-sky-100 to-sky-200 text-sky-900'
         }
       };
 
