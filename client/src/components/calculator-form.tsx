@@ -215,16 +215,12 @@ export default function CalculatorForm() {
             </motion.div>
           ) : (
             <div className="h-full flex flex-col items-center justify-center gap-2 text-muted-foreground mt-8">
-              <div className="ship-container flex justify-center">
+              <div className="flex justify-center">
                 <img 
                   src="/images/ship-icon.png" 
                   alt="Ship Icon" 
                   className="w-24 h-24 opacity-50"
                 />
-                <rect x="42" y="40" width="6" height="6" className="fill-sky-200" />
-                <rect x="52" y="40" width="6" height="6" className="fill-sky-200" />
-                {/* Flag */}
-                <rect x="65" y="20" width="8" height="5" className="fill-sky-400" />
               </div>
               <p className="text-slate-700 text-base">Fill in your fleet details to calculate potential fuel savings</p>
             </div>
