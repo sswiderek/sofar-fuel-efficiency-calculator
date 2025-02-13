@@ -38,19 +38,19 @@ export default function Calculator() {
             <div className="mt-8">
               <div className="space-y-6">
                 <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 border border-sky-100"> {/* Removed shadow-lg */}
-                  <h3 className="text-lg font-semibold text-slate-900 flex items-center gap-2 mb-6">
+                  <h3 className="text-lg font-semibold text-slate-900 flex items-center gap-2 mb-4">
                     <SettingsIcon className="h-5 w-5 text-sky-600" />
                     Assumptions Made in This Calculator
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-sky-50/50 p-4 rounded-lg">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-sky-50/50 p-3 rounded-lg">
                       <div className="flex items-start gap-3">
                         <div className="bg-sky-100 p-2 rounded-lg">
                           <BarChartIcon className="h-5 w-5 text-sky-700" />
                         </div>
                         <div>
-                          <p className="text-sm font-medium text-slate-900">Fuel Consumption is Based on Daily Averages</p>
-                          <p className="text-xs text-slate-600 mt-1">The calculator assumes a constant fuel consumption rate (MT/day) for the entire voyage duration.</p>
+                          <p className="text-sm font-medium text-slate-900 mb-0.5">Fuel Consumption is Based on Daily Averages</p>
+                          <p className="text-xs text-slate-600">The calculator assumes a constant fuel consumption rate (MT/day) for the entire voyage duration.</p>
                         </div>
                       </div>
                     </div>
@@ -93,7 +93,7 @@ export default function Calculator() {
                 <Card className="bg-gradient-to-br from-blue-900 to-blue-800 text-white shadow-xl transform hover:scale-102 hover:shadow-2xl transition-all duration-200 border border-blue-700 cursor-pointer group">
                   <a href="https://www.sofarocean.com/posts/weather-maritime-shipping-white-paper" target="_blank" rel="noopener noreferrer" className="block relative">
                     <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-200"></div>
-                    <CardHeader className="space-y-2">
+                    <CardHeader className="space-y-1.5 py-4">
                       <div className="flex items-center gap-3">
                         <div className="bg-blue-800/50 p-2 rounded-lg">
                           <GlobeIcon className="h-5 w-5 text-blue-200" />
