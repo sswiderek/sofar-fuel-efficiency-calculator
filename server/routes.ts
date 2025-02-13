@@ -44,20 +44,26 @@ export function registerRoutes(app: Express): Server {
 
   app.get("/api/fuel-price", async (req, res) => {
     try {
-      // Fetch from Ship & Bunker API
-      const response = await fetch('https://shipandbunker.com/api/v1/prices/global-20-ports-average', {
-        headers: {
-          'Authorization': `Bearer ${process.env.SHIPBUNKER_API_KEY}`,
-          'Accept': 'application/json'
-        }
+      const completion = await openai.chat.completions.create({
+        messages: [
+          {
+            role: "system",
+            content: "You are a maritime fuel price expert. Go to Ship & Bunker's website (https://shipandbunker.com/prices/av/global/av-g20-global-20-ports-average) and report the current VLSFO price. Respond only with the number."
+          },
+          {
+            role: "user",
+            content: "What is the current Ship & Bunker Global 20 Ports Average VLSFO price in USD/mt? Respond with just the number."
+          }
+        ],
+        model: "gpt-3.5-turbo",
       });
+
+      const content = completion.choices[0].message.content;
+      const price = parseFloat(content.replace(/[^0-9.]/g, ''));
       
-      if (!response.ok) {
-        throw new Error('Failed to fetch from Ship & Bunker');
+      if (isNaN(price)) {
+        throw new Error('Invalid price format received');
       }
-      
-      const data = await response.json();
-      const price = data.prices.vlsfo;
       
       res.json({ price });
     } catch (error) {
