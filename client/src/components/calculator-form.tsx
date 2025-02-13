@@ -218,23 +218,24 @@ export default function CalculatorForm() {
               <div className="ship-container">
                 <svg viewBox="0 0 200 150" className="w-48 h-48">
                   {/* Hull */}
-                  <path d="M20,100 L180,100 L160,130 L40,130 Z" className="fill-navy-900" />
-                  {/* Main body */}
-                  <rect x="40" y="50" width="120" height="50" fill="#fff" />
+                  <path d="M20,110 Q100,120 180,110 L160,140 Q100,150 40,140 Z" fill="#0EA5E9" />
+                  {/* Ship body */}
+                  <path d="M40,60 L160,60 L160,110 L40,110 Z" fill="#0EA5E9" />
                   {/* Bridge */}
-                  <rect x="50" y="20" width="40" height="30" fill="#1e3a8a" />
-                  {/* Windows */}
-                  <rect x="55" y="25" width="6" height="6" fill="#fff" />
-                  <rect x="65" y="25" width="6" height="6" fill="#fff" />
-                  <rect x="75" y="25" width="6" height="6" fill="#fff" />
+                  <rect x="140" y="30" width="30" height="30" fill="#CBD5E1" />
+                  <rect x="150" y="15" width="10" height="15" fill="#CBD5E1" />
                   {/* Containers */}
-                  <rect x="100" y="30" width="20" height="20" fill="#ef4444" />
-                  <rect x="120" y="30" width="20" height="20" fill="#3b82f6" />
-                  <rect x="100" y="50" width="20" height="20" fill="#f59e0b" />
-                  <rect x="120" y="50" width="20" height="20" fill="#10b981" />
-                  {/* Mast */}
-                  <rect x="65" y="5" width="2" height="15" fill="#64748b" />
+                  <rect x="45" y="65" width="25" height="20" fill="#2563EB" />
+                  <rect x="45" y="40" width="25" height="20" fill="#DC2626" />
+                  <rect x="75" y="65" width="25" height="20" fill="#F59E0B" />
+                  <rect x="75" y="40" width="25" height="20" fill="#16A34A" />
+                  <rect x="105" y="65" width="25" height="20" fill="#16A34A" />
+                  <rect x="105" y="40" width="25" height="20" fill="#2563EB" />
+                  {/* Water line */}
+                  <circle cx="30" cy="125" r="3" fill="#DC2626" />
+                  <circle cx="45" cy="125" r="3" fill="#DC2626" />
                 </svg>
+              </div>
               </div>
               <p className="text-slate-700 text-base">Fill in your fleet details to calculate potential fuel savings</p>
             </div>
