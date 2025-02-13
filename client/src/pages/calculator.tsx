@@ -42,7 +42,7 @@ export default function Calculator() {
                     <SettingsIcon className="h-5 w-5 text-sky-600" />
                     Assumptions Made in This Calculator
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div className="bg-sky-50/50 p-3 rounded-lg">
                       <div className="flex items-start gap-3">
                         <div className="bg-sky-100 p-2 rounded-lg">
@@ -100,9 +100,9 @@ export default function Calculator() {
                         </div>
                         <CardTitle className="text-xl">Validate Your Savings</CardTitle>
                       </div>
-                      <p className="text-blue-200 text-base">Case Study & Analysis</p>
+                      <p className="text-blue-200 text-base mb-1">Case Study & Analysis</p>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="pt-1">
                       <p className="text-sm leading-relaxed text-blue-100 flex items-center gap-2">
                         See how leading shipping companies achieve 4-8% fuel savings using weather routing technology
                         <span className="inline-block transform group-hover:translate-x-1 transition-transform duration-200">→</span>
