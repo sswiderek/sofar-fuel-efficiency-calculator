@@ -44,25 +44,25 @@ export default function ResultsDisplay({ results }: Props) {
 
   function getScenarioData(scenarioIndex: number) {
     const themes = {
-      0: { // Conservative
-        current: 'border-blue-300 bg-gradient-to-br from-blue-50 to-blue-100/80',
-        optimized: 'border-blue-300 bg-gradient-to-br from-sky-50 to-sky-100/80',
-        savings: 'bg-gradient-to-br from-blue-600 to-sky-600 text-white shadow-lg ring-2 ring-blue-200',
-        reduction: 'border-blue-300 bg-gradient-to-br from-blue-50 to-sky-100/80'
-      },
-      1: { // Average
-        current: 'border-violet-300 bg-gradient-to-br from-violet-50 to-violet-100/80',
-        optimized: 'border-violet-300 bg-gradient-to-br from-purple-50 to-purple-100/80',
-        savings: 'bg-gradient-to-br from-violet-600 to-purple-600 text-white shadow-lg ring-2 ring-violet-200',
-        reduction: 'border-violet-300 bg-gradient-to-br from-violet-50 to-purple-100/80'
-      },
-      2: { // Optimal
-        current: 'border-emerald-300 bg-gradient-to-br from-emerald-50 to-emerald-100/80',
-        optimized: 'border-emerald-300 bg-gradient-to-br from-teal-50 to-teal-100/80',
-        savings: 'bg-gradient-to-br from-emerald-600 to-teal-600 text-white shadow-lg ring-2 ring-emerald-200',
-        reduction: 'border-emerald-300 bg-gradient-to-br from-emerald-50 to-teal-100/80'
-      }
-    };
+        0: { // Conservative
+          current: 'border-[#003D7C] bg-gradient-to-br from-[#003D7C]/10 to-[#003D7C]/20',
+          optimized: 'border-[#003D7C] bg-gradient-to-br from-[#0056AE]/10 to-[#0056AE]/20',
+          savings: 'bg-gradient-to-br from-[#003D7C] to-[#0056AE] text-white shadow-lg ring-2 ring-[#003D7C]/20',
+          reduction: 'border-[#003D7C] bg-gradient-to-br from-[#003D7C]/10 to-[#0056AE]/20'
+        },
+        1: { // Average
+          current: 'border-[#005BAD] bg-gradient-to-br from-[#005BAD]/10 to-[#005BAD]/20',
+          optimized: 'border-[#005BAD] bg-gradient-to-br from-[#0077E0]/10 to-[#0077E0]/20',
+          savings: 'bg-gradient-to-br from-[#005BAD] to-[#0077E0] text-white shadow-lg ring-2 ring-[#005BAD]/20',
+          reduction: 'border-[#005BAD] bg-gradient-to-br from-[#005BAD]/10 to-[#0077E0]/20'
+        },
+        2: { // Optimal
+          current: 'border-[#0077E0] bg-gradient-to-br from-[#0077E0]/10 to-[#0077E0]/20',
+          optimized: 'border-[#0077E0] bg-gradient-to-br from-[#1E90FF]/10 to-[#1E90FF]/20',
+          savings: 'bg-gradient-to-br from-[#0077E0] to-[#1E90FF] text-white shadow-lg ring-2 ring-[#0077E0]/20',
+          reduction: 'border-[#0077E0] bg-gradient-to-br from-[#0077E0]/10 to-[#1E90FF]/20'
+        }
+      };
 
     return [
       { 
@@ -106,9 +106,9 @@ export default function ResultsDisplay({ results }: Props) {
               key={key} 
               className={cn(
                 "relative px-3 py-1.5 text-sm font-medium transition-all duration-200",
-                key === 'conservative' && 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-100 data-[state=active]:to-sky-100 data-[state=active]:text-blue-900 data-[state=active]:shadow-sm',
-                key === 'average' && 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-100 data-[state=active]:to-purple-100 data-[state=active]:text-violet-900 data-[state=active]:shadow-sm',
-                key === 'optimal' && 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-100 data-[state=active]:to-teal-100 data-[state=active]:text-emerald-900 data-[state=active]:shadow-sm'
+                key === 'conservative' && 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#0056AE] data-[state=active]:to-[#003D7C] data-[state=active]:text-[#003D7C] data-[state=active]:shadow-sm',
+                key === 'average' && 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#0077E0] data-[state=active]:to-[#005BAD] data-[state=active]:text-[#005BAD] data-[state=active]:shadow-sm',
+                key === 'optimal' && 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#1E90FF] data-[state=active]:to-[#0077E0] data-[state=active]:text-[#0077E0] data-[state=active]:shadow-sm'
               )}
             >
               {scenario.title}
