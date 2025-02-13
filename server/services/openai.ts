@@ -58,8 +58,7 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
           role: "user",
           content: `What was the global monthly average price of Very Low Sulfur Fuel Oil (VLSFO) for ${monthName} ${year} according to Ship & Bunker's Global 20 Ports Average?`
         }
-      ],
-      response_format: { type: "json_object" }
+      ]
     });
 
     if (!response.choices[0].message.content) {
