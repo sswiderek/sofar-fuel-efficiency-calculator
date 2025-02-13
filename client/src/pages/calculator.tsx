@@ -90,8 +90,9 @@ export default function Calculator() {
                   </div>
                 </div>
 
-                <Card className="bg-gradient-to-br from-blue-900 to-blue-800 text-white shadow-xl transform hover:scale-102 transition-all duration-200 border border-blue-700">
-                  <a href="https://www.sofarocean.com/posts/weather-maritime-shipping-white-paper" target="_blank" rel="noopener noreferrer" className="block">
+                <Card className="bg-gradient-to-br from-blue-900 to-blue-800 text-white shadow-xl transform hover:scale-105 hover:shadow-2xl transition-all duration-200 border border-blue-700 cursor-pointer group">
+                  <a href="https://www.sofarocean.com/posts/weather-maritime-shipping-white-paper" target="_blank" rel="noopener noreferrer" className="block relative">
+                    <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-200"></div>
                     <CardHeader className="space-y-2">
                       <div className="flex items-center gap-3">
                         <div className="bg-blue-800/50 p-2 rounded-lg">
@@ -102,7 +103,10 @@ export default function Calculator() {
                       <p className="text-blue-200 text-base">Case Study & Analysis</p>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-sm leading-relaxed text-blue-100">See how leading shipping companies achieve 4-8% fuel savings using weather routing technology.</p>
+                      <p className="text-sm leading-relaxed text-blue-100 flex items-center gap-2">
+                        See how leading shipping companies achieve 4-8% fuel savings using weather routing technology
+                        <span className="inline-block transform group-hover:translate-x-1 transition-transform duration-200">→</span>
+                      </p>
                     </CardContent>
                   </a>
                 </Card>
