@@ -1,6 +1,7 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CalculatorForm from "@/components/calculator-form";
-import { Fuel, DollarSign, Leaf, Globe } from "lucide-react";
+import { WavesIcon, Fuel as FuelIcon, DollarSign as DollarSignIcon, LeafIcon, Globe as GlobeIcon } from "lucide-react";
 
 export default function Calculator() {
   return (
@@ -26,9 +27,19 @@ export default function Calculator() {
             </div>
           </CardHeader>
           <CardContent>
+            <div className="mb-8 p-4 bg-gradient-to-r from-sky-50 to-white border border-sky-100 rounded-lg">
+              <h2 className="text-lg font-medium text-slate-900 mb-2">How it works</h2>
+              <div className="space-y-3 text-sm text-slate-600">
+                <p>This calculator helps you estimate potential fuel savings and environmental impact using Sofar's Wayfinder platform:</p>
+                <ul className="list-disc list-inside space-y-1 ml-2">
+                  <li>Enter your fleet details and current fuel usage</li>
+                  <li>View savings scenarios based on real-world data</li>
+                  <li>Compare cost reductions and CO₂ savings across different optimization levels</li>
+                </ul>
+              </div>
+            </div>
             <CalculatorForm />
-            <div className="mt-8 flex justify-end">
-              <Card className="w-72 transform transition-transform hover:scale-105 cursor-pointer bg-gradient-to-br from-blue-900 to-blue-800 text-white shadow-xl">
+              <Card className="transform transition-transform hover:scale-105 cursor-pointer bg-gradient-to-br from-blue-900 to-blue-800 text-white shadow-xl">
                 <a href="https://www.sofarocean.com/posts/weather-maritime-shipping-white-paper" target="_blank" rel="noopener noreferrer">
                   <CardHeader className="space-y-2">
                     <CardTitle className="text-xl">Validate Your Savings</CardTitle>
