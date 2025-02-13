@@ -93,7 +93,9 @@ export default function Calculator() {
                   </div>
                 </div>
               </div>
-              <Card className="transform transition-transform hover:scale-105 cursor-pointer bg-gradient-to-br from-blue-900 to-blue-800 text-white shadow-xl">
+            </CardContent>
+          </div>
+          <Card className="transform transition-transform hover:scale-105 cursor-pointer bg-gradient-to-br from-blue-900 to-blue-800 text-white shadow-xl">
                 <a href="https://www.sofarocean.com/posts/weather-maritime-shipping-white-paper" target="_blank" rel="noopener noreferrer">
                   <CardHeader className="space-y-2">
                     <CardTitle className="text-xl">Validate Your Savings</CardTitle>
