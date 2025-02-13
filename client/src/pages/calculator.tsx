@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CalculatorForm from "@/components/calculator-form";
 import { WavesIcon, Fuel as FuelIcon, DollarSign as DollarSignIcon, LeafIcon, Globe as GlobeIcon } from "lucide-react";
@@ -75,39 +74,35 @@ export default function Calculator() {
                   </div>
                 </div>
               </div>
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <LeafIcon className="h-5 w-5 text-slate-700 mt-1" />
-                      <div>
-                        <p className="font-medium text-slate-900">Savings Range</p>
-                        <p className="text-sm text-slate-600">4-10% typical savings based on Wayfinder platform results</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <GlobeIcon className="h-5 w-5 text-slate-700 mt-1" />
-                      <div>
-                        <p className="font-medium text-slate-900">CO₂ Calculation</p>
-                        <p className="text-sm text-slate-600">3.15 metric tons of CO₂ per metric ton of fuel burned</p>
-                      </div>
-                    </div>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <LeafIcon className="h-5 w-5 text-slate-700 mt-1" />
+                  <div>
+                    <p className="font-medium text-slate-900">Savings Range</p>
+                    <p className="text-sm text-slate-600">4-10% typical savings based on Wayfinder platform results</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <GlobeIcon className="h-5 w-5 text-slate-700 mt-1" />
+                  <div>
+                    <p className="font-medium text-slate-900">CO₂ Calculation</p>
+                    <p className="text-sm text-slate-600">3.15 metric tons of CO₂ per metric ton of fuel burned</p>
                   </div>
                 </div>
               </div>
-            </CardContent>
-          </Card>
-          <Card className="transform transition-transform hover:scale-105 cursor-pointer bg-gradient-to-br from-blue-900 to-blue-800 text-white shadow-xl">
-                <a href="https://www.sofarocean.com/posts/weather-maritime-shipping-white-paper" target="_blank" rel="noopener noreferrer">
-                  <CardHeader className="space-y-2">
-                    <CardTitle className="text-xl">Validate Your Savings</CardTitle>
-                    <p className="text-lg text-blue-200">Case Study & Analysis</p>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-base leading-relaxed">See how leading shipping companies achieve 4-8% fuel savings using weather routing technology.</p>
-                  </CardContent>
-                </a>
-              </Card>
             </div>
           </CardContent>
+          <Card className="transform transition-transform hover:scale-105 cursor-pointer bg-gradient-to-br from-blue-900 to-blue-800 text-white shadow-xl">
+            <a href="https://www.sofarocean.com/posts/weather-maritime-shipping-white-paper" target="_blank" rel="noopener noreferrer">
+              <CardHeader className="space-y-2">
+                <CardTitle className="text-xl">Validate Your Savings</CardTitle>
+                <p className="text-lg text-blue-200">Case Study & Analysis</p>
+              </CardHeader>
+              <CardContent>
+                <p className="text-base leading-relaxed">See how leading shipping companies achieve 4-8% fuel savings using weather routing technology.</p>
+              </CardContent>
+            </a>
+          </Card>
         </Card>
       </div>
     </div>
