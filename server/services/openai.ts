@@ -73,7 +73,7 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
 
     // Validate price is within reasonable range and round to whole number
     const roundedPrice = Math.round(result.price);
-    if (roundedPrice < 400 || roundedPrice > 800) {
+    if (roundedPrice < 400 || roundedPrice > 999) {
       throw new Error('Price outside expected range');
     }
 
