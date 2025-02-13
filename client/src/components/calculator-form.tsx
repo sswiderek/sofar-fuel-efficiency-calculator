@@ -242,7 +242,7 @@ export default function CalculatorForm() {
                         />
                       </FormControl>
                       <FormMessage />
-                      <div className="flex items-center gap-1 mt-1">
+                      <div className="flex items-center mt-1">
                         <p className="text-[10px] text-slate-500">Currently: ${field.value}/MT</p>
                         <p className="text-[10px] text-slate-400 mx-1">|</p>
                         <p className="text-[10px] text-slate-500">Source: Ship & Bunker (via AI analysis)</p>
