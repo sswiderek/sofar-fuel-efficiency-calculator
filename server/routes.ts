@@ -48,11 +48,11 @@ export function registerRoutes(app: Express): Server {
         messages: [
           {
             role: "system",
-            content: "You are a fuel price expert. Respond only with the current average VLSFO (Very Low Sulfur Fuel Oil) price per metric ton in USD as a number."
+            content: "You are a maritime fuel price expert. Respond only with the current average Very Low Sulfur Fuel Oil (VLSFO) bunker fuel price per metric ton in USD as a number. Base your response on recent global port average prices."
           },
           {
             role: "user",
-            content: "What is the current VLSFO price?"
+            content: "What is the current global average VLSFO bunker fuel price per metric ton?"
           }
         ],
         model: "gpt-3.5-turbo",
