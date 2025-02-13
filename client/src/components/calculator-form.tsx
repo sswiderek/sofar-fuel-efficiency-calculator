@@ -35,7 +35,7 @@ export default function CalculatorForm() {
       fleetSize: undefined,
       voyageLength: undefined,
       fuelConsumption: undefined,
-      fuelPrice: 750, // Industry standard default
+      fuelPrice: undefined,
       estimatedSavings: 5
     }
   });
@@ -214,11 +214,11 @@ export default function CalculatorForm() {
                           <TooltipContent>
                             <p className="max-w-xs text-sm">
                               {fuelPriceData?.isError ? (
-                                "Unable to fetch current VLSFO price"
+                                "Price data temporarily unavailable"
                               ) : fuelPriceData?.price ? (
-                                `Global VLSFO Price: $${fuelPriceData.price}/MT (${fuelPriceData.month} ${fuelPriceData.year})`
+                                `Current Global VLSFO Price: $${fuelPriceData.price}/MT (${fuelPriceData.month} ${fuelPriceData.year})`
                               ) : (
-                                "Loading current global VLSFO price..."
+                                "Loading current VLSFO price..."
                               )}
                               <br />
                               Based on Ship & Bunker's Global 20 Ports Average
@@ -229,16 +229,16 @@ export default function CalculatorForm() {
                       <FormControl>
                         <Input 
                           type="number"
-                          placeholder="750"
+                          placeholder="Enter fuel price"
                           {...field}
                           onChange={e => field.onChange(e.target.value ? Number(e.target.value) : undefined)}
                         />
                       </FormControl>
                       <div className="text-xs text-slate-500 mt-1">
                         {fuelPriceData?.isError ? (
-                          "Using industry standard price: $750/MT"
+                          "Enter current fuel price"
                         ) : fuelPriceData?.price ? (
-                          `Default price: $${fuelPriceData.price}/MT (${fuelPriceData.month} ${fuelPriceData.year})`
+                          `Current price: $${fuelPriceData.price}/MT (${fuelPriceData.month} ${fuelPriceData.year})`
                         ) : (
                           "Loading price data..."
                         )}
