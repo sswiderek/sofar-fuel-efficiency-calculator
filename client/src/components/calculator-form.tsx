@@ -235,8 +235,6 @@ export default function CalculatorForm() {
                   <circle cx="30" cy="125" r="3" fill="#DC2626" />
                   <circle cx="45" cy="125" r="3" fill="#DC2626" />
                 </svg>
-              </div>
-              </div>
               <p className="text-slate-700 text-base">Fill in your fleet details to calculate potential fuel savings</p>
             </div>
           )}
