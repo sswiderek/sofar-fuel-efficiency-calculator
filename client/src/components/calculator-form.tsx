@@ -105,13 +105,7 @@ export default function CalculatorForm() {
                         </Tooltip>
                       </div>
                       <FormControl>
-                        <Input 
-                          type="number" 
-                          placeholder="Enter fleet size"
-                          required
-                          {...field} 
-                          onChange={e => field.onChange(parseFloat(e.target.value))} 
-                        />
+                        <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -136,13 +130,7 @@ export default function CalculatorForm() {
                         </Tooltip>
                       </div>
                       <FormControl>
-                        <Input 
-                          type="number" 
-                          placeholder="Enter voyage length"
-                          required
-                          {...field} 
-                          onChange={e => field.onChange(parseFloat(e.target.value))} 
-                        />
+                        <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -167,13 +155,7 @@ export default function CalculatorForm() {
                         </Tooltip>
                       </div>
                       <FormControl>
-                        <Input 
-                          type="number" 
-                          placeholder="Enter fuel consumption"
-                          required
-                          {...field} 
-                          onChange={e => field.onChange(parseFloat(e.target.value))} 
-                        />
+                        <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -198,13 +180,7 @@ export default function CalculatorForm() {
                         </Tooltip>
                       </div>
                       <FormControl>
-                        <Input 
-                          type="number" 
-                          placeholder="Enter fuel price"
-                          required
-                          {...field} 
-                          onChange={e => field.onChange(parseFloat(e.target.value))} 
-                        />
+                        <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
