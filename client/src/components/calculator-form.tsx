@@ -49,9 +49,26 @@ export default function CalculatorForm() {
 
   async function onSubmit(formEvent: React.FormEvent) {
     formEvent.preventDefault();
+    
+    const values = form.getValues();
+    const emptyFields = [];
+    
+    if (!values.fleetSize) emptyFields.push("Fleet Size");
+    if (!values.voyageLength) emptyFields.push("Voyage Length");
+    if (!values.fuelConsumption) emptyFields.push("Fuel Consumption");
+    if (!values.fuelPrice) emptyFields.push("Fuel Price");
+    
+    if (emptyFields.length > 0) {
+      toast({
+        title: "Missing Information",
+        description: `Please fill in the following fields: ${emptyFields.join(", ")}`,
+        variant: "destructive"
+      });
+      return;
+    }
+
     setIsCalculating(true);
     try {
-      const values = form.getValues();
       const formData = {
         fleetSize: Number(values.fleetSize),
         voyageLength: Number(values.voyageLength),
@@ -61,7 +78,11 @@ export default function CalculatorForm() {
       };
 
       if (Object.values(formData).some(isNaN)) {
-        console.error("Invalid form data");
+        toast({
+          title: "Invalid Input",
+          description: "Please ensure all fields contain valid numbers",
+          variant: "destructive"
+        });
         return;
       }
 
