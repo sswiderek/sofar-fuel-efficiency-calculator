@@ -218,16 +218,16 @@ export default function CalculatorForm() {
               <div className="ship-container" style={{ transform: 'scale(0.4)' }}>
                 <svg viewBox="0 0 100 100" className="w-full h-full max-w-[120px]">
                   {/* Hull */}
-                  <path d="M20,60 L80,60 L70,80 L30,80 Z" className="fill-slate-700" />
-                  {/* Cabin */}
-                  <rect x="35" y="35" width="30" height="25" className="fill-slate-600" />
+                  <path d="M15,65 L85,65 L80,85 L20,85 Z" className="fill-slate-900" />
+                  {/* Cargo Area */}
+                  <rect x="25" y="45" width="50" height="20" className="fill-slate-800" />
                   {/* Bridge */}
-                  <path d="M40,25 L60,25 L60,35 L40,35 Z" className="fill-slate-800" />
+                  <rect x="35" y="25" width="30" height="20" className="fill-slate-700" />
                   {/* Windows */}
-                  <rect x="42" y="40" width="6" height="6" className="fill-sky-200" />
-                  <rect x="52" y="40" width="6" height="6" className="fill-sky-200" />
+                  <rect x="40" y="30" width="6" height="6" className="fill-sky-200" />
+                  <rect x="54" y="30" width="6" height="6" className="fill-sky-200" />
                   {/* Flag */}
-                  <rect x="65" y="20" width="8" height="5" className="fill-sky-400" />
+                  <rect x="60" y="15" width="8" height="5" className="fill-sky-400" />
                 </svg>
                 <div className="waves-small"></div>
               </div>
