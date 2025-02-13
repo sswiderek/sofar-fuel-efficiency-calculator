@@ -93,11 +93,11 @@ export default function Calculator() {
                 <Card className="bg-gradient-to-br from-blue-900 to-blue-800 text-white shadow-xl transform hover:scale-102 hover:shadow-2xl transition-all duration-200 border border-blue-700 cursor-pointer group">
                   <a href="https://www.sofarocean.com/posts/weather-maritime-shipping-white-paper" target="_blank" rel="noopener noreferrer" className="block relative">
                     <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-200"></div>
-                    <CardHeader className="space-y-1.5 py-4">
+                    <CardHeader className="space-y-0.5 py-2">
                       <CardTitle className="text-xl">Validate Your Savings</CardTitle>
-                      <p className="text-blue-200 text-base mb-1">Case Study & Analysis</p>
+                      <p className="text-blue-200 text-base">Case Study & Analysis</p>
                     </CardHeader>
-                    <CardContent className="pt-1">
+                    <CardContent className="pt-0">
                       <p className="text-sm leading-relaxed text-blue-100 flex items-center gap-2">
                         See how leading shipping companies achieve 4-8% fuel savings using weather routing technology
                         <span className="inline-block transform group-hover:translate-x-1 transition-transform duration-200">→</span>
