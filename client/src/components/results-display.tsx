@@ -45,22 +45,22 @@ export default function ResultsDisplay({ results }: Props) {
   function getScenarioData(scenarioIndex: number) {
     const themes = {
       0: { // Conservative
-        current: 'border-blue-200 bg-blue-50/30',
-        optimized: 'border-blue-300 bg-blue-100/50',
-        savings: 'bg-gradient-to-br from-blue-600 to-sky-600 text-white shadow-lg ring-2 ring-blue-100/50',
-        reduction: 'border-blue-200 bg-blue-50/50'
+        current: 'border-blue-300 bg-gradient-to-br from-blue-50 to-blue-100/80',
+        optimized: 'border-blue-300 bg-gradient-to-br from-sky-50 to-sky-100/80',
+        savings: 'bg-gradient-to-br from-blue-600 to-sky-600 text-white shadow-lg ring-2 ring-blue-200',
+        reduction: 'border-blue-300 bg-gradient-to-br from-blue-50 to-sky-100/80'
       },
       1: { // Average
-        current: 'border-purple-200 bg-purple-50/30',
-        optimized: 'border-purple-300 bg-purple-100/50',
-        savings: 'bg-gradient-to-br from-purple-600 to-violet-600 text-white shadow-lg ring-2 ring-purple-100/50',
-        reduction: 'border-purple-200 bg-purple-50/50'
+        current: 'border-violet-300 bg-gradient-to-br from-violet-50 to-violet-100/80',
+        optimized: 'border-violet-300 bg-gradient-to-br from-purple-50 to-purple-100/80',
+        savings: 'bg-gradient-to-br from-violet-600 to-purple-600 text-white shadow-lg ring-2 ring-violet-200',
+        reduction: 'border-violet-300 bg-gradient-to-br from-violet-50 to-purple-100/80'
       },
       2: { // Optimal
-        current: 'border-emerald-200 bg-emerald-50/30',
-        optimized: 'border-emerald-300 bg-emerald-100/50',
-        savings: 'bg-gradient-to-br from-emerald-600 to-teal-600 text-white shadow-lg ring-2 ring-emerald-100/50',
-        reduction: 'border-emerald-200 bg-emerald-50/50'
+        current: 'border-emerald-300 bg-gradient-to-br from-emerald-50 to-emerald-100/80',
+        optimized: 'border-emerald-300 bg-gradient-to-br from-teal-50 to-teal-100/80',
+        savings: 'bg-gradient-to-br from-emerald-600 to-teal-600 text-white shadow-lg ring-2 ring-emerald-200',
+        reduction: 'border-emerald-300 bg-gradient-to-br from-emerald-50 to-teal-100/80'
       }
     };
 
@@ -105,10 +105,10 @@ export default function ResultsDisplay({ results }: Props) {
               value={key} 
               key={key} 
               className={cn(
-                "relative px-3 py-1.5 text-sm font-medium transition-colors",
-                key === 'conservative' && 'data-[state=active]:bg-blue-50 data-[state=active]:text-blue-900',
-                key === 'average' && 'data-[state=active]:bg-purple-50 data-[state=active]:text-purple-900',
-                key === 'optimal' && 'data-[state=active]:bg-emerald-50 data-[state=active]:text-emerald-900'
+                "relative px-3 py-1.5 text-sm font-medium transition-all duration-200",
+                key === 'conservative' && 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-100 data-[state=active]:to-sky-100 data-[state=active]:text-blue-900 data-[state=active]:shadow-sm',
+                key === 'average' && 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-100 data-[state=active]:to-purple-100 data-[state=active]:text-violet-900 data-[state=active]:shadow-sm',
+                key === 'optimal' && 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-100 data-[state=active]:to-teal-100 data-[state=active]:text-emerald-900 data-[state=active]:shadow-sm'
               )}
             >
               {scenario.title}
