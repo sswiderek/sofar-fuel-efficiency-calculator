@@ -133,17 +133,17 @@ export default function ResultsDisplay({ results }: Props) {
                   <CardContent className="p-6">
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <p className={`text-base ${item.title === 'Potential Savings' ? 'text-white' : 'text-slate-700'}`}>
+                        <p className="text-slate-700">
                           {item.title}
                         </p>
                         <span className="text-xl">
                           {item.emoji}
                         </span>
                       </div>
-                      <p className={`text-2xl font-bold tracking-tight ${item.title === 'Potential Savings' ? 'text-white' : 'text-slate-900'}`}>
+                      <p className="text-2xl font-bold tracking-tight text-slate-900">
                         {item.value}
                       </p>
-                      <p className={`text-xs ${item.title === 'Potential Savings' ? 'text-white/90' : 'text-slate-600'}`}>
+                      <p className="text-xs text-slate-600">
                         {item.subtitle}
                       </p>
                     </div>
