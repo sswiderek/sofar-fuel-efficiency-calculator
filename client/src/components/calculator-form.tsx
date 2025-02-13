@@ -11,14 +11,19 @@ import { Slider } from "@/components/ui/slider";
 import { InfoIcon, ShipIcon, TimerIcon, FuelIcon, DollarSignIcon, LeafIcon, GlobeIcon } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import ResultsDisplay from "./results-display";
-import FuelPriceDisplay from "./fuel-price-display";
 import { apiRequest } from "@/lib/queryClient";
+
+interface VLSFOPrice {
+  price: number;
+  month: string;
+  year: number;
+}
 
 export default function CalculatorForm() {
   const [results, setResults] = useState<CalculationResult[] | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
 
-  const { data: fuelPriceData } = useQuery({
+  const { data: fuelPriceData } = useQuery<VLSFOPrice>({
     queryKey: ['/api/vlsfo-price'],
   });
 
@@ -28,7 +33,7 @@ export default function CalculatorForm() {
       fleetSize: undefined,
       voyageLength: undefined,
       fuelConsumption: undefined,
-      fuelPrice: fuelPriceData?.price || undefined,
+      fuelPrice: undefined,
       estimatedSavings: 5
     }
   });
@@ -44,9 +49,7 @@ export default function CalculatorForm() {
     formEvent.preventDefault();
     setIsCalculating(true);
     try {
-      console.log("Form submission started");
       const values = form.getValues();
-      console.log("Form values:", values);
       const formData = {
         fleetSize: Number(values.fleetSize),
         voyageLength: Number(values.voyageLength),
@@ -73,11 +76,9 @@ export default function CalculatorForm() {
             const res = await apiRequest("POST", "/api/calculate", data);
             if (!res.ok) throw new Error('API request failed');
             const json = await res.json();
-            console.log("API Response:", json);
             return { ...json, label: scenario.label };
           })
         );
-        console.log("All responses:", responses);
         if (Array.isArray(responses)) {
           setResults(responses);
         } else {
@@ -95,18 +96,15 @@ export default function CalculatorForm() {
 
   return (
     <div className="space-y-6">
-      <FuelPriceDisplay />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
         <div className="space-y-8 pt-4">
           <Form {...form}>
             <form 
-              onSubmit={(e) => {
-                e.preventDefault();
-                onSubmit(e);
-              }} 
+              onSubmit={onSubmit}
               className="space-y-8 p-4"
             >
               <div className="space-y-4">
+                {/* Fleet Size Field */}
                 <FormField
                   control={form.control}
                   name="fleetSize"
@@ -126,14 +124,10 @@ export default function CalculatorForm() {
                       </div>
                       <FormControl>
                         <Input 
-                          type="number" 
-                          placeholder={field.name === 'fleetSize' ? '10' : 
-                            field.name === 'voyageLength' ? '30' : 
-                            field.name === 'fuelConsumption' ? '50' : 
-                            field.name === 'fuelPrice' ? '750' : '5'}
-                          className="placeholder:text-gray-400 text-black"
-                          {...field} 
-                          onChange={e => field.onChange(parseFloat(e.target.value))} 
+                          type="number"
+                          placeholder="10"
+                          {...field}
+                          onChange={e => field.onChange(e.target.value ? Number(e.target.value) : undefined)}
                         />
                       </FormControl>
                       <FormMessage />
@@ -141,6 +135,7 @@ export default function CalculatorForm() {
                   )}
                 />
 
+                {/* Voyage Length Field */}
                 <FormField
                   control={form.control}
                   name="voyageLength"
@@ -160,14 +155,10 @@ export default function CalculatorForm() {
                       </div>
                       <FormControl>
                         <Input 
-                          type="number" 
-                          placeholder={field.name === 'fleetSize' ? '10' : 
-                            field.name === 'voyageLength' ? '30' : 
-                            field.name === 'fuelConsumption' ? '50' : 
-                            field.name === 'fuelPrice' ? '750' : '5'}
-                          className="placeholder:text-gray-400 text-black"
-                          {...field} 
-                          onChange={e => field.onChange(parseFloat(e.target.value))} 
+                          type="number"
+                          placeholder="30"
+                          {...field}
+                          onChange={e => field.onChange(e.target.value ? Number(e.target.value) : undefined)}
                         />
                       </FormControl>
                       <FormMessage />
@@ -175,6 +166,7 @@ export default function CalculatorForm() {
                   )}
                 />
 
+                {/* Fuel Consumption Field */}
                 <FormField
                   control={form.control}
                   name="fuelConsumption"
@@ -194,14 +186,10 @@ export default function CalculatorForm() {
                       </div>
                       <FormControl>
                         <Input 
-                          type="number" 
-                          placeholder={field.name === 'fleetSize' ? '10' : 
-                            field.name === 'voyageLength' ? '30' : 
-                            field.name === 'fuelConsumption' ? '50' : 
-                            field.name === 'fuelPrice' ? '750' : '5'}
-                          className="placeholder:text-gray-400 text-black"
-                          {...field} 
-                          onChange={e => field.onChange(parseFloat(e.target.value))} 
+                          type="number"
+                          placeholder="50"
+                          {...field}
+                          onChange={e => field.onChange(e.target.value ? Number(e.target.value) : undefined)}
                         />
                       </FormControl>
                       <FormMessage />
@@ -209,6 +197,7 @@ export default function CalculatorForm() {
                   )}
                 />
 
+                {/* Fuel Price Field */}
                 <FormField
                   control={form.control}
                   name="fuelPrice"
@@ -223,21 +212,28 @@ export default function CalculatorForm() {
                           <TooltipTrigger>
                             <InfoIcon className="h-4 w-4 text-muted-foreground" />
                           </TooltipTrigger>
-                          <TooltipContent>Current fuel price per metric ton</TooltipContent>
+                          <TooltipContent>
+                            <p className="max-w-xs text-sm">
+                              Global VLSFO Price: ${fuelPriceData?.price}/MT ({fuelPriceData?.month} {fuelPriceData?.year})
+                              <br />
+                              Based on Ship & Bunker's Global 20 Ports Average
+                            </p>
+                          </TooltipContent>
                         </Tooltip>
                       </div>
                       <FormControl>
                         <Input 
-                          type="number" 
-                          placeholder={field.name === 'fleetSize' ? '10' : 
-                            field.name === 'voyageLength' ? '30' : 
-                            field.name === 'fuelConsumption' ? '50' : 
-                            field.name === 'fuelPrice' ? '750' : '5'}
-                          className="placeholder:text-gray-400 text-black"
-                          {...field} 
-                          onChange={e => field.onChange(parseFloat(e.target.value))} 
+                          type="number"
+                          placeholder={fuelPriceData ? `${fuelPriceData.price}` : "750"}
+                          {...field}
+                          onChange={e => field.onChange(e.target.value ? Number(e.target.value) : undefined)}
                         />
                       </FormControl>
+                      {fuelPriceData && (
+                        <p className="text-xs text-slate-500 mt-1">
+                          Default price: ${fuelPriceData.price}/MT ({fuelPriceData.month} {fuelPriceData.year})
+                        </p>
+                      )}
                       <FormMessage />
                     </FormItem>
                   )}
@@ -249,7 +245,6 @@ export default function CalculatorForm() {
                 whileTap={{ scale: 0.98 }}
               >
                 <Button
-                  type="submit"
                   className="w-full"
                   disabled={isCalculating}
                   type="submit"
@@ -273,6 +268,7 @@ export default function CalculatorForm() {
             <div className="h-full flex flex-col items-center justify-center gap-2 text-muted-foreground mt-8">
               <div className="ship-container" style={{ transform: 'scale(0.15)', position: 'relative' }}>
                 <svg viewBox="0 0 200 150" className="w-48 h-48" style={{ marginBottom: '20px' }}>
+                  {/* Ship SVG content */}
                   <g stroke="#374151" strokeWidth="1">
                     {/* Hull */}
                     <path d="M30,100 L170,100 L150,130 L50,130 Z" fill="#1E3A8A"/>
