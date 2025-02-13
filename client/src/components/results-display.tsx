@@ -65,15 +65,15 @@ export default function ResultsDisplay({ results }: Props) {
       </Card>
 
       <Tabs defaultValue="average" className="w-full">
-        <TabsList className="grid w-full grid-cols-3 bg-slate-50 p-1">
+        <TabsList className="grid w-full grid-cols-3 bg-gray-50 p-1">
           {Object.entries(scenarios).map(([key, scenario]) => (
             <TabsTrigger 
               value={key} 
               key={key} 
               className={cn(
                 "text-sm font-medium",
-                key === "conservative" && "data-[state=active]:bg-amber-100 data-[state=active]:text-amber-900",
-                key === "average" && "data-[state=active]:bg-blue-100 data-[state=active]:text-blue-900",
+                key === "conservative" && "data-[state=active]:bg-sky-100 data-[state=active]:text-sky-900",
+                key === "average" && "data-[state=active]:bg-teal-100 data-[state=active]:text-teal-900",
                 key === "optimal" && "data-[state=active]:bg-emerald-100 data-[state=active]:text-emerald-900"
               )}
             >
@@ -87,16 +87,16 @@ export default function ResultsDisplay({ results }: Props) {
             <div className="grid grid-cols-2 gap-3">
               <Card className={cn(
                 "border shadow-sm",
-                key === "conservative" && "bg-amber-50",
-                key === "average" && "bg-blue-50",
+                key === "conservative" && "bg-sky-50",
+                key === "average" && "bg-teal-50",
                 key === "optimal" && "bg-emerald-50"
               )}>
                 <CardContent className="p-2.5">
                   <div className="space-y-1">
                     <div className={cn(
                       "flex items-center gap-1",
-                      key === "conservative" && "text-amber-700",
-                      key === "average" && "text-blue-700",
+                      key === "conservative" && "text-sky-700",
+                      key === "average" && "text-teal-700",
                       key === "optimal" && "text-emerald-700"
                     )}>
                       <DollarSign className="h-3.5 w-3.5" />
@@ -105,8 +105,8 @@ export default function ResultsDisplay({ results }: Props) {
                     <p className="text-lg font-bold text-slate-900">{formatCurrency(scenario.data.optimizedCost)}</p>
                     <p className={cn(
                       "text-[11px] font-medium",
-                      key === "conservative" && "text-amber-700",
-                      key === "average" && "text-blue-700",
+                      key === "conservative" && "text-sky-700",
+                      key === "average" && "text-teal-700",
                       key === "optimal" && "text-emerald-700"
                     )}>
                       <TrendingUp className="h-2.5 w-2.5 inline mr-1" />
@@ -118,8 +118,8 @@ export default function ResultsDisplay({ results }: Props) {
 
               <Card className={cn(
                 "border shadow-sm text-white",
-                key === "conservative" && "bg-amber-700",
-                key === "average" && "bg-blue-700",
+                key === "conservative" && "bg-sky-700",
+                key === "average" && "bg-teal-700",
                 key === "optimal" && "bg-emerald-700"
               )}>
                 <CardContent className="p-2.5">
@@ -134,8 +134,8 @@ export default function ResultsDisplay({ results }: Props) {
 
             <Card className={cn(
               "mt-2 border shadow-sm",
-              key === "conservative" && "bg-amber-50/50",
-              key === "average" && "bg-blue-50/50",
+              key === "conservative" && "bg-sky-50/50",
+              key === "average" && "bg-teal-50/50",
               key === "optimal" && "bg-emerald-50/50"
             )}>
               <CardContent className="p-2.5">
