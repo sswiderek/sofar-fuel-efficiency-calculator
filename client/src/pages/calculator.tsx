@@ -27,16 +27,13 @@ export default function Calculator() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="mb-8 p-4 bg-gradient-to-r from-sky-50 to-white border border-sky-100 rounded-lg">
-              <h2 className="text-lg font-medium text-slate-900 mb-2">How it works</h2>
-              <div className="space-y-3 text-sm text-slate-600">
-                <p>This calculator helps you estimate potential fuel savings and environmental impact using Sofar's Wayfinder platform:</p>
-                <ul className="list-disc list-inside space-y-1 ml-2">
-                  <li>Enter your fleet details and current fuel usage</li>
-                  <li>View savings scenarios based on real-world data</li>
-                  <li>Compare cost reductions and CO₂ savings across different optimization levels</li>
-                </ul>
-              </div>
+            <div className="mb-4 p-3 bg-gradient-to-r from-sky-50 to-white border border-sky-100 rounded-lg">
+              <h2 className="text-base font-medium text-slate-900 mb-1">How it works</h2>
+              <ul className="list-disc list-inside text-xs text-slate-600 space-y-0.5 ml-1">
+                <li>Enter your fleet details and current fuel usage</li>
+                <li>View savings scenarios based on real-world data</li>
+                <li>Compare cost reductions and CO₂ savings across optimization levels</li>
+              </ul>
             </div>
             <CalculatorForm />
             <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
