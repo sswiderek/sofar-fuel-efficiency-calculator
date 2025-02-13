@@ -214,7 +214,7 @@ export default function CalculatorForm() {
                       <div className="flex items-center gap-2">
                         <FormLabel className="flex items-center gap-2">
                           <DollarSignIcon className="h-4 w-4" />
-                          <span>Fuel Price (USD/MT){isFetchingPrice ? " - Loading..." : ""}</span>
+                          <span>Very Low Sulfur Fuel Oil Price{isFetchingPrice ? " - Loading..." : ""}</span>
                         </FormLabel>
                         <Tooltip>
                           <TooltipTrigger>
@@ -222,11 +222,12 @@ export default function CalculatorForm() {
                           </TooltipTrigger>
                           <TooltipContent>
                             <div className="space-y-2">
-                              <p className="text-sm font-medium">Monthly VLSFO Price</p>
+                              <p className="text-sm font-medium">Singapore VLSFO Price</p>
                               <div className="text-xs space-y-1 text-muted-foreground">
-                                <p>• Source: Ship & Bunker (Singapore)</p>
-                                <p>• Updated: {new Date().toLocaleString('default', { month: 'long', year: 'numeric' })}</p>
-                                <p>• Price is per metric ton (MT)</p>
+                                <p>• Daily average price for the previous month</p>
+                                <p>• Sourced from Ship & Bunker market data</p>
+                                <p>• Price in USD per metric ton (MT)</p>
+                                <p>• Last updated: {new Date().toLocaleString('default', { month: 'long', year: 'numeric' })}</p>
                               </div>
                             </div>
                           </TooltipContent>
@@ -243,9 +244,7 @@ export default function CalculatorForm() {
                       </FormControl>
                       <FormMessage />
                       <div className="flex items-center mt-1">
-                        <p className="text-[10px] text-slate-500">Currently: ${field.value}/MT</p>
-                        <p className="text-[10px] text-slate-400 mx-1">|</p>
-                        <p className="text-[10px] text-slate-500">Source: Ship & Bunker (via AI analysis)</p>
+                        <p className="text-[10px] text-slate-500">Current market price: ${field.value}/MT</p>
                       </div>
                     </FormItem>
                   )}
