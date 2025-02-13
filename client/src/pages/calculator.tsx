@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CalculatorForm from "@/components/calculator-form";
-import { WavesIcon } from "lucide-react";
+import { WavesIcon, Fuel as FuelIcon, DollarSign as DollarSignIcon, LeafIcon, Globe as GlobeIcon } from "lucide-react";
 
 export default function Calculator() {
   return (
