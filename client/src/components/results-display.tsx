@@ -56,10 +56,10 @@ export default function ResultsDisplay({ results }: Props) {
   return (
     <div className="space-y-4 pt-6">
       <Card className="border bg-white shadow-sm">
-        <CardContent className="p-6">
-          <div className="space-y-2">
-            <h3 className="text-lg font-medium text-slate-600">Current Annual Costs</h3>
-            <p className="text-4xl font-bold tracking-tight">{formatCurrency(results[0].totalFuelCost)}</p>
+        <CardContent className="p-3">
+          <div className="space-y-1">
+            <h3 className="text-sm font-medium text-slate-600">Current Annual Costs</h3>
+            <p className="text-2xl font-bold tracking-tight">{formatCurrency(results[0].totalFuelCost)}</p>
           </div>
         </CardContent>
       </Card>
@@ -81,15 +81,15 @@ export default function ResultsDisplay({ results }: Props) {
           <TabsContent key={key} value={key} className="mt-3">
             <div className="grid grid-cols-2 gap-3">
               <Card className="border bg-white shadow-sm">
-                <CardContent className="p-4">
-                  <div className="space-y-1.5">
-                    <div className="flex items-center gap-1.5 text-blue-600">
-                      <DollarSign className="h-4 w-4" />
-                      <h3 className="text-base font-medium">Optimized Cost</h3>
+                <CardContent className="p-2.5">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-1 text-blue-600">
+                      <DollarSign className="h-3.5 w-3.5" />
+                      <h3 className="text-sm font-medium">Optimized Cost</h3>
                     </div>
-                    <p className="text-2xl font-bold text-slate-900">{formatCurrency(scenario.data.optimizedCost)}</p>
-                    <p className="text-xs font-medium text-blue-600">
-                      <TrendingUp className="h-3 w-3 inline mr-1" />
+                    <p className="text-lg font-bold text-slate-900">{formatCurrency(scenario.data.optimizedCost)}</p>
+                    <p className="text-[11px] font-medium text-blue-600">
+                      <TrendingUp className="h-2.5 w-2.5 inline mr-1" />
                       {scenario.data.improvement}% improvement
                     </p>
                   </div>
@@ -97,25 +97,25 @@ export default function ResultsDisplay({ results }: Props) {
               </Card>
 
               <Card className="border bg-[#003D7C] text-white shadow-sm">
-                <CardContent className="p-4">
-                  <div className="space-y-1.5">
-                    <h3 className="text-base font-medium">Potential Savings</h3>
-                    <p className="text-2xl font-bold">{formatCurrency(scenario.data.savings)}</p>
-                    <p className="text-xs">Annual savings</p>
+                <CardContent className="p-2.5">
+                  <div className="space-y-1">
+                    <h3 className="text-sm font-medium">Potential Savings</h3>
+                    <p className="text-lg font-bold">{formatCurrency(scenario.data.savings)}</p>
+                    <p className="text-[11px]">Annual savings</p>
                   </div>
                 </CardContent>
               </Card>
             </div>
 
-            <Card className="mt-3 border bg-emerald-50 shadow-sm">
-              <CardContent className="p-4">
-                <div className="space-y-1.5">
-                  <div className="flex items-center gap-1.5 text-emerald-700">
-                    <Leaf className="h-4 w-4" />
-                    <h3 className="text-base font-medium">CO₂ Reduction</h3>
+            <Card className="mt-2 border bg-emerald-50 shadow-sm">
+              <CardContent className="p-2.5">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-1 text-emerald-700">
+                    <Leaf className="h-3.5 w-3.5" />
+                    <h3 className="text-sm font-medium">CO₂ Reduction</h3>
                   </div>
-                  <p className="text-2xl font-bold text-emerald-800">{formatNumber(scenario.data.co2Reduction)} MT</p>
-                  <p className="text-xs text-emerald-600">Annual emissions saved</p>
+                  <p className="text-lg font-bold text-emerald-800">{formatNumber(scenario.data.co2Reduction)} MT</p>
+                  <p className="text-[11px] text-emerald-600">Annual emissions saved</p>
                 </div>
               </CardContent>
             </Card>
