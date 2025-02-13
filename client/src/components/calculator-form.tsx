@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
@@ -15,26 +15,6 @@ import { apiRequest } from "@/lib/queryClient";
 export default function CalculatorForm() {
   const [results, setResults] = useState<CalculationResult[] | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
-  const [isFetchingPrice, setIsFetchingPrice] = useState(false);
-
-  useEffect(() => {
-    const fetchFuelPrice = async () => {
-      setIsFetchingPrice(true);
-      try {
-        const response = await fetch('/api/fuel-price');
-        const data = await response.json();
-        if (data.price) {
-          form.setValue('fuelPrice', data.price);
-        }
-      } catch (error) {
-        console.error('Failed to fetch fuel price:', error);
-      } finally {
-        setIsFetchingPrice(false);
-      }
-    };
-
-    fetchFuelPrice();
-  }, []);
 
   const form = useForm<CalculatorInput>({
     resolver: zodResolver(calculatorInputSchema),
@@ -133,7 +113,10 @@ export default function CalculatorForm() {
                       <FormControl>
                         <Input 
                           type="number" 
-                          placeholder="10"
+                          placeholder={field.name === 'fleetSize' ? '10' : 
+                            field.name === 'voyageLength' ? '30' : 
+                            field.name === 'fuelConsumption' ? '50' : 
+                            field.name === 'fuelPrice' ? '750' : '5'}
                           className="placeholder:text-gray-400 text-black"
                           {...field} 
                           onChange={e => field.onChange(parseFloat(e.target.value))} 
@@ -164,7 +147,10 @@ export default function CalculatorForm() {
                       <FormControl>
                         <Input 
                           type="number" 
-                          placeholder="30"
+                          placeholder={field.name === 'fleetSize' ? '10' : 
+                            field.name === 'voyageLength' ? '30' : 
+                            field.name === 'fuelConsumption' ? '50' : 
+                            field.name === 'fuelPrice' ? '750' : '5'}
                           className="placeholder:text-gray-400 text-black"
                           {...field} 
                           onChange={e => field.onChange(parseFloat(e.target.value))} 
@@ -195,7 +181,10 @@ export default function CalculatorForm() {
                       <FormControl>
                         <Input 
                           type="number" 
-                          placeholder="50"
+                          placeholder={field.name === 'fleetSize' ? '10' : 
+                            field.name === 'voyageLength' ? '30' : 
+                            field.name === 'fuelConsumption' ? '50' : 
+                            field.name === 'fuelPrice' ? '750' : '5'}
                           className="placeholder:text-gray-400 text-black"
                           {...field} 
                           onChange={e => field.onChange(parseFloat(e.target.value))} 
@@ -214,38 +203,28 @@ export default function CalculatorForm() {
                       <div className="flex items-center gap-2">
                         <FormLabel className="flex items-center gap-2">
                           <DollarSignIcon className="h-4 w-4" />
-                          <span>Very Low Sulfur Fuel Oil Price{isFetchingPrice ? " - Loading..." : ""}</span>
+                          <span>Fuel Price (USD/MT)</span>
                         </FormLabel>
                         <Tooltip>
                           <TooltipTrigger>
                             <InfoIcon className="h-4 w-4 text-muted-foreground" />
                           </TooltipTrigger>
-                          <TooltipContent>
-                            <div className="space-y-2">
-                              <p className="text-sm font-medium">Singapore VLSFO Price</p>
-                              <div className="text-xs space-y-1 text-muted-foreground">
-                                <p>• Daily average price for the previous month</p>
-                                <p>• Sourced from Ship & Bunker market data</p>
-                                <p>• Price in USD per metric ton (MT)</p>
-                                <p>• Last updated: {new Date().toLocaleString('default', { month: 'long', year: 'numeric' })}</p>
-                              </div>
-                            </div>
-                          </TooltipContent>
+                          <TooltipContent>Current fuel price per metric ton</TooltipContent>
                         </Tooltip>
                       </div>
                       <FormControl>
                         <Input 
                           type="number" 
-                          placeholder="750"
+                          placeholder={field.name === 'fleetSize' ? '10' : 
+                            field.name === 'voyageLength' ? '30' : 
+                            field.name === 'fuelConsumption' ? '50' : 
+                            field.name === 'fuelPrice' ? '750' : '5'}
                           className="placeholder:text-gray-400 text-black"
                           {...field} 
                           onChange={e => field.onChange(parseFloat(e.target.value))} 
                         />
                       </FormControl>
                       <FormMessage />
-                      <div className="flex items-center mt-1">
-                        <p className="text-[10px] text-slate-500">Current market price: ${field.value}/MT</p>
-                      </div>
                     </FormItem>
                   )}
                 />
