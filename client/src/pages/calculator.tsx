@@ -16,7 +16,7 @@ export default function Calculator() {
             <div className="flex items-center gap-4 py-3">
               <img src="/images/sofar-logo.png" alt="Sofar Logo" className="h-10 w-auto" />
               <div className="border-l pl-4 border-slate-200">
-                <CardTitle className="text-2xl font-light tracking-tight text-slate-900">
+                <CardTitle className="text-2xl font-bold tracking-tight text-slate-900">
                   Fuel Savings Calculator
                 </CardTitle>
                 <p className="text-xs text-slate-500 mt-1 tracking-wide">
