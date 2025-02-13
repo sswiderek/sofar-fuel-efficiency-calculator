@@ -62,7 +62,7 @@
     rgba(96, 165, 250, 0.1) 100%
   );
   background-size: 200% 100%;
-  margin-left: -10px;
+  margin-left: -20px;
   animation: wave 6s linear infinite;
   border-radius: 40%;
   filter: blur(0.5px);
