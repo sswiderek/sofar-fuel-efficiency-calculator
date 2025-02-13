@@ -133,10 +133,7 @@ export default function CalculatorForm() {
                       <FormControl>
                         <Input 
                           type="number" 
-                          placeholder={field.name === 'fleetSize' ? '10' : 
-                            field.name === 'voyageLength' ? '30' : 
-                            field.name === 'fuelConsumption' ? '50' : 
-                            field.name === 'fuelPrice' ? '750' : '5'}
+                          placeholder="10"
                           className="placeholder:text-gray-400 text-black"
                           {...field} 
                           onChange={e => field.onChange(parseFloat(e.target.value))} 
@@ -167,10 +164,7 @@ export default function CalculatorForm() {
                       <FormControl>
                         <Input 
                           type="number" 
-                          placeholder={field.name === 'fleetSize' ? '10' : 
-                            field.name === 'voyageLength' ? '30' : 
-                            field.name === 'fuelConsumption' ? '50' : 
-                            field.name === 'fuelPrice' ? '750' : '5'}
+                          placeholder="30"
                           className="placeholder:text-gray-400 text-black"
                           {...field} 
                           onChange={e => field.onChange(parseFloat(e.target.value))} 
@@ -201,10 +195,7 @@ export default function CalculatorForm() {
                       <FormControl>
                         <Input 
                           type="number" 
-                          placeholder={field.name === 'fleetSize' ? '10' : 
-                            field.name === 'voyageLength' ? '30' : 
-                            field.name === 'fuelConsumption' ? '50' : 
-                            field.name === 'fuelPrice' ? '750' : '5'}
+                          placeholder="50"
                           className="placeholder:text-gray-400 text-black"
                           {...field} 
                           onChange={e => field.onChange(parseFloat(e.target.value))} 
@@ -229,23 +220,33 @@ export default function CalculatorForm() {
                           <TooltipTrigger>
                             <InfoIcon className="h-4 w-4 text-muted-foreground" />
                           </TooltipTrigger>
-                          <TooltipContent>Current fuel price per metric ton</TooltipContent>
+                          <TooltipContent className="max-w-[300px]">
+                            <p>Monthly average VLSFO price in Singapore.</p>
+                            <p>Price data is estimated using AI analysis of market sources including Ship & Bunker.</p>
+                          </TooltipContent>
                         </Tooltip>
                       </div>
                       <FormControl>
                         <Input 
                           type="number" 
-                          placeholder={field.name === 'fleetSize' ? '10' : 
-                            field.name === 'voyageLength' ? '30' : 
-                            field.name === 'fuelConsumption' ? '50' : 
-                            field.name === 'fuelPrice' ? '750' : '5'}
+                          placeholder="750"
                           className="placeholder:text-gray-400 text-black"
                           {...field} 
                           onChange={e => field.onChange(parseFloat(e.target.value))} 
                         />
                       </FormControl>
                       <FormMessage />
-                      <p className="text-[10px] text-slate-400 mt-1">Source: AI-powered market analysis</p>
+                      <div className="flex items-center gap-1 mt-1">
+                        <p className="text-[10px] text-slate-500">Source: AI-powered market analysis</p>
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <InfoIcon className="h-3 w-3 text-slate-400" />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p className="text-xs">Last updated: {new Date().toLocaleString('default', { month: 'long', year: 'numeric' })}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </div>
                     </FormItem>
                   )}
                 />
