@@ -208,19 +208,24 @@ export default function CalculatorForm() {
             <div className="h-full flex flex-col items-center justify-center gap-2 text-muted-foreground mt-8">
               <div className="ship-container">
                 <svg viewBox="0 0 200 150" className="w-48 h-48">
-                  <path d="M20,110 Q100,120 180,110 L160,140 Q100,150 40,140 Z" fill="#0EA5E9" />
-                  <path d="M40,60 L160,60 L160,110 L40,110 Z" fill="#0EA5E9" />
-                  <rect x="140" y="30" width="30" height="30" fill="#CBD5E1" />
-                  <rect x="150" y="15" width="10" height="15" fill="#CBD5E1" />
-                  <rect x="45" y="65" width="25" height="20" fill="#2563EB" />
-                  <rect x="45" y="40" width="25" height="20" fill="#DC2626" />
-                  <rect x="75" y="65" width="25" height="20" fill="#F59E0B" />
-                  <rect x="75" y="40" width="25" height="20" fill="#16A34A" />
-                  <rect x="105" y="65" width="25" height="20" fill="#16A34A" />
-                  <rect x="105" y="40" width="25" height="20" fill="#2563EB" />
-                  <circle cx="30" cy="125" r="3" fill="#DC2626" />
-                  <circle cx="45" cy="125" r="3" fill="#DC2626" />
+                  <path d="M20,110 Q100,120 180,110 L160,140 Q100,150 40,140 Z" fill="#1E40AF" />
+                  <path d="M40,60 L160,60 L160,110 L40,110 Z" fill="#1E40AF" />
+                  <rect x="140" y="30" width="30" height="30" fill="#475569" />
+                  <rect x="150" y="15" width="10" height="15" fill="#475569" />
+                  <rect x="45" y="65" width="25" height="20" fill="#1D4ED8" />
+                  <rect x="45" y="40" width="25" height="20" fill="#B91C1C" />
+                  <rect x="75" y="65" width="25" height="20" fill="#D97706" />
+                  <rect x="75" y="40" width="25" height="20" fill="#15803D" />
+                  <rect x="105" y="65" width="25" height="20" fill="#15803D" />
+                  <rect x="105" y="40" width="25" height="20" fill="#1D4ED8" />
+                  <circle cx="30" cy="125" r="3" fill="#B91C1C" />
+                  <circle cx="45" cy="125" r="3" fill="#B91C1C" />
                 </svg>
+                <div className="waves-container">
+                  <div className="wave wave1"></div>
+                  <div className="wave wave2"></div>
+                  <div className="wave wave3"></div>
+                </div>
               </div>
               <p className="text-slate-700 text-base">Fill in your fleet details to calculate potential fuel savings</p>
             </div>
