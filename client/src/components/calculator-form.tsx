@@ -216,18 +216,23 @@ export default function CalculatorForm() {
           ) : (
             <div className="h-full flex flex-col items-center justify-center gap-2 text-muted-foreground mt-8">
               <div className="ship-container" style={{ transform: 'scale(0.4)' }}>
-                <svg viewBox="0 0 100 100" className="w-full h-full max-w-[120px]">
+                <svg viewBox="0 0 200 150" className="w-48 h-48">
                   {/* Hull */}
-                  <path d="M20,60 L80,60 L70,80 L30,80 Z" className="fill-slate-700" />
-                  {/* Cabin */}
-                  <rect x="35" y="35" width="30" height="25" className="fill-slate-600" />
-                  {/* Bridge */}
-                  <path d="M40,25 L60,25 L60,35 L40,35 Z" className="fill-slate-800" />
-                  {/* Windows */}
-                  <rect x="42" y="40" width="6" height="6" className="fill-sky-200" />
-                  <rect x="52" y="40" width="6" height="6" className="fill-sky-200" />
-                  {/* Flag */}
-                  <rect x="65" y="20" width="8" height="5" className="fill-sky-400" />
+                  <path d="M30,100 L170,100 L150,130 L50,130 Z" fill="#1E3A8A" stroke="#000" strokeWidth="2"/>
+                  {/* Red stripe */}
+                  <path d="M40,130 L160,130 L165,135 L35,135 Z" fill="#DC2626"/>
+                  {/* Main deck */}
+                  <path d="M50,60 L150,60 L150,100 L50,100 Z" fill="#1E3A8A" stroke="#000" strokeWidth="2"/>
+                  {/* Bridge tower */}
+                  <path d="M130,30 L150,30 L150,60 L130,60 Z" fill="#CBD5E1" stroke="#000" strokeWidth="2"/>
+                  <path d="M135,15 L145,15 L145,30 L135,30 Z" fill="#CBD5E1" stroke="#000" strokeWidth="2"/>
+                  {/* Containers */}
+                  <rect x="60" y="65" width="20" height="15" fill="#EAB308" stroke="#000"/>
+                  <rect x="60" y="45" width="20" height="15" fill="#DC2626" stroke="#000"/>
+                  <rect x="85" y="65" width="20" height="15" fill="#2563EB" stroke="#000"/>
+                  <rect x="85" y="45" width="20" height="15" fill="#EAB308" stroke="#000"/>
+                  <rect x="110" y="65" width="20" height="15" fill="#DC2626" stroke="#000"/>
+                  <rect x="110" y="45" width="20" height="15" fill="#2563EB" stroke="#000"/>
                 </svg>
                 <div className="waves-small"></div>
               </div>
