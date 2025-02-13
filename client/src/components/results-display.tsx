@@ -127,15 +127,11 @@ export default function ResultsDisplay({ results }: Props) {
               {scenario.data.map((item, i) => (
                 <Card 
                   key={i} 
-                  className={`transform transition-all duration-300 hover:scale-102 hover:shadow-lg ${
-                    item.title === 'Potential Savings' 
-                      ? 'bg-gradient-to-br from-emerald-600 to-teal-600 text-white shadow-lg ring-2 ring-emerald-100/50 hover:shadow-emerald-500' 
-                      : item.title === 'Current Costs'
-                      ? 'bg-gradient-to-br from-red-50 to-orange-50 border-red-200'
-                      : item.title === 'CO₂ Reduction'
-                      ? 'bg-gradient-to-br from-blue-50 to-sky-50 border-blue-200'
-                      : 'bg-gradient-to-br from-purple-50 to-violet-50 border-purple-200'
-                  } border-2 animate-fade-in`}
+                  className={cn(
+                    "bg-white border shadow-sm hover:shadow transition-shadow duration-200",
+                    item.title === 'Potential Savings' && "bg-primary text-primary-foreground",
+                    "animate-fade-in"
+                  )}
                   style={{ animationDelay: `${i * 150}ms` }}
                 >
                   <CardContent className="p-6">
