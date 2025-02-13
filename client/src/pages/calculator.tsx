@@ -10,8 +10,8 @@ export default function Calculator() {
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed'
     }}>
-      <div className="max-w-4xl mx-auto">
-        <Card className="w-full shadow-2xl bg-white/90 backdrop-blur-md ring-1 ring-slate-200">
+      <div className="max-w-6xl mx-auto">
+        <Card className="w-full shadow-xl bg-white/80 backdrop-blur-sm ring-1 ring-slate-100">
           <CardHeader className="space-y-2 pb-4 border-b">
             <div className="flex items-center gap-4 py-3">
               <img src="/images/sofar-logo.png" alt="Sofar Logo" className="h-10 w-auto" />
