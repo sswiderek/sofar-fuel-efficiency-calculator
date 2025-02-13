@@ -294,22 +294,8 @@ export default function CalculatorForm() {
             </motion.div>
           ) : (
             <div className="h-full flex flex-col items-center justify-center gap-2 text-muted-foreground mt-8">
-              <div className="ship-container" style={{ transform: 'scale(0.15)', position: 'relative' }}>
-                <svg viewBox="0 0 200 150" className="w-48 h-48" style={{ marginBottom: '20px' }}>
-                  {/* Ship hull */}
-                  <path d="M20,100 L180,100 L160,130 L40,130 Z" fill="#1E3A8A"/>
-                  {/* Container stack */}
-                  <rect x="40" y="60" width="120" height="40" fill="#1E3A8A"/>
-                  {/* Containers */}
-                  <rect x="45" y="65" width="25" height="15" fill="#EF4444"/>
-                  <rect x="75" y="65" width="25" height="15" fill="#3B82F6"/>
-                  <rect x="105" y="65" width="25" height="15" fill="#F59E0B"/>
-                  <rect x="135" y="65" width="20" height="15" fill="#EF4444"/>
-                  {/* Bridge */}
-                  <rect x="140" y="35" width="30" height="25" fill="#CBD5E1"/>
-                  {/* Top container */}
-                  <rect x="45" y="45" width="25" height="15" fill="#3B82F6"/>
-                </svg>
+              <div className="ship-container relative">
+                <img src="/images/cargo-ship.png" alt="Cargo Ship" className="w-48 h-48 object-contain mb-5" />
                 <div className="waves-small"></div>
               </div>
               <p className="text-slate-700 text-base">Fill in your fleet details to calculate potential fuel savings</p>
