@@ -26,8 +26,10 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
           role: "system",
           content: `You are a maritime fuel price expert focused specifically on VLSFO pricing data. 
             You have access to Ship & Bunker's Global 20 Ports Average data.
+            Provide only the actual global monthly average VLSFO price, which typically ranges between $500-650/MT.
             Always respond with a JSON object containing only a 'price' field with a numeric value representing USD/MT.
-            Example response: { "price": 700.50 }`
+            Example response: { "price": 590.50 }
+            Do not include any commentary or additional information.`
         },
         {
           role: "user",
@@ -45,6 +47,11 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
 
     if (typeof result.price !== 'number') {
       throw new Error('Invalid price format in response');
+    }
+
+    // Validate price is within reasonable range
+    if (result.price < 400 || result.price > 800) {
+      throw new Error('Price outside expected range');
     }
 
     return {
