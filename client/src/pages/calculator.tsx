@@ -21,19 +21,20 @@ export default function Calculator() {
                   Fuel Savings Calculator
                 </CardTitle>
                 <p className="text-xs text-slate-500 mt-1 tracking-wide">
-                  Calculate your potential savings with Wayfinder's weather routing technology
+                  Estimate potential fuel cost savings and CO₂ emission reductions using Sofar Ocean's Wayfinder platform
                 </p>
               </div>
             </div>
           </CardHeader>
           <CardContent>
-            <div className="mb-6 p-3 bg-gradient-to-r from-sky-50 to-white border border-sky-100 rounded-lg">
-              <h2 className="text-base font-medium text-slate-900 mb-1.5">How it works</h2>
-              <div className="text-xs text-slate-600">
-                <ul className="list-disc list-inside space-y-0.5 ml-1">
-                  <li>Enter your fleet details and fuel usage</li>
+            <div className="mb-8 p-4 bg-gradient-to-r from-sky-50 to-white border border-sky-100 rounded-lg">
+              <h2 className="text-lg font-medium text-slate-900 mb-2">How it works</h2>
+              <div className="space-y-3 text-sm text-slate-600">
+                <p>This calculator helps you estimate potential fuel savings and environmental impact using Sofar's Wayfinder platform:</p>
+                <ul className="list-disc list-inside space-y-1 ml-2">
+                  <li>Enter your fleet details and current fuel usage</li>
                   <li>View savings scenarios based on real-world data</li>
-                  <li>Compare cost and CO₂ savings across optimization levels</li>
+                  <li>Compare cost reductions and CO₂ savings across different optimization levels</li>
                 </ul>
               </div>
             </div>
