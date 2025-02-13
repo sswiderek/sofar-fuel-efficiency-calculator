@@ -1,20 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
+import { useQuery } from "@tanstack/react-query";
 import { calculatorInputSchema, type CalculatorInput, type CalculationResult } from "@shared/schema";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-import { InfoIcon, ShipIcon, TimerIcon, FuelIcon, DollarSignIcon, LeafIcon, GlobeIcon } from "lucide-react"; // Added icons
+import { InfoIcon, ShipIcon, TimerIcon, FuelIcon, DollarSignIcon, LeafIcon, GlobeIcon } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import ResultsDisplay from "./results-display";
+import FuelPriceDisplay from "./fuel-price-display";
 import { apiRequest } from "@/lib/queryClient";
 
 export default function CalculatorForm() {
   const [results, setResults] = useState<CalculationResult[] | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
+
+  const { data: fuelPriceData } = useQuery({
+    queryKey: ['/api/vlsfo-price'],
+  });
 
   const form = useForm<CalculatorInput>({
     resolver: zodResolver(calculatorInputSchema),
@@ -22,10 +28,17 @@ export default function CalculatorForm() {
       fleetSize: undefined,
       voyageLength: undefined,
       fuelConsumption: undefined,
-      fuelPrice: undefined,
+      fuelPrice: fuelPriceData?.price || undefined,
       estimatedSavings: 5
     }
   });
+
+  // Update fuel price when data is fetched
+  useEffect(() => {
+    if (fuelPriceData?.price) {
+      form.setValue('fuelPrice', fuelPriceData.price);
+    }
+  }, [fuelPriceData, form]);
 
   async function onSubmit(formEvent: React.FormEvent) {
     formEvent.preventDefault();
@@ -82,6 +95,7 @@ export default function CalculatorForm() {
 
   return (
     <div className="space-y-6">
+      <FuelPriceDisplay />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
         <div className="space-y-8 pt-4">
           <Form {...form}>
@@ -92,7 +106,7 @@ export default function CalculatorForm() {
               }} 
               className="space-y-8 p-4"
             >
-              <div className="space-y-4"> {/* Changed to vertical stacking */}
+              <div className="space-y-4">
                 <FormField
                   control={form.control}
                   name="fleetSize"
