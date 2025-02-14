@@ -1,0 +1,31 @@
+Warning: A component is changing an uncontrolled input to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://reactjs.org/link/controlled-components%s 
+    at input
+    at _c (https://a50ded4a-f93a-4116-8381-aac92617daea-00-2b5w3bp4ej82s.janeway.replit.dev/src/components/ui/input.tsx:20:11)
+    at https://a50ded4a-f93a-4116-8381-aac92617daea-00-2b5w3bp4ej82s.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-TQG5UYZM.js?v=387bc573:52:11
+    at https://a50ded4a-f93a-4116-8381-aac92617daea-00-2b5w3bp4ej82s.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-TQG5UYZM.js?v=387bc573:33:11
+    at https://a50ded4a-f93a-4116-8381-aac92617daea-00-2b5w3bp4ej82s.janeway.replit.dev/src/components/ui/form.tsx:127:9
+    at div
+    at https://a50ded4a-f93a-4116-8381-aac92617daea-00-2b5w3bp4ej82s.janeway.replit.dev/src/components/ui/form.tsx:71:6
+    at Controller (https://a50ded4a-f93a-4116-8381-aac92617daea-00-2b5w3bp4ej82s.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-RBMNEPGM.js?v=387bc573:313:35)
+    at FormField (https://a50ded4a-f93a-4116-8381-aac92617daea-00-2b5w3bp4ej82s.janeway.replit.dev/src/components/ui/form.tsx:32:6)
+    at div
+    at form
+    at FormProvider (https://a50ded4a-f93a-4116-8381-aac92617daea-00-2b5w3bp4ej82s.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-RBMNEPGM.js?v=387bc573:102:11)
+    at div
+    at div
+    at div
+    at CalculatorForm (https://a50ded4a-f93a-4116-8381-aac92617daea-00-2b5w3bp4ej82s.janeway.replit.dev/src/components/calculator-form.tsx:34:21)
+    at div
+    at _c9 (https://a50ded4a-f93a-4116-8381-aac92617daea-00-2b5w3bp4ej82s.janeway.replit.dev/src/components/ui/card.tsx:106:12)
+    at div
+    at _c (https://a50ded4a-f93a-4116-8381-aac92617daea-00-2b5w3bp4ej82s.janeway.replit.dev/src/components/ui/card.tsx:20:11)
+    at div
+    at div
+    at Calculator
+    at Route (https://a50ded4a-f93a-4116-8381-aac92617daea-00-2b5w3bp4ej82s.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=387bc573:323:16)
+    at Switch (https://a50ded4a-f93a-4116-8381-aac92617daea-00-2b5w3bp4ej82s.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=387bc573:379:17)
+    at Router
+    at Provider (https://a50ded4a-f93a-4116-8381-aac92617daea-00-2b5w3bp4ej82s.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-SQIOR43F.js?v=387bc573:35:15)
+    at TooltipProvider (https://a50ded4a-f93a-4116-8381-aac92617daea-00-2b5w3bp4ej82s.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=387bc573:2298:5)
+    at QueryClientProvider (https://a50ded4a-f93a-4116-8381-aac92617daea-00-2b5w3bp4ej82s.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=387bc573:2805:3)
+    at App
