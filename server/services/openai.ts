@@ -1,6 +1,7 @@
 import OpenAI from "openai";
 
 // the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
+console.log('API Key present:', !!process.env.OPENAI_API_KEY);
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 // In-memory cache for prices
@@ -88,12 +89,15 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
     };
   } catch (error) {
     console.error('Error fetching VLSFO price:', error);
+    const errorMessage = !process.env.OPENAI_API_KEY 
+      ? 'OpenAI API key is missing'
+      : 'Unable to fetch current VLSFO price';
     return {
       price: null,
       month: monthName,
       year: year,
       isError: true,
-      errorMessage: 'Unable to fetch current VLSFO price'
+      errorMessage
     };
   }
 }
