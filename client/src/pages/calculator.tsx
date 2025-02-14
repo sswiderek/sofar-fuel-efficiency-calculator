@@ -14,7 +14,7 @@ export default function Calculator() {
         <Card className="w-full shadow-xl bg-white/80 backdrop-blur-sm ring-1 ring-slate-100">
           <CardHeader className="space-y-2 pb-4 border-b">
             <div className="flex items-center gap-4 py-3">
-              <img src="/images/sofar-logo.png" alt="Sofar Logo" className="h-10 w-auto" />
+              <img src="/images/sofar-logov2.png" alt="Sofar Logo" className="h-10 w-auto" />
               <div className="border-l pl-4 border-slate-200">
                 <CardTitle className="text-2xl font-bold tracking-tight text-slate-900">
                   Fuel Savings Calculator
