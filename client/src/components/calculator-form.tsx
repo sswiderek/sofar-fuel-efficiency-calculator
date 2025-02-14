@@ -34,10 +34,10 @@ export default function CalculatorForm() {
   const form = useForm<CalculatorInput>({
     resolver: zodResolver(calculatorInputSchema),
     defaultValues: {
-      fleetSize: undefined,
-      voyageLength: undefined,
-      fuelConsumption: undefined,
-      fuelPrice: undefined,
+      fleetSize: '',
+      voyageLength: '',
+      fuelConsumption: '',
+      fuelPrice: '',
       estimatedSavings: 5
     }
   });
@@ -45,7 +45,7 @@ export default function CalculatorForm() {
   // Update fuel price when data is fetched
   useEffect(() => {
     if (fuelPriceData?.price) {
-      form.setValue('fuelPrice', fuelPriceData.price);
+      form.setValue('fuelPrice', fuelPriceData.price.toString());
     }
   }, [fuelPriceData, form]);
 
