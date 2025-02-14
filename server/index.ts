@@ -66,13 +66,18 @@ app.use((req, res, next) => {
     await setupVite(app, server);
   } else {
     // Serve static files
-    app.use(express.static(path.join(__dirname, '../dist/public')));
+    app.use(express.static('dist/public'));
     
-    // Handle SPA routing - serve index.html for all non-API routes
-    app.get('*', (req, res) => {
-      if (!req.path.startsWith('/api')) {
-        res.sendFile(path.join(__dirname, '../dist/public/index.html'));
+    // API routes should be handled before the catch-all
+    app.use('/api', (req, res, next) => {
+      if (req.path.startsWith('/api')) {
+        next();
       }
+    });
+
+    // Handle SPA routing - serve index.html for all other routes
+    app.get('*', (_req, res) => {
+      res.sendFile(path.resolve(__dirname, '../dist/public/index.html'));
     });
   }
 
