@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CalculatorForm from "@/components/calculator-form";
-import { WavesIcon, Fuel as FuelIcon, DollarSign as DollarSignIcon, LeafIcon, Globe as GlobeIcon, SettingsIcon, BarChartIcon, TrendingUpIcon } from "lucide-react";
+import { WavesIcon, Fuel as FuelIcon, DollarSign as DollarSignIcon, LeafIcon, Globe as GlobeIcon, SettingsIcon, BarChartIcon, TrendingUpIcon, TargetIcon } from "lucide-react";
 
 export default function Calculator() {
   return (
@@ -96,7 +96,7 @@ export default function Calculator() {
                     <div className="flex flex-col justify-center min-h-[180px] p-6">
                       <div className="flex items-center gap-3 mb-3">
                         <div className="p-2 rounded-lg bg-blue-700/50 group-hover:bg-blue-600/50 transition-colors duration-200">
-                          <BarChartIcon className="h-5 w-5 text-blue-100" />
+                          <TargetIcon className="h-5 w-5 text-blue-100" />
                         </div>
                         <CardTitle className="text-xl">Validate Your Savings</CardTitle>
                       </div>
