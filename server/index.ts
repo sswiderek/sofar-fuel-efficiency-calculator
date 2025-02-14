@@ -1,3 +1,6 @@
+
+import path from 'path';
+
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
@@ -62,9 +65,14 @@ app.use((req, res, next) => {
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
-    app.use(express.static('dist/public'));
-    app.get('*', (_req, res) => {
-      res.sendFile('dist/public/index.html', { root: '.' });
+    // Serve static files
+    app.use(express.static(path.join(__dirname, '../dist/public')));
+    
+    // Handle SPA routing - serve index.html for all non-API routes
+    app.get('*', (req, res) => {
+      if (!req.path.startsWith('/api')) {
+        res.sendFile(path.join(__dirname, '../dist/public/index.html'));
+      }
     });
   }
 
