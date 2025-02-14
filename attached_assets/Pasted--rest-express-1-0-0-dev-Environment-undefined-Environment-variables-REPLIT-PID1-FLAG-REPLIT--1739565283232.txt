@@ -1,0 +1,98 @@
+> rest-express@1.0.0 dev
+Environment: undefined
+Environment variables: [
+  'REPLIT_PID1_FLAG_REPLIT_RTLD_LOADER',
+  'npm_command',
+  'npm_config_userconfig',
+  'COLORTERM',
+  'npm_config_cache',
+  'REPL_OWNER',
+  'NIXPKGS_ALLOW_UNFREE',
+  'HOSTNAME',
+  '__EGL_VENDOR_LIBRARY_FILENAMES',
+  'NODE',
+  'REPLIT_DOMAINS',
+  'XDG_DATA_HOME',
+  'REPL_OWNER_ID',
+  'XDG_CONFIG_HOME',
+  'REPLIT_LD_AUDIT',
+  'COLOR',
+  'npm_config_local_prefix',
+  'REPLIT_CLI',
+  'npm_config_globalconfig',
+  'EDITOR',
+  'REPLIT_USER',
+  'REPLIT_SUBCLUSTER',
+  'PWD',
+  'NIX_PROFILES',
+  'REPLIT_DB_URL',
+  'REPLIT_SESSION',
+  'NIX_PATH',
+  'npm_config_init_module',
+  'REPL_ID',
+  'HOME',
+  'LANG',
+  'REPL_IDENTITY',
+  'LS_COLORS',
+  'REPLIT_RIPPKGS_INDICES',
+  'npm_package_version',
+  'GIT_ASKPASS',
+  'REPL_IMAGE',
+  'DIRENV_CONFIG',
+  'INIT_CWD',
+  'REPLIT_PID1_FLAG_NIXMODULES_BEFORE_REPLIT_NIX',
+  'XDG_CACHE_HOME',
+  'npm_lifecycle_script',
+  'REPLIT_RTLD_LOADER',
+  'npm_config_npm_version',
+  'REPLIT_DEV_DOMAIN',
+  'TERM',
+  'npm_package_name',
+  'REPLIT_CLUSTER',
+  'REPLIT_BASHRC',
+  'npm_config_prefix',
+  'REPL_LANGUAGE',
+  'OPEN_API_KEY',
+  'USER',
+  'REPL_HOME',
+  'REPLIT_PID1_VERSION',
+  'DISPLAY',
+  'npm_lifecycle_event',
+  'SHLVL',
+  'REPLIT_NIX_CHANNEL',
+  'GIT_EDITOR',
+  'REPLIT_USERID',
+  'PROMPT_DIRTRIM',
+  'LIBGL_DRIVERS_PATH',
+  'REPLIT_MODE',
+  'LOCALE_ARCHIVE',
+  'npm_config_user_agent',
+  'npm_execpath',
+  'REPLIT_PID2',
+  'REPLIT_ENVIRONMENT',
+  'npm_package_json',
+  'XDG_DATA_DIRS',
+  'REPL_IDENTITY_KEY',
+  'npm_config_noproxy',
+  'PATH',
+  'npm_config_node_gyp',
+  'DOCKER_CONFIG',
+  'npm_config_global_prefix',
+  'REPL_PUBKEYS',
+  'npm_node_execpath',
+  'REPL_SLUG'
+]
+API Key length: undefined
+API Key first 4 chars: undefined
+/home/runner/workspace/server/services/openai.ts:10
+  throw new Error('OPENAI_API_KEY environment variable is not set');
+        ^
+
+
+Error: OPENAI_API_KEY environment variable is not set
+    at <anonymous> (/home/runner/workspace/server/services/openai.ts:10:9)
+    at ModuleJob.run (node:internal/modules/esm/module_job:234:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:473:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:122:5)
+
+Node.js v20.18.1
