@@ -1,8 +1,12 @@
 import OpenAI from "openai";
 
 // the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
-console.log('API Key present:', !!process.env.OPENAI_API_KEY);
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const apiKey = process.env.OPENAI_API_KEY;
+if (!apiKey) {
+  throw new Error('OPENAI_API_KEY environment variable is not set');
+}
+console.log('API Key present:', true);
+const openai = new OpenAI({ apiKey });
 
 // In-memory cache for prices
 const priceCache: Record<string, number> = {};
