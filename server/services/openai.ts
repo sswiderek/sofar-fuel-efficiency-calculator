@@ -20,15 +20,24 @@ interface CachedPrice {
 
 const CACHE_FILE = path.join(__dirname, '../cache/fuel-prices.json');
 
-// Ensure cache directory exists
+// Ensure cache directory exists with proper permissions
 if (!fs.existsSync(path.dirname(CACHE_FILE))) {
-  fs.mkdirSync(path.dirname(CACHE_FILE), { recursive: true });
+  fs.mkdirSync(path.dirname(CACHE_FILE), { recursive: true, mode: 0o777 });
 }
+
+let memoryCache: Record<string, CachedPrice> = {};
 
 function loadCache(): Record<string, CachedPrice> {
   try {
+    // First check memory cache
+    if (Object.keys(memoryCache).length > 0) {
+      return memoryCache;
+    }
+    // Then check file cache
     if (fs.existsSync(CACHE_FILE)) {
-      return JSON.parse(fs.readFileSync(CACHE_FILE, 'utf-8'));
+      const cache = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf-8'));
+      memoryCache = cache; // Update memory cache
+      return cache;
     }
   } catch (error) {
     console.error('Error loading cache:', error);
@@ -38,7 +47,8 @@ function loadCache(): Record<string, CachedPrice> {
 
 function saveCache(cache: Record<string, CachedPrice>): void {
   try {
-    fs.writeFileSync(CACHE_FILE, JSON.stringify(cache, null, 2));
+    memoryCache = cache; // Update memory cache
+    fs.writeFileSync(CACHE_FILE, JSON.stringify(cache, null, 2), { mode: 0o666 });
   } catch (error) {
     console.error('Error saving cache:', error);
   }
