@@ -29,16 +29,24 @@ let memoryCache: Record<string, CachedPrice> = {};
 
 function loadCache(): Record<string, CachedPrice> {
   try {
+    console.log('Memory cache state:', memoryCache);
+    
     // First check memory cache
     if (Object.keys(memoryCache).length > 0) {
+      console.log('Using memory cache');
       return memoryCache;
     }
+    
     // Then check file cache
     if (fs.existsSync(CACHE_FILE)) {
+      console.log('Loading from file cache');
       const cache = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf-8'));
+      console.log('File cache contents:', cache);
       memoryCache = cache; // Update memory cache
       return cache;
     }
+    
+    console.log('No cache found');
   } catch (error) {
     console.error('Error loading cache:', error);
   }
