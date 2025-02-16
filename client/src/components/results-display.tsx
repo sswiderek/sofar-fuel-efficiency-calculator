@@ -134,7 +134,7 @@ export default function ResultsDisplay({ results }: Props) {
               )}>
                 <CardContent className="p-2.5">
                   <div className="space-y-1">
-                    <h3 className="text-sm font-medium">Potential Savings</h3>
+                    <h3 className="text-sm font-medium">Estimated Savings</h3>
                     <p className="text-lg font-bold">{formatCurrency(scenario.data.savings)}</p>
                     <p className="text-[11px]">Annual savings</p>
                   </div>
