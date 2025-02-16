@@ -63,12 +63,12 @@ function saveCache(cache: Record<string, CachedPrice>): void {
 
 function isValidCache(cache: CachedPrice, targetMonth: Date): boolean {
   if (!cache) return false;
-  
+
   // Compare the cache key format (e.g. "January-2025") instead of timestamp
   const monthName = targetMonth.toLocaleString('en-US', { month: 'long' });
   const year = targetMonth.getFullYear();
   const cacheKey = `${monthName}-${year}`;
-  
+
   return memoryCache[cacheKey] && memoryCache[cacheKey].price === cache.price;
 }
 
