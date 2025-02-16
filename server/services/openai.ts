@@ -63,9 +63,14 @@ function saveCache(cache: Record<string, CachedPrice>): void {
 }
 
 function isValidCache(cache: CachedPrice, targetMonth: Date): boolean {
+  // Cache is valid if it exists for the target month/year regardless of timestamp
   const cacheDate = new Date(cache.timestamp);
-  return cacheDate.getMonth() === targetMonth.getMonth() 
-    && cacheDate.getFullYear() === targetMonth.getFullYear();
+  const cacheMonth = cacheDate.getMonth();
+  const cacheYear = cacheDate.getFullYear();
+  const targetMonthNum = targetMonth.getMonth();
+  const targetYear = targetMonth.getFullYear();
+  
+  return cacheMonth === targetMonthNum && cacheYear === targetYear;
 }
 
 interface VLSFOPrice {
@@ -84,10 +89,13 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
   const cacheKey = `${monthName}-${year}`;
 
   try {
-    // Load and check cache
+    // Load cache
     const priceCache = loadCache();
     const cachedData = priceCache[cacheKey];
+    
+    // If we have valid cached data for this month/year, use it
     if (cachedData && isValidCache(cachedData, previousMonth)) {
+      console.log(`Using cached price for ${monthName} ${year}: ${cachedData.price}`);
       return {
         price: cachedData.price,
         month: monthName,
@@ -95,6 +103,8 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
         isError: false
       };
     }
+    
+    console.log(`No valid cache found for ${monthName} ${year}, fetching new price`);
 
     const response = await openai.chat.completions.create({
       model: "gpt-4",
