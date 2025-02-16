@@ -7,13 +7,39 @@ if (!apiKey) {
 }
 const openai = new OpenAI({ apiKey });
 
-// Cache structure with timestamp to ensure monthly consistency
+import fs from 'fs';
+import path from 'path';
+
 interface CachedPrice {
   price: number;
   timestamp: number;
 }
 
-const priceCache: Record<string, CachedPrice> = {};
+const CACHE_FILE = path.join(__dirname, '../cache/fuel-prices.json');
+
+// Ensure cache directory exists
+if (!fs.existsSync(path.dirname(CACHE_FILE))) {
+  fs.mkdirSync(path.dirname(CACHE_FILE), { recursive: true });
+}
+
+function loadCache(): Record<string, CachedPrice> {
+  try {
+    if (fs.existsSync(CACHE_FILE)) {
+      return JSON.parse(fs.readFileSync(CACHE_FILE, 'utf-8'));
+    }
+  } catch (error) {
+    console.error('Error loading cache:', error);
+  }
+  return {};
+}
+
+function saveCache(cache: Record<string, CachedPrice>): void {
+  try {
+    fs.writeFileSync(CACHE_FILE, JSON.stringify(cache, null, 2));
+  } catch (error) {
+    console.error('Error saving cache:', error);
+  }
+}
 
 function isValidCache(cache: CachedPrice, targetMonth: Date): boolean {
   const cacheDate = new Date(cache.timestamp);
@@ -37,7 +63,8 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
   const cacheKey = `${monthName}-${year}`;
 
   try {
-    // Check cache with timestamp validation
+    // Load and check cache
+    const priceCache = loadCache();
     const cachedData = priceCache[cacheKey];
     if (cachedData && isValidCache(cachedData, previousMonth)) {
       return {
@@ -78,11 +105,13 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
       throw new Error('Price outside expected range');
     }
 
-    // Cache with timestamp
-    priceCache[cacheKey] = {
+    // Update and save cache
+    const updatedCache = loadCache();
+    updatedCache[cacheKey] = {
       price: roundedPrice,
       timestamp: Date.now()
     };
+    saveCache(updatedCache);
 
     return {
       price: roundedPrice,
