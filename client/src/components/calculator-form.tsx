@@ -92,9 +92,9 @@ export default function CalculatorForm() {
       }
 
       const scenarios = [
-        { savings: 4, label: 'Conservative Savings' },
-        { savings: 6, label: 'Average Savings' },
-        { savings: 8, label: 'Optimal Savings' }
+        { savings: 3, label: 'Conservative Savings' },
+        { savings: 5, label: 'Average Savings' },
+        { savings: 7, label: 'Optimal Savings' }
       ];
 
       try {
