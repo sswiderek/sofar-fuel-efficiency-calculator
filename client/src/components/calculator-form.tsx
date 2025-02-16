@@ -50,10 +50,10 @@ export default function CalculatorForm() {
   }, [fuelPriceData, form]);
 
   async function onSubmit(formEvent: React.FormEvent) {
-    if (formEvent.target !== formEvent.currentTarget) {
+    formEvent.preventDefault();
+    if (!(formEvent.nativeEvent instanceof SubmitEvent)) {
       return;
     }
-    formEvent.preventDefault();
 
     const values = form.getValues();
     const emptyFields = [];

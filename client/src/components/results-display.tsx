@@ -62,7 +62,7 @@ export default function ResultsDisplay({ results }: Props) {
               <h3 className="text-sm font-medium text-slate-600">Current Annual Costs</h3>
               <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
-                  <button type="button" className="p-0 m-0 border-0 bg-transparent">
+                  <button type="button" className="p-1 -m-1 border-0 bg-transparent">
                     <InfoCircledIcon className="h-4 w-4 text-slate-400" />
                   </button>
                 </TooltipTrigger>
@@ -161,8 +161,10 @@ export default function ResultsDisplay({ results }: Props) {
                   <div className="flex items-center gap-1">
                     <p className="text-[11px] text-emerald-600">≈ {formatNumber(scenario.data.co2Reduction * 0.217)} cars off the road</p>
                     <Tooltip>
-                      <TooltipTrigger>
-                        <InfoCircledIcon className="h-3 w-3 text-emerald-600" />
+                      <TooltipTrigger asChild>
+                        <button type="button" className="p-1 -m-1 border-0 bg-transparent">
+                          <InfoCircledIcon className="h-3 w-3 text-emerald-600" />
+                        </button>
                       </TooltipTrigger>
                       <TooltipContent className="w-60">
                         Equivalent to removing this many passenger vehicles from the road for one year, based on average annual vehicle emissions of 4.6 metric tons of CO₂ (EPA, 2023)
