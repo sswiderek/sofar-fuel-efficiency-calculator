@@ -156,7 +156,17 @@ export default function ResultsDisplay({ results }: Props) {
                   </div>
                   <p className="text-lg font-bold text-emerald-800">{formatNumber(scenario.data.co2Reduction)} MT</p>
                   <p className="text-[11px] text-emerald-600">Annual emissions saved</p>
-                  <p className="text-[11px] text-emerald-600">≈ {formatNumber(scenario.data.co2Reduction * 0.217)} cars off the road</p>
+                  <div className="flex items-center gap-1">
+                    <p className="text-[11px] text-emerald-600">≈ {formatNumber(scenario.data.co2Reduction * 0.217)} cars off the road</p>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <InfoCircledIcon className="h-3 w-3 text-emerald-600" />
+                      </TooltipTrigger>
+                      <TooltipContent className="w-60">
+                        Equivalent to removing this many passenger vehicles from the road for one year, based on average annual vehicle emissions of 4.6 metric tons of CO₂
+                      </TooltipContent>
+                    </Tooltip>
+                  </div>
                 </div>
               </CardContent>
             </Card>
