@@ -175,7 +175,14 @@ export default function CalculatorForm() {
                           <TooltipTrigger>
                             <InfoIcon className="h-4 w-4 text-muted-foreground" />
                           </TooltipTrigger>
-                          <TooltipContent>Average duration of voyages</TooltipContent>
+                          <TooltipContent className="max-w-sm p-2">
+  <div className="space-y-1">
+    <div className="text-sm font-medium">Average Voyage Length</div>
+    <div className="text-xs text-muted-foreground">
+      Enter the typical duration of your voyages in days. For varied routes, use your fleet's average voyage duration. Include sea days only, excluding port time.
+    </div>
+  </div>
+</TooltipContent>
                         </Tooltip>
                       </div>
                       <FormControl>
@@ -206,7 +213,14 @@ export default function CalculatorForm() {
                           <TooltipTrigger>
                             <InfoIcon className="h-4 w-4 text-muted-foreground" />
                           </TooltipTrigger>
-                          <TooltipContent>Average daily fuel consumption in metric tons</TooltipContent>
+                          <TooltipContent className="max-w-sm p-2">
+  <div className="space-y-1">
+    <div className="text-sm font-medium">Daily Fuel Consumption (MT/Day)</div>
+    <div className="text-xs text-muted-foreground">
+      Enter your fleet's average fuel consumption in Metric Tons per day while at sea. For mixed fleets, use a weighted average based on vessel operating days.
+    </div>
+  </div>
+</TooltipContent>
                         </Tooltip>
                       </div>
                       <FormControl>
