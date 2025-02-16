@@ -1,3 +1,9 @@
+
+.touch-target {
+  padding: 8px;
+  margin: -8px;
+}
+
 @keyframes fadeIn {
   from { 
     opacity: 0; 
