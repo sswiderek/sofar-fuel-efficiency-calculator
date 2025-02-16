@@ -140,12 +140,11 @@ export default function CalculatorForm() {
                           <ShipIcon className="h-4 w-4" />
                           <span>Fleet Size</span>
                         </FormLabel>
-                        <Tooltip delayDuration={0} disableHoverableContent={true}>
+                        <Tooltip>
                           <TooltipTrigger asChild>
                             <button 
                               type="button" 
                               className="p-1 -m-1 border-0 bg-transparent touch-manipulation"
-                              onClick={(e) => e.stopPropagation()}
                             >
                               <InfoIcon className="h-4 w-4 text-muted-foreground" />
                             </button>
@@ -177,12 +176,11 @@ export default function CalculatorForm() {
                           <TimerIcon className="h-4 w-4" />
                           <span>Average Voyage Length (Days)</span>
                         </FormLabel>
-                        <Tooltip delayDuration={0} disableHoverableContent={true}>
+                        <Tooltip>
                           <TooltipTrigger asChild>
                             <button 
                               type="button" 
                               className="p-1 -m-1 border-0 bg-transparent touch-manipulation"
-                              onClick={(e) => e.stopPropagation()}
                             >
                               <InfoIcon className="h-4 w-4 text-muted-foreground" />
                             </button>
@@ -221,12 +219,11 @@ export default function CalculatorForm() {
                           <FuelIcon className="h-4 w-4" />
                           <span>Fuel Consumption (MT/Day)</span>
                         </FormLabel>
-                        <Tooltip delayDuration={0} disableHoverableContent={true}>
+                        <Tooltip>
                           <TooltipTrigger asChild>
                             <button 
                               type="button" 
                               className="p-1 -m-1 border-0 bg-transparent touch-manipulation"
-                              onClick={(e) => e.stopPropagation()}
                             >
                               <InfoIcon className="h-4 w-4 text-muted-foreground" />
                             </button>
@@ -265,12 +262,11 @@ export default function CalculatorForm() {
                           <DollarSignIcon className="h-4 w-4" />
                           <span>Fuel Price (USD/MT)</span>
                         </FormLabel>
-                        <Tooltip delayDuration={0} disableHoverableContent={true}>
+                        <Tooltip>
                           <TooltipTrigger asChild>
                             <button 
                               type="button" 
                               className="p-1 -m-1 border-0 bg-transparent touch-manipulation"
-                              onClick={(e) => e.stopPropagation()}
                             >
                               <InfoIcon className="h-4 w-4 text-muted-foreground" />
                             </button>
