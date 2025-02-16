@@ -58,7 +58,17 @@ export default function ResultsDisplay({ results }: Props) {
       <Card className="border bg-white shadow-sm">
         <CardContent className="p-3">
           <div className="space-y-1">
-            <h3 className="text-sm font-medium text-slate-600">Current Annual Costs</h3>
+            <div className="flex items-center gap-2">
+              <h3 className="text-sm font-medium text-slate-600">Current Annual Costs</h3>
+              <Tooltip>
+                <TooltipTrigger>
+                  <InfoCircledIcon className="h-4 w-4 text-slate-400" />
+                </TooltipTrigger>
+                <TooltipContent className="w-60">
+                  Based on {formatNumber(results[0].totalFuelConsumption)} MT of fuel consumed annually by your fleet
+                </TooltipContent>
+              </Tooltip>
+            </div>
             <p className="text-2xl font-bold tracking-tight">{formatCurrency(results[0].totalFuelCost)}</p>
           </div>
         </CardContent>
