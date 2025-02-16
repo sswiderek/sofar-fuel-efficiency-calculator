@@ -62,7 +62,7 @@ export default function ResultsDisplay({ results }: Props) {
               <h3 className="text-sm font-medium text-slate-600">Current Annual Costs</h3>
               <Tooltip>
                 <TooltipTrigger>
-                  <InfoCircledIcon className="h-5 w-5 text-slate-400 touch-target" />
+                  <InfoCircledIcon className="h-4 w-4 text-slate-400" />
                 </TooltipTrigger>
                 <TooltipContent className="w-60">
                   Based on <span className="font-bold">{formatNumber(results[0].totalFuelConsumption)}</span> MT of fuel consumed annually by your fleet
