@@ -60,11 +60,13 @@ export default function ResultsDisplay({ results }: Props) {
           <div className="space-y-1">
             <div className="flex items-center gap-2">
               <h3 className="text-sm font-medium text-slate-600">Current Annual Costs</h3>
-              <Tooltip>
-                <TooltipTrigger>
-                  <InfoCircledIcon className="h-4 w-4 text-slate-400" />
+              <Tooltip delayDuration={0}>
+                <TooltipTrigger asChild>
+                  <button type="button" className="p-0 m-0 border-0 bg-transparent">
+                    <InfoCircledIcon className="h-4 w-4 text-slate-400" />
+                  </button>
                 </TooltipTrigger>
-                <TooltipContent className="w-60">
+                <TooltipContent sideOffset={5} className="w-60">
                   Based on <span className="font-bold">{formatNumber(results[0].totalFuelConsumption)}</span> MT of fuel consumed annually by your fleet
                 </TooltipContent>
               </Tooltip>
