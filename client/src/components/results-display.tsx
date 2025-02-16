@@ -163,7 +163,7 @@ export default function ResultsDisplay({ results }: Props) {
                         <InfoCircledIcon className="h-3 w-3 text-emerald-600" />
                       </TooltipTrigger>
                       <TooltipContent className="w-60">
-                        Equivalent to removing this many passenger vehicles from the road for one year, based on average annual vehicle emissions of 4.6 metric tons of CO₂
+                        Equivalent to removing this many passenger vehicles from the road for one year, based on average annual vehicle emissions of 4.6 metric tons of CO₂ (EPA, 2023)
                       </TooltipContent>
                     </Tooltip>
                   </div>
