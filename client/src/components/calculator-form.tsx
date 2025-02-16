@@ -141,8 +141,14 @@ export default function CalculatorForm() {
                           <span>Fleet Size</span>
                         </FormLabel>
                         <Tooltip>
-                          <TooltipTrigger>
-                            <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                          <TooltipTrigger asChild>
+                            <button 
+                              type="button" 
+                              className="p-1 -m-1 border-0 bg-transparent"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                            </button>
                           </TooltipTrigger>
                           <TooltipContent>Number of ships in your fleet</TooltipContent>
                         </Tooltip>
@@ -172,8 +178,14 @@ export default function CalculatorForm() {
                           <span>Average Voyage Length (Days)</span>
                         </FormLabel>
                         <Tooltip>
-                          <TooltipTrigger>
-                            <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                          <TooltipTrigger asChild>
+                            <button 
+                              type="button" 
+                              className="p-1 -m-1 border-0 bg-transparent"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                            </button>
                           </TooltipTrigger>
                           <TooltipContent className="max-w-sm p-2">
   <div className="space-y-1">
@@ -210,8 +222,14 @@ export default function CalculatorForm() {
                           <span>Fuel Consumption (MT/Day)</span>
                         </FormLabel>
                         <Tooltip>
-                          <TooltipTrigger>
-                            <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                          <TooltipTrigger asChild>
+                            <button 
+                              type="button" 
+                              className="p-1 -m-1 border-0 bg-transparent"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                            </button>
                           </TooltipTrigger>
                           <TooltipContent className="max-w-sm p-2">
   <div className="space-y-1">
@@ -248,8 +266,14 @@ export default function CalculatorForm() {
                           <span>Fuel Price (USD/MT)</span>
                         </FormLabel>
                         <Tooltip>
-                          <TooltipTrigger>
-                            <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                          <TooltipTrigger asChild>
+                            <button 
+                              type="button" 
+                              className="p-1 -m-1 border-0 bg-transparent"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                            </button>
                           </TooltipTrigger>
                           <TooltipContent className="max-w-sm p-2">
                             <div className="space-y-1">
