@@ -150,7 +150,7 @@ export default function CalculatorForm() {
                       <FormControl>
                         <Input 
                           type="number"
-                          placeholder="10"
+                          placeholder="Enter number of ships (e.g. 10)"
                           {...field}
                           onChange={e => field.onChange(e.target.value ? Number(e.target.value) : undefined)}
                         />

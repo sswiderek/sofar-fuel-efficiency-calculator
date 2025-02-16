@@ -120,7 +120,7 @@ export default function ResultsDisplay({ results }: Props) {
                       key === "optimal" && "text-emerald-700"
                     )}>
                       <TrendingUp className="h-2.5 w-2.5 inline mr-1" />
-                      {scenario.data.improvement}% improvement
+                      {scenario.data.improvement}% reduction in fuel costs
                     </p>
                   </div>
                 </CardContent>
