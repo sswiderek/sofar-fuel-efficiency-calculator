@@ -1,5 +1,8 @@
 
 import OpenAI from "openai";
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const apiKey = process.env.OPENAI_API_KEY;
 if (!apiKey) {
@@ -7,8 +10,8 @@ if (!apiKey) {
 }
 const openai = new OpenAI({ apiKey });
 
-import fs from 'fs';
-import path from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 interface CachedPrice {
   price: number;
