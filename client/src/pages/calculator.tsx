@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CalculatorForm from "@/components/calculator-form";
-import { WavesIcon, Fuel as FuelIcon, DollarSign as DollarSignIcon, LeafIcon, Globe as GlobeIcon, SettingsIcon, BarChartIcon, TrendingUpIcon, TargetIcon } from "lucide-react";
+import { WavesIcon, Fuel as FuelIcon, DollarSign as DollarSignIcon, LeafIcon, Globe as GlobeIcon, SettingsIcon, BarChartIcon, TrendingUpIcon, TargetIcon, ChevronRightIcon } from "lucide-react";
 
 export default function Calculator() {
   return (
@@ -101,13 +101,13 @@ export default function Calculator() {
                         <div className="p-2 rounded-lg bg-blue-700/50 group-hover:bg-blue-600/50 transition-colors duration-200">
                           <TargetIcon className="h-5 w-5 text-blue-100" />
                         </div>
-                        <CardTitle className="text-xl">Validate Your Savings</CardTitle>
+                        <CardTitle className="text-xl">Real-World Success Stories</CardTitle>
                       </div>
-                      <p className="text-blue-200 text-base mb-3">Case Study & Analysis</p>
-                      <p className="text-sm leading-relaxed text-blue-100 flex items-center gap-2">
-                        See how leading shipping companies achieve 4-8% fuel savings using weather routing technology
-                        <span className="inline-block transform group-hover:translate-x-1.5 transition-transform duration-200">→</span>
-                      </p>
+                      <p className="text-blue-200 text-base mb-3">Verified Results & Case Studies</p>
+                      <div className="flex items-center gap-2 text-blue-200 text-sm font-medium">
+                        <span>View success stories</span>
+                        <ChevronRightIcon className="h-4 w-4" />
+                      </div>
                     </div>
                   </a>
                 </Card>
