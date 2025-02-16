@@ -1,27 +1,24 @@
+
 import OpenAI from "openai";
 
-// the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
 const apiKey = process.env.OPENAI_API_KEY;
-console.log('Environment:', process.env.NODE_ENV);
-console.log('Environment variables:', Object.keys(process.env));
-console.log('API Key length:', apiKey?.length);
-console.log('API Key first 4 chars:', apiKey?.substring(0, 4));
 if (!apiKey) {
   throw new Error('OPENAI_API_KEY environment variable is not set');
 }
-console.log('API Key validation:', apiKey.startsWith('sk-'));
 const openai = new OpenAI({ apiKey });
-console.log('OpenAI client initialized');
 
-// In-memory cache for prices
-const priceCache: Record<string, number> = {};
-
-async function getCachedPrice(key: string): Promise<number | null> {
-  return priceCache[key] || null;
+// Cache structure with timestamp to ensure monthly consistency
+interface CachedPrice {
+  price: number;
+  timestamp: number;
 }
 
-async function setCachedPrice(key: string, price: number): Promise<void> {
-  priceCache[key] = price;
+const priceCache: Record<string, CachedPrice> = {};
+
+function isValidCache(cache: CachedPrice, targetMonth: Date): boolean {
+  const cacheDate = new Date(cache.timestamp);
+  return cacheDate.getMonth() === targetMonth.getMonth() 
+    && cacheDate.getFullYear() === targetMonth.getFullYear();
 }
 
 interface VLSFOPrice {
@@ -35,17 +32,16 @@ interface VLSFOPrice {
 export async function getVLSFOPrice(): Promise<VLSFOPrice> {
   const currentDate = new Date();
   const previousMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1);
-
   const monthName = previousMonth.toLocaleString('en-US', { month: 'long' });
   const year = previousMonth.getFullYear();
+  const cacheKey = `${monthName}-${year}`;
 
   try {
-    // Check if we have a cached price
-    const cacheKey = `${monthName}-${year}`;
-    const cachedPrice = await getCachedPrice(cacheKey);
-    if (cachedPrice) {
+    // Check cache with timestamp validation
+    const cachedData = priceCache[cacheKey];
+    if (cachedData && isValidCache(cachedData, previousMonth)) {
       return {
-        price: cachedPrice,
+        price: cachedData.price,
         month: monthName,
         year: year,
         isError: false
@@ -76,19 +72,17 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
     }
 
     const result = JSON.parse(response.choices[0].message.content);
-
-    if (typeof result.price !== 'number') {
-      throw new Error('Invalid price format in response');
-    }
-
-    // Validate price is within reasonable range and round to whole number
     const roundedPrice = Math.round(result.price);
+
     if (roundedPrice < 400 || roundedPrice > 999) {
       throw new Error('Price outside expected range');
     }
 
-    // Cache the price before returning
-    await setCachedPrice(`${monthName}-${year}`, roundedPrice);
+    // Cache with timestamp
+    priceCache[cacheKey] = {
+      price: roundedPrice,
+      timestamp: Date.now()
+    };
 
     return {
       price: roundedPrice,
