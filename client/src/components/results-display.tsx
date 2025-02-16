@@ -60,11 +60,12 @@ export default function ResultsDisplay({ results }: Props) {
           <div className="space-y-1">
             <div className="flex items-center gap-2">
               <h3 className="text-sm font-medium text-slate-600">Current Annual Costs</h3>
-              <Tooltip>
+              <Tooltip delayDuration={100}>
                 <TooltipTrigger asChild>
                   <button 
                     type="button" 
-                    className="p-1 -m-1 border-0 bg-transparent touch-manipulation"
+                    className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
+                    onTouchStart={(e) => e.preventDefault()}
                   >
                     <InfoCircledIcon className="h-4 w-4 text-slate-400" />
                   </button>
