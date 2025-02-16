@@ -156,6 +156,7 @@ export default function ResultsDisplay({ results }: Props) {
                   </div>
                   <p className="text-lg font-bold text-emerald-800">{formatNumber(scenario.data.co2Reduction)} MT</p>
                   <p className="text-[11px] text-emerald-600">Annual emissions saved</p>
+                  <p className="text-[11px] text-emerald-600">≈ {formatNumber(scenario.data.co2Reduction * 0.217)} cars off the road</p>
                 </div>
               </CardContent>
             </Card>
