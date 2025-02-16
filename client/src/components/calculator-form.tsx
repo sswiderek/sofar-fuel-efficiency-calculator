@@ -188,7 +188,7 @@ export default function CalculatorForm() {
                       <FormControl>
                         <Input 
                           type="number"
-                          placeholder="30"
+                          placeholder="Enter voyage duration (e.g. 30)"
                           {...field}
                           onChange={e => field.onChange(e.target.value ? Number(e.target.value) : undefined)}
                         />
@@ -226,7 +226,7 @@ export default function CalculatorForm() {
                       <FormControl>
                         <Input 
                           type="number"
-                          placeholder="50"
+                          placeholder="Enter fuel consumption (e.g. 50)"
                           {...field}
                           onChange={e => field.onChange(e.target.value ? Number(e.target.value) : undefined)}
                         />
