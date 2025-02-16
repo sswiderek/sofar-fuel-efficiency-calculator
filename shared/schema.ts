@@ -15,4 +15,5 @@ export interface CalculationResult {
   estimatedSavings: number;
   fuelCostWithWayfinder: number;
   co2Reduction: number;
+  totalFuelConsumption: number;
 }

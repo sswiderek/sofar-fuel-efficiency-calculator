@@ -32,11 +32,14 @@ export function registerRoutes(app: Express): Server {
       const fuelSaved = (data.fleetSize * data.voyageLength * data.fuelConsumption) * savingsPercent;
       const co2Reduction = fuelSaved * 3.15;
 
+      const totalFuelConsumption = data.fleetSize * data.voyageLength * data.fuelConsumption;
+      
       const results: CalculationResult = {
         totalFuelCost,
         estimatedSavings,
         fuelCostWithWayfinder,
-        co2Reduction
+        co2Reduction,
+        totalFuelConsumption
       };
 
       res.json(results);
