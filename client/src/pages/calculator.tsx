@@ -75,7 +75,7 @@ export default function Calculator() {
                         </div>
                         <div>
                           <p className="text-sm font-medium text-slate-900">Estimated Savings Range</p>
-                          <p className="text-xs text-slate-600 mt-1">The fuel savings percentage is estimated between 4% to 10%, based on typical results from Sofar Ocean's Wayfinder platform.</p>
+                          <p className="text-xs text-slate-600 mt-1">The fuel savings percentage is estimated between 3% to 7%, based on typical results from Sofar Ocean's Wayfinder platform.</p>
                         </div>
                       </div>
                     </div>
