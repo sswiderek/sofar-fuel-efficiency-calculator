@@ -1,4 +1,3 @@
-
 import OpenAI from "openai";
 import fs from 'fs';
 import path from 'path';
@@ -30,13 +29,13 @@ let memoryCache: Record<string, CachedPrice> = {};
 function loadCache(): Record<string, CachedPrice> {
   try {
     console.log('Memory cache state:', memoryCache);
-    
+
     // First check memory cache
     if (Object.keys(memoryCache).length > 0) {
       console.log('Using memory cache');
       return memoryCache;
     }
-    
+
     // Then check file cache
     if (fs.existsSync(CACHE_FILE)) {
       console.log('Loading from file cache');
@@ -45,7 +44,7 @@ function loadCache(): Record<string, CachedPrice> {
       memoryCache = cache; // Update memory cache
       return cache;
     }
-    
+
     console.log('No cache found');
   } catch (error) {
     console.error('Error loading cache:', error);
@@ -69,7 +68,7 @@ function isValidCache(cache: CachedPrice, targetMonth: Date): boolean {
   const cacheYear = cacheDate.getFullYear();
   const targetMonthNum = targetMonth.getMonth();
   const targetYear = targetMonth.getFullYear();
-  
+
   return cacheMonth === targetMonthNum && cacheYear === targetYear;
 }
 
@@ -89,10 +88,11 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
   const cacheKey = `${monthName}-${year}`;
 
   try {
-    // Load cache
-    const priceCache = loadCache();
-    const cachedData = priceCache[cacheKey];
-    
+    // Load cache from file and update memoryCache. This ensures the cache is loaded on every request.
+    memoryCache = loadCache();
+    const cachedData = memoryCache[cacheKey];
+
+
     // If we have valid cached data for this month/year, use it
     if (cachedData && isValidCache(cachedData, previousMonth)) {
       console.log(`Using cached price for ${monthName} ${year}: ${cachedData.price}`);
@@ -103,7 +103,7 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
         isError: false
       };
     }
-    
+
     console.log(`No valid cache found for ${monthName} ${year}, fetching new price`);
 
     const response = await openai.chat.completions.create({
@@ -137,12 +137,11 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
     }
 
     // Update and save cache
-    const updatedCache = loadCache();
-    updatedCache[cacheKey] = {
+    memoryCache[cacheKey] = {
       price: roundedPrice,
       timestamp: Date.now()
     };
-    saveCache(updatedCache);
+    saveCache(memoryCache);
 
     return {
       price: roundedPrice,
