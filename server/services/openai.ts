@@ -62,14 +62,14 @@ function saveCache(cache: Record<string, CachedPrice>): void {
 }
 
 function isValidCache(cache: CachedPrice, targetMonth: Date): boolean {
-  // Cache is valid if it exists for the target month/year regardless of timestamp
-  const cacheDate = new Date(cache.timestamp);
-  const cacheMonth = cacheDate.getMonth();
-  const cacheYear = cacheDate.getFullYear();
-  const targetMonthNum = targetMonth.getMonth();
-  const targetYear = targetMonth.getFullYear();
-
-  return cacheMonth === targetMonthNum && cacheYear === targetYear;
+  if (!cache) return false;
+  
+  // Compare the cache key format (e.g. "January-2025") instead of timestamp
+  const monthName = targetMonth.toLocaleString('en-US', { month: 'long' });
+  const year = targetMonth.getFullYear();
+  const cacheKey = `${monthName}-${year}`;
+  
+  return memoryCache[cacheKey] && memoryCache[cacheKey].price === cache.price;
 }
 
 interface VLSFOPrice {
