@@ -1,22 +1,43 @@
+
 import * as React from "react"
 import * as TooltipPrimitive from "@radix-ui/react-tooltip"
 
 import { cn } from "@/lib/utils"
 
-const TooltipProvider = ({ children, ...props }) => (
-  <TooltipPrimitive.Provider delayDuration={0} skipDelayDuration={0} {...props}>
-    {children}
-  </TooltipPrimitive.Provider>
-)
+const TooltipProvider = ({ children, ...props }) => {
+  const isMobile = 'ontouchstart' in window;
+  return (
+    <TooltipPrimitive.Provider 
+      delayDuration={isMobile ? 0 : 200}
+      disableHoverableContent={isMobile}
+      {...props}
+    >
+      {children}
+    </TooltipPrimitive.Provider>
+  );
+}
 
 const Tooltip = TooltipPrimitive.Root
 
-const TooltipTrigger = TooltipPrimitive.Trigger
+const TooltipTrigger = React.forwardRef<
+  React.ElementRef<typeof TooltipPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Trigger>
+>((props, ref) => (
+  <TooltipPrimitive.Trigger 
+    ref={ref} 
+    {...props}
+    onTouchStart={(e) => {
+      e.preventDefault();
+      props.onClick?.(e as any);
+    }}
+  />
+))
+TooltipTrigger.displayName = TooltipPrimitive.Trigger.displayName
 
 const TooltipContent = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
->(({ className, sideOffset = 4, delayDuration = 100, ...props }, ref) => (
+>(({ className, sideOffset = 4, ...props }, ref) => (
   <TooltipPrimitive.Content
     ref={ref}
     sideOffset={sideOffset}
