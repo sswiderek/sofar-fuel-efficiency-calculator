@@ -65,8 +65,8 @@ export default function ResultsDisplay({ results }: Props) {
                 <TooltipTrigger asChild>
                   <button 
                     type="button" 
-                    className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
-                    onTouchStart={(e) => e.preventDefault()}
+                    className="p-1 -m-1 border-0 bg-transparent cursor-pointer touch-manipulation"
+                    onClick={(e) => e.stopPropagation()}
                   >
                     <InfoCircledIcon className="h-4 w-4 text-slate-400" />
                   </button>
@@ -167,7 +167,11 @@ export default function ResultsDisplay({ results }: Props) {
                     <p className="text-[11px] text-emerald-600">≈ {formatNumber(scenario.data.co2Reduction * 0.217)} cars off the road</p>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <button type="button" className="p-1 -m-1 border-0 bg-transparent">
+                        <button 
+                          type="button" 
+                          className="p-1 -m-1 border-0 bg-transparent touch-manipulation"
+                          onClick={(e) => e.stopPropagation()}
+                        >
                           <InfoCircledIcon className="h-3 w-3 text-emerald-600" />
                         </button>
                       </TooltipTrigger>
