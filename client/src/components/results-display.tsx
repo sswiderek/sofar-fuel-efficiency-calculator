@@ -176,7 +176,7 @@ export default function ResultsDisplay({ results }: Props) {
                           <InfoCircledIcon className="h-3 w-3 text-emerald-600" />
                         </button>
                       </TooltipTrigger>
-                      <TooltipContent sideOffset={8} delayDuration={100} className="w-60">
+                      <TooltipContent sideOffset={16} delayDuration={0} className="w-60">
                         Equivalent to removing this many passenger vehicles from the road for one year, based on average annual vehicle emissions of 4.6 metric tons of CO₂ (EPA, 2023)
                       </TooltipContent>
                     </Tooltip>
