@@ -36,6 +36,7 @@ export default function CalculatorForm() {
     defaultValues: {
       fleetSize: '',
       voyageLength: '',
+      portTime: '',
       fuelConsumption: '',
       fuelPrice: '',
       estimatedSavings: 5
@@ -59,7 +60,8 @@ export default function CalculatorForm() {
     const emptyFields = [];
 
     if (!values.fleetSize) emptyFields.push("Fleet Size");
-    if (!values.voyageLength) emptyFields.push("Voyage Length");
+    if (!values.voyageLength) emptyFields.push("Voyage Length (Days at Sea)");
+    if (!values.portTime) emptyFields.push("Port Time (Days)");
     if (!values.fuelConsumption) emptyFields.push("Fuel Consumption");
     if (!values.fuelPrice) emptyFields.push("Fuel Price");
 
@@ -77,6 +79,7 @@ export default function CalculatorForm() {
       const formData = {
         fleetSize: Number(values.fleetSize),
         voyageLength: Number(values.voyageLength),
+        portTime: Number(values.portTime),
         fuelConsumption: Number(values.fuelConsumption),
         fuelPrice: Number(values.fuelPrice),
         estimatedSavings: Number(values.estimatedSavings)
@@ -175,7 +178,7 @@ export default function CalculatorForm() {
                       <div className="flex items-center gap-2">
                         <FormLabel className="flex items-center gap-2">
                           <TimerIcon className="h-4 w-4" />
-                          <span>Average Voyage Length (Days)</span>
+                          <span>Voyage Length (Days at Sea)</span>
                         </FormLabel>
                         <Tooltip delayDuration={100}>
                           <TooltipTrigger asChild>
@@ -209,6 +212,44 @@ export default function CalculatorForm() {
                     </FormItem>
                   )}
                 />
+
+                {/* Port Time Field */}
+                <FormField
+                  control={form.control}
+                  name="portTime"
+                  render={({ field }) => (
+                    <FormItem>
+                      <div className="flex items-center gap-2">
+                        <FormLabel className="flex items-center gap-2">
+                          <TimerIcon className="h-4 w-4" />
+                          <span>Port Time (Days)</span>
+                        </FormLabel>
+                        <Tooltip delayDuration={100}>
+                          <TooltipTrigger asChild>
+                            <button
+                              type="button"
+                              className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
+                              onTouchStart={(e) => e.preventDefault()}
+                            >
+                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent>Average time spent in port per voyage (in days)</TooltipContent>
+                        </Tooltip>
+                      </div>
+                      <FormControl>
+                        <Input
+                          type="number"
+                          placeholder="Enter average port time (e.g., 5)"
+                          {...field}
+                          onChange={e => field.onChange(e.target.value ? Number(e.target.value) : undefined)}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
 
                 {/* Fuel Consumption Field */}
                 <FormField
