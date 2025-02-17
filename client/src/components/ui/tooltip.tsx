@@ -32,16 +32,33 @@ const TooltipTrigger = React.forwardRef<
       ref={ref}
       {...props}
       onClick={isTouch ? (e) => {
-        console.log('Touch click event triggered', e)
+        console.log('Touch click event details:', {
+          type: e.type,
+          target: e.target,
+          currentTarget: e.currentTarget,
+          defaultPrevented: e.defaultPrevented
+        });
         if (props.onClick) props.onClick(e)
       } : undefined}
       onTouchStart={isTouch ? (e) => {
-        console.log('Touch start event triggered', e)
-        setOpen(true)
+        console.log('Touch start event details:', {
+          type: e.type,
+          touches: e.touches.length,
+          targetTouches: e.targetTouches.length,
+          defaultPrevented: e.defaultPrevented
+        });
+        e.stopPropagation();
+        setOpen(true);
       } : undefined}
       onTouchEnd={isTouch ? (e) => {
-        console.log('Touch end event triggered', e)
-        setTimeout(() => setOpen(false), 1000)
+        console.log('Touch end event details:', {
+          type: e.type,
+          touches: e.touches.length,
+          targetTouches: e.targetTouches.length,
+          defaultPrevented: e.defaultPrevented
+        });
+        e.stopPropagation();
+        setTimeout(() => setOpen(false), 1000);
       } : undefined}
     />
   )
