@@ -178,7 +178,7 @@ export default function ResultsDisplay({ results }: Props) {
                           <br/><br/>
                           1. We first calculate how many days your ships spend at sea annually, accounting for port time
                           <br/>
-                          2. Then multiply by your fleet size and daily fuel usage
+                          2. Then multiply by your fleet size, daily fuel usage, and fuel price
                           <br/>
                           3. Finally, apply the optimization level to find potential savings
                         </TooltipContent>
