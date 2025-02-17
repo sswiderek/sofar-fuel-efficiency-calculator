@@ -62,11 +62,16 @@ export default function FuelPriceDisplay() {
             </p>
           </div>
           <Tooltip>
-            <TooltipTrigger>
-              <InfoIcon className="h-5 w-5 text-slate-400" />
+            <TooltipTrigger asChild>
+              <button 
+                type="button"
+                className="p-2 -m-1 border-0 bg-transparent cursor-help hover:bg-blue-50 rounded-full transition-colors"
+              >
+                <InfoIcon className="h-5 w-5 text-blue-500" />
+              </button>
             </TooltipTrigger>
-            <TooltipContent side="right" className="bg-white border-blue-200 shadow-lg">
-              <div className="space-y-2 p-3">
+            <TooltipContent side="right" align="center" className="bg-white border-2 border-blue-200 shadow-xl z-50">
+              <div className="space-y-2 p-4">
                 <h4 className="font-medium text-blue-900">Price Information</h4>
                 <p className="max-w-[250px] text-sm text-blue-700 leading-snug">
                   Monthly average price from Ship & Bunker's Global 20 Ports index. Updated on the 1st of each month to smooth out daily price fluctuations.
