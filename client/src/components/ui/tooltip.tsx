@@ -15,9 +15,14 @@ const TooltipTrigger = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Trigger>
 >((props, ref) => {
   const handleTouch = (e: React.TouchEvent) => {
-    e.preventDefault();
-    if (ref && ref.current) {
-      ref.current.click();
+    if (!e.target || !(e.target instanceof Element)) return;
+    
+    // Only prevent default if we actually need to show tooltip
+    if (e.target.getAttribute('aria-expanded') !== 'true') {
+      const event = e.nativeEvent;
+      if (!event.defaultPrevented) {
+        e.target.click();
+      }
     }
   };
 
@@ -25,10 +30,14 @@ const TooltipTrigger = React.forwardRef<
     <TooltipPrimitive.Trigger 
       ref={ref} 
       {...props} 
-      onTouchStart={handleTouch}
+      onClick={(e) => {
+        e.stopPropagation();
+        props.onClick?.(e);
+      }}
+      onTouchEnd={handleTouch}
       style={{ 
         pointerEvents: 'auto',
-        touchAction: 'none'
+        touchAction: 'manipulation'
       }}
     />
   );
