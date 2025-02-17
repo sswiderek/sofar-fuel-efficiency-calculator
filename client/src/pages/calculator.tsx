@@ -17,7 +17,7 @@ export default function Calculator() {
               <img src="/images/sofar-logov2.png" alt="Sofar Logo" className="h-12 w-auto" />
               <div className="border-l pl-6 border-slate-200">
                 <CardTitle className="text-2xl font-bold tracking-tight text-slate-900">
-                  Smart Ship Savings
+                  Maritime Fuel Savings Simulator
                 </CardTitle>
                 <p className="text-sm text-slate-600 mt-1.5 tracking-wide">
                   Estimate your cost savings and <span className="text-emerald-600 font-medium">CO₂</span> reduction with Wayfinder
