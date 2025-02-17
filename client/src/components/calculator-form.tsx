@@ -247,7 +247,7 @@ export default function CalculatorForm() {
                       <FormControl>
                         <Input
                           type="number"
-                          placeholder="Enter average port time (e.g., 5)"
+                          placeholder="Enter average port time (e.g. 5)"
                           {...field}
                           onChange={e => field.onChange(e.target.value ? Number(e.target.value) : undefined)}
                         />
