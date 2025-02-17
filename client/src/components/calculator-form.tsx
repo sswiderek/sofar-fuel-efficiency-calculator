@@ -325,7 +325,7 @@ export default function CalculatorForm() {
                           </TooltipTrigger>
                           <TooltipContent className="max-w-sm p-2">
                             <div className="space-y-1">
-                              <div className="text-sm font-medium">Monthly Average VLSFO Price</div>
+                              <div className="text-sm font-medium">Monthly Average VLSFO Fuel Price</div>
                               <div className="text-xs text-muted-foreground">
                                 Based on Ship & Bunker's Global 20 Ports Average. Monthly averages provide a stable baseline for calculations by smoothing out daily price fluctuations.
                               </div>
