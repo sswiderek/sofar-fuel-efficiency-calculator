@@ -1,0 +1,40 @@
+From the console logs, there are two separate but related issues that explain why tooltips are failing on mobile:
+
+The code is calling preventDefault() in a passive event listener.
+
+Modern browsers (especially Chrome) often mark touchstart and touchmove listeners as passive by default to improve scrolling performance.
+If an event listener is passive, you cannot call event.preventDefault()—the browser will ignore it and log “Unable to preventDefault inside passive event listener invocation.”
+Fix: When attaching the listener, explicitly set { passive: false } if you need to call preventDefault(). For example:
+js
+Copy
+element.addEventListener('touchstart', handleTouchStart, { passive: false });
+Or remove event.preventDefault() if it is not actually needed.
+The tooltip code thinks isTouch is false on a mobile device.
+
+Your console log shows Tooltip render – isTouch: false, which likely means your mobile touch detection logic is failing. If the tooltip logic is wrapped in something like:
+js
+Copy
+if (isTouch) {
+  // Show tooltip on touch
+} else {
+  // Show tooltip on mouseover, etc.
+}
+then it won’t run the touch-specific code on mobile if isTouch is incorrectly set to false.
+Fix: Double-check how you’re detecting touch support. A common pattern is:
+js
+Copy
+const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+Ensure that this code is run at the right time and that your environment isn’t overriding or misreporting isTouch.
+Summary of What’s Going Wrong
+Because the listener is (by default) passive, calling preventDefault() triggers the console warning and may break the intended touch behavior for your tooltip.
+The code is also misidentifying the device as non-touch, so the tooltip logic that should run on tap/click isn’t firing.
+How to Fix It
+Make your touch event listener non-passive (if you really need preventDefault()). For example:
+js
+Copy
+element.addEventListener('touchstart', (e) => {
+  e.preventDefault(); 
+  // your code...
+}, { passive: false });
+Correct your touch detection so isTouch is true on actual mobile/touch devices. Verify the logic that sets isTouch and make sure it’s accurate in your environment.
+Once those two issues are resolved, the tooltip should appear on mobile as expected.
