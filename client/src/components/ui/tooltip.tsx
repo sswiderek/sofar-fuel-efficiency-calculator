@@ -12,7 +12,7 @@ const Tooltip = ({ children, ...props }: { children: React.ReactNode } & React.C
   
   if (isTouch) {
     return (
-      <TooltipPrimitive.Root open={open} onOpenChange={setOpen} {...props}>
+      <TooltipPrimitive.Root modal defaultOpen={open} open={open} onOpenChange={setOpen} {...props}>
         {children}
       </TooltipPrimitive.Root>
     )
@@ -31,7 +31,10 @@ const TooltipTrigger = React.forwardRef<
     <TooltipPrimitive.Trigger 
       ref={ref}
       {...props}
-      onClick={isTouch ? props.onClick : undefined}
+      onClick={isTouch ? (e) => {
+        e.preventDefault()
+        if (props.onClick) props.onClick(e)
+      } : undefined}
     />
   )
 })
