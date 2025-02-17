@@ -1,3 +1,9 @@
+
+.touch-target {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
 @keyframes fadeIn {
   from { 
     opacity: 0; 

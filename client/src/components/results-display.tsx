@@ -54,7 +54,7 @@ export default function ResultsDisplay({ results }: Props) {
   }
 
   return (
-    <TooltipProvider>
+    <TooltipProvider delayDuration={0}>
       <div className="space-y-4 pt-6">
       <Card className="border bg-white shadow-sm">
         <CardContent className="p-3">
@@ -65,15 +65,8 @@ export default function ResultsDisplay({ results }: Props) {
                 <TooltipTrigger asChild>
                   <button 
                     type="button" 
-                    className="p-2 -m-1 border-0 bg-transparent cursor-pointer"
-                    onTouchStart={(e) => {
-                      console.log('[Debug] Touch start');
-                      e.preventDefault();
-                      const target = e.currentTarget;
-                      target.click();
-                    }}
+                    className="p-2 -m-1 border-0 bg-transparent cursor-pointer touch-target"
                     onClick={(e) => {
-                      console.log('[Debug] Click event');
                       e.stopPropagation();
                     }}
                   >
