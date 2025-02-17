@@ -98,7 +98,7 @@ export default function ResultsDisplay({ results }: Props) {
                     Based on <span className="font-bold">{formatNumber(results[0].totalFuelConsumption)}</span> MT of fuel consumed annually
                     <div className="mt-2 text-slate-600">
                       <p className="font-medium mb-1">Calculation:</p>
-                      <p>{formatNumber(results[0].fleetSize)} ships × {formatNumber(results[0].daysAtSea)} days at sea × {formatNumber(results[0].fuelConsumption)} MT/day</p>
+                      <p>{formatNumber(results[0].fleetSize)} ships × {formatNumber(results[0].daysAtSea)} days at sea × {formatNumber(results[0].fuelConsumption)} MT/day × ${formatNumber(results[0].fuelPrice)}/MT</p>
                     </div>
                   </TooltipContent>
                 </Tooltip>
