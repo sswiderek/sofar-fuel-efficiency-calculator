@@ -20,11 +20,11 @@ export function registerRoutes(app: Express): Server {
 
       // Calculate voyages per year accounting for both sea and port time
       const daysPerVoyage = data.voyageLength + data.portTimePerVoyage;
-      const voyagesPerYear = Math.floor(365 / daysPerVoyage);
+      const voyagesPerYear = 365 / daysPerVoyage; // Allow fractional voyages
       const seaDaysPerYear = voyagesPerYear * data.voyageLength;
 
       // Calculate total fuel cost (only consuming fuel during sea days)
-      const totalFuelCost = data.fleetSize * seaDaysPerYear * data.fuelConsumption * data.fuelPrice;
+      const totalFuelCost = Math.round(data.fleetSize * seaDaysPerYear * data.fuelConsumption * data.fuelPrice);
 
       // Calculate savings based on estimated percentage
       const savingsPercent = data.estimatedSavings / 100;
