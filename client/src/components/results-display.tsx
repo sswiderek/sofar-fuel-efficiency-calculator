@@ -183,7 +183,7 @@ export default function ResultsDisplay({ results }: Props) {
                             <ol className="space-y-2 pl-5 list-decimal">
                               <li>We first calculate how many days your ships spend at sea annually, accounting for port time</li>
                               <li>Then multiply by your fleet size, daily fuel usage, and fuel price</li>
-                              <li>Finally, apply the optimization level to find potential savings</li>
+                              <li>Finally, apply the optimization level ({key === "conservative" ? "3%" : key === "average" ? "5%" : "7%"}) to find potential savings</li>
                             </ol>
                           </div>
                         </TooltipContent>
