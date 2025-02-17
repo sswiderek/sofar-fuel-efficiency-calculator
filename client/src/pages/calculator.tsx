@@ -63,8 +63,8 @@ export default function Calculator() {
                           <DollarSignIcon className="h-5 w-5 text-sky-700" />
                         </div>
                         <div>
-                          <p className="text-sm font-medium text-slate-900">Fuel Price is Static</p>
-                          <p className="text-xs text-slate-600 mt-1">The fuel price entered is considered fixed for the voyage. Fluctuations in fuel prices are not accounted for.</p>
+                          <p className="text-sm font-medium text-slate-900">VLSFO Fuel Type</p>
+                          <p className="text-xs text-slate-600 mt-1">Calculations use Very Low Sulfur Fuel Oil (VLSFO) prices, which is the primary marine fuel used to comply with IMO 2020 sulfur regulations.</p>
                         </div>
                       </div>
                     </div>
