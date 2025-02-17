@@ -95,7 +95,11 @@ export default function ResultsDisplay({ results }: Props) {
                     </button>
                   </TooltipTrigger>
                   <TooltipContent side="top" sideOffset={5} className="w-60">
-                    Based on <span className="font-bold">{formatNumber(results[0].totalFuelConsumption)}</span> MT of fuel consumed annually by your fleet
+                    Based on <span className="font-bold">{formatNumber(results[0].totalFuelConsumption)}</span> MT of fuel consumed annually
+                    <div className="mt-2 text-slate-600">
+                      <p className="font-medium mb-1">Calculation:</p>
+                      <p>{formatNumber(results[0].fleetSize)} ships × {formatNumber(results[0].daysAtSea)} days at sea × {formatNumber(results[0].fuelConsumption)} MT/day</p>
+                    </div>
                   </TooltipContent>
                 </Tooltip>
               )}
