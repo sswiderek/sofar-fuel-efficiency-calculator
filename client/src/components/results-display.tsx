@@ -225,7 +225,7 @@ export default function ResultsDisplay({ results }: Props) {
           </TabsContent>
         ))}
       </Tabs>
-    </div>
+      </div>
     </TooltipProvider>
   );
 }
