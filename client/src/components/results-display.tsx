@@ -67,11 +67,25 @@ export default function ResultsDisplay({ results }: Props) {
                     type="button" 
                     className="p-1 -m-1 border-0 bg-transparent cursor-pointer touch-manipulation"
                     onClick={(e) => {
-                      console.log('Tooltip button clicked');
+                      console.log('[Debug] Tooltip interaction:', {
+                        type: 'click',
+                        target: e.target,
+                        currentTarget: e.currentTarget
+                      });
                       e.stopPropagation();
                     }}
                     onTouchStart={(e) => {
-                      console.log('Touch start event fired');
+                      console.log('[Debug] Tooltip interaction:', {
+                        type: 'touchstart',
+                        touches: e.touches.length,
+                        target: e.target
+                      });
+                    }}
+                    onTouchEnd={(e) => {
+                      console.log('[Debug] Tooltip interaction:', {
+                        type: 'touchend',
+                        target: e.target
+                      });
                       e.preventDefault();
                       e.currentTarget.click();
                     }}
