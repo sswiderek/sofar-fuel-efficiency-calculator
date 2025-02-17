@@ -234,7 +234,14 @@ export default function CalculatorForm() {
                               <InfoIcon className="h-4 w-4 text-muted-foreground" />
                             </button>
                           </TooltipTrigger>
-                          <TooltipContent>Average time spent in port per voyage (in days)</TooltipContent>
+                          <TooltipContent className="max-w-sm p-2">
+                            <div className="space-y-1">
+                              <div className="text-sm font-medium">Port Time Duration</div>
+                              <div className="text-xs text-muted-foreground">
+                                Enter the average time your vessels spend in port per voyage. For mixed routes, use your fleet's average port duration across all voyages.
+                              </div>
+                            </div>
+                          </TooltipContent>
                         </Tooltip>
                       </div>
                       <FormControl>
