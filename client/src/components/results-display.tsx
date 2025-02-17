@@ -174,9 +174,13 @@ export default function ResultsDisplay({ results }: Props) {
                           </button>
                         </TooltipTrigger>
                         <TooltipContent className="w-64 text-xs">
-                          Calculated as: (Fleet Size × Sea Days Per Year × Fuel Consumption × Fuel Price) × Optimization Level
+                          Here's how we calculate your savings:
                           <br/><br/>
-                          Sea Days = (365 ÷ (Voyage Length + Port Time)) × Voyage Length
+                          1. We first calculate how many days your ships spend at sea annually, accounting for port time
+                          <br/>
+                          2. Then multiply by your fleet size and daily fuel usage
+                          <br/>
+                          3. Finally, apply the optimization level to find potential savings
                         </TooltipContent>
                       </Tooltip>
                     </div>
