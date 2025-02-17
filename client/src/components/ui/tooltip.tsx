@@ -18,16 +18,15 @@ const TooltipTrigger = React.forwardRef<
   console.log('Tooltip render - isTouch:', isTouch);
   
   const handleTouch = React.useCallback((e: React.TouchEvent) => {
-    e.preventDefault();
     const target = e.currentTarget;
-    target.click();
+    setTimeout(() => target.click(), 0);
   }, []);
 
   return (
     <TooltipPrimitive.Trigger 
       ref={ref} 
       {...props} 
-      onTouchStart={handleTouch}
+      onTouchEnd={handleTouch}
     />
   );
 });

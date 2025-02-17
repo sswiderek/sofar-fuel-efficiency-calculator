@@ -6,18 +6,20 @@ export function useTouchDevice() {
 
   useEffect(() => {
     const checkTouch = () => {
-      const isTouchDevice = (
-        'ontouchstart' in window ||
-        navigator.maxTouchPoints > 0 ||
-        // @ts-ignore
-        navigator.msMaxTouchPoints > 0 ||
-        window.matchMedia('(pointer: coarse)').matches
-      );
-      setIsTouch(isTouchDevice);
+      setIsTouch(true);
+      window.removeEventListener('touchstart', checkTouch);
     };
 
-    checkTouch();
-    window.addEventListener('touchstart', checkTouch, { once: true });
+    if (typeof window !== 'undefined') {
+      if ('ontouchstart' in window || 
+          (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) ||
+          window.matchMedia('(pointer: coarse)').matches) {
+        setIsTouch(true);
+      } else {
+        window.addEventListener('touchstart', checkTouch, { passive: true });
+      }
+    }
+
     return () => window.removeEventListener('touchstart', checkTouch);
   }, []);
 
