@@ -3,8 +3,8 @@
 
 import * as React from "react"
 import * as TooltipPrimitive from "@radix-ui/react-tooltip"
-
 import { cn } from "@/lib/utils"
+import { useTouchDevice } from "@/hooks/use-touch-device"
 
 const TooltipProvider = TooltipPrimitive.Provider
 
@@ -18,7 +18,7 @@ const TooltipTrigger = React.forwardRef<
   console.log('Tooltip render - isTouch:', isTouch);
   return <TooltipPrimitive.Trigger ref={ref} {...props} />;
 });
-TooltipTrigger.displayName = TooltipPrimitive.Trigger.displayName;
+TooltipTrigger.displayName = TooltipPrimitive.Trigger.displayName
 
 const TooltipContent = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
