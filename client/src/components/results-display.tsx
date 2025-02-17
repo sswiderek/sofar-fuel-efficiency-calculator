@@ -174,13 +174,14 @@ export default function ResultsDisplay({ results }: Props) {
                           </button>
                         </TooltipTrigger>
                         <TooltipContent className="w-64 text-xs">
-                          Here's how we calculate your savings:
-                          <br/><br/>
-                          1. We first calculate how many days your ships spend at sea annually, accounting for port time
-                          <br/>
-                          2. Then multiply by your fleet size, daily fuel usage, and fuel price
-                          <br/>
-                          3. Finally, apply the optimization level to find potential savings
+                          <div className="space-y-3 py-1">
+                            <p className="font-medium">Here's how we calculate your savings:</p>
+                            <ol className="space-y-2 pl-5 list-decimal">
+                              <li>We first calculate how many days your ships spend at sea annually, accounting for port time</li>
+                              <li>Then multiply by your fleet size, daily fuel usage, and fuel price</li>
+                              <li>Finally, apply the optimization level to find potential savings</li>
+                            </ol>
+                          </div>
                         </TooltipContent>
                       </Tooltip>
                     </div>
