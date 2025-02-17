@@ -46,6 +46,9 @@ export default function FuelPriceDisplay() {
           <div>
             <h3 className="text-xl font-bold text-blue-900 tracking-tight">
               Current Global VLSFO Price
+              <p className="text-sm font-normal mt-1 text-blue-800">
+                Very Low Sulfur Fuel Oil (VLSFO) - the maritime industry standard fuel that complies with IMO 2020 emissions regulations
+              </p>
             </h3>
             <p className="text-4xl font-extrabold text-blue-700 mt-4 flex items-baseline">
               ${data?.price}
