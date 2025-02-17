@@ -5,6 +5,11 @@ import { InfoCircledIcon } from "@radix-ui/react-icons";
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
 import type { CalculationResult } from "@shared/schema";
 import { TrendingUp, DollarSign, Leaf } from 'lucide-react';
+import { Popover, PopoverTrigger, PopoverContent } from '@radix-ui/react-popover';
+
+const useTouchDevice = () => {
+  return typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+};
 
 interface Props {
   results: CalculationResult[];
@@ -61,21 +66,39 @@ export default function ResultsDisplay({ results }: Props) {
           <div className="space-y-1">
             <div className="flex items-center gap-2">
               <h3 className="text-sm font-medium text-slate-600">Current Annual Costs</h3>
-              <Tooltip delayDuration={100}>
-                <TooltipTrigger asChild>
-                  <button 
-                    type="button" 
-                    className="p-2 -m-1 border-0 bg-transparent cursor-pointer touch-target"
-                    onTouchStart={(e) => e.preventDefault()}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <InfoCircledIcon className="h-4 w-4 text-slate-400" />
-                  </button>
-                </TooltipTrigger>
-                <TooltipContent side="top" sideOffset={5} className="w-60">
-                  Based on <span className="font-bold">{formatNumber(results[0].totalFuelConsumption)}</span> MT of fuel consumed annually by your fleet
-                </TooltipContent>
-              </Tooltip>
+              {useTouchDevice() ? (
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <button 
+                      type="button" 
+                      className="p-2 -m-1 border-0 bg-transparent cursor-pointer touch-target"
+                      onTouchStart={(e) => e.preventDefault()}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <InfoCircledIcon className="h-4 w-4 text-slate-400" />
+                    </button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-60 text-xs">
+                    Based on <span className="font-bold">{formatNumber(results[0].totalFuelConsumption)}</span> MT of fuel consumed annually by your fleet
+                  </PopoverContent>
+                </Popover>
+              ) : (
+                <Tooltip delayDuration={100}>
+                  <TooltipTrigger asChild>
+                    <button 
+                      type="button" 
+                      className="p-2 -m-1 border-0 bg-transparent cursor-pointer touch-target"
+                      onTouchStart={(e) => e.preventDefault()}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <InfoCircledIcon className="h-4 w-4 text-slate-400" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent side="top" sideOffset={5} className="w-60">
+                    Based on <span className="font-bold">{formatNumber(results[0].totalFuelConsumption)}</span> MT of fuel consumed annually by your fleet
+                  </TooltipContent>
+                </Tooltip>
+              )}
             </div>
             <p className="text-2xl font-bold tracking-tight">{formatCurrency(results[0].totalFuelCost)}</p>
           </div>
@@ -166,20 +189,35 @@ export default function ResultsDisplay({ results }: Props) {
                   <p className="text-[11px] text-emerald-600">Annual emissions saved</p>
                   <div className="flex items-center gap-1">
                     <p className="text-[11px] text-emerald-600">≈ {formatNumber(scenario.data.co2Reduction * 0.217)} cars off the road</p>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <button 
-                          type="button" 
-                          className="p-1 -m-1 border-0 bg-transparent touch-manipulation"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <InfoCircledIcon className="h-3 w-3 text-emerald-600" />
-                        </button>
-                      </TooltipTrigger>
-                      <TooltipContent sideOffset={16} delayDuration={0} className="w-60">
-                        Equivalent to removing this many passenger vehicles from the road for one year, based on average annual vehicle emissions of 4.6 metric tons of CO₂ (EPA, 2023)
-                      </TooltipContent>
-                    </Tooltip>
+                    {useTouchDevice() ? (
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <button 
+                            type="button" 
+                            className="p-1 -m-1 border-0 bg-transparent touch-manipulation"
+                          >
+                            <InfoCircledIcon className="h-3 w-3 text-emerald-600" />
+                          </button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-60 text-xs">
+                          Equivalent to removing this many passenger vehicles from the road for one year, based on average annual vehicle emissions of 4.6 metric tons of CO₂ (EPA, 2023)
+                        </PopoverContent>
+                      </Popover>
+                    ) : (
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <button 
+                            type="button" 
+                            className="p-1 -m-1 border-0 bg-transparent"
+                          >
+                            <InfoCircledIcon className="h-3 w-3 text-emerald-600" />
+                          </button>
+                        </TooltipTrigger>
+                        <TooltipContent sideOffset={16} className="w-60">
+                          Equivalent to removing this many passenger vehicles from the road for one year, based on average annual vehicle emissions of 4.6 metric tons of CO₂ (EPA, 2023)
+                        </TooltipContent>
+                      </Tooltip>
+                    )}
                   </div>
                 </div>
               </CardContent>
