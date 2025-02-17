@@ -11,6 +11,7 @@ interface Props {
 }
 
 export default function ResultsDisplay({ results }: Props) {
+  const { TooltipProvider } = require("@/components/ui/tooltip");
   const formatCurrency = (value: number) => 
     new Intl.NumberFormat('en-US', { 
       style: 'currency', 
@@ -54,7 +55,8 @@ export default function ResultsDisplay({ results }: Props) {
   }
 
   return (
-    <div className="space-y-4 pt-6">
+    <TooltipProvider>
+      <div className="space-y-4 pt-6">
       <Card className="border bg-white shadow-sm">
         <CardContent className="p-3">
           <div className="space-y-1">
@@ -182,5 +184,6 @@ export default function ResultsDisplay({ results }: Props) {
         ))}
       </Tabs>
     </div>
+    </TooltipProvider>
   );
 }
