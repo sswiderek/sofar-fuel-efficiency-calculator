@@ -20,7 +20,10 @@ const TooltipTrigger = React.forwardRef<
   const handleTouch = React.useCallback(() => {
     if (isTouch) {
       const target = ref.current;
-      if (target) target.click();
+      if (target) {
+        target.style.pointerEvents = 'auto';
+        target.click();
+      }
     }
   }, [isTouch]);
 
@@ -28,7 +31,8 @@ const TooltipTrigger = React.forwardRef<
     <TooltipPrimitive.Trigger 
       ref={ref} 
       {...props} 
-      onTouchEnd={handleTouch}
+      onTouchStart={handleTouch}
+      style={{ pointerEvents: 'auto' }}
       data-touch={isTouch}
     />
   );
