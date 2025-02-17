@@ -46,14 +46,14 @@ export default function Calculator() {
                     Assumptions Made in This Calculator
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <div className="bg-sky-50/50 p-3 rounded-lg">
+                    <div className="bg-sky-50/50 p-4 rounded-lg">
                       <div className="flex items-start gap-3">
                         <div className="bg-sky-100 p-2 rounded-lg">
                           <BarChartIcon className="h-5 w-5 text-sky-700" />
                         </div>
                         <div>
-                          <p className="text-sm font-medium text-slate-900 mb-0.5">Voyage Time and Port Operations</p>
-                          <p className="text-xs text-slate-600">The calculator accounts for both sea time and necessary port operations between voyages, reflecting real-world shipping operations.</p>
+                          <p className="text-sm font-medium text-slate-900">Voyage Time and Port Operations</p>
+                          <p className="text-xs text-slate-600 mt-1">The calculator accounts for both sea time and necessary port operations between voyages, reflecting real-world shipping operations.</p>
                         </div>
                       </div>
                     </div>
