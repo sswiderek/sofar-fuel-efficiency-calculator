@@ -60,7 +60,7 @@ export default function Calculator() {
                     <div className="bg-sky-50/50 p-4 rounded-lg">
                       <div className="flex items-start gap-3">
                         <div className="bg-sky-100 p-2 rounded-lg">
-                          <DollarSignIcon className="h-5 w-5 text-sky-700" />
+                          <FuelIcon className="h-5 w-5 text-sky-700" />
                         </div>
                         <div>
                           <p className="text-sm font-medium text-slate-900">VLSFO Fuel Type</p>
