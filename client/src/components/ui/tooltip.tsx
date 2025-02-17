@@ -16,7 +16,20 @@ const TooltipTrigger = React.forwardRef<
 >((props, ref) => {
   const isTouch = useTouchDevice();
   console.log('Tooltip render - isTouch:', isTouch);
-  return <TooltipPrimitive.Trigger ref={ref} {...props} />;
+  
+  const handleTouch = React.useCallback((e: React.TouchEvent) => {
+    e.preventDefault();
+    const target = e.currentTarget;
+    target.click();
+  }, []);
+
+  return (
+    <TooltipPrimitive.Trigger 
+      ref={ref} 
+      {...props} 
+      onTouchStart={handleTouch}
+    />
+  );
 });
 TooltipTrigger.displayName = TooltipPrimitive.Trigger.displayName
 
