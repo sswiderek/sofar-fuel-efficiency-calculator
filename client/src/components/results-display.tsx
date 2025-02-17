@@ -65,29 +65,16 @@ export default function ResultsDisplay({ results }: Props) {
                 <TooltipTrigger asChild>
                   <button 
                     type="button" 
-                    className="p-1 -m-1 border-0 bg-transparent cursor-pointer touch-manipulation"
-                    onClick={(e) => {
-                      console.log('[Debug] Tooltip interaction:', {
-                        type: 'click',
-                        target: e.target,
-                        currentTarget: e.currentTarget
-                      });
-                      e.stopPropagation();
-                    }}
+                    className="p-2 -m-1 border-0 bg-transparent cursor-pointer"
                     onTouchStart={(e) => {
-                      console.log('[Debug] Tooltip interaction:', {
-                        type: 'touchstart',
-                        touches: e.touches.length,
-                        target: e.target
-                      });
-                    }}
-                    onTouchEnd={(e) => {
-                      console.log('[Debug] Tooltip interaction:', {
-                        type: 'touchend',
-                        target: e.target
-                      });
+                      console.log('[Debug] Touch start');
                       e.preventDefault();
-                      e.currentTarget.click();
+                      const target = e.currentTarget;
+                      target.click();
+                    }}
+                    onClick={(e) => {
+                      console.log('[Debug] Click event');
+                      e.stopPropagation();
                     }}
                   >
                     <InfoCircledIcon className="h-4 w-4 text-slate-400" />
