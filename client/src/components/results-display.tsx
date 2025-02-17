@@ -66,7 +66,15 @@ export default function ResultsDisplay({ results }: Props) {
                   <button 
                     type="button" 
                     className="p-1 -m-1 border-0 bg-transparent cursor-pointer touch-manipulation"
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={(e) => {
+                      console.log('Tooltip button clicked');
+                      e.stopPropagation();
+                    }}
+                    onTouchStart={(e) => {
+                      console.log('Touch start event fired');
+                      e.preventDefault();
+                      e.currentTarget.click();
+                    }}
                   >
                     <InfoCircledIcon className="h-4 w-4 text-slate-400" />
                   </button>
