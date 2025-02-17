@@ -14,10 +14,9 @@ const TooltipTrigger = React.forwardRef<
 >((props, ref) => {
   const isTouch = useTouchDevice()
 
+  // Temporary handler without preventDefault()
   const handleTouch = (e: React.TouchEvent) => {
-    // If you really need to block default scrolling/zoom, keep preventDefault().
-    // If not, you can comment it out or only call it if e.cancelable.
-    e.preventDefault()
+    // e.preventDefault() // removed
     if (ref && "current" in ref && ref.current) {
       ref.current.click()
     }
@@ -29,8 +28,8 @@ const TooltipTrigger = React.forwardRef<
       {...props}
       onTouchStart={handleTouch}
       style={{
+        // Removed touchAction: 'none'
         pointerEvents: "auto",
-        touchAction: "none"
       }}
     />
   )
