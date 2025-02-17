@@ -1,26 +1,25 @@
+import { useEffect, useState } from "react"
 
-import { useState, useEffect } from 'react';
-
+/**
+ * A hook to detect if we're on a touch-capable device.
+ * 
+ * 1. Performs a one-time check at mount, using standard heuristics.
+ * 2. Avoids adding a 'touchstart' listener with { passive: true }.
+ *    This prevents "Unable to preventDefault..." warnings elsewhere.
+ */
 export function useTouchDevice() {
-  const [isTouch, setIsTouch] = useState(false);
+  const [isTouch, setIsTouch] = useState(false)
 
   useEffect(() => {
-    const checkTouch = () => {
-      const isTouchDevice = 
-        ('ontouchstart' in window) ||
-        (navigator.maxTouchPoints > 0) ||
-        window.matchMedia('(pointer: coarse)').matches;
-      
-      setIsTouch(isTouchDevice);
-    };
+    // Basic one-time check for touch support:
+    const detectedTouch =
+      "ontouchstart" in window ||
+      (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) ||
+      window.matchMedia("(pointer: coarse)").matches
 
-    checkTouch();
-    window.addEventListener('touchstart', () => setIsTouch(true), { passive: true });
-    
-    return () => {
-      window.removeEventListener('touchstart', () => setIsTouch(true));
-    };
-  }, []);
+    setIsTouch(detectedTouch)
+  }, [])
 
-  return isTouch;
+  return isTouch
 }
+
