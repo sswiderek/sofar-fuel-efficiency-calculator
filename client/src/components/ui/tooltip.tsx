@@ -11,20 +11,7 @@ const TooltipProvider = ({ children, ...props }) => (
 
 const Tooltip = TooltipPrimitive.Root
 
-const TooltipTrigger = React.forwardRef<
-  React.ElementRef<typeof TooltipPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Trigger>
->((props, ref) => (
-  <TooltipPrimitive.Trigger 
-    ref={ref} 
-    {...props}
-    onTouchStart={(e) => {
-      e.preventDefault();
-      props.onClick?.(e as any);
-    }}
-  />
-))
-TooltipTrigger.displayName = TooltipPrimitive.Trigger.displayName
+const TooltipTrigger = TooltipPrimitive.Trigger
 
 const TooltipContent = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
