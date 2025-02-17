@@ -6,27 +6,34 @@ import { useTouchDevice } from "@/hooks/use-touch-device"
 
 const TooltipProvider = TooltipPrimitive.Provider
 
-const Tooltip = TooltipPrimitive.Root
+const Tooltip = ({ children, ...props }: { children: React.ReactNode } & React.ComponentProps<typeof TooltipPrimitive.Root>) => {
+  const isTouch = useTouchDevice()
+  const [open, setOpen] = React.useState(false)
+  
+  if (isTouch) {
+    return (
+      <TooltipPrimitive.Root open={open} onOpenChange={setOpen} {...props}>
+        {children}
+      </TooltipPrimitive.Root>
+    )
+  }
+  
+  return <TooltipPrimitive.Root {...props}>{children}</TooltipPrimitive.Root>
+}
 
 const TooltipTrigger = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Trigger>
 >((props, ref) => {
   const isTouch = useTouchDevice()
-  const [open, setOpen] = React.useState(false)
-
-  if (isTouch) {
-    return (
-      <TooltipPrimitive.Trigger
-        ref={ref}
-        {...props}
-        onClick={() => setOpen(!open)}
-        data-state={open ? "open" : "closed"}
-      />
-    )
-  }
-
-  return <TooltipPrimitive.Trigger ref={ref} {...props} />
+  
+  return (
+    <TooltipPrimitive.Trigger 
+      ref={ref}
+      {...props}
+      onClick={isTouch ? props.onClick : undefined}
+    />
+  )
 })
 TooltipTrigger.displayName = TooltipPrimitive.Trigger.displayName
 
