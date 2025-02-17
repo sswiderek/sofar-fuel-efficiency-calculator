@@ -79,7 +79,7 @@ export default function CalculatorForm() {
       const formData = {
         fleetSize: Number(values.fleetSize),
         voyageLength: Number(values.voyageLength),
-        portTime: Number(values.portTime),
+        portTimePerVoyage: Number(values.portTime),
         fuelConsumption: Number(values.fuelConsumption),
         fuelPrice: Number(values.fuelPrice),
         estimatedSavings: Number(values.estimatedSavings)
