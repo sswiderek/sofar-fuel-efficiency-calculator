@@ -387,7 +387,7 @@ export default function CalculatorForm() {
                 <img src="/images/cargo-ship.png" alt="Cargo Ship" className="w-48 h-48 object-contain mb-3" />
                 <div className="waves-small"></div>
               </div>
-              <p className="text-slate-700 text-base">Fill in your fleet details to calculate estimated fuel savings</p>
+              <p className="text-slate-700 text-base text-center">Fill in your fleet details to calculate estimated fuel savings</p>
             </div>
           )}
         </div>
