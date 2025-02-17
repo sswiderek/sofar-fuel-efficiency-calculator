@@ -14,26 +14,22 @@ const TooltipTrigger = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Trigger>
 >((props, ref) => {
-  const isTouch = useTouchDevice();
-  console.log('Tooltip render - isTouch:', isTouch);
-  
-  const handleTouch = React.useCallback(() => {
-    if (isTouch) {
-      const target = ref.current;
-      if (target) {
-        target.style.pointerEvents = 'auto';
-        target.click();
-      }
+  const handleTouch = (e: React.TouchEvent) => {
+    e.preventDefault();
+    if (ref && ref.current) {
+      ref.current.click();
     }
-  }, [isTouch]);
+  };
 
   return (
     <TooltipPrimitive.Trigger 
       ref={ref} 
       {...props} 
       onTouchStart={handleTouch}
-      style={{ pointerEvents: 'auto' }}
-      data-touch={isTouch}
+      style={{ 
+        pointerEvents: 'auto',
+        touchAction: 'none'
+      }}
     />
   );
 });
