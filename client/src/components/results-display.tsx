@@ -54,7 +54,7 @@ export default function ResultsDisplay({ results }: Props) {
   }
 
   return (
-    <TooltipProvider delayDuration={0}>
+    <TooltipProvider delayDuration={0} disableHoverableContent>
       <div className="space-y-4 pt-6">
       <Card className="border bg-white shadow-sm">
         <CardContent className="p-3">
@@ -66,9 +66,8 @@ export default function ResultsDisplay({ results }: Props) {
                   <button 
                     type="button" 
                     className="p-2 -m-1 border-0 bg-transparent cursor-pointer touch-target"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                    }}
+                    onTouchStart={(e) => e.preventDefault()}
+                    onClick={(e) => e.stopPropagation()}
                   >
                     <InfoCircledIcon className="h-4 w-4 text-slate-400" />
                   </button>
