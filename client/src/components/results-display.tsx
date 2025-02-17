@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
 import type { CalculationResult } from "@shared/schema";
 import { TrendingUp, DollarSign, Leaf } from 'lucide-react';
 
@@ -11,7 +11,6 @@ interface Props {
 }
 
 export default function ResultsDisplay({ results }: Props) {
-  const { TooltipProvider } = require("@/components/ui/tooltip");
   const formatCurrency = (value: number) => 
     new Intl.NumberFormat('en-US', { 
       style: 'currency', 
