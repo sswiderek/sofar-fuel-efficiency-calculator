@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
 import type { CalculationResult } from "@shared/schema";
-import { TrendingDown, DollarSign, Leaf, Calculator } from 'lucide-react';
+import { TrendingDown, DollarSign, Leaf, Calculator, Calculator2 } from 'lucide-react';
 import { Popover, PopoverTrigger, PopoverContent } from '@radix-ui/react-popover';
 
 const useTouchDevice = () => {
@@ -149,7 +149,7 @@ export default function ResultsDisplay({ results }: Props) {
                       key === "average" && "text-amber-700",
                       key === "optimal" && "text-emerald-700"
                     )}>
-                      <Calculator className="h-3.5 w-3.5" />
+                      <Calculator2 className="h-3.5 w-3.5" />
                       <h3 className="text-sm font-medium">Optimized Cost</h3>
                     </div>
                     <p className="text-lg font-bold text-slate-900">{formatCurrency(scenario.data.optimizedCost)}</p>
