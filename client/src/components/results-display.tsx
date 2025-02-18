@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
 import type { CalculationResult } from "@shared/schema";
-import { TrendingUp, DollarSign, Leaf } from 'lucide-react';
+import { TrendingDown, DollarSign, Leaf } from 'lucide-react';
 import { Popover, PopoverTrigger, PopoverContent } from '@radix-ui/react-popover';
 
 const useTouchDevice = () => {
@@ -159,7 +159,7 @@ export default function ResultsDisplay({ results }: Props) {
                       key === "average" && "text-amber-700",
                       key === "optimal" && "text-emerald-700"
                     )}>
-                      <TrendingUp className="h-2.5 w-2.5 inline mr-1" />
+                      <TrendingDown className="h-2.5 w-2.5 inline mr-1" />
                       {scenario.data.improvement}% reduction in fuel costs
                     </p>
                   </div>
