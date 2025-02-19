@@ -18,7 +18,11 @@ const useTouchDevice = () => {
 const SmartTooltip = ({ content, children }) => {
   const isTouch = useTouchDevice();
 
-  console.log('SmartTooltip render - isTouch:', isTouch);
+  console.log('SmartTooltip (prod):', {
+    isTouch,
+    content: content?.props,
+    childType: children?.type
+  });
 
   return isTouch ? (
     <Popover>

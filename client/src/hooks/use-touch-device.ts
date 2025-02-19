@@ -6,11 +6,18 @@ export function useTouchDevice() {
 
   useEffect(() => {
     const checkTouch = () => {
-      setIsTouch(
-        'ontouchstart' in window || 
-        navigator.maxTouchPoints > 0 ||
-        window.matchMedia('(pointer: coarse)').matches
-      )
+      const hasTouch = 'ontouchstart' in window;
+      const hasMaxTouch = navigator.maxTouchPoints > 0;
+      const hasCoarse = window.matchMedia('(pointer: coarse)').matches;
+      
+      console.log('Touch detection (prod):', {
+        hasTouch,
+        hasMaxTouch,
+        hasCoarse,
+        userAgent: navigator.userAgent
+      });
+
+      setIsTouch(hasTouch || hasMaxTouch || hasCoarse);
     }
     
     checkTouch()
