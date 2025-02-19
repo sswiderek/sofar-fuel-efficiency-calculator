@@ -17,9 +17,9 @@ const useTouchDevice = () => {
 // Assume SmartTooltip is defined elsewhere and handles touch events appropriately
 const SmartTooltip = ({ content, children }) => {
   const isTouch = useTouchDevice();
-  
+
   console.log('SmartTooltip render - isTouch:', isTouch);
-  
+
   return isTouch ? (
     <Popover>
       <PopoverTrigger asChild>
@@ -317,7 +317,7 @@ export default function ResultsDisplay({ results }: Props) {
 
               <Card
                 className={cn(
-                  "mt-2 border shadow-sm",
+                  "mt-4 md:mt-8 border shadow-sm",
                   key === "conservative" && "bg-sky-50/50",
                   key === "average" && "bg-orange-50/50",
                   key === "optimal" && "bg-emerald-50/50"
