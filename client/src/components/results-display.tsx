@@ -17,12 +17,23 @@ const useTouchDevice = () => {
 };
 
 const SmartTooltip = ({ content, children }) => {
-  console.log('SmartTooltip rendering', { timestamp: new Date().toISOString() });
+  console.log('%c SmartTooltip Component', 'background: #222; color: #bada55', {
+    timestamp: new Date().toISOString(),
+    stack: new Error().stack
+  });
   
   const isTouch = useTouchDevice()
   const [isOpen, setIsOpen] = React.useState(false)
   const buttonRef = React.useRef(null)
   const containerRef = useRef(null);
+
+  // Debug touch detection on every render
+  console.log('%c Touch Detection State', 'background: #222; color: #ff6b6b', {
+    isTouch,
+    hasTouch: 'ontouchstart' in window,
+    maxTouchPoints: navigator?.maxTouchPoints,
+    userAgent: navigator.userAgent
+  });
 
   // Debug touch detection
   React.useEffect(() => {
@@ -79,10 +90,13 @@ const SmartTooltip = ({ content, children }) => {
             type="button"
             className="inline-block p-2 border-0 bg-transparent touch-manipulation"
             onClick={(e) => {
-              console.log('Button clicked', {
+              console.log('%c Button Event', 'background: #222; color: #ffd93d', {
                 type: e.type,
                 target: e.target,
-                timestamp: new Date().toISOString()
+                currentTarget: e.currentTarget,
+                path: e.nativeEvent.composedPath(),
+                timestamp: new Date().toISOString(),
+                stack: new Error().stack
               });
               handleInteraction(e);
             }}
