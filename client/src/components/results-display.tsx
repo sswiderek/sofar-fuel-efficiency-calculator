@@ -173,11 +173,16 @@ export default function ResultsDisplay({ results }: Props) {
                         <InfoCircledIcon className="h-4 w-4 text-slate-400" />
                       </button>
                     </TooltipTrigger>
-                    <TooltipContent side="top" sideOffset={5} className="w-60">
-                      Annual fuel consumption × fuel cost:
+                    <TooltipContent side="top" sideOffset={5} className="w-72">
+                      Annual fuel consumption:
                       <div className="mt-2 text-slate-600">
                         <p className="text-sm">
-                          {formatNumber(results[0].totalFuelConsumption)} MT × ${formatNumber(results[0].fuelPrice)}/MT
+                          Sea: {formatNumber(results[0].fleetSize * results[0].daysAtSea * results[0].fuelConsumption)} MT/year
+                          <br />
+                          Port: {formatNumber(results[0].fleetSize * (365 - results[0].daysAtSea) * results[0].portFuelConsumption)} MT/year
+                        </p>
+                        <p className="text-sm mt-2">
+                          Total: {formatNumber(results[0].totalFuelConsumption)} MT × ${formatNumber(results[0].fuelPrice)}/MT
                         </p>
                         <p className="text-xs mt-2 text-slate-500">Note: Wayfinder optimization applies to sea operations only</p>
                       </div>
