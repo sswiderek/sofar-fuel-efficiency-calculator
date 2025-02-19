@@ -24,27 +24,21 @@ const SmartTooltip = ({ content, children }) => {
     console.log('SmartTooltip mounted with touch:', isTouch);
   }, [isTouch]);
 
-  const handleTouchStart = React.useCallback((e: React.TouchEvent) => {
+  const handleInteraction = React.useCallback((e: React.MouseEvent | React.TouchEvent) => {
     e.preventDefault();
     e.stopPropagation();
     setIsOpen(prev => !prev);
   }, []);
 
-  const handleClick = React.useCallback((e: React.MouseEvent) => {
-    if (isTouch) {
-      e.preventDefault();
-      setIsOpen(prev => !prev);
-    }
-  }, [isTouch]);
-
   return isTouch ? (
     <Popover>
       <PopoverTrigger asChild>
         <div 
-          className="inline-block"
+          className="inline-block touch-target"
           ref={triggerRef}
-          onTouchStart={handleTouchStart}
-          onClick={handleClick}
+          onTouchEnd={handleInteraction}
+          onClick={handleInteraction}
+          style={{ touchAction: 'manipulation' }}
         >
           {children}
         </div>
