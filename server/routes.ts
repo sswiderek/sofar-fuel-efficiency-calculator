@@ -37,10 +37,14 @@ export function registerRoutes(app: Express): Server {
       const fuelCostWithWayfinder = totalFuelCost - estimatedSavings;
 
       // Calculate CO2 reduction (assuming 3.15 MT of CO2 per MT of fuel)
-      const fuelSaved = (data.fleetSize * data.voyageLength * data.fuelConsumption) * savingsPercent;
-      const co2Reduction = fuelSaved * 3.15;
+      const seaFuelSaved = (data.fleetSize * seaDaysPerYear * data.fuelConsumption) * savingsPercent;
+      const portFuelSaved = (data.fleetSize * portDaysPerYear * data.portFuelConsumption) * savingsPercent;
+      const totalFuelSaved = seaFuelSaved + portFuelSaved;
+      const co2Reduction = totalFuelSaved * 3.15;
 
-      const totalFuelConsumption = data.fleetSize * data.voyageLength * data.fuelConsumption;
+      const seaFuelConsumption = data.fleetSize * seaDaysPerYear * data.fuelConsumption;
+      const portFuelConsumption = data.fleetSize * portDaysPerYear * data.portFuelConsumption;
+      const totalFuelConsumption = seaFuelConsumption + portFuelConsumption;
       
       const results: CalculationResult = {
         totalFuelCost,
