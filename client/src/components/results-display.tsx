@@ -17,40 +17,63 @@ const useTouchDevice = () => {
 const SmartTooltip = ({ content, children }) => {
   const isTouch = useTouchDevice()
   const [isOpen, setIsOpen] = React.useState(false)
+  const buttonRef = React.useRef(null)
 
-  console.log('SmartTooltip render -', {
-    isTouch,
-    isOpen,
-    timestamp: new Date().toISOString()
-  });
+  React.useEffect(() => {
+    console.log('SmartTooltip mounted', {
+      isTouch,
+      buttonElement: buttonRef.current,
+      timestamp: new Date().toISOString()
+    })
+    
+    return () => {
+      console.log('SmartTooltip unmounted', {
+        timestamp: new Date().toISOString()
+      })
+    }
+  }, [isTouch])
+
+  React.useEffect(() => {
+    console.log('SmartTooltip open state changed:', {
+      isOpen,
+      timestamp: new Date().toISOString()
+    })
+  }, [isOpen])
+
+  const handleClick = React.useCallback((e) => {
+    console.log('Click handler executed:', {
+      target: e.target,
+      currentTarget: e.currentTarget,
+      timestamp: new Date().toISOString()
+    })
+    e.preventDefault()
+    e.stopPropagation()
+  }, [])
 
   return isTouch ? (
-    <Popover open={isOpen} onOpenChange={setIsOpen}>
+    <Popover open={isOpen} onOpenChange={(open) => {
+      console.log('Popover onOpenChange:', {open, timestamp: new Date().toISOString()})
+      setIsOpen(open)
+    }}>
       <PopoverTrigger asChild>
         <button 
+          ref={buttonRef}
           type="button"
           className="inline-block p-1 -m-1 border-0 bg-transparent touch-manipulation"
-          onClick={(e) => {
-            console.log('Click event -', {
-              target: e.target,
-              currentTarget: e.currentTarget,
-              timestamp: new Date().toISOString()
-            });
-            e.stopPropagation();
-          }}
+          onClick={handleClick}
           onTouchStart={(e) => {
-            console.log('TouchStart event -', {
+            console.log('TouchStart:', {
               touches: e.touches.length,
               targetTouches: e.targetTouches.length,
               timestamp: new Date().toISOString()
-            });
+            })
           }}
           onPointerDown={(e) => {
-            console.log('PointerDown event -', {
+            console.log('PointerDown:', {
               pointerType: e.pointerType,
               pressure: e.pressure,
               timestamp: new Date().toISOString()
-            });
+            })
           }}
         >
           {children}
