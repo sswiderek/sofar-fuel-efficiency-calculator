@@ -134,7 +134,7 @@ export default function ResultsDisplay({ results }: Props) {
                       <span className="font-bold">
                         {formatNumber(results[0].totalFuelConsumption)}
                       </span>{" "}
-                      MT of fuel consumed annually by your fleet
+                      MT of fuel consumed annually by your fleet (including both sea and port consumption)
                     </PopoverContent>
                   </Popover>
                 ) : (

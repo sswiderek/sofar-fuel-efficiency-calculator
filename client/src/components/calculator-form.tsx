@@ -331,13 +331,13 @@ export default function CalculatorForm() {
                           <TooltipContent className="max-w-sm p-2">
                             <div className="space-y-1">
                               <div className="text-sm font-medium">
-                                Daily Fuel Consumption (MT/Day)
+                                Sea Fuel Consumption (MT/Day)
                               </div>
                               <div className="text-xs text-muted-foreground">
                                 Enter your fleet's average fuel consumption in
-                                Metric Tons per day while at sea. For mixed
-                                fleets, use a weighted average based on vessel
-                                operating days.
+                                Metric Tons per day while at sea. Port fuel consumption
+                                is specified separately. For mixed fleets, use a weighted
+                                average based on vessel operating days.
                               </div>
                             </div>
                           </TooltipContent>
