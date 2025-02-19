@@ -341,7 +341,7 @@ export default function ResultsDisplay({ results }: Props) {
 
               <Card
                 className={cn(
-                  "mt-4 md:mt-8 border shadow-sm",
+                  "mt-3 md:mt-4 border shadow-sm",
                   key === "conservative" && "bg-sky-50/50",
                   key === "average" && "bg-orange-50/50",
                   key === "optimal" && "bg-emerald-50/50"
