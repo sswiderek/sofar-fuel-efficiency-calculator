@@ -6,31 +6,32 @@ export function useTouchDevice() {
 
   useEffect(() => {
     const checkTouch = () => {
-      // Primary check: matchMedia
-      const hasCoarse = window.matchMedia('(pointer: coarse)').matches;
-      // Secondary checks
-      const hasTouch = 'ontouchstart' in window || 
-                      (window.DocumentTouch && document instanceof DocumentTouch);
-      const hasMaxTouch = navigator.maxTouchPoints > 0;
+      // Primary checks for touch capability
+      const touchPoints = navigator.maxTouchPoints > 0;
+      const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
+      const touchScreen = matchMedia('(hover: none)').matches;
+      const hasTouchApi = 'ontouchstart' in window;
       
       console.log('Touch detection:', {
-        hasCoarse,
-        hasTouch,
-        hasMaxTouch,
+        touchPoints,
+        coarsePointer,
+        touchScreen,
+        hasTouchApi,
         userAgent: navigator.userAgent
       });
 
-      setIsTouch(hasCoarse || hasTouch || hasMaxTouch);
+      setIsTouch(touchPoints || coarsePointer || touchScreen || hasTouchApi);
     }
     
-    checkTouch()
-    window.addEventListener('touchstart', () => setIsTouch(true), { once: true })
+    checkTouch();
     
-    const mediaQuery = window.matchMedia('(pointer: coarse)')
-    mediaQuery.addListener(checkTouch)
+    // Handle orientation changes
+    window.addEventListener('orientationchange', checkTouch);
+    // Handle initial touch
+    window.addEventListener('touchstart', () => setIsTouch(true), { once: true });
     
     return () => {
-      mediaQuery.removeListener(checkTouch)
+      window.removeEventListener('orientationchange', checkTouch);
     }
   }, [])
 
