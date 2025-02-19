@@ -8,8 +8,29 @@ import { cn } from "@/lib/utils"
 const TooltipProvider = TooltipPrimitive.Provider
 
 const Tooltip = ({ children, ...props }) => {
-  console.log('Tooltip render:', { props, childCount: React.Children.count(children) });
-  return <TooltipPrimitive.Root {...props}>{children}</TooltipPrimitive.Root>;
+  const [open, setOpen] = React.useState(false);
+  const openTimeout = React.useRef(null);
+
+  const handleOpenChange = React.useCallback((nextOpen) => {
+    if (nextOpen) {
+      openTimeout.current = setTimeout(() => setOpen(true), props.delayDuration || 200);
+    } else {
+      if (openTimeout.current) clearTimeout(openTimeout.current);
+      setOpen(false);
+    }
+  }, [props.delayDuration]);
+
+  React.useEffect(() => {
+    return () => {
+      if (openTimeout.current) clearTimeout(openTimeout.current);
+    };
+  }, []);
+
+  return (
+    <TooltipPrimitive.Root open={open} onOpenChange={handleOpenChange} {...props}>
+      {children}
+    </TooltipPrimitive.Root>
+  );
 };
 
 const TooltipTrigger = React.forwardRef((props, ref) => {

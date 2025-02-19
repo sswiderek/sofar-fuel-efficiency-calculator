@@ -156,7 +156,7 @@ export default function ResultsDisplay({ results }: Props) {
                     </PopoverContent>
                   </Popover>
                 ) : (
-                  <Tooltip delayDuration={100}>
+                  <Tooltip delayDuration={400}>
                     <TooltipTrigger asChild>
                       {/* Removed onTouchStart */}
                       <button
