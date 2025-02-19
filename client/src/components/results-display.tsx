@@ -192,7 +192,6 @@ export default function ResultsDisplay({ results }: Props) {
                           Fuel Cost: ${formatNumber(results[0].fuelPrice)}/MT
                         </p>
                         <p className="text-xs mt-1 text-slate-500">Note: Wayfinder optimization applies to sea operations only</p>
-                        </p>
                       </div>
                     </TooltipContent>
                   </Tooltip>
