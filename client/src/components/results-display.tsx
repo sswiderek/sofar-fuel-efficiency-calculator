@@ -33,15 +33,23 @@ const SmartTooltip = ({ content, children }) => {
   return isTouch ? (
     <Popover>
       <PopoverTrigger asChild>
-        <div 
+        <button 
+          type="button"
           className="inline-block touch-target"
           ref={triggerRef}
-          onTouchEnd={handleInteraction}
-          onClick={handleInteraction}
-          style={{ touchAction: 'manipulation' }}
+          onTouchStart={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          }}
+          onTouchEnd={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            handleInteraction(e);
+          }}
+          style={{ touchAction: 'none' }}
         >
           {children}
-        </div>
+        </button>
       </PopoverTrigger>
       <PopoverContent 
         className="z-[100] w-60 text-xs p-2 rounded-md border bg-white shadow-md"
@@ -127,11 +135,18 @@ export default function ResultsDisplay({ results }: Props) {
                 {useTouchDevice() ? (
                   <Popover>
                     <PopoverTrigger asChild>
-                      {/* Removed onTouchStart */}
                       <button
                         type="button"
                         className="p-2 -m-1 border-0 bg-transparent cursor-pointer touch-target"
                         onClick={(e) => e.stopPropagation()}
+                        onTouchStart={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                        }}
+                        onTouchEnd={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                        }}
                       >
                         <InfoCircledIcon className="h-4 w-4 text-slate-400" />
                       </button>
@@ -350,10 +365,17 @@ export default function ResultsDisplay({ results }: Props) {
                       {useTouchDevice() ? (
                         <Popover>
                           <PopoverTrigger asChild>
-                            {/* Removed onTouchStart */}
                             <button
                               type="button"
                               className="p-1 -m-1 border-0 bg-transparent touch-manipulation"
+                              onTouchStart={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                              }}
+                              onTouchEnd={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                              }}
                             >
                               <InfoCircledIcon className="h-3 w-3 text-emerald-600" />
                             </button>
