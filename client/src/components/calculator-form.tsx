@@ -373,7 +373,7 @@ export default function CalculatorForm() {
                     const defaultPortConsumption = seaConsumption ? Math.round(seaConsumption * 0.1) : undefined;
                     
                     React.useEffect(() => {
-                      if (seaConsumption && !field.value) {
+                      if (seaConsumption && field.value === undefined) {
                         field.onChange(defaultPortConsumption);
                       }
                     }, [seaConsumption, field]);
