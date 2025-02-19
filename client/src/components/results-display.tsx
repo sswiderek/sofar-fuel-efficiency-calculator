@@ -207,7 +207,7 @@ export default function ResultsDisplay({ results }: Props) {
                   </Tooltip>
                 )}
               </div>
-              <p className="text-2xl font-bold tracking-tight">
+              <p className="text-3xl font-bold tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
                 {formatCurrency(results[0].totalFuelCost)}
               </p>
             </div>

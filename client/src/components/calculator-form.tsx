@@ -154,7 +154,7 @@ export default function CalculatorForm() {
         <div className="space-y-8 pt-4">
           <Form {...form}>
             <form onSubmit={onSubmit} className="space-y-8 p-4 max-w-md">
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {/* Fleet Size Field */}
                 <FormField
                   control={form.control}

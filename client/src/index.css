@@ -1,4 +1,3 @@
-
 .touch-target {
   touch-action: none;
   -webkit-tap-highlight-color: transparent;
@@ -117,4 +116,9 @@
   body {
     @apply font-sans antialiased bg-background text-foreground;
   }
+}
+
+.input {
+  @apply flex h-11 w-full rounded-md border border-input bg-background/50 px-4 py-2 text-sm shadow-sm transition-colors;
+  @apply hover:bg-background/80 focus:border-primary focus:ring-1 focus:ring-primary/30;
 }
