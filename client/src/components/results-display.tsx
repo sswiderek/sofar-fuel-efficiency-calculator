@@ -284,13 +284,29 @@ export default function ResultsDisplay({ results }: Props) {
                         </h3>
                         <SmartTooltip content={
                           <TooltipContent className="w-64 text-xs">
-                            <div className="space-y-2 py-1">
-                              <p className="font-medium">Annual Consumption:</p>
-                              <div className="space-y-1.5">
-                                <p>• Sea: Fleet × Days at Sea × MT/Day</p>
-                                <p>• Port: Fleet × Port Days × MT/Day</p>
-                                <p className="mt-2">Optimization ({key === "conservative" ? "3%" : key === "average" ? "5%" : "7%"}) applies to sea operations only</p>
-                              </div>
+                            <div className="space-y-3 py-1">
+                              <p className="font-medium">
+                                Here's how we calculate your savings:
+                              </p>
+                              <ol className="space-y-2 pl-5 list-decimal">
+                                <li>
+                                  We first calculate how many days your ships
+                                  spend at sea annually, accounting for port time
+                                </li>
+                                <li>
+                                  Then multiply by your fleet size, daily fuel
+                                  usage, and fuel price
+                                </li>
+                                <li>
+                                  Finally, apply the optimization level (
+                                  {key === "conservative"
+                                    ? "3%"
+                                    : key === "average"
+                                    ? "5%"
+                                    : "7%"}
+                                  ) to find potential savings
+                                </li>
+                              </ol>
                             </div>
                           </TooltipContent>
                         }>
