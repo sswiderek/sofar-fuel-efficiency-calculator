@@ -154,11 +154,11 @@ export default function ResultsDisplay({ results }: Props) {
                       </button>
                     </PopoverTrigger>
                     <PopoverContent className="w-60 text-xs">
-                      Based on{" "}
-                      <span className="font-bold">
-                        {formatNumber(results[0].totalFuelConsumption)}
-                      </span>{" "}
-                      MT of fuel consumed annually by your fleet (including both sea and port consumption)
+                      Total yearly fuel usage: {formatNumber(results[0].totalFuelConsumption)} MT
+                      <div className="mt-2">
+                        <p className="mb-1">• At sea: {formatNumber(results[0].fleetSize)} ships × {formatNumber(results[0].daysAtSea)} days × {formatNumber(results[0].fuelConsumption)} MT/day</p>
+                        <p>• In port: {formatNumber(results[0].fleetSize)} ships × {formatNumber(results[0].portTimePerVoyage)} days × {formatNumber(results[0].portFuelConsumption)} MT/day</p>
+                      </div>
                     </PopoverContent>
                   </Popover>
                 ) : (
