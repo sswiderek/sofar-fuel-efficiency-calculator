@@ -17,123 +17,19 @@ const useTouchDevice = () => {
 };
 
 const SmartTooltip = ({ content, children }) => {
-  console.log('%c SmartTooltip Component', 'background: #222; color: #bada55', {
-    timestamp: new Date().toISOString(),
-    stack: new Error().stack
-  });
+  const [isOpen, setIsOpen] = React.useState(false);
   
-  const isTouch = useTouchDevice()
-  const [isOpen, setIsOpen] = React.useState(false)
-  const buttonRef = React.useRef(null)
-  const containerRef = useRef(null);
-
-  // Debug touch detection on every render
-  console.log('%c Touch Detection State', 'background: #222; color: #ff6b6b', {
-    isTouch,
-    hasTouch: 'ontouchstart' in window,
-    maxTouchPoints: navigator?.maxTouchPoints,
-    userAgent: navigator.userAgent
-  });
-
-  // Debug touch detection
-  React.useEffect(() => {
-    console.log('Touch detection:', {
-      isTouch,
-      hasTouch: 'ontouchstart' in window,
-      maxTouchPoints: navigator?.maxTouchPoints,
-      timestamp: new Date().toISOString()
-    });
-  }, [isTouch]);
-
-  React.useEffect(() => {
-    console.log('SmartTooltip mounted', {
-      isTouch,
-      buttonElement: buttonRef.current,
-      containerElement: containerRef.current,
-      timestamp: new Date().toISOString()
-    })
-
-    return () => {
-      console.log('SmartTooltip unmounted', {
-        timestamp: new Date().toISOString()
-      })
-    }
-  }, [isTouch])
-
-  React.useEffect(() => {
-    console.log('SmartTooltip open state changed:', {
-      isOpen,
-      timestamp: new Date().toISOString()
-    })
-  }, [isOpen])
-
-  const handleInteraction = React.useCallback((e) => {
-    console.log('Interaction handler executed:', {
-      type: e.type,
-      target: e.target,
-      currentTarget: e.currentTarget,
-      timestamp: new Date().toISOString()
-    })
-    e.preventDefault()
-    e.stopPropagation()
-    setIsOpen(!isOpen);
-  }, [isOpen])
-
-  return isTouch ? (
-    <div ref={containerRef}>
-      <Popover open={isOpen} onOpenChange={(open) => {
-        console.log('Popover onOpenChange:', {open, timestamp: new Date().toISOString()})
-        setIsOpen(open)
-      }}>
-        <PopoverTrigger asChild>
-          <button 
-            type="button"
-            className="inline-block p-2 border-0 bg-transparent touch-manipulation"
-            onClick={(e) => {
-              console.log('%c Button Event', 'background: #222; color: #ffd93d', {
-                type: e.type,
-                target: e.target,
-                currentTarget: e.currentTarget,
-                path: e.nativeEvent.composedPath(),
-                timestamp: new Date().toISOString(),
-                stack: new Error().stack
-              });
-              handleInteraction(e);
-            }}
-            onTouchStart={(e) => {
-              console.log('TouchStart event', {
-                type: e.type,
-                touches: e.touches.length,
-                timestamp: new Date().toISOString()
-              });
-              handleInteraction(e);
-            }}
-          >
-            {children}
-          </button>
-        </PopoverTrigger>
-        <PopoverContent 
-          className="z-[100] w-60 text-xs p-2 rounded-md border bg-white shadow-md"
-          side="top"
-          sideOffset={5}
-          onOpenAutoFocus={(e) => {
-            e.preventDefault();
-            console.log('PopoverContent autoFocus event');
-          }}
-        >
-          {content}
-        </PopoverContent>
-      </Popover>
-    </div>
-  ) : (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <div className="inline-block">{children}</div>
-        </TooltipTrigger>
+  return (
+    <Popover open={isOpen} onOpenChange={setIsOpen}>
+      <PopoverTrigger asChild>
+        <button type="button" className="p-2 border-0 bg-transparent">
+          {children}
+        </button>
+      </PopoverTrigger>
+      <PopoverContent className="z-[100] w-60 text-xs p-2 rounded-md border bg-white shadow-md" side="top" sideOffset={5}>
         {content}
-      </Tooltip>
-    </TooltipProvider>
+      </PopoverContent>
+    </Popover>
   );
 };
 
