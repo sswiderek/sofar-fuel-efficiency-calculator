@@ -16,24 +16,41 @@ const useTouchDevice = () => {
 
 const SmartTooltip = ({ content, children }) => {
   const isTouch = useTouchDevice()
+  const [isOpen, setIsOpen] = React.useState(false)
 
-  console.log('SmartTooltip render - isTouch:', isTouch);
+  console.log('SmartTooltip render -', {
+    isTouch,
+    isOpen,
+    timestamp: new Date().toISOString()
+  });
 
   return isTouch ? (
-    <Popover>
+    <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger asChild>
         <button 
           type="button"
           className="inline-block p-1 -m-1 border-0 bg-transparent touch-manipulation"
           onClick={(e) => {
-            console.log('Click event fired');
+            console.log('Click event -', {
+              target: e.target,
+              currentTarget: e.currentTarget,
+              timestamp: new Date().toISOString()
+            });
             e.stopPropagation();
           }}
           onTouchStart={(e) => {
-            console.log('TouchStart event fired');
+            console.log('TouchStart event -', {
+              touches: e.touches.length,
+              targetTouches: e.targetTouches.length,
+              timestamp: new Date().toISOString()
+            });
           }}
           onPointerDown={(e) => {
-            console.log('PointerDown event fired');
+            console.log('PointerDown event -', {
+              pointerType: e.pointerType,
+              pressure: e.pressure,
+              timestamp: new Date().toISOString()
+            });
           }}
         >
           {children}
@@ -43,6 +60,10 @@ const SmartTooltip = ({ content, children }) => {
         className="z-[100] w-60 text-xs p-2 rounded-md border bg-white shadow-md"
         side="top"
         sideOffset={5}
+        onOpenAutoFocus={(e) => {
+          e.preventDefault();
+          console.log('PopoverContent autoFocus event');
+        }}
       >
         {content}
       </PopoverContent>
