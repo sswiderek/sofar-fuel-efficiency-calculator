@@ -14,12 +14,11 @@ const useTouchDevice = () => {
   );
 };
 
-// Assume SmartTooltip is defined elsewhere and handles touch events appropriately
 const SmartTooltip = ({ content, children }) => {
-  const isTouch = useTouchDevice();
-  
+  const isTouch = useTouchDevice()
+
   console.log('SmartTooltip render - isTouch:', isTouch);
-  
+
   return isTouch ? (
     <Popover>
       <PopoverTrigger asChild>
@@ -29,6 +28,12 @@ const SmartTooltip = ({ content, children }) => {
           onClick={(e) => {
             console.log('Click event fired');
             e.stopPropagation();
+          }}
+          onTouchStart={(e) => {
+            console.log('TouchStart event fired');
+          }}
+          onPointerDown={(e) => {
+            console.log('PointerDown event fired');
           }}
         >
           {children}
