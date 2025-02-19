@@ -15,6 +15,8 @@ const useTouchDevice = () => {
 };
 
 // Assume SmartTooltip is defined elsewhere and handles touch events appropriately
+import React from 'react';
+
 const SmartTooltip = ({ content, children }) => {
   const isTouch = useTouchDevice();
   const [isOpen, setIsOpen] = React.useState(false);
