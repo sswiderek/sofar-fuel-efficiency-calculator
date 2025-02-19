@@ -29,20 +29,19 @@ export function registerRoutes(app: Express): Server {
       const portFuelCost = data.fleetSize * portDaysPerYear * data.portFuelConsumption * data.fuelPrice;
       const totalFuelCost = Math.round(seaFuelCost + portFuelCost);
 
-      // Calculate savings based on estimated percentage (only applied to sea fuel consumption)
+      // Calculate savings based on estimated percentage
       const savingsPercent = data.estimatedSavings / 100;
-      const estimatedSavings = seaFuelCost * savingsPercent; // Only apply savings to sea fuel cost
+      const annualFuelConsumption = data.fleetSize * seaDaysPerYear * data.fuelConsumption;
+      const totalFuelCost = Math.round(annualFuelConsumption * data.fuelPrice);
       
-      // Calculate fuel cost with Wayfinder (reduced sea fuel + unchanged port fuel)
-      const fuelCostWithWayfinder = Math.round((seaFuelCost * (1 - savingsPercent)) + portFuelCost);
+      const estimatedSavings = totalFuelCost * savingsPercent;
+      const fuelCostWithWayfinder = Math.round(totalFuelCost * (1 - savingsPercent));
 
-      // Calculate CO2 reduction (only from sea fuel savings)
-      const seaFuelSaved = (data.fleetSize * seaDaysPerYear * data.fuelConsumption) * savingsPercent;
-      const co2Reduction = seaFuelSaved * 3.15; // CO2 reduction only from sea fuel savings
+      // Calculate CO2 reduction
+      const fuelSaved = annualFuelConsumption * savingsPercent;
+      const co2Reduction = fuelSaved * 3.15; // MT CO2 per MT fuel
 
-      const seaFuelConsumption = data.fleetSize * seaDaysPerYear * data.fuelConsumption;
-      const portFuelConsumption = data.fleetSize * portDaysPerYear * data.portFuelConsumption;
-      const totalFuelConsumption = seaFuelConsumption + portFuelConsumption;
+      const totalFuelConsumption = annualFuelConsumption;
       
       const results: CalculationResult = {
         totalFuelCost,

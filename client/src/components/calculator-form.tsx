@@ -57,7 +57,6 @@ export default function CalculatorForm() {
       voyageLength: "",
       portTime: "",
       fuelConsumption: "",
-      portFuelConsumption: "",
       fuelPrice: "",
       estimatedSavings: 5,
     },
@@ -103,7 +102,6 @@ export default function CalculatorForm() {
         voyageLength: Number(values.voyageLength),
         portTimePerVoyage: Number(values.portTime),
         fuelConsumption: Number(values.fuelConsumption),
-        portFuelConsumption: Number(values.portFuelConsumption),
         fuelPrice: Number(values.fuelPrice),
         estimatedSavings: Number(values.estimatedSavings),
       };
@@ -337,9 +335,9 @@ export default function CalculatorForm() {
                               </div>
                               <div className="text-xs text-muted-foreground">
                                 Enter your fleet's average fuel consumption in
-                                Metric Tons per day while at sea. Port fuel consumption
-                                is specified separately. For mixed fleets, use a weighted
-                                average based on vessel operating days.
+                                Metric Tons per day while at sea. For mixed fleets, use a weighted
+                                average based on vessel operating days. Note: This calculator only considers
+                                fuel consumption while at sea, not in port.
                               </div>
                             </div>
                           </TooltipContent>
@@ -364,7 +362,7 @@ export default function CalculatorForm() {
                   )}
                 />
 
-                
+
 
                 {/* Fuel Price Field */}
                 <FormField
