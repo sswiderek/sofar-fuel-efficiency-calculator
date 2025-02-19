@@ -174,10 +174,32 @@ export default function ResultsDisplay({ results }: Props) {
                       </button>
                     </TooltipTrigger>
                     <TooltipContent side="top" sideOffset={5} className="w-72">
-                      Annual sea fuel consumption:
-                      <div className="mt-2 text-slate-600">
-                        <p className="text-sm">
-                          {formatNumber(results[0].totalFuelConsumption)} MT × ${formatNumber(results[0].fuelPrice)}/MT
+                      How we calculate annual fuel costs:
+                      <div className="mt-2 text-slate-600 space-y-2">
+                        <div>
+                          <p className="text-sm font-medium">1. Calculate annual sea days:</p>
+                          <p className="text-xs ml-2">
+                            • Days per voyage = {formatNumber(results[0].voyageLength)} sea days + {formatNumber(results[0].portTimePerVoyage)} port days
+                            <br/>
+                            • Voyages per year = 365 ÷ {formatNumber(results[0].voyageLength + results[0].portTimePerVoyage)} total days
+                            <br/>
+                            • Annual sea days = Voyages × {formatNumber(results[0].voyageLength)} sea days
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-sm font-medium">2. Calculate total fuel consumption:</p>
+                          <p className="text-xs ml-2">
+                            • Daily fleet consumption = {formatNumber(results[0].fleetSize)} ships × {formatNumber(results[0].fuelConsumption)} MT/day
+                            <br/>
+                            • Annual consumption = {formatNumber(results[0].totalFuelConsumption)} MT
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-sm font-medium">3. Calculate total cost:</p>
+                          <p className="text-xs ml-2">
+                            • {formatNumber(results[0].totalFuelConsumption)} MT × ${formatNumber(results[0].fuelPrice)}/MT = ${formatNumber(results[0].totalFuelCost)}
+                          </p>
+                        </div>
                         </p>
                         <p className="text-xs mt-2 text-slate-500">Note: These calculations only include fuel consumption at sea, not in port</p>
                       </div>
