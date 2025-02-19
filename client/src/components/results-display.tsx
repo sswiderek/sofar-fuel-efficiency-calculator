@@ -6,6 +6,8 @@ import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/comp
 import type { CalculationResult } from "@shared/schema";
 import { TrendingDown, DollarSign, Leaf, Settings } from "lucide-react";
 import { Popover, PopoverTrigger, PopoverContent } from "@radix-ui/react-popover";
+import React, { useRef } from 'react';
+
 
 const useTouchDevice = () => {
   return (
@@ -18,14 +20,16 @@ const SmartTooltip = ({ content, children }) => {
   const isTouch = useTouchDevice()
   const [isOpen, setIsOpen] = React.useState(false)
   const buttonRef = React.useRef(null)
+  const containerRef = useRef(null);
 
   React.useEffect(() => {
     console.log('SmartTooltip mounted', {
       isTouch,
       buttonElement: buttonRef.current,
+      containerElement: containerRef.current,
       timestamp: new Date().toISOString()
     })
-    
+
     return () => {
       console.log('SmartTooltip unmounted', {
         timestamp: new Date().toISOString()
@@ -40,57 +44,47 @@ const SmartTooltip = ({ content, children }) => {
     })
   }, [isOpen])
 
-  const handleClick = React.useCallback((e) => {
-    console.log('Click handler executed:', {
+  const handleInteraction = React.useCallback((e) => {
+    console.log('Interaction handler executed:', {
+      type: e.type,
       target: e.target,
       currentTarget: e.currentTarget,
       timestamp: new Date().toISOString()
     })
     e.preventDefault()
     e.stopPropagation()
-  }, [])
+    setIsOpen(!isOpen);
+  }, [isOpen])
 
   return isTouch ? (
-    <Popover open={isOpen} onOpenChange={(open) => {
-      console.log('Popover onOpenChange:', {open, timestamp: new Date().toISOString()})
-      setIsOpen(open)
-    }}>
-      <PopoverTrigger asChild>
-        <button 
-          ref={buttonRef}
-          type="button"
-          className="inline-block p-1 -m-1 border-0 bg-transparent touch-manipulation"
-          onClick={handleClick}
-          onTouchStart={(e) => {
-            console.log('TouchStart:', {
-              touches: e.touches.length,
-              targetTouches: e.targetTouches.length,
-              timestamp: new Date().toISOString()
-            })
-          }}
-          onPointerDown={(e) => {
-            console.log('PointerDown:', {
-              pointerType: e.pointerType,
-              pressure: e.pressure,
-              timestamp: new Date().toISOString()
-            })
+    <div ref={containerRef}>
+      <Popover open={isOpen} onOpenChange={(open) => {
+        console.log('Popover onOpenChange:', {open, timestamp: new Date().toISOString()})
+        setIsOpen(open)
+      }}>
+        <PopoverTrigger asChild>
+          <button 
+            type="button"
+            className="inline-block p-1 -m-1 border-0 bg-transparent touch-manipulation"
+            onClick={handleInteraction}
+            onTouchStart={handleInteraction}
+          >
+            {children}
+          </button>
+        </PopoverTrigger>
+        <PopoverContent 
+          className="z-[100] w-60 text-xs p-2 rounded-md border bg-white shadow-md"
+          side="top"
+          sideOffset={5}
+          onOpenAutoFocus={(e) => {
+            e.preventDefault();
+            console.log('PopoverContent autoFocus event');
           }}
         >
-          {children}
-        </button>
-      </PopoverTrigger>
-      <PopoverContent 
-        className="z-[100] w-60 text-xs p-2 rounded-md border bg-white shadow-md"
-        side="top"
-        sideOffset={5}
-        onOpenAutoFocus={(e) => {
-          e.preventDefault();
-          console.log('PopoverContent autoFocus event');
-        }}
-      >
-        {content}
-      </PopoverContent>
-    </Popover>
+          {content}
+        </PopoverContent>
+      </Popover>
+    </div>
   ) : (
     <TooltipProvider>
       <Tooltip>
@@ -165,11 +159,10 @@ export default function ResultsDisplay({ results }: Props) {
                 {useTouchDevice() ? (
                   <Popover>
                     <PopoverTrigger asChild>
-                      {/* Removed onTouchStart */}
                       <button
                         type="button"
                         className="p-2 -m-1 border-0 bg-transparent cursor-pointer touch-target"
-                        onClick={(e) => e.stopPropagation()}
+                        onClick={(e) => { e.stopPropagation(); console.log('Info Icon Clicked'); }}
                       >
                         <InfoCircledIcon className="h-4 w-4 text-slate-400" />
                       </button>
@@ -185,11 +178,10 @@ export default function ResultsDisplay({ results }: Props) {
                 ) : (
                   <Tooltip delayDuration={100}>
                     <TooltipTrigger asChild>
-                      {/* Removed onTouchStart */}
                       <button
                         type="button"
                         className="p-2 -m-1 border-0 bg-transparent cursor-pointer touch-target"
-                        onClick={(e) => e.stopPropagation()}
+                        onClick={(e) => { e.stopPropagation(); console.log('Info Icon Clicked'); }}
                       >
                         <InfoCircledIcon className="h-4 w-4 text-slate-400" />
                       </button>
@@ -388,10 +380,10 @@ export default function ResultsDisplay({ results }: Props) {
                       {useTouchDevice() ? (
                         <Popover>
                           <PopoverTrigger asChild>
-                            {/* Removed onTouchStart */}
                             <button
                               type="button"
                               className="p-1 -m-1 border-0 bg-transparent touch-manipulation"
+                              onClick={(e) => { e.stopPropagation(); console.log('Info Icon Clicked'); }}
                             >
                               <InfoCircledIcon className="h-3 w-3 text-emerald-600" />
                             </button>
@@ -406,10 +398,10 @@ export default function ResultsDisplay({ results }: Props) {
                       ) : (
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            {/* Removed onTouchStart */}
                             <button
                               type="button"
                               className="p-1 -m-1 border-0 bg-transparent"
+                              onClick={(e) => { e.stopPropagation(); console.log('Info Icon Clicked'); }}
                             >
                               <InfoCircledIcon className="h-3 w-3 text-emerald-600" />
                             </button>
