@@ -103,6 +103,7 @@ export default function CalculatorForm() {
         voyageLength: Number(values.voyageLength),
         portTimePerVoyage: Number(values.portTime),
         fuelConsumption: Number(values.fuelConsumption),
+        portFuelConsumption: Number(values.portFuelConsumption),
         fuelPrice: Number(values.fuelPrice),
         estimatedSavings: Number(values.estimatedSavings),
       };
