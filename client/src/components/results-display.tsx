@@ -15,21 +15,29 @@ const useTouchDevice = () => {
 };
 
 // Assume SmartTooltip is defined elsewhere and handles touch events appropriately
-const SmartTooltip = ({ content, children }) => (
-    <div>
-      {useTouchDevice() ? (
-          <Popover>
-              <PopoverTrigger asChild>{children}</PopoverTrigger>
-              <PopoverContent>{content}</PopoverContent>
-          </Popover>
-      ) : (
-          <Tooltip>
-              <TooltipTrigger asChild>{children}</TooltipTrigger>
-              <TooltipContent>{content}</TooltipContent>
-          </Tooltip>
-      )}
-    </div>
-);
+const SmartTooltip = ({ content, children }) => {
+  const isTouch = useTouchDevice();
+  
+  return isTouch ? (
+    <Popover>
+      <PopoverTrigger asChild>
+        <div className="inline-block">{children}</div>
+      </PopoverTrigger>
+      <PopoverContent className="z-[100] w-60 text-xs p-2 rounded-md border bg-white shadow-md">
+        {content}
+      </PopoverContent>
+    </Popover>
+  ) : (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <div className="inline-block">{children}</div>
+        </TooltipTrigger>
+        {content}
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
 
 
 
