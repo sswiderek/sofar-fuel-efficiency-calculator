@@ -17,14 +17,8 @@ const useTouchDevice = () => {
 // Assume SmartTooltip is defined elsewhere and handles touch events appropriately
 const SmartTooltip = ({ content, children }) => {
   const isTouch = useTouchDevice();
+  const [isOpen, setIsOpen] = React.useState(false);
   const triggerRef = React.useRef(null);
-
-  console.log('SmartTooltip render:', {
-    isTouch,
-    content: content?.props,
-    hasChildren: !!children,
-    triggerRef: triggerRef.current
-  });
 
   React.useEffect(() => {
     console.log('SmartTooltip mounted with touch:', isTouch);
@@ -72,7 +66,7 @@ const SmartTooltip = ({ content, children }) => {
     </Popover>
   ) : (
     <TooltipProvider>
-      <Tooltip>
+      <Tooltip open={isOpen} onOpenChange={setIsOpen} delayDuration={300}>
         <TooltipTrigger asChild>
           <div className="inline-block">{children}</div>
         </TooltipTrigger>
