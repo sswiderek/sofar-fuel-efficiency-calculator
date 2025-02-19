@@ -174,33 +174,24 @@ export default function ResultsDisplay({ results }: Props) {
                       </button>
                     </TooltipTrigger>
                     <TooltipContent side="top" sideOffset={5} className="w-60">
-                      Based on{" "}
-                      <span className="font-bold">
-                        {formatNumber(results[0].totalFuelConsumption)}
-                      </span>{" "}
-                      MT of fuel consumed annually
+                      Based on annual consumption:
                       <div className="mt-2 text-slate-600">
-                        <p className="font-medium mb-1">Calculation:</p>
+                        <p className="font-medium mb-1">Sea Operations:</p>
                         <p className="text-sm">
-                          <span className="font-medium">
-                            {formatNumber(results[0].fleetSize)}
-                          </span>{" "}
-                          ships ×
-                          <span className="font-medium">
-                            {" "}
-                            {formatNumber(results[0].daysAtSea)}
-                          </span>{" "}
-                          days at sea ×
-                          <span className="font-medium">
-                            {" "}
-                            {formatNumber(results[0].fuelConsumption)}
-                          </span>{" "}
-                          MT/day ×
-                          <span className="font-medium">
-                            {" "}
-                            ${formatNumber(results[0].fuelPrice)}
-                          </span>
-                          /MT
+                          {formatNumber(results[0].fleetSize)} ships ×
+                          {formatNumber(results[0].daysAtSea)} days at sea ×
+                          {formatNumber(results[0].fuelConsumption)} MT/day
+                        </p>
+                        <p className="font-medium mt-2 mb-1">Port Operations:</p>
+                        <p className="text-sm">
+                          {formatNumber(results[0].fleetSize)} ships ×
+                          {formatNumber(results[0].portTimePerVoyage)} days in port ×
+                          {formatNumber(results[0].portFuelConsumption)} MT/day
+                        </p>
+                        <p className="font-medium mt-2">
+                          Fuel Cost: ${formatNumber(results[0].fuelPrice)}/MT
+                        </p>
+                        <p className="text-xs mt-1 text-slate-500">Note: Wayfinder optimization applies to sea operations only</p>
                         </p>
                       </div>
                     </TooltipContent>
