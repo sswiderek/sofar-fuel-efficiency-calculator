@@ -57,6 +57,7 @@ export default function CalculatorForm() {
       voyageLength: "",
       portTime: "",
       fuelConsumption: "",
+      portFuelConsumption: "",
       fuelPrice: "",
       estimatedSavings: 5,
     },
@@ -347,6 +348,58 @@ export default function CalculatorForm() {
                         <Input
                           type="number"
                           placeholder="Enter fuel consumption (e.g. 50)"
+                          {...field}
+                          onChange={(e) =>
+                            field.onChange(
+                              e.target.value
+                                ? Number(e.target.value)
+                                : undefined
+                            )
+                          }
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* Port Fuel Consumption Field */}
+                <FormField
+                  control={form.control}
+                  name="portFuelConsumption"
+                  render={({ field }) => (
+                    <FormItem>
+                      <div className="flex items-center gap-2">
+                        <FormLabel className="flex items-center gap-2">
+                          <FuelIcon className="h-4 w-4" />
+                          <span>Port Fuel Consumption (MT/Day)</span>
+                        </FormLabel>
+                        <Tooltip delayDuration={100}>
+                          <TooltipTrigger asChild>
+                            <button
+                              type="button"
+                              className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
+                            >
+                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent className="max-w-sm p-2">
+                            <div className="space-y-1">
+                              <div className="text-sm font-medium">
+                                Port Fuel Consumption (MT/Day)
+                              </div>
+                              <div className="text-xs text-muted-foreground">
+                                Enter your fleet's average fuel consumption while at port.
+                                This is typically lower than sea consumption.
+                              </div>
+                            </div>
+                          </TooltipContent>
+                        </Tooltip>
+                      </div>
+                      <FormControl>
+                        <Input
+                          type="number"
+                          placeholder="Enter port fuel consumption (e.g. 5)"
                           {...field}
                           onChange={(e) =>
                             field.onChange(
