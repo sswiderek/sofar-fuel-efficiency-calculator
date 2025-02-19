@@ -6,27 +6,31 @@ export function useTouchDevice() {
 
   useEffect(() => {
     const checkTouch = () => {
-      const hasTouch = 'ontouchstart' in window;
-      const hasMaxTouch = navigator.maxTouchPoints > 0;
+      // Primary check: matchMedia
       const hasCoarse = window.matchMedia('(pointer: coarse)').matches;
+      // Secondary checks
+      const hasTouch = 'ontouchstart' in window || 
+                      (window.DocumentTouch && document instanceof DocumentTouch);
+      const hasMaxTouch = navigator.maxTouchPoints > 0;
       
-      console.log('Touch detection (prod):', {
+      console.log('Touch detection:', {
+        hasCoarse,
         hasTouch,
         hasMaxTouch,
-        hasCoarse,
         userAgent: navigator.userAgent
       });
 
-      setIsTouch(hasTouch || hasMaxTouch || hasCoarse);
+      setIsTouch(hasCoarse || hasTouch || hasMaxTouch);
     }
     
     checkTouch()
-    window.addEventListener('resize', checkTouch)
-    window.matchMedia('(pointer: coarse)').addListener(checkTouch)
+    window.addEventListener('touchstart', () => setIsTouch(true), { once: true })
+    
+    const mediaQuery = window.matchMedia('(pointer: coarse)')
+    mediaQuery.addListener(checkTouch)
     
     return () => {
-      window.removeEventListener('resize', checkTouch)
-      window.matchMedia('(pointer: coarse)').removeListener(checkTouch)
+      mediaQuery.removeListener(checkTouch)
     }
   }, [])
 

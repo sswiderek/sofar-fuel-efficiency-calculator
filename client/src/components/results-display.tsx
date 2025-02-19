@@ -22,25 +22,20 @@ const SmartTooltip = ({ content, children }) => {
 
   React.useEffect(() => {
     console.log('SmartTooltip mounted with touch:', isTouch);
-    return () => console.log('SmartTooltip unmounted');
   }, [isTouch]);
 
   const handleTouchStart = React.useCallback((e: React.TouchEvent) => {
-    console.log('TouchStart event:', {
-      target: e.target,
-      currentTarget: e.currentTarget,
-      touches: e.touches.length
-    });
     e.preventDefault();
+    e.stopPropagation();
+    setIsOpen(prev => !prev);
   }, []);
 
   const handleClick = React.useCallback((e: React.MouseEvent) => {
-    console.log('Click event:', {
-      target: e.target,
-      currentTarget: e.currentTarget,
-      buttons: e.buttons
-    });
-  }, []);
+    if (isTouch) {
+      e.preventDefault();
+      setIsOpen(prev => !prev);
+    }
+  }, [isTouch]);
 
   return isTouch ? (
     <Popover>
