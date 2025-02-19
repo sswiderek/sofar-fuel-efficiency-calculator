@@ -17,25 +17,38 @@ const useTouchDevice = () => {
 // Assume SmartTooltip is defined elsewhere and handles touch events appropriately
 const SmartTooltip = ({ content, children }) => {
   const isTouch = useTouchDevice();
+  const triggerRef = React.useRef(null);
 
-  console.log('SmartTooltip (prod):', {
-    isTouch,
-    content: content?.props,
-    childType: children?.type
-  });
+  React.useEffect(() => {
+    console.log('SmartTooltip mounted with touch:', isTouch);
+    return () => console.log('SmartTooltip unmounted');
+  }, [isTouch]);
+
+  const handleTouchStart = React.useCallback((e: React.TouchEvent) => {
+    console.log('TouchStart event:', {
+      target: e.target,
+      currentTarget: e.currentTarget,
+      touches: e.touches.length
+    });
+    e.preventDefault();
+  }, []);
+
+  const handleClick = React.useCallback((e: React.MouseEvent) => {
+    console.log('Click event:', {
+      target: e.target,
+      currentTarget: e.currentTarget,
+      buttons: e.buttons
+    });
+  }, []);
 
   return isTouch ? (
     <Popover>
       <PopoverTrigger asChild>
         <div 
           className="inline-block"
-          onTouchStart={(e) => {
-            console.log('TouchStart event fired');
-            e.preventDefault();
-          }}
-          onClick={(e) => {
-            console.log('Click event fired');
-          }}
+          ref={triggerRef}
+          onTouchStart={handleTouchStart}
+          onClick={handleClick}
         >
           {children}
         </div>
