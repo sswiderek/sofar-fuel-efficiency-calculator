@@ -174,17 +174,12 @@ export default function ResultsDisplay({ results }: Props) {
                       </button>
                     </TooltipTrigger>
                     <TooltipContent side="top" sideOffset={5} className="w-72">
-                      Annual fuel consumption:
+                      Annual sea fuel consumption:
                       <div className="mt-2 text-slate-600">
                         <p className="text-sm">
-                          Sea: {formatNumber(results[0].fleetSize * results[0].daysAtSea * results[0].fuelConsumption)} MT/year
-                          <br />
-                          Port: {formatNumber(results[0].fleetSize * (365 - results[0].daysAtSea) * results[0].portFuelConsumption)} MT/year
+                          {formatNumber(results[0].totalFuelConsumption)} MT × ${formatNumber(results[0].fuelPrice)}/MT
                         </p>
-                        <p className="text-sm mt-2">
-                          Total: {formatNumber(results[0].totalFuelConsumption)} MT × ${formatNumber(results[0].fuelPrice)}/MT
-                        </p>
-                        <p className="text-xs mt-2 text-slate-500">Note: Wayfinder optimization applies to sea operations only</p>
+                        <p className="text-xs mt-2 text-slate-500">Note: These calculations only include fuel consumption at sea, not in port</p>
                       </div>
                     </TooltipContent>
                   </Tooltip>
