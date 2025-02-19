@@ -351,6 +351,21 @@ export default function ResultsDisplay({ results }: Props) {
                     <div className="flex items-center gap-1 text-emerald-700">
                       <Leaf className="h-3.5 w-3.5" />
                       <h3 className="text-sm font-medium">CO₂ Reduction</h3>
+                      <SmartTooltip content={
+                        <TooltipContent className="w-64 text-xs">
+                          <div className="space-y-2 py-1">
+                            <p className="font-medium">How we calculate CO₂ reduction:</p>
+                            <ol className="space-y-1 pl-4 list-decimal">
+                              <li>Calculate fuel saved = Annual fuel consumption × Optimization savings %</li>
+                              <li>CO₂ reduction = Fuel saved × 3.15 (MT of CO₂ per MT of fuel)</li>
+                            </ol>
+                          </div>
+                        </TooltipContent>
+                      }>
+                        <button type="button" className="p-1 -m-1 border-0 bg-transparent">
+                          <InfoCircledIcon className="h-3.5 w-3.5 text-emerald-700 opacity-70" />
+                        </button>
+                      </SmartTooltip>
                     </div>
                     <p className="text-lg font-bold text-emerald-800">
                       {formatNumber(scenario.data.co2Reduction)} MT
