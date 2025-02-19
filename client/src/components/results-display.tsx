@@ -23,25 +23,21 @@ const SmartTooltip = ({ content, children }) => {
   return isTouch ? (
     <Popover>
       <PopoverTrigger asChild>
-        <div 
-          className="inline-block"
-          onTouchStart={(e) => {
-            console.log('TouchStart event fired');
-            e.preventDefault();
-          }}
+        <button 
+          type="button"
+          className="inline-block p-1 -m-1 border-0 bg-transparent touch-manipulation"
           onClick={(e) => {
             console.log('Click event fired');
+            e.stopPropagation();
           }}
         >
           {children}
-        </div>
+        </button>
       </PopoverTrigger>
       <PopoverContent 
         className="z-[100] w-60 text-xs p-2 rounded-md border bg-white shadow-md"
-        onOpenAutoFocus={(e) => {
-          console.log('Popover opening');
-          e.preventDefault();
-        }}
+        side="top"
+        sideOffset={5}
       >
         {content}
       </PopoverContent>
