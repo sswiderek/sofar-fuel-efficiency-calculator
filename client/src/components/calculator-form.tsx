@@ -401,8 +401,10 @@ export default function CalculatorForm() {
                                 </div>
                                 <div className="text-xs text-muted-foreground">
                                   Ships typically consume 3-20% of their sea fuel while at port.
+                                  This is included to show total fuel costs, but Wayfinder's
+                                  optimization only affects sea fuel consumption.
                                   We've pre-filled this with 10% of your sea consumption 
-                                  ({defaultPortConsumption} MT/day), but you can adjust if needed.
+                                  ({defaultPortConsumption} MT/day).
                                 </div>
                               </div>
                             </TooltipContent>

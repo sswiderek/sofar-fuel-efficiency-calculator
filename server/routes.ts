@@ -24,23 +24,21 @@ export function registerRoutes(app: Express): Server {
       const seaDaysPerYear = voyagesPerYear * data.voyageLength;
       const portDaysPerYear = voyagesPerYear * data.portTimePerVoyage;
 
-      // Calculate total fuel cost including both sea and port consumption
+      // Calculate sea and port fuel costs separately
       const seaFuelCost = data.fleetSize * seaDaysPerYear * data.fuelConsumption * data.fuelPrice;
       const portFuelCost = data.fleetSize * portDaysPerYear * data.portFuelConsumption * data.fuelPrice;
       const totalFuelCost = Math.round(seaFuelCost + portFuelCost);
 
-      // Calculate savings based on estimated percentage
+      // Calculate savings based on estimated percentage (only applied to sea fuel consumption)
       const savingsPercent = data.estimatedSavings / 100;
-      const estimatedSavings = totalFuelCost * savingsPercent;
+      const estimatedSavings = seaFuelCost * savingsPercent; // Only apply savings to sea fuel cost
+      
+      // Calculate fuel cost with Wayfinder (reduced sea fuel + unchanged port fuel)
+      const fuelCostWithWayfinder = Math.round((seaFuelCost * (1 - savingsPercent)) + portFuelCost);
 
-      // Calculate fuel cost with Wayfinder
-      const fuelCostWithWayfinder = totalFuelCost - estimatedSavings;
-
-      // Calculate CO2 reduction (assuming 3.15 MT of CO2 per MT of fuel)
+      // Calculate CO2 reduction (only from sea fuel savings)
       const seaFuelSaved = (data.fleetSize * seaDaysPerYear * data.fuelConsumption) * savingsPercent;
-      const portFuelSaved = (data.fleetSize * portDaysPerYear * data.portFuelConsumption) * savingsPercent;
-      const totalFuelSaved = seaFuelSaved + portFuelSaved;
-      const co2Reduction = totalFuelSaved * 3.15;
+      const co2Reduction = seaFuelSaved * 3.15; // CO2 reduction only from sea fuel savings
 
       const seaFuelConsumption = data.fleetSize * seaDaysPerYear * data.fuelConsumption;
       const portFuelConsumption = data.fleetSize * portDaysPerYear * data.portFuelConsumption;
