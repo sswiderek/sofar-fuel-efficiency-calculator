@@ -14,6 +14,25 @@ const useTouchDevice = () => {
   );
 };
 
+// Assume SmartTooltip is defined elsewhere and handles touch events appropriately
+const SmartTooltip = ({ content, children }) => (
+    <div>
+      {useTouchDevice() ? (
+          <Popover>
+              <PopoverTrigger asChild>{children}</PopoverTrigger>
+              <PopoverContent>{content}</PopoverContent>
+          </Popover>
+      ) : (
+          <Tooltip>
+              <TooltipTrigger asChild>{children}</TooltipTrigger>
+              <TooltipContent>{content}</TooltipContent>
+          </Tooltip>
+      )}
+    </div>
+);
+
+
+
 interface Props {
   results: CalculationResult[];
 }
@@ -222,15 +241,7 @@ export default function ResultsDisplay({ results }: Props) {
                         <h3 className="text-sm font-medium">
                           Estimated Savings
                         </h3>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <button
-                              type="button"
-                              className="p-1 -m-1 border-0 bg-transparent"
-                            >
-                              <InfoCircledIcon className="h-3.5 w-3.5 opacity-70" />
-                            </button>
-                          </TooltipTrigger>
+                        <SmartTooltip content={
                           <TooltipContent className="w-64 text-xs">
                             <div className="space-y-3 py-1">
                               <p className="font-medium">
@@ -257,7 +268,16 @@ export default function ResultsDisplay({ results }: Props) {
                               </ol>
                             </div>
                           </TooltipContent>
-                        </Tooltip>
+                        }>
+                          <TooltipTrigger asChild>
+                            <button
+                              type="button"
+                              className="p-1 -m-1 border-0 bg-transparent"
+                            >
+                              <InfoCircledIcon className="h-3.5 w-3.5 opacity-70" />
+                            </button>
+                          </TooltipTrigger>
+                        </SmartTooltip>
                       </div>
                       <p className="text-lg font-bold">
                         {formatCurrency(scenario.data.savings)}
