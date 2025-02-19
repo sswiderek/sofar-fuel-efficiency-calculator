@@ -19,6 +19,13 @@ const SmartTooltip = ({ content, children }) => {
   const isTouch = useTouchDevice();
   const triggerRef = React.useRef(null);
 
+  console.log('SmartTooltip render:', {
+    isTouch,
+    content: content?.props,
+    hasChildren: !!children,
+    triggerRef: triggerRef.current
+  });
+
   React.useEffect(() => {
     console.log('SmartTooltip mounted with touch:', isTouch);
     return () => console.log('SmartTooltip unmounted');

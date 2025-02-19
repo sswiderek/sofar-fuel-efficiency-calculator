@@ -7,9 +7,16 @@ import { cn } from "@/lib/utils"
 
 const TooltipProvider = TooltipPrimitive.Provider
 
-const Tooltip = TooltipPrimitive.Root
+const Tooltip = ({ children, ...props }) => {
+  console.log('Tooltip render:', { props, childCount: React.Children.count(children) });
+  return <TooltipPrimitive.Root {...props}>{children}</TooltipPrimitive.Root>;
+};
 
-const TooltipTrigger = TooltipPrimitive.Trigger
+const TooltipTrigger = React.forwardRef((props, ref) => {
+  console.log('TooltipTrigger render:', { props, hasRef: !!ref });
+  return <TooltipPrimitive.Trigger ref={ref} {...props} />;
+});
+TooltipTrigger.displayName = 'TooltipTrigger';
 
 const TooltipContent = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
