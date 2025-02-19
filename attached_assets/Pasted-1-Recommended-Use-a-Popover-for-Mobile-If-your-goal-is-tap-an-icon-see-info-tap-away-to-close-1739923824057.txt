@@ -1,0 +1,120 @@
+1. Recommended: Use a Popover for Mobile
+If your goal is “tap an icon → see info → tap away to close,” a Popover is simpler and more user-friendly on touch devices. For example:
+
+tsx
+Copy
+import { Popover, PopoverTrigger, PopoverContent } from "@radix-ui/react-popover"
+
+function InfoPopover({ children }: { children: React.ReactNode }) {
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <button type="button" className="p-1">
+          {/* Icon or text goes here */}
+          <span>ℹ️</span>
+        </button>
+      </PopoverTrigger>
+      <PopoverContent className="p-2 text-sm">
+        {children}
+      </PopoverContent>
+    </Popover>
+  )
+}
+Then in your mobile UI:
+
+tsx
+Copy
+{isTouchDevice ? (
+  <InfoPopover>Some helpful mobile info here</InfoPopover>
+) : (
+  <Tooltip>
+    <TooltipTrigger>
+      <button type="button">ℹ️</button>
+    </TooltipTrigger>
+    <TooltipContent>Desktop hover info</TooltipContent>
+  </Tooltip>
+)}
+This approach avoids the tricky “preventDefault on a passive event” issues entirely, and provides a more standard “tap to open/tap outside to close” user experience.
+
+2. Manual Control: A “Tap to Toggle” Tooltip
+If you insist on a single <Tooltip> that works on mobile via tap:
+
+Use Radix’s controlled tooltip props: open and onOpenChange.
+Switch from onTouchStart to onPointerDown or onClick for toggling.
+Here’s an example:
+
+tsx
+Copy
+"use client"
+
+import * as React from "react"
+import * as TooltipPrimitive from "@radix-ui/react-tooltip"
+import { cn } from "@/lib/utils"
+
+const TooltipProvider = TooltipPrimitive.Provider
+const Tooltip = TooltipPrimitive.Root
+
+function MobileFriendlyTooltip({
+  children,
+  content,
+}: {
+  children: React.ReactNode
+  content: React.ReactNode
+}) {
+  const [open, setOpen] = React.useState(false)
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    // Only toggle on touch, ignoring mouse clicks if you want
+    if (e.pointerType === "touch") {
+      // Stop propagation so it doesn't close immediately
+      e.stopPropagation()
+      setOpen((prev) => !prev)
+    }
+  }
+
+  return (
+    <Tooltip open={open} onOpenChange={setOpen} disableHoverableContent>
+      <TooltipPrimitive.Trigger
+        asChild
+        // We rely on pointer events, so no onTouchStart
+        onPointerDown={handlePointerDown}
+      >
+        <button type="button" className="p-1">
+          {children /* The icon or trigger text */}
+        </button>
+      </TooltipPrimitive.Trigger>
+      <TooltipPrimitive.Content
+        sideOffset={5}
+        className={cn("p-2 text-sm border bg-white")}
+      >
+        {content}
+      </TooltipPrimitive.Content>
+    </Tooltip>
+  )
+}
+
+export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider, MobileFriendlyTooltip }
+Usage:
+
+tsx
+Copy
+<MobileFriendlyTooltip content="Some helpful info here">
+  <span>ℹ️</span>
+</MobileFriendlyTooltip>
+open + onOpenChange: We manually track the open state in React.
+disableHoverableContent: Helps ensure it doesn’t rely on hover behavior.
+onPointerDown: Instead of onTouchStart, so React’s synthetic event system typically won’t force a passive listener. We also check pointerType === "touch" to avoid toggling on mouse clicks.
+You can add a “close on outside click” by using something like React’s useEffect + document click listener or an optional “Close” button inside the tooltip.
+Drawback
+This is still a bit of a hack. Tooltips on mobile can be awkward. If you want the user to read text or see more info, Popover is generally a better pattern for mobile.
+Summary
+Easiest: Use a Popover for mobile. That’s exactly what Radix recommends and you’ll get a nice “tap to open”/“tap outside to close” flow.
+If you must keep a tooltip, do a controlled approach with pointerdown (and possibly pointerup) to toggle. That ensures no forced passive events or “hover only” behavior.
+Either way, you’ll avoid reintroducing the “Unable to preventDefault…” warnings while still giving users a way to “tap for more info” on mobile.
+
+
+
+
+
+
+You said:

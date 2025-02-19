@@ -4,12 +4,29 @@ import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
-import { calculatorInputSchema, type CalculatorInput, type CalculationResult } from "@shared/schema";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  calculatorInputSchema,
+  type CalculatorInput,
+  type CalculationResult,
+} from "@shared/schema";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-import { InfoIcon, ShipIcon, TimerIcon, FuelIcon, DollarSignIcon, LeafIcon, GlobeIcon } from "lucide-react";
+import {
+  InfoIcon,
+  ShipIcon,
+  TimerIcon,
+  FuelIcon,
+  DollarSignIcon,
+} from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import ResultsDisplay from "./results-display";
 import { apiRequest } from "@/lib/queryClient";
@@ -27,26 +44,28 @@ export default function CalculatorForm() {
   const [results, setResults] = useState<CalculationResult[] | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
 
-  const { data: fuelPriceData, isError: isFuelPriceError } = useQuery<VLSFOPrice>({
-    queryKey: ['/api/vlsfo-price'],
-  });
+  const { data: fuelPriceData, isError: isFuelPriceError } = useQuery<VLSFOPrice>(
+    {
+      queryKey: ["/api/vlsfo-price"],
+    }
+  );
 
   const form = useForm<CalculatorInput>({
     resolver: zodResolver(calculatorInputSchema),
     defaultValues: {
-      fleetSize: '',
-      voyageLength: '',
-      portTime: '',
-      fuelConsumption: '',
-      fuelPrice: '',
-      estimatedSavings: 5
-    }
+      fleetSize: "",
+      voyageLength: "",
+      portTime: "",
+      fuelConsumption: "",
+      fuelPrice: "",
+      estimatedSavings: 5,
+    },
   });
 
   // Update fuel price when data is fetched
   useEffect(() => {
     if (fuelPriceData?.price) {
-      form.setValue('fuelPrice', fuelPriceData.price.toString());
+      form.setValue("fuelPrice", fuelPriceData.price.toString());
     }
   }, [fuelPriceData, form]);
 
@@ -68,8 +87,10 @@ export default function CalculatorForm() {
     if (emptyFields.length > 0) {
       toast({
         title: "Missing Information",
-        description: `Please fill in the following fields: ${emptyFields.join(", ")}`,
-        variant: "destructive"
+        description: `Please fill in the following fields: ${emptyFields.join(
+          ", "
+        )}`,
+        variant: "destructive",
       });
       return;
     }
@@ -82,22 +103,22 @@ export default function CalculatorForm() {
         portTimePerVoyage: Number(values.portTime),
         fuelConsumption: Number(values.fuelConsumption),
         fuelPrice: Number(values.fuelPrice),
-        estimatedSavings: Number(values.estimatedSavings)
+        estimatedSavings: Number(values.estimatedSavings),
       };
 
       if (Object.values(formData).some(isNaN)) {
         toast({
           title: "Invalid Input",
           description: "Please ensure all fields contain valid numbers",
-          variant: "destructive"
+          variant: "destructive",
         });
         return;
       }
 
       const scenarios = [
-        { savings: 3, label: 'Conservative Savings' },
-        { savings: 5, label: 'Average Savings' },
-        { savings: 7, label: 'Optimal Savings' }
+        { savings: 3, label: "Conservative Savings" },
+        { savings: 5, label: "Average Savings" },
+        { savings: 7, label: "Optimal Savings" },
       ];
 
       try {
@@ -105,7 +126,7 @@ export default function CalculatorForm() {
           scenarios.map(async (scenario) => {
             const data = { ...formData, estimatedSavings: scenario.savings };
             const res = await apiRequest("POST", "/api/calculate", data);
-            if (!res.ok) throw new Error('API request failed');
+            if (!res.ok) throw new Error("API request failed");
             const json = await res.json();
             return { ...json, label: scenario.label };
           })
@@ -145,23 +166,31 @@ export default function CalculatorForm() {
                         </FormLabel>
                         <Tooltip delayDuration={100}>
                           <TooltipTrigger asChild>
-                            <button 
-                              type="button" 
+                            {/* Removed onTouchStart */}
+                            <button
+                              type="button"
                               className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
-                              onTouchStart={(e) => e.preventDefault()}
                             >
                               <InfoIcon className="h-4 w-4 text-muted-foreground" />
                             </button>
                           </TooltipTrigger>
-                          <TooltipContent>Number of ships in your fleet</TooltipContent>
+                          <TooltipContent>
+                            Number of ships in your fleet
+                          </TooltipContent>
                         </Tooltip>
                       </div>
                       <FormControl>
-                        <Input 
+                        <Input
                           type="number"
                           placeholder="Enter number of ships (e.g. 10)"
                           {...field}
-                          onChange={e => field.onChange(e.target.value ? Number(e.target.value) : undefined)}
+                          onChange={(e) =>
+                            field.onChange(
+                              e.target.value
+                                ? Number(e.target.value)
+                                : undefined
+                            )
+                          }
                         />
                       </FormControl>
                       <FormMessage />
@@ -182,30 +211,41 @@ export default function CalculatorForm() {
                         </FormLabel>
                         <Tooltip delayDuration={100}>
                           <TooltipTrigger asChild>
-                            <button 
-                              type="button" 
+                            {/* Removed onTouchStart */}
+                            <button
+                              type="button"
                               className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
-                              onTouchStart={(e) => e.preventDefault()}
                             >
                               <InfoIcon className="h-4 w-4 text-muted-foreground" />
                             </button>
                           </TooltipTrigger>
                           <TooltipContent className="max-w-sm p-2">
-  <div className="space-y-1">
-    <div className="text-sm font-medium">Average Voyage Length</div>
-    <div className="text-xs text-muted-foreground">
-      Enter the typical duration of your voyages in days. For varied routes, use your fleet's average voyage duration. Include sea days only, excluding port time.
-    </div>
-  </div>
-</TooltipContent>
+                            <div className="space-y-1">
+                              <div className="text-sm font-medium">
+                                Average Voyage Length
+                              </div>
+                              <div className="text-xs text-muted-foreground">
+                                Enter the typical duration of your voyages in
+                                days. For varied routes, use your fleet's average
+                                voyage duration. Include sea days only, excluding
+                                port time.
+                              </div>
+                            </div>
+                          </TooltipContent>
                         </Tooltip>
                       </div>
                       <FormControl>
-                        <Input 
+                        <Input
                           type="number"
                           placeholder="Enter voyage duration (e.g. 30)"
                           {...field}
-                          onChange={e => field.onChange(e.target.value ? Number(e.target.value) : undefined)}
+                          onChange={(e) =>
+                            field.onChange(
+                              e.target.value
+                                ? Number(e.target.value)
+                                : undefined
+                            )
+                          }
                         />
                       </FormControl>
                       <FormMessage />
@@ -226,19 +266,23 @@ export default function CalculatorForm() {
                         </FormLabel>
                         <Tooltip delayDuration={100}>
                           <TooltipTrigger asChild>
+                            {/* Removed onTouchStart */}
                             <button
                               type="button"
                               className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
-                              onTouchStart={(e) => e.preventDefault()}
                             >
                               <InfoIcon className="h-4 w-4 text-muted-foreground" />
                             </button>
                           </TooltipTrigger>
                           <TooltipContent className="max-w-sm p-2">
                             <div className="space-y-1">
-                              <div className="text-sm font-medium">Port Time Duration</div>
+                              <div className="text-sm font-medium">
+                                Port Time Duration
+                              </div>
                               <div className="text-xs text-muted-foreground">
-                                Enter the average time your vessels spend in port per voyage. For mixed routes, use your fleet's average port duration across all voyages.
+                                Enter the average time your vessels spend in port
+                                per voyage. For mixed routes, use your fleet's
+                                average port duration across all voyages.
                               </div>
                             </div>
                           </TooltipContent>
@@ -249,14 +293,19 @@ export default function CalculatorForm() {
                           type="number"
                           placeholder="Enter average port time (e.g. 5)"
                           {...field}
-                          onChange={e => field.onChange(e.target.value ? Number(e.target.value) : undefined)}
+                          onChange={(e) =>
+                            field.onChange(
+                              e.target.value
+                                ? Number(e.target.value)
+                                : undefined
+                            )
+                          }
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
 
                 {/* Fuel Consumption Field */}
                 <FormField
@@ -271,30 +320,41 @@ export default function CalculatorForm() {
                         </FormLabel>
                         <Tooltip delayDuration={100}>
                           <TooltipTrigger asChild>
-                            <button 
-                              type="button" 
+                            {/* Removed onTouchStart */}
+                            <button
+                              type="button"
                               className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
-                              onTouchStart={(e) => e.preventDefault()}
                             >
                               <InfoIcon className="h-4 w-4 text-muted-foreground" />
                             </button>
                           </TooltipTrigger>
                           <TooltipContent className="max-w-sm p-2">
-  <div className="space-y-1">
-    <div className="text-sm font-medium">Daily Fuel Consumption (MT/Day)</div>
-    <div className="text-xs text-muted-foreground">
-      Enter your fleet's average fuel consumption in Metric Tons per day while at sea. For mixed fleets, use a weighted average based on vessel operating days.
-    </div>
-  </div>
-</TooltipContent>
+                            <div className="space-y-1">
+                              <div className="text-sm font-medium">
+                                Daily Fuel Consumption (MT/Day)
+                              </div>
+                              <div className="text-xs text-muted-foreground">
+                                Enter your fleet's average fuel consumption in
+                                Metric Tons per day while at sea. For mixed
+                                fleets, use a weighted average based on vessel
+                                operating days.
+                              </div>
+                            </div>
+                          </TooltipContent>
                         </Tooltip>
                       </div>
                       <FormControl>
-                        <Input 
+                        <Input
                           type="number"
                           placeholder="Enter fuel consumption (e.g. 50)"
                           {...field}
-                          onChange={e => field.onChange(e.target.value ? Number(e.target.value) : undefined)}
+                          onChange={(e) =>
+                            field.onChange(
+                              e.target.value
+                                ? Number(e.target.value)
+                                : undefined
+                            )
+                          }
                         />
                       </FormControl>
                       <FormMessage />
@@ -315,35 +375,47 @@ export default function CalculatorForm() {
                         </FormLabel>
                         <Tooltip delayDuration={100}>
                           <TooltipTrigger asChild>
-                            <button 
-                              type="button" 
+                            {/* Removed onTouchStart */}
+                            <button
+                              type="button"
                               className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
-                              onTouchStart={(e) => e.preventDefault()}
                             >
                               <InfoIcon className="h-4 w-4 text-muted-foreground" />
                             </button>
                           </TooltipTrigger>
                           <TooltipContent className="max-w-sm p-2">
                             <div className="space-y-1">
-                              <div className="text-sm font-medium">Monthly Average VLSFO Fuel Price</div>
+                              <div className="text-sm font-medium">
+                                Monthly Average VLSFO Fuel Price
+                              </div>
                               <div className="text-xs text-muted-foreground">
-                                Based on Ship & Bunker's Global 20 Ports Average. Monthly averages provide a stable baseline for calculations by smoothing out daily price fluctuations.
+                                Based on Ship & Bunker's Global 20 Ports
+                                Average. Monthly averages provide a stable
+                                baseline for calculations by smoothing out daily
+                                price fluctuations.
                               </div>
                             </div>
                           </TooltipContent>
                         </Tooltip>
                       </div>
                       <FormControl>
-                        <Input 
+                        <Input
                           type="number"
                           placeholder="Enter fuel price"
                           {...field}
-                          onChange={e => field.onChange(e.target.value ? Number(e.target.value) : undefined)}
+                          onChange={(e) =>
+                            field.onChange(
+                              e.target.value
+                                ? Number(e.target.value)
+                                : undefined
+                            )
+                          }
                         />
                       </FormControl>
                       <div className="text-xs text-slate-500 mt-1">
                         {fuelPriceData?.isError ? (
-                          fuelPriceData.errorMessage || "Error fetching price data"
+                          fuelPriceData.errorMessage ||
+                          "Error fetching price data"
                         ) : fuelPriceData?.price ? (
                           `Latest monthly average: $${fuelPriceData.price}/MT (${fuelPriceData.month} ${fuelPriceData.year})`
                         ) : (
@@ -356,15 +428,8 @@ export default function CalculatorForm() {
                 />
               </div>
 
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Button
-                  className="w-full"
-                  disabled={isCalculating}
-                  type="submit"
-                >
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <Button className="w-full" disabled={isCalculating} type="submit">
                   {isCalculating ? "Calculating..." : "Calculate Savings"}
                 </Button>
               </motion.div>
@@ -384,10 +449,16 @@ export default function CalculatorForm() {
           ) : (
             <div className="h-full flex flex-col items-center justify-center gap-2 text-muted-foreground -mt-8">
               <div className="ship-container relative">
-                <img src="/images/cargo-ship.png" alt="Cargo Ship" className="w-48 h-48 object-contain mb-3" />
+                <img
+                  src="/images/cargo-ship.png"
+                  alt="Cargo Ship"
+                  className="w-48 h-48 object-contain mb-3"
+                />
                 <div className="waves-small"></div>
               </div>
-              <p className="text-slate-700 text-base text-center">Fill in your fleet details to calculate estimated fuel savings</p>
+              <p className="text-slate-700 text-base text-center">
+                Fill in your fleet details to calculate estimated fuel savings
+              </p>
             </div>
           )}
         </div>
