@@ -17,10 +17,22 @@ const useTouchDevice = () => {
 };
 
 const SmartTooltip = ({ content, children }) => {
+  console.log('SmartTooltip rendering', { timestamp: new Date().toISOString() });
+  
   const isTouch = useTouchDevice()
   const [isOpen, setIsOpen] = React.useState(false)
   const buttonRef = React.useRef(null)
   const containerRef = useRef(null);
+
+  // Debug touch detection
+  React.useEffect(() => {
+    console.log('Touch detection:', {
+      isTouch,
+      hasTouch: 'ontouchstart' in window,
+      maxTouchPoints: navigator?.maxTouchPoints,
+      timestamp: new Date().toISOString()
+    });
+  }, [isTouch]);
 
   React.useEffect(() => {
     console.log('SmartTooltip mounted', {
@@ -65,9 +77,23 @@ const SmartTooltip = ({ content, children }) => {
         <PopoverTrigger asChild>
           <button 
             type="button"
-            className="inline-block p-1 -m-1 border-0 bg-transparent touch-manipulation"
-            onClick={handleInteraction}
-            onTouchStart={handleInteraction}
+            className="inline-block p-2 border-0 bg-transparent touch-manipulation"
+            onClick={(e) => {
+              console.log('Button clicked', {
+                type: e.type,
+                target: e.target,
+                timestamp: new Date().toISOString()
+              });
+              handleInteraction(e);
+            }}
+            onTouchStart={(e) => {
+              console.log('TouchStart event', {
+                type: e.type,
+                touches: e.touches.length,
+                timestamp: new Date().toISOString()
+              });
+              handleInteraction(e);
+            }}
           >
             {children}
           </button>
