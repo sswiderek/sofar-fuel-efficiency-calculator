@@ -32,10 +32,10 @@ export function registerRoutes(app: Express): Server {
       // Calculate savings based on estimated percentage
       const savingsPercent = data.estimatedSavings / 100;
       const annualFuelConsumption = data.fleetSize * seaDaysPerYear * data.fuelConsumption;
-      const totalFuelCost = Math.round(annualFuelConsumption * data.fuelPrice);
+      const baseFuelCost = Math.round(annualFuelConsumption * data.fuelPrice);
       
-      const estimatedSavings = totalFuelCost * savingsPercent;
-      const fuelCostWithWayfinder = Math.round(totalFuelCost * (1 - savingsPercent));
+      const estimatedSavings = baseFuelCost * savingsPercent;
+      const fuelCostWithWayfinder = Math.round(baseFuelCost * (1 - savingsPercent));
 
       // Calculate CO2 reduction
       const fuelSaved = annualFuelConsumption * savingsPercent;
