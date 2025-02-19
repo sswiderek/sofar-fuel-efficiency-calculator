@@ -200,7 +200,6 @@ export default function ResultsDisplay({ results }: Props) {
                             • {formatNumber(results[0].totalFuelConsumption)} MT × ${formatNumber(results[0].fuelPrice)}/MT = ${formatNumber(results[0].totalFuelCost)}
                           </p>
                         </div>
-                        </p>
                         <p className="text-xs mt-2 text-slate-500">Note: These calculations only include fuel consumption at sea, not in port</p>
                       </div>
                     </TooltipContent>
