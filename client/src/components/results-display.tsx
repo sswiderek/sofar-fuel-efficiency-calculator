@@ -213,6 +213,14 @@ export default function ResultsDisplay({ results }: Props) {
           </CardContent>
         </Card>
 
+        <div className="mt-6 mb-3">
+          <h2 className="text-2xl font-semibold text-slate-900">Savings Scenarios</h2>
+          <div className="flex items-center gap-3 mt-1">
+            <p className="text-slate-600">Based on historical platform data</p>
+            <span className="px-3 py-1 text-sm bg-slate-100 rounded-full text-slate-600">3-7% typical range</span>
+          </div>
+        </div>
+
         <Tabs defaultValue="average" className="w-full">
           <TabsList className="grid w-full grid-cols-3 bg-gray-50 p-1">
             {Object.entries(scenarios).map(([key, scenario]) => (
