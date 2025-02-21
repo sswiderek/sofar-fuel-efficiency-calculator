@@ -127,11 +127,11 @@ export default function ResultsDisplay({ results }: Props) {
   return (
     <TooltipProvider delayDuration={0} disableHoverableContent skipDelayDuration={0}>
       <div className="space-y-4 pt-6">
-        <Card className="border bg-white/50 shadow-none">
-          <CardContent className="p-2">
-            <div className="space-y-0.5">
-              <div className="flex items-center gap-1.5">
-                <h3 className="text-xs font-medium text-slate-500">
+        <Card className="border bg-white shadow-sm">
+          <CardContent className="p-3">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <h3 className="text-sm font-medium text-slate-600">
                   Current Annual Costs
                 </h3>
                 {useTouchDevice() ? (
@@ -176,6 +176,7 @@ export default function ResultsDisplay({ results }: Props) {
                     <TooltipContent side="top" sideOffset={5} className="w-72">
                       How we calculate annual fuel costs:
                       <div className="space-y-2 py-1">
+                              <p className="font-medium">How we calculate annual fuel costs:</p>
                               <ol className="space-y-2 pl-4 list-decimal">
                                 <li>
                                   <p className="font-medium">Calculate annual sea days:</p>
@@ -205,26 +206,12 @@ export default function ResultsDisplay({ results }: Props) {
                   </Tooltip>
                 )}
               </div>
-              <p className="text-lg font-medium tracking-tight text-slate-700">
+              <p className="text-3xl font-bold tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
                 {formatCurrency(results[0].totalFuelCost)}
               </p>
             </div>
           </CardContent>
         </Card>
-
-        <div className="mt-8 mb-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-2xl font-semibold text-slate-900">Savings Scenarios</h2>
-              <p className="text-slate-600 mt-1">Based on historical platform data</p>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-sky-50 rounded-lg border border-sky-100">
-              <Settings className="w-4 h-4 text-sky-600" />
-              <span className="text-sm font-medium text-sky-900">3-7% typical range</span>
-            </div>
-          </div>
-          <div className="h-px bg-gradient-to-r from-slate-200 via-slate-300 to-slate-200 mt-4"></div>
-        </div>
 
         <Tabs defaultValue="average" className="w-full">
           <TabsList className="grid w-full grid-cols-3 bg-gray-50 p-1">
