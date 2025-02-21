@@ -214,13 +214,13 @@ export default function ResultsDisplay({ results }: Props) {
         </Card>
 
         <div className="mt-12 mb-6">
-          <div className="bg-gradient-to-r from-blue-900 to-blue-800 text-white rounded-lg p-4 mb-6">
+          <div className="bg-slate-100 rounded-lg p-4 mb-6">
             <div className="flex items-center justify-between">
               <div className="flex-1">
-                <h2 className="text-xl font-bold tracking-tight">Savings Scenarios</h2>
-                <p className="text-blue-200 text-sm mt-1">Based on historical platform data</p>
+                <h2 className="text-lg font-medium text-slate-700">Savings Scenarios</h2>
+                <p className="text-slate-500 text-sm mt-1">Based on historical platform data</p>
               </div>
-              <div className="text-sm font-medium text-blue-100 bg-blue-800/50 px-4 py-2 rounded-full">
+              <div className="text-sm font-medium text-slate-600 bg-white/80 px-4 py-2 rounded-full border border-slate-200">
                 3-7% typical range
               </div>
             </div>
