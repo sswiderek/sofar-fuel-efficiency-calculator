@@ -127,7 +127,7 @@ export default function ResultsDisplay({ results }: Props) {
   return (
     <TooltipProvider delayDuration={0} disableHoverableContent skipDelayDuration={0}>
       <div className="space-y-4 pt-6">
-        <Card className="border bg-white shadow-sm my-6"> {/* Added my-6 for spacing */}
+        <Card className="border bg-white shadow-sm">
           <CardContent className="p-3">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
@@ -206,10 +206,9 @@ export default function ResultsDisplay({ results }: Props) {
                   </Tooltip>
                 )}
               </div>
-              <p className="text-3xl font-bold tracking-tight text-slate-900"> {/* Modified styling */}
+              <p className="text-3xl font-bold tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
                 {formatCurrency(results[0].totalFuelCost)}
               </p>
-              <div className="h-px w-full bg-gradient-to-r from-slate-200 to-transparent my-2"></div> {/* Added separator */}
             </div>
           </CardContent>
         </Card>
@@ -226,7 +225,7 @@ export default function ResultsDisplay({ results }: Props) {
           </div>
           <div className="h-px bg-gradient-to-r from-slate-200 via-slate-100 to-transparent"></div>
         </div>
-
+        
         <Tabs defaultValue="average" className="w-full">
           <TabsList className="grid w-full grid-cols-3 bg-gray-50 p-1">
             {Object.entries(scenarios).map(([key, scenario]) => (
