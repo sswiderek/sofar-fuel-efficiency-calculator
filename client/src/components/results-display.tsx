@@ -213,11 +213,12 @@ export default function ResultsDisplay({ results }: Props) {
           </CardContent>
         </Card>
 
+        <div className="mb-2 text-center text-xs text-slate-600">
+          View results across three scenarios: 3% minimum savings • 5% typical • 7% optimal
+        </div>
+
         <Tabs defaultValue="average" className="w-full">
           <TabsList className="grid w-full grid-cols-3 bg-gray-50 p-1">
-            <div className="absolute -top-6 right-0 text-xs text-slate-500">
-              (3% min savings • 5% typical • 7% optimal)
-            </div>
             {Object.entries(scenarios).map(([key, scenario]) => (
               <TabsTrigger
                 value={key}
