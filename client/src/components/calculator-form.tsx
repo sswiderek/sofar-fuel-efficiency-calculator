@@ -116,7 +116,9 @@ export default function CalculatorForm() {
       }
 
       const scenarios = [
-        { savings: 5, label: "Potential Savings" },
+        { savings: 3, label: "3% Savings" },
+        { savings: 5, label: "5% Savings" },
+        { savings: 7, label: "7% Savings" },
       ];
 
       try {
