@@ -225,7 +225,7 @@ export default function ResultsDisplay({ results }: Props) {
           </div>
           <div className="h-px bg-gradient-to-r from-slate-200 via-slate-100 to-transparent"></div>
         </div>
-
+        
         <Tabs defaultValue="average" className="w-full">
           <TabsList className="grid w-full grid-cols-3 bg-gray-50 p-1">
             {Object.entries(scenarios).map(([key, scenario]) => (
@@ -252,7 +252,7 @@ export default function ResultsDisplay({ results }: Props) {
               <div className="grid grid-cols-2 gap-3">
                 <Card
                   className={cn(
-                    "border shadow-md", //Added shadow-md
+                    "border shadow-sm",
                     key === "conservative" && "bg-sky-50",
                     key === "average" && "bg-orange-50",
                     key === "optimal" && "bg-emerald-50"
@@ -291,9 +291,7 @@ export default function ResultsDisplay({ results }: Props) {
 
                 <Card
                   className={cn(
-                    "border shadow-md", //Added shadow-md
-                    "bg-gradient-to-br from-amber-50/50 to-white", //Added gradient
-                    "border-0", //Added border-0
+                    "border shadow-sm text-white",
                     key === "conservative" && "bg-sky-700",
                     key === "average" && "bg-orange-700",
                     key === "optimal" && "bg-emerald-700"
@@ -355,7 +353,7 @@ export default function ResultsDisplay({ results }: Props) {
 
               <Card
                 className={cn(
-                  "mt-3 md:mt-4 border shadow-md", //Added shadow-md
+                  "mt-3 md:mt-4 border shadow-sm",
                   key === "conservative" && "bg-sky-50/50",
                   key === "average" && "bg-orange-50/50",
                   key === "optimal" && "bg-emerald-50/50"
