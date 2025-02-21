@@ -1,186 +1,71 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { InfoCircledIcon } from "@radix-ui/react-icons";
-import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "./ui/tooltip";
-import type { CalculationResult } from "@shared/schema";
-import { TrendingDown, DollarSign, Leaf } from "lucide-react";
-import { Popover, PopoverTrigger, PopoverContent } from "@radix-ui/react-popover";
+import { DollarSign, Leaf, Settings } from "lucide-react";
+import { formatCurrency, formatNumber } from "@/lib/utils";
+import { SmartTooltip } from "./smart-tooltip";
+import { CalculationResult } from "@/lib/types";
 
-const useTouchDevice = () => {
-  return (
-    typeof window !== "undefined" &&
-    ("ontouchstart" in window || navigator.maxTouchPoints > 0)
-  );
-};
-
-interface Props {
-  results: CalculationResult[];
+interface ResultsDisplayProps {
+  scenario: CalculationResult;
 }
 
-export default function ResultsDisplay({ results }: Props) {
-  const formatCurrency = (value: number) =>
-    new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      maximumFractionDigits: 0,
-    }).format(value);
-
-  const formatNumber = (value: number) =>
-    new Intl.NumberFormat("en-US", {
-      maximumFractionDigits: 0,
-    }).format(Math.round(value));
-
-  const scenario = {
-    title: "Potential Savings",
-    data: getScenarioData(0),
-  };
-
-  function getScenarioData(scenarioIndex: number) {
-    const savings = results[scenarioIndex].estimatedSavings;
-    const totalCost = results[scenarioIndex].totalFuelCost;
-    const optimizedCost = results[scenarioIndex].fuelCostWithWayfinder;
-    const savingsPercent = (savings / totalCost) * 100;
-
-    return {
-      currentCost: totalCost,
-      optimizedCost: optimizedCost,
-      savings: savings,
-      co2Reduction: results[scenarioIndex].co2Reduction,
-      improvement: savingsPercent.toFixed(0),
-    };
-  }
+export function ResultsDisplay({ scenario }: ResultsDisplayProps) {
+  const carsEquivalent = Math.round(scenario.data.co2Reduction / 4.6);
 
   return (
-    <TooltipProvider delayDuration={0} disableHoverableContent skipDelayDuration={0}>
-      <div className="space-y-4 pt-6">
-        <Card className="border bg-white shadow-sm">
-          <CardContent className="p-3">
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <h3 className="text-sm font-medium text-slate-600">
-                  Current Annual Costs
-                </h3>
-                {useTouchDevice() ? (
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <button
-                        type="button"
-                        className="p-2 -m-1 border-0 bg-transparent cursor-pointer touch-target"
-                      >
-                        <InfoCircledIcon className="h-4 w-4 text-slate-400" />
-                      </button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-60 text-xs">
-                      Total yearly fuel usage: {formatNumber(results[0].totalFuelConsumption)} MT
-                      <div className="mt-2">
-                        <p className="mb-1">• At sea: {formatNumber(results[0].fleetSize)} ships × {formatNumber(results[0].daysAtSea)} days × {formatNumber(results[0].fuelConsumption)} MT/day</p>
-                        <p>• In port: {formatNumber(results[0].fleetSize)} ships × {formatNumber(results[0].portTimePerVoyage)} days × {formatNumber(results[0].portFuelConsumption)} MT/day</p>
-                      </div>
-                    </PopoverContent>
-                  </Popover>
-                ) : (
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <button
-                        type="button"
-                        className="p-2 -m-1 border-0 bg-transparent cursor-pointer touch-target"
-                      >
-                        <InfoCircledIcon className="h-4 w-4 text-slate-400" />
-                      </button>
-                    </TooltipTrigger>
-                    <TooltipContent className="w-72">
-                      How we calculate annual fuel costs:
-                      <div className="space-y-2 py-1">
-                        <ol className="space-y-2 pl-4 list-decimal">
-                          <li>
-                            <p className="font-medium">Calculate annual sea days:</p>
-                            <ul className="mt-1 space-y-1 text-slate-600">
-                              <li>Days per voyage = {formatNumber(results[0].voyageLength)} sea days + {formatNumber(results[0].portTimePerVoyage)} port days</li>
-                              <li>Voyages per year = 365 ÷ {formatNumber(results[0].voyageLength + results[0].portTimePerVoyage)} total days</li>
-                              <li>Annual sea days = Voyages × {formatNumber(results[0].voyageLength)} sea days</li>
-                            </ul>
-                          </li>
-                          <li>
-                            <p className="font-medium">Calculate total fuel consumption:</p>
-                            <ul className="mt-1 space-y-1 text-slate-600">
-                              <li>Daily fleet consumption = {formatNumber(results[0].fleetSize)} ships × {formatNumber(results[0].fuelConsumption)} MT/day</li>
-                              <li>Annual consumption = {formatNumber(results[0].totalFuelConsumption)} MT</li>
-                            </ul>
-                          </li>
-                          <li>
-                            <p className="font-medium">Calculate total cost:</p>
-                            <ul className="mt-1 space-y-1 text-slate-600">
-                              <li>{formatNumber(results[0].totalFuelConsumption)} MT × ${formatNumber(results[0].fuelPrice)}/MT = ${formatNumber(results[0].totalFuelCost)}</li>
-                            </ul>
-                          </li>
-                        </ol>
-                      </div>
-                    </TooltipContent>
-                  </Tooltip>
-                )}
-              </div>
-              <p className="text-3xl font-bold tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
-                {formatCurrency(results[0].totalFuelCost)}
-              </p>
-            </div>
-          </CardContent>
-        </Card>
+    <div className="space-y-4">
+      <div className="rounded-lg border bg-card p-6 shadow-sm">
+        <div className="flex items-center gap-2">
+          <h2 className="text-lg font-semibold">Current Annual Costs</h2>
+          <SmartTooltip content="Based on your fleet size, voyage details, and current fuel prices" />
+        </div>
+        <p className="mt-2 text-3xl font-bold">{formatCurrency(scenario.data.totalFuelCost)}</p>
+      </div>
 
-        <div className="w-full">
-          <div className="mt-3">
-            <div className="grid grid-cols-2 gap-3">
-              <Card className="border shadow-sm bg-orange-50">
-                <CardContent className="p-2.5">
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-1 text-orange-700">
-                      <DollarSign className="h-3.5 w-3.5" />
-                      <h3 className="text-sm font-medium">Fuel Cost Savings</h3>
-                    </div>
-                    <p className="text-xl font-semibold text-orange-900">
-                      {formatCurrency(scenario.data.savings)}/year
-                    </p>
-                    <p className="text-sm text-orange-700">
-                      {scenario.data.improvement}% improvement
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="border shadow-sm bg-emerald-50">
-                <CardContent className="p-2.5">
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-1 text-emerald-700">
-                      <Leaf className="h-3.5 w-3.5" />
-                      <h3 className="text-sm font-medium">CO₂ Reduction</h3>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <button type="button" className="p-1 -m-1 border-0 bg-transparent">
-                            <InfoCircledIcon className="h-3.5 w-3.5 text-emerald-700 opacity-70" />
-                          </button>
-                        </TooltipTrigger>
-                        <TooltipContent className="w-64 text-xs">
-                          <div className="space-y-2 py-1">
-                            <p className="font-medium">How we calculate CO₂ reduction:</p>
-                            <ol className="space-y-1 pl-4 list-decimal">
-                              <li>Calculate fuel saved = Annual fuel consumption × Optimization savings %</li>
-                              <li>CO₂ reduction = Fuel saved × 3.15 (MT of CO₂ per MT of fuel)</li>
-                            </ol>
-                          </div>
-                        </TooltipContent>
-                      </Tooltip>
-                    </div>
-                    <p className="text-xl font-semibold text-emerald-900">
-                      {formatNumber(scenario.data.co2Reduction)} MT/year
-                    </p>
-                    <p className="text-sm text-emerald-700">
-                      of CO₂ emissions
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
+      <div className="grid gap-4 md:grid-cols-2">
+        <div className="rounded-lg border bg-card/50 p-6 shadow-sm">
+          <div className="space-y-1">
+            <div className="flex items-center gap-1 text-orange-700">
+              <Settings className="h-3.5 w-3.5" />
+              <h3 className="text-sm font-medium">Optimized Cost</h3>
             </div>
+            <p className="text-xl font-semibold text-orange-900">
+              {formatCurrency(scenario.data.optimizedCost)}
+            </p>
+            <p className="text-sm text-orange-600">
+              {scenario.data.savingsPercentage}% reduction in fuel costs
+            </p>
+          </div>
+        </div>
+
+        <div className="rounded-lg border bg-card p-6 shadow-sm">
+          <div className="space-y-1">
+            <div className="flex items-center gap-1 text-orange-700">
+              <DollarSign className="h-3.5 w-3.5" />
+              <h3 className="text-sm font-medium">Estimated Savings</h3>
+              <SmartTooltip content="Annual fuel cost savings based on your fleet's optimization potential" />
+            </div>
+            <p className="text-xl font-semibold text-orange-900">
+              {formatCurrency(scenario.data.savings)}/year
+            </p>
           </div>
         </div>
       </div>
-    </TooltipProvider>
+
+      <div className="rounded-lg border bg-card/50 p-6 shadow-sm">
+        <div className="space-y-1">
+          <div className="flex items-center gap-1 text-green-700">
+            <Leaf className="h-3.5 w-3.5" />
+            <h3 className="text-sm font-medium">CO₂ Reduction</h3>
+            <SmartTooltip content="Estimated annual reduction in CO₂ emissions" />
+          </div>
+          <p className="text-xl font-semibold text-green-900">
+            {formatNumber(scenario.data.co2Reduction)} MT
+          </p>
+          <p className="text-sm text-green-600">
+            ≈ {formatNumber(carsEquivalent)} cars off the road
+            <SmartTooltip content="Equivalent to removing this many passenger vehicles from the road for one year" />
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }
