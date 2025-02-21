@@ -126,8 +126,8 @@ export default function ResultsDisplay({ results }: Props) {
 
   return (
     <TooltipProvider delayDuration={0} disableHoverableContent skipDelayDuration={0}>
-      <div className="space-y-4 pt-4">
-        <Card className="border bg-white shadow-md mb-6">
+      <div className="space-y-2 pt-6">
+        <Card className="border bg-white shadow-md mb-8">
           <CardContent className="p-3">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
