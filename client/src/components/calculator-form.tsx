@@ -452,8 +452,8 @@ export default function CalculatorForm() {
             <div className="h-full flex flex-col items-center justify-center gap-2 text-muted-foreground -mt-8">
               <div className="ship-container relative">
                 <img
-                  src="/images/cargo-ship.png"
-                  alt="Cargo Ship"
+                  src="/images/bulk_carrier.png"
+                  alt="Bulk Carrier"
                   className="w-48 h-48 object-contain mb-3"
                 />
                 <div className="waves-small"></div>
