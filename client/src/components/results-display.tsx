@@ -225,222 +225,224 @@ export default function ResultsDisplay({ results }: Props) {
               </div>
             </div>
 
-        <Tabs defaultValue="average" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 bg-gray-50 p-1">
-            {Object.entries(scenarios).map(([key, scenario]) => (
-              <TabsTrigger
-                value={key}
-                key={key}
-                className={cn(
-                  "text-sm font-medium",
-                  key === "conservative" &&
-                    "data-[state=active]:bg-sky-100 data-[state=active]:text-sky-900",
-                  key === "average" &&
-                    "data-[state=active]:bg-orange-100 data-[state=active]:text-orange-900",
-                  key === "optimal" &&
-                    "data-[state=active]:bg-emerald-100 data-[state=active]:text-emerald-900"
-                )}
-              >
-                {scenario.title}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+            <Tabs defaultValue="average" className="w-full">
+              <TabsList className="grid w-full grid-cols-3 bg-gray-50 p-1">
+                {Object.entries(scenarios).map(([key, scenario]) => (
+                  <TabsTrigger
+                    value={key}
+                    key={key}
+                    className={cn(
+                      "text-sm font-medium",
+                      key === "conservative" &&
+                        "data-[state=active]:bg-sky-100 data-[state=active]:text-sky-900",
+                      key === "average" &&
+                        "data-[state=active]:bg-orange-100 data-[state=active]:text-orange-900",
+                      key === "optimal" &&
+                        "data-[state=active]:bg-emerald-100 data-[state=active]:text-emerald-900"
+                    )}
+                  >
+                    {scenario.title}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
 
-          {Object.entries(scenarios).map(([key, scenario]) => (
-            <TabsContent key={key} value={key} className="mt-3">
-              <div className="grid grid-cols-2 gap-3">
-                <Card
-                  className={cn(
-                    "border shadow-sm",
-                    key === "conservative" && "bg-sky-50",
-                    key === "average" && "bg-orange-50",
-                    key === "optimal" && "bg-emerald-50"
-                  )}
-                >
-                  <CardContent className="p-2.5">
-                    <div className="space-y-1">
-                      <div
-                        className={cn(
-                          "flex items-center gap-1",
-                          key === "conservative" && "text-sky-700",
-                          key === "average" && "text-amber-700",
-                          key === "optimal" && "text-emerald-700"
-                        )}
-                      >
-                        <Settings className="h-3.5 w-3.5" />
-                        <h3 className="text-sm font-medium">Optimized Cost</h3>
-                      </div>
-                      <p className="text-lg font-bold text-slate-900">
-                        {formatCurrency(scenario.data.optimizedCost)}
-                      </p>
-                      <p
-                        className={cn(
-                          "text-[11px] font-medium",
-                          key === "conservative" && "text-sky-700",
-                          key === "average" && "text-amber-700",
-                          key === "optimal" && "text-emerald-700"
-                        )}
-                      >
-                        <TrendingDown className="h-2.5 w-2.5 inline mr-1" />
-                        {scenario.data.improvement}% reduction in fuel costs
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card
-                  className={cn(
-                    "border shadow-sm text-white",
-                    key === "conservative" && "bg-sky-700",
-                    key === "average" && "bg-orange-700",
-                    key === "optimal" && "bg-emerald-700"
-                  )}
-                >
-                  <CardContent className="p-2.5">
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-1">
-                        <DollarSign className="h-3.5 w-3.5" />
-                        <h3 className="text-sm font-medium">
-                          Estimated Savings
-                        </h3>
-                        <SmartTooltip content={
-                          <TooltipContent className="w-64 text-xs">
-                            <div className="space-y-3 py-1">
-                              <p className="font-medium">
-                                Here's how we calculate your savings:
-                              </p>
-                              <ol className="space-y-2 pl-5 list-decimal">
-                                <li>
-                                  We first calculate how many days your ships
-                                  spend at sea annually, accounting for port time
-                                </li>
-                                <li>
-                                  Then multiply by your fleet size, daily fuel
-                                  usage, and fuel price
-                                </li>
-                                <li>
-                                  Finally, apply the optimization level (
-                                  {key === "conservative"
-                                    ? "3%"
-                                    : key === "average"
-                                    ? "5%"
-                                    : "7%"}
-                                  ) to find potential savings
-                                </li>
-                              </ol>
-                            </div>
-                          </TooltipContent>
-                        }>
-                          <TooltipTrigger asChild>
-                            <button
-                              type="button"
-                              className="p-1 -m-1 border-0 bg-transparent"
-                            >
-                              <InfoCircledIcon className="h-3.5 w-3.5 opacity-70" />
-                            </button>
-                          </TooltipTrigger>
-                        </SmartTooltip>
-                      </div>
-                      <p className="text-lg font-bold">
-                        {formatCurrency(scenario.data.savings)}
-                      </p>
-                      <p className="text-[11px]">Annual savings</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-
-              <Card
-                className={cn(
-                  "mt-3 md:mt-4 border shadow-sm",
-                  key === "conservative" && "bg-sky-50/50",
-                  key === "average" && "bg-orange-50/50",
-                  key === "optimal" && "bg-emerald-50/50"
-                )}
-              >
-                <CardContent className="p-2.5">
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-1 text-emerald-700">
-                      <Leaf className="h-3.5 w-3.5" />
-                      <h3 className="text-sm font-medium">CO₂ Reduction</h3>
-                      <SmartTooltip content={
-                        <TooltipContent className="w-64 text-xs">
-                          <div className="space-y-2 py-1">
-                            <p className="font-medium">How we calculate CO₂ reduction:</p>
-                            <ol className="space-y-1 pl-4 list-decimal">
-                              <li>Calculate fuel saved = Annual fuel consumption × Optimization savings %</li>
-                              <li>CO₂ reduction = Fuel saved × 3.15 (MT of CO₂ per MT of fuel)</li>
-                            </ol>
-                          </div>
-                        </TooltipContent>
-                      }>
-                        <button type="button" className="p-1 -m-1 border-0 bg-transparent">
-                          <InfoCircledIcon className="h-3.5 w-3.5 text-emerald-700 opacity-70" />
-                        </button>
-                      </SmartTooltip>
-                    </div>
-                    <p className="text-lg font-bold text-emerald-800">
-                      {formatNumber(scenario.data.co2Reduction)} MT
-                    </p>
-                    <p className="text-[11px] text-emerald-600">
-                      Annual emissions saved
-                    </p>
-                    <div className="flex items-center gap-1">
-                      <p className="text-[11px] text-emerald-600">
-                        ≈ {formatNumber(scenario.data.co2Reduction * 0.217)} cars
-                        off the road
-                      </p>
-                      {useTouchDevice() ? (
-                        <Popover>
-                          <PopoverTrigger asChild>
-                            <button
-                              type="button"
-                              className="p-1 -m-1 border-0 bg-transparent touch-manipulation"
-                              onTouchStart={(e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                              }}
-                              onTouchEnd={(e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                              }}
-                            >
-                              <InfoCircledIcon className="h-3 w-3 text-emerald-600" />
-                            </button>
-                          </PopoverTrigger>
-                          <PopoverContent className="w-60 text-xs">
-                            Equivalent to removing this many passenger vehicles
-                            from the road for one year, based on average annual
-                            vehicle emissions of 4.6 metric tons of CO₂ (EPA,
-                            2023)
-                          </PopoverContent>
-                        </Popover>
-                      ) : (
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            {/* Removed onTouchStart */}
-                            <button
-                              type="button"
-                              className="p-1 -m-1 border-0 bg-transparent"
-                            >
-                              <InfoCircledIcon className="h-3 w-3 text-emerald-600" />
-                            </button>
-                          </TooltipTrigger>
-                          <TooltipContent sideOffset={16} className="w-60">
-                            Equivalent to removing this many passenger vehicles
-                            from the road for one year, based on average annual
-                            vehicle emissions of 4.6 metric tons of CO₂ (EPA,
-                            2023)
-                          </TooltipContent>
-                        </Tooltip>
+              {Object.entries(scenarios).map(([key, scenario]) => (
+                <TabsContent key={key} value={key} className="mt-3">
+                  <div className="grid grid-cols-2 gap-3">
+                    <Card
+                      className={cn(
+                        "border shadow-sm",
+                        key === "conservative" && "bg-sky-50",
+                        key === "average" && "bg-orange-50",
+                        key === "optimal" && "bg-emerald-50"
                       )}
-                    </div>
+                    >
+                      <CardContent className="p-2.5">
+                        <div className="space-y-1">
+                          <div
+                            className={cn(
+                              "flex items-center gap-1",
+                              key === "conservative" && "text-sky-700",
+                              key === "average" && "text-amber-700",
+                              key === "optimal" && "text-emerald-700"
+                            )}
+                          >
+                            <Settings className="h-3.5 w-3.5" />
+                            <h3 className="text-sm font-medium">Optimized Cost</h3>
+                          </div>
+                          <p className="text-lg font-bold text-slate-900">
+                            {formatCurrency(scenario.data.optimizedCost)}
+                          </p>
+                          <p
+                            className={cn(
+                              "text-[11px] font-medium",
+                              key === "conservative" && "text-sky-700",
+                              key === "average" && "text-amber-700",
+                              key === "optimal" && "text-emerald-700"
+                            )}
+                          >
+                            <TrendingDown className="h-2.5 w-2.5 inline mr-1" />
+                            {scenario.data.improvement}% reduction in fuel costs
+                          </p>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    <Card
+                      className={cn(
+                        "border shadow-sm text-white",
+                        key === "conservative" && "bg-sky-700",
+                        key === "average" && "bg-orange-700",
+                        key === "optimal" && "bg-emerald-700"
+                      )}
+                    >
+                      <CardContent className="p-2.5">
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-1">
+                            <DollarSign className="h-3.5 w-3.5" />
+                            <h3 className="text-sm font-medium">
+                              Estimated Savings
+                            </h3>
+                            <SmartTooltip content={
+                              <TooltipContent className="w-64 text-xs">
+                                <div className="space-y-3 py-1">
+                                  <p className="font-medium">
+                                    Here's how we calculate your savings:
+                                  </p>
+                                  <ol className="space-y-2 pl-5 list-decimal">
+                                    <li>
+                                      We first calculate how many days your ships
+                                      spend at sea annually, accounting for port time
+                                    </li>
+                                    <li>
+                                      Then multiply by your fleet size, daily fuel
+                                      usage, and fuel price
+                                    </li>
+                                    <li>
+                                      Finally, apply the optimization level (
+                                      {key === "conservative"
+                                        ? "3%"
+                                        : key === "average"
+                                        ? "5%"
+                                        : "7%"}
+                                      ) to find potential savings
+                                    </li>
+                                  </ol>
+                                </div>
+                              </TooltipContent>
+                            }>
+                              <TooltipTrigger asChild>
+                                <button
+                                  type="button"
+                                  className="p-1 -m-1 border-0 bg-transparent"
+                                >
+                                  <InfoCircledIcon className="h-3.5 w-3.5 opacity-70" />
+                                </button>
+                              </TooltipTrigger>
+                            </SmartTooltip>
+                          </div>
+                          <p className="text-lg font-bold">
+                            {formatCurrency(scenario.data.savings)}
+                          </p>
+                          <p className="text-[11px]">Annual savings</p>
+                        </div>
+                      </CardContent>
+                    </Card>
                   </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          ))}
-        </Tabs>
+
+                  <Card
+                    className={cn(
+                      "mt-3 md:mt-4 border shadow-sm",
+                      key === "conservative" && "bg-sky-50/50",
+                      key === "average" && "bg-orange-50/50",
+                      key === "optimal" && "bg-emerald-50/50"
+                    )}
+                  >
+                    <CardContent className="p-2.5">
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-1 text-emerald-700">
+                          <Leaf className="h-3.5 w-3.5" />
+                          <h3 className="text-sm font-medium">CO₂ Reduction</h3>
+                          <SmartTooltip content={
+                            <TooltipContent className="w-64 text-xs">
+                              <div className="space-y-2 py-1">
+                                <p className="font-medium">How we calculate CO₂ reduction:</p>
+                                <ol className="space-y-1 pl-4 list-decimal">
+                                  <li>Calculate fuel saved = Annual fuel consumption × Optimization savings %</li>
+                                  <li>CO₂ reduction = Fuel saved × 3.15 (MT of CO₂ per MT of fuel)</li>
+                                </ol>
+                              </div>
+                            </TooltipContent>
+                          }>
+                            <button type="button" className="p-1 -m-1 border-0 bg-transparent">
+                              <InfoCircledIcon className="h-3.5 w-3.5 text-emerald-700 opacity-70" />
+                            </button>
+                          </SmartTooltip>
+                        </div>
+                        <p className="text-lg font-bold text-emerald-800">
+                          {formatNumber(scenario.data.co2Reduction)} MT
+                        </p>
+                        <p className="text-[11px] text-emerald-600">
+                          Annual emissions saved
+                        </p>
+                        <div className="flex items-center gap-1">
+                          <p className="text-[11px] text-emerald-600">
+                            ≈ {formatNumber(scenario.data.co2Reduction * 0.217)} cars
+                            off the road
+                          </p>
+                          {useTouchDevice() ? (
+                            <Popover>
+                              <PopoverTrigger asChild>
+                                <button
+                                  type="button"
+                                  className="p-1 -m-1 border-0 bg-transparent touch-manipulation"
+                                  onTouchStart={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                  }}
+                                  onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                  }}
+                                >
+                                  <InfoCircledIcon className="h-3 w-3 text-emerald-600" />
+                                </button>
+                              </PopoverTrigger>
+                              <PopoverContent className="w-60 text-xs">
+                                Equivalent to removing this many passenger vehicles
+                                from the road for one year, based on average annual
+                                vehicle emissions of 4.6 metric tons of CO₂ (EPA,
+                                2023)
+                              </PopoverContent>
+                            </Popover>
+                          ) : (
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                {/* Removed onTouchStart */}
+                                <button
+                                  type="button"
+                                  className="p-1 -m-1 border-0 bg-transparent"
+                                >
+                                  <InfoCircledIcon className="h-3 w-3 text-emerald-600" />
+                                </button>
+                              </TooltipTrigger>
+                              <TooltipContent sideOffset={16} className="w-60">
+                                Equivalent to removing this many passenger vehicles
+                                from the road for one year, based on average annual
+                                vehicle emissions of 4.6 metric tons of CO₂ (EPA,
+                                2023)
+                              </TooltipContent>
+                            </Tooltip>
+                          )}
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </TabsContent>
+              ))}
+            </Tabs>
+          </div>
+        </div>
       </div>
     </TooltipProvider>
   );
