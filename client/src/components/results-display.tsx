@@ -226,7 +226,7 @@ export default function ResultsDisplay({ results }: Props) {
             </div>
           </div>
         </div>
-        
+
         <Tabs defaultValue="average" className="w-full">
           <TabsList className="grid w-full grid-cols-3 bg-gray-50 p-1">
             {Object.entries(scenarios).map(([key, scenario]) => (
