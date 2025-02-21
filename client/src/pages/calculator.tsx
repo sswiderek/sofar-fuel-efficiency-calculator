@@ -103,9 +103,9 @@ export default function Calculator() {
                         </div>
                         <CardTitle className="text-xl">Real-World Success Stories</CardTitle>
                       </div>
-                      <p className="text-blue-200 text-base mb-3">Verified Results & Case Studies</p>
+                      <p className="text-blue-200 text-base mb-3">2024 Savings Report: Major fuel savings achieved across global routes</p>
                       <div className="flex items-center gap-2 text-blue-200 text-sm font-medium">
-                        <span>View success stories</span>
+                        <span>Download 2024 savings report</span>
                         <ChevronRightIcon className="h-4 w-4" />
                       </div>
                     </div>
