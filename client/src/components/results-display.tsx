@@ -420,10 +420,17 @@ export default function ResultsDisplay({ results }: Props) {
                                 <button
                                   type="button"
                                   className="p-1 -m-1 border-0 bg-transparent"
+                                  onClick={(e) => e.stopPropagation()}
                                 >
                                   <InfoCircledIcon className="h-3 w-3 text-emerald-600" />
                                 </button>
                               </TooltipTrigger>
+                              <TooltipContent className="w-60 text-sm">
+                                Equivalent to removing this many passenger vehicles
+                                from the road for one year, based on average annual
+                                vehicle emissions of 4.6 metric tons of CO₂ (EPA,
+                                2023)
+                              </TooltipContent>
                               <TooltipContent sideOffset={16} className="w-60 bg-white rounded-md shadow-md p-2"> {/*Added background, padding, and shadow */}
                                 Equivalent to removing this many passenger vehicles
                                 from the road for one year, based on average annual
