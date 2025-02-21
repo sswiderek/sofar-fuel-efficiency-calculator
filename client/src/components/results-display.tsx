@@ -213,14 +213,17 @@ export default function ResultsDisplay({ results }: Props) {
           </CardContent>
         </Card>
 
-        <div className="mt-6 mb-3 flex items-center justify-between">
-          <div className="flex-1">
-            <h3 className="text-sm font-medium text-slate-900">Savings Scenarios</h3>
-            <p className="text-xs text-slate-600 mt-0.5">Based on historical platform data</p>
+        <div className="mt-8 mb-4">
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex-1">
+              <h3 className="text-base font-semibold text-slate-900">Savings Scenarios</h3>
+              <p className="text-xs text-slate-600 mt-1">Based on historical platform data</p>
+            </div>
+            <div className="text-xs font-medium text-slate-600 bg-slate-100/80 px-3 py-1.5 rounded-full">
+              3-7% typical range
+            </div>
           </div>
-          <div className="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded-md">
-            3-7% typical range
-          </div>
+          <div className="h-px bg-gradient-to-r from-slate-200 via-slate-100 to-transparent"></div>
         </div>
         
         <Tabs defaultValue="average" className="w-full">
