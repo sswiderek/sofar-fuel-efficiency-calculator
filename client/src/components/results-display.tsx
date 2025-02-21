@@ -174,7 +174,6 @@ export default function ResultsDisplay({ results }: Props) {
                       </button>
                     </TooltipTrigger>
                     <TooltipContent side="top" sideOffset={5} className="w-72">
-                      How we calculate annual fuel costs:
                       <div className="space-y-2 py-1">
                               <p className="font-medium">How we calculate annual fuel costs:</p>
                               <ol className="space-y-2 pl-4 list-decimal">
