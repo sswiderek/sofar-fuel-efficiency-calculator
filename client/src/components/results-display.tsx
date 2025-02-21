@@ -94,19 +94,9 @@ export default function ResultsDisplay({ results }: Props) {
       maximumFractionDigits: 0,
     }).format(Math.round(value));
 
-  const scenarios = {
-    conservative: {
-      title: "3% Savings",
-      data: getScenarioData(0),
-    },
-    average: {
-      title: "5% Savings",
-      data: getScenarioData(1),
-    },
-    optimal: {
-      title: "7% Savings",
-      data: getScenarioData(2),
-    },
+  const scenario = {
+    title: "Potential Savings",
+    data: getScenarioData(0),
   };
 
   function getScenarioData(scenarioIndex: number) {
@@ -213,37 +203,11 @@ export default function ResultsDisplay({ results }: Props) {
           </CardContent>
         </Card>
 
-        <Tabs defaultValue="average" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 bg-gray-50 p-1">
-            {Object.entries(scenarios).map(([key, scenario]) => (
-              <TabsTrigger
-                value={key}
-                key={key}
-                className={cn(
-                  "text-sm font-medium",
-                  key === "conservative" &&
-                    "data-[state=active]:bg-sky-100 data-[state=active]:text-sky-900",
-                  key === "average" &&
-                    "data-[state=active]:bg-orange-100 data-[state=active]:text-orange-900",
-                  key === "optimal" &&
-                    "data-[state=active]:bg-emerald-100 data-[state=active]:text-emerald-900"
-                )}
-              >
-                {scenario.title}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-
-          {Object.entries(scenarios).map(([key, scenario]) => (
-            <TabsContent key={key} value={key} className="mt-3">
+        <div className="w-full">
+          <div className="mt-3">
               <div className="grid grid-cols-2 gap-3">
                 <Card
-                  className={cn(
-                    "border shadow-sm",
-                    key === "conservative" && "bg-sky-50",
-                    key === "average" && "bg-orange-50",
-                    key === "optimal" && "bg-emerald-50"
-                  )}
+                  className="border shadow-sm bg-orange-50"
                 >
                   <CardContent className="p-2.5">
                     <div className="space-y-1">
