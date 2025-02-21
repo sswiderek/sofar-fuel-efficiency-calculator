@@ -127,11 +127,11 @@ export default function ResultsDisplay({ results }: Props) {
   return (
     <TooltipProvider delayDuration={0} disableHoverableContent skipDelayDuration={0}>
       <div className="space-y-4 pt-6">
-        <Card className="border bg-white shadow-sm">
-          <CardContent className="p-3">
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <h3 className="text-sm font-medium text-slate-600">
+        <Card className="border bg-white/50 shadow-none">
+          <CardContent className="p-2">
+            <div className="space-y-0.5">
+              <div className="flex items-center gap-1.5">
+                <h3 className="text-xs font-medium text-slate-500">
                   Current Annual Costs
                 </h3>
                 {useTouchDevice() ? (
@@ -206,7 +206,7 @@ export default function ResultsDisplay({ results }: Props) {
                   </Tooltip>
                 )}
               </div>
-              <p className="text-2xl font-semibold tracking-tight text-slate-900">
+              <p className="text-lg font-medium tracking-tight text-slate-700">
                 {formatCurrency(results[0].totalFuelCost)}
               </p>
             </div>
