@@ -127,11 +127,11 @@ export default function ResultsDisplay({ results }: Props) {
   return (
     <TooltipProvider delayDuration={0} disableHoverableContent skipDelayDuration={0}>
       <div className="space-y-4 pt-6">
-        <Card className="border bg-white/40 mb-8">
+        <Card className="border bg-white shadow-md mb-8">
           <CardContent className="p-3">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <h3 className="text-xs font-medium text-slate-400/80">
+                <h3 className="text-sm font-semibold text-slate-700">
                   Current Annual Costs
                 </h3>
                 {useTouchDevice() ? (
@@ -153,7 +153,7 @@ export default function ResultsDisplay({ results }: Props) {
                         <InfoCircledIcon className="h-4 w-4 text-slate-400" />
                       </button>
                     </PopoverTrigger>
-                    <PopoverContent className="w-60 text-xs">
+                    <PopoverContent className="w-60 text-sm p-2 bg-white rounded-md shadow-md"> {/*Increased text size and added padding, background, and shadow */}
                       Total yearly fuel usage: {formatNumber(results[0].totalFuelConsumption)} MT
                       <div className="mt-2">
                         <p className="mb-1">• At sea: {formatNumber(results[0].fleetSize)} ships × {formatNumber(results[0].daysAtSea)} days × {formatNumber(results[0].fuelConsumption)} MT/day</p>
@@ -173,7 +173,7 @@ export default function ResultsDisplay({ results }: Props) {
                         <InfoCircledIcon className="h-4 w-4 text-slate-400" />
                       </button>
                     </TooltipTrigger>
-                    <TooltipContent side="top" sideOffset={5} className="w-72">
+                    <TooltipContent side="top" sideOffset={5} className="w-72 bg-white rounded-md shadow-md p-2"> {/*Added background, padding, and shadow */}
                       How we calculate annual fuel costs:
                       <div className="space-y-2 py-1">
                               <p className="font-medium">How we calculate annual fuel costs:</p>
@@ -206,7 +206,7 @@ export default function ResultsDisplay({ results }: Props) {
                   </Tooltip>
                 )}
               </div>
-              <p className="text-2xl font-medium tracking-tight text-slate-500">
+              <p className="text-2xl font-bold tracking-tight text-slate-700"> {/*Increased font size and weight, and changed color*/}
                 {formatCurrency(results[0].totalFuelCost)}
               </p>
             </div>
@@ -304,7 +304,7 @@ export default function ResultsDisplay({ results }: Props) {
                               Estimated Savings
                             </h3>
                             <SmartTooltip content={
-                              <TooltipContent className="w-64 text-xs">
+                              <TooltipContent className="w-64 text-xs p-2 bg-white rounded-md shadow-md"> {/*Added background, padding, and shadow */}
                                 <div className="space-y-3 py-1">
                                   <p className="font-medium">
                                     Here's how we calculate your savings:
@@ -364,7 +364,7 @@ export default function ResultsDisplay({ results }: Props) {
                           <Leaf className="h-3.5 w-3.5" />
                           <h3 className="text-sm font-medium">CO₂ Reduction</h3>
                           <SmartTooltip content={
-                            <TooltipContent className="w-64 text-xs">
+                            <TooltipContent className="w-64 text-xs p-2 bg-white rounded-md shadow-md"> {/*Added background, padding, and shadow */}
                               <div className="space-y-2 py-1">
                                 <p className="font-medium">How we calculate CO₂ reduction:</p>
                                 <ol className="space-y-1 pl-4 list-decimal">
@@ -408,7 +408,7 @@ export default function ResultsDisplay({ results }: Props) {
                                   <InfoCircledIcon className="h-3 w-3 text-emerald-600" />
                                 </button>
                               </PopoverTrigger>
-                              <PopoverContent className="w-60 text-xs">
+                              <PopoverContent className="w-60 text-sm p-2 bg-white rounded-md shadow-md"> {/*Increased text size and added padding, background, and shadow */}
                                 Equivalent to removing this many passenger vehicles
                                 from the road for one year, based on average annual
                                 vehicle emissions of 4.6 metric tons of CO₂ (EPA,
@@ -426,7 +426,7 @@ export default function ResultsDisplay({ results }: Props) {
                                   <InfoCircledIcon className="h-3 w-3 text-emerald-600" />
                                 </button>
                               </TooltipTrigger>
-                              <TooltipContent sideOffset={16} className="w-60">
+                              <TooltipContent sideOffset={16} className="w-60 bg-white rounded-md shadow-md p-2"> {/*Added background, padding, and shadow */}
                                 Equivalent to removing this many passenger vehicles
                                 from the road for one year, based on average annual
                                 vehicle emissions of 4.6 metric tons of CO₂ (EPA,
