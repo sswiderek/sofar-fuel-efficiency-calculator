@@ -127,11 +127,11 @@ export default function ResultsDisplay({ results }: Props) {
   return (
     <TooltipProvider delayDuration={0} disableHoverableContent skipDelayDuration={0}>
       <div className="space-y-4 pt-6">
-        <Card className="border bg-white/60 mb-6">
+        <Card className="border bg-white/40 mb-8">
           <CardContent className="p-3">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <h3 className="text-xs font-medium text-slate-400">
+                <h3 className="text-xs font-medium text-slate-400/80">
                   Current Annual Costs
                 </h3>
                 {useTouchDevice() ? (
@@ -206,24 +206,24 @@ export default function ResultsDisplay({ results }: Props) {
                   </Tooltip>
                 )}
               </div>
-              <p className="text-2xl font-bold tracking-tight text-slate-600">
+              <p className="text-2xl font-medium tracking-tight text-slate-500">
                 {formatCurrency(results[0].totalFuelCost)}
               </p>
             </div>
           </CardContent>
         </Card>
 
-        <div className="mt-8 mb-4">
-          <div className="flex items-center justify-between mb-2">
+        <div className="mt-12 mb-6">
+          <div className="flex items-center justify-between mb-4">
             <div className="flex-1">
-              <h3 className="text-base font-semibold text-slate-900">Savings Scenarios</h3>
+              <h2 className="text-lg font-semibold text-slate-900">Savings Scenarios</h2>
               <p className="text-xs text-slate-600 mt-1">Based on historical platform data</p>
             </div>
             <div className="text-xs font-medium text-slate-600 bg-slate-100/80 px-3 py-1.5 rounded-full">
               3-7% typical range
             </div>
           </div>
-          <div className="h-px bg-gradient-to-r from-slate-200 via-slate-100 to-transparent"></div>
+          <div className="h-px bg-gradient-to-r from-slate-300 via-slate-200 to-transparent mb-4"></div>
         </div>
         
         <Tabs defaultValue="average" className="w-full">
