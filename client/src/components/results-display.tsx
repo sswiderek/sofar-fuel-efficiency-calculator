@@ -96,15 +96,15 @@ export default function ResultsDisplay({ results }: Props) {
 
   const scenarios = {
     conservative: {
-      title: "3% Savings",
+      title: "Conservative",
       data: getScenarioData(0),
     },
     average: {
-      title: "5% Savings",
+      title: "Typical",
       data: getScenarioData(1),
     },
     optimal: {
-      title: "7% Savings",
+      title: "Best Case",
       data: getScenarioData(2),
     },
   };
