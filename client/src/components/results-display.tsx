@@ -162,9 +162,8 @@ export default function ResultsDisplay({ results }: Props) {
                     </PopoverContent>
                   </Popover>
                 ) : (
-                  <Tooltip delayDuration={400}>
+                  <Tooltip>
                     <TooltipTrigger asChild>
-                      {/* Removed onTouchStart */}
                       <button
                         type="button"
                         className="p-2 -m-1 border-0 bg-transparent cursor-pointer touch-target"
@@ -418,7 +417,6 @@ export default function ResultsDisplay({ results }: Props) {
                           ) : (
                             <Tooltip>
                               <TooltipTrigger asChild>
-                                {/* Removed onTouchStart */}
                                 <button
                                   type="button"
                                   className="p-1 -m-1 border-0 bg-transparent"
