@@ -96,15 +96,15 @@ export default function ResultsDisplay({ results }: Props) {
 
   const scenarios = {
     conservative: {
-      title: "Conservative",
+      title: "3% Savings",
       data: getScenarioData(0),
     },
     average: {
-      title: "Typical",
+      title: "5% Savings",
       data: getScenarioData(1),
     },
     optimal: {
-      title: "Best Case",
+      title: "7% Savings",
       data: getScenarioData(2),
     },
   };
@@ -212,10 +212,6 @@ export default function ResultsDisplay({ results }: Props) {
             </div>
           </CardContent>
         </Card>
-
-        <div className="mb-2 text-center text-xs text-slate-600">
-          View results across three scenarios: 3% minimum savings • 5% typical • 7% optimal
-        </div>
 
         <Tabs defaultValue="average" className="w-full">
           <TabsList className="grid w-full grid-cols-3 bg-gray-50 p-1">
