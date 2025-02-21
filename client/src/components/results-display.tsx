@@ -213,10 +213,16 @@ export default function ResultsDisplay({ results }: Props) {
           </CardContent>
         </Card>
 
-        <div className="mb-2 space-y-1">
-          <p className="text-sm font-medium text-slate-700">Estimated Savings Range</p>
-          <p className="text-xs text-slate-600">Based on Wayfinder platform data, fuel savings typically range from 3% to 7%</p>
+        <div className="mt-6 mb-3 flex items-center justify-between">
+          <div className="flex-1">
+            <h3 className="text-sm font-medium text-slate-900">Savings Scenarios</h3>
+            <p className="text-xs text-slate-600 mt-0.5">Based on historical platform data</p>
+          </div>
+          <div className="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded-md">
+            3-7% typical range
+          </div>
         </div>
+        
         <Tabs defaultValue="average" className="w-full">
           <TabsList className="grid w-full grid-cols-3 bg-gray-50 p-1">
             {Object.entries(scenarios).map(([key, scenario]) => (
