@@ -127,11 +127,11 @@ export default function ResultsDisplay({ results }: Props) {
   return (
     <TooltipProvider delayDuration={0} disableHoverableContent skipDelayDuration={0}>
       <div className="space-y-4 pt-6">
-        <Card className="border bg-white shadow-sm">
+        <Card className="border bg-slate-50/80">
           <CardContent className="p-3">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <h3 className="text-sm font-medium text-slate-600">
+                <h3 className="text-xs font-medium text-slate-500">
                   Current Annual Costs
                 </h3>
                 {useTouchDevice() ? (
