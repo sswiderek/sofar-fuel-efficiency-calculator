@@ -206,8 +206,8 @@ export default function CalculatorForm() {
                                 }}
                                 value={field.value}
                               >
-                                <SelectTrigger className="w-full">
-                                  <SelectValue placeholder="Select vessel type" />
+                                <SelectTrigger className="max-w-full">
+                                  <SelectValue className="truncate pr-4" placeholder="Select vessel type" />
                                 </SelectTrigger>
                                 <SelectContent>
                                   {Object.entries(vesselTypes).map(([key, value]) => (
