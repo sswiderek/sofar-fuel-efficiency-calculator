@@ -185,10 +185,28 @@ export default function CalculatorForm() {
                           <FormItem>
                             <FormLabel>Vessel Type</FormLabel>
                             <FormControl>
-                              <Input
-                                placeholder="e.g. Container Ship, Bulk Carrier"
-                                {...field}
-                              />
+                              <Select
+                                onValueChange={(value) => {
+                                  field.onChange(value);
+                                  // Set default fuel consumption
+                                  form.setValue(
+                                    `vessels.${index}.fuelConsumption`,
+                                    vesselTypes[value as keyof typeof vesselTypes].defaultConsumption
+                                  );
+                                }}
+                                value={field.value}
+                              >
+                                <SelectTrigger>
+                                  <SelectValue placeholder="Select vessel type" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  {Object.entries(vesselTypes).map(([key, value]) => (
+                                    <SelectItem key={key} value={key}>
+                                      {value.label}
+                                    </SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
                             </FormControl>
                             <FormMessage />
                           </FormItem>
