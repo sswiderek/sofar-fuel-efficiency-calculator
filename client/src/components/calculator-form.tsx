@@ -8,6 +8,7 @@ import {
   calculatorInputSchema,
   type CalculatorInput,
   type CalculationResult,
+  vesselTypes,
 } from "@shared/schema";
 import {
   Form,
