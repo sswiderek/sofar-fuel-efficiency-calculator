@@ -64,10 +64,9 @@ export default function CalculatorForm() {
   const form = useForm<CalculatorInput>({
     resolver: zodResolver(calculatorInputSchema),
     defaultValues: {
-      annualSeaDays: "",
       fuelPrice: "",
       estimatedSavings: 5,
-      vessels: [{ type: "", count: 1, fuelConsumption: 0 }],
+      vessels: [{ type: "", count: 1, fuelConsumption: 0, seaDaysPerYear: 280 }],
     },
   });
 
@@ -87,7 +86,6 @@ export default function CalculatorForm() {
     const values = form.getValues();
     const emptyFields = [];
 
-    if (!values.annualSeaDays) emptyFields.push("Annual Sea Days");
     if (!values.fuelPrice) emptyFields.push("Fuel Price");
     if (!values.vessels || values.vessels.length === 0) {
       emptyFields.push("At least one vessel");
@@ -107,21 +105,20 @@ export default function CalculatorForm() {
     setIsCalculating(true);
     try {
       const formData = {
-        annualSeaDays: parseFloat(values.annualSeaDays),
         fuelPrice: parseFloat(values.fuelPrice),
         estimatedSavings: parseFloat(values.estimatedSavings.toString()),
         vessels: values.vessels.map((vessel) => ({
           type: vessel.type,
           count: parseInt(vessel.count.toString()),
           fuelConsumption: parseFloat(vessel.fuelConsumption.toString()),
+          seaDaysPerYear: parseFloat(vessel.seaDaysPerYear.toString()),
         })),
       };
 
       if (
-        isNaN(formData.annualSeaDays) || 
         isNaN(formData.fuelPrice) || 
         isNaN(formData.estimatedSavings) ||
-        formData.vessels.some((v) => isNaN(v.count) || isNaN(v.fuelConsumption))
+        formData.vessels.some((v) => isNaN(v.count) || isNaN(v.fuelConsumption) || isNaN(v.seaDaysPerYear))
       ) {
         toast({
           title: "Invalid Input",
@@ -198,10 +195,14 @@ export default function CalculatorForm() {
                               <Select
                                 onValueChange={(value) => {
                                   field.onChange(value);
-                                  // Set default fuel consumption
+                                  // Set default fuel consumption and sea days
                                   form.setValue(
                                     `vessels.${index}.fuelConsumption`,
                                     vesselTypes[value as keyof typeof vesselTypes].defaultConsumption
+                                  );
+                                  form.setValue(
+                                    `vessels.${index}.seaDaysPerYear`,
+                                    vesselTypes[value as keyof typeof vesselTypes].defaultSeaDays || 280
                                   );
                                 }}
                                 value={field.value}
@@ -313,7 +314,40 @@ export default function CalculatorForm() {
                           )}
                         />
                       </div>
-
+                      <FormField
+                        control={form.control}
+                        name={`vessels.${index}.seaDaysPerYear`}
+                        render={({ field }) => (
+                          <FormItem>
+                            <div className="flex items-center gap-1.5">
+                              <div className="flex items-center gap-2">
+                                <TimerIcon className="h-4 w-4 text-foreground" />
+                                <FormLabel>Days at Sea Per Year</FormLabel>
+                              </div>
+                              <Tooltip>
+                                <TooltipTrigger>
+                                  <InfoIcon className="h-4 w-4 text-slate-400" />
+                                </TooltipTrigger>
+                                <TooltipContent className="max-w-[300px] text-xs">
+                                  <p>Enter the average number of days per year that this vessel spends at sea. Example: 280 days</p>
+                                </TooltipContent>
+                              </Tooltip>
+                            </div>
+                            <FormControl>
+                              <Input
+                                type="number"
+                                className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
+                                placeholder="e.g. 280"
+                                {...field}
+                                onChange={(e) =>
+                                  field.onChange(Number(e.target.value))
+                                }
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                       <Button
                         type="button"
                         variant="outline"
@@ -340,71 +374,13 @@ export default function CalculatorForm() {
                       const vessels = form.getValues("vessels") || [];
                       form.setValue("vessels", [
                         ...vessels,
-                        { type: "container-ship-small", count: 1, fuelConsumption: 40 }
+                        { type: "container-ship-small", count: 1, fuelConsumption: 40, seaDaysPerYear: 280 }
                       ]);
                     }}
                   >
                     Add Vessel Type
                   </Button>
                 </div>
-
-                {/* Annual Sea Days Field */}
-                <FormField
-                  control={form.control}
-                  name="annualSeaDays"
-                  render={({ field }) => (
-                    <FormItem>
-                      <div className="flex items-center gap-2">
-                        <FormLabel className="flex items-center gap-2">
-                          <TimerIcon className="h-4 w-4" />
-                          <span>Days at Sea Per Vessel</span>
-                        </FormLabel>
-                        <Tooltip delayDuration={100}>
-                          <TooltipTrigger asChild>
-                            <button
-                              type="button"
-                              className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
-                            >
-                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
-                            </button>
-                          </TooltipTrigger>
-                          <TooltipContent className="max-w-sm p-2">
-                            <div className="space-y-1">
-                              <div className="text-sm font-medium">
-                                Average Annual Sea Days
-                              </div>
-                              <div className="text-xs text-muted-foreground">
-                                Enter the typical number of days each vessel spends at sea annually. If your ships have different schedules (e.g., some at sea 260 days, others 300 days), use the fleet average (e.g., 280 days). Exclude time spent in port or at anchor.
-                              </div>
-                            </div>
-                          </TooltipContent>
-                        </Tooltip>
-                      </div>
-                      <FormControl>
-                        <Input
-                          type="text"
-                          inputMode="decimal"
-                          placeholder="Enter days at sea (e.g. 280)"
-                          {...field}
-                          value={field.value === undefined ? '' : field.value}
-                          onChange={(e) => {
-                            const value = e.target.value.replace(/[^\d.]/g, '');
-                            if (value === '') {
-                              field.onChange(undefined);
-                            } else {
-                              const num = parseFloat(value);
-                              if (!isNaN(num)) {
-                                field.onChange(num);
-                              }
-                            }
-                          }}
-                          className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
 
 
                 {/* Fuel Price Field */}
