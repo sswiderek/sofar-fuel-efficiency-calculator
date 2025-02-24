@@ -392,6 +392,21 @@ export default function CalculatorForm() {
                   {isCalculating ? "Calculating..." : "Calculate Savings"}
                 </Button>
               </motion.div>
+
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full mt-4"
+                onClick={() => {
+                  const vessels = form.getValues("vessels") || [];
+                  form.setValue("vessels", [
+                    ...vessels,
+                    { type: "container-ship-small", count: 1, fuelConsumption: 40 }
+                  ]);
+                }}
+              >
+                Add Vessel Type
+              </Button>
             </form>
           </Form>
         </div>
