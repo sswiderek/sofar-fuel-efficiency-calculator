@@ -161,8 +161,8 @@ export default function CalculatorForm() {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
-        <div className="space-y-8 pt-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative max-w-full">
+        <div className="space-y-8 pt-4 max-w-full overflow-hidden">
           <Form {...form}>
             <form onSubmit={onSubmit} className="space-y-8 p-6">
               <div className="space-y-8">
@@ -186,7 +186,7 @@ export default function CalculatorForm() {
                     </Button>
                   </div>
                   {form.watch("vessels")?.map((_, index) => (
-                    <div key={index} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-slate-200/60 shadow-sm w-[750px]"> {/* Width added here */}
+                    <div key={index} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-slate-200/60 shadow-sm w-full"> {/* Width added here */}
                       <FormField
                         control={form.control}
                         name={`vessels.${index}.type`}
