@@ -187,20 +187,20 @@ export default function CalculatorForm() {
                     </Button>
                   </div>
                   {form.watch("vessels")?.map((_, index) => (
-                    <div key={index} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-slate-200/60 shadow-sm w-full"> {/* Width added here */}
+                    <div key={index} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-slate-200/60 shadow-sm w-full">
                       <FormField
                         control={form.control}
                         name={`vessels.${index}.type`}
                         render={({ field }) => (
-                          <FormItem className="mb-4"> {/* Added margin bottom */}
+                          <FormItem className="mb-4">
                             <div className="flex items-center gap-2">
                               <FormLabel>Vessel Type</FormLabel>
                               <Tooltip>
                                 <TooltipTrigger>
                                   <InfoIcon className="h-4 w-4 text-slate-400" />
                                 </TooltipTrigger>
-                                <TooltipContent>
-                                  <p className="max-w-xs">TEU (Twenty-foot Equivalent Unit) is a measure of container ship capacity. Vessel types are classified by size and cargo capacity.</p>
+                                <TooltipContent className="max-w-[300px] text-xs">
+                                  <p>TEU (Twenty-foot Equivalent Unit) is a measure of container ship capacity. Vessel types are classified by size and cargo capacity.</p>
                                 </TooltipContent>
                               </Tooltip>
                             </div>
@@ -233,7 +233,7 @@ export default function CalculatorForm() {
                         )}
                       />
 
-                      <div className="grid grid-cols-2 gap-8 mt-4"> {/* Added margin top and min width */}
+                      <div className="grid grid-cols-2 gap-8 mt-4">
                         <FormField
                           control={form.control}
                           name={`vessels.${index}.count`}
@@ -245,8 +245,8 @@ export default function CalculatorForm() {
                                   <TooltipTrigger>
                                     <InfoIcon className="h-4 w-4 text-slate-400" />
                                   </TooltipTrigger>
-                                  <TooltipContent>
-                                    <p className="max-w-xs">Enter the number of vessels of this specific type in your fleet</p>
+                                  <TooltipContent className="max-w-[300px] text-xs">
+                                    <p>Enter the number of vessels of this specific type in your fleet</p>
                                   </TooltipContent>
                                 </Tooltip>
                               </div>
@@ -277,8 +277,8 @@ export default function CalculatorForm() {
                                   <TooltipTrigger>
                                     <InfoIcon className="h-4 w-4 text-slate-400" />
                                   </TooltipTrigger>
-                                  <TooltipContent>
-                                    <p className="max-w-xs">Average fuel consumption in Metric Tonnes per day while at sea. Typical ranges from 20-150 MT/day depending on vessel size.</p>
+                                  <TooltipContent className="max-w-[300px] text-xs">
+                                    <p>Average fuel consumption in Metric Tonnes per day while at sea. Typical ranges from 20-150 MT/day depending on vessel size.</p>
                                   </TooltipContent>
                                 </Tooltip>
                               </div>
