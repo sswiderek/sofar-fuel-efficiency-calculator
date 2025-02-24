@@ -354,7 +354,7 @@ export default function CalculatorForm() {
                           type="number"
                           placeholder="Enter fuel consumption"
                           {...field}
-                          value={field.value || ''}
+                          value={field.value ? Number(field.value) : ''}
                           onChange={(e) => {
                             const value = e.target.value;
                             field.onChange(value ? Number(value) : undefined);
