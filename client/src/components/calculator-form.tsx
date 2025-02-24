@@ -217,7 +217,7 @@ export default function CalculatorForm() {
                                       ) : key.includes('bulk-carrier') ? (
                                         <Wheat className="h-4 w-4" />
                                       ) : key.includes('tanker') ? (
-                                        <Fuel className="h-4 w-4" />
+                                        <img src="/images/oil_tanker.png" alt="Oil Tanker" className="h-8 w-8 object-contain" />
                                       ) : (
                                         <Anchor className="h-4 w-4" />
                                       )}
