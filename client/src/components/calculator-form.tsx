@@ -198,20 +198,19 @@ export default function CalculatorForm() {
                   )}
                 />
 
-                {/* Voyage Length Field */}
+                {/* Annual Sea Days Field */}
                 <FormField
                   control={form.control}
-                  name="voyageLength"
+                  name="annualSeaDays"
                   render={({ field }) => (
                     <FormItem>
                       <div className="flex items-center gap-2">
                         <FormLabel className="flex items-center gap-2">
                           <TimerIcon className="h-4 w-4" />
-                          <span>Voyage Length (Days at Sea)</span>
+                          <span>Annual Sea Days</span>
                         </FormLabel>
                         <Tooltip delayDuration={100}>
                           <TooltipTrigger asChild>
-                            {/* Removed onTouchStart */}
                             <button
                               type="button"
                               className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
@@ -222,10 +221,10 @@ export default function CalculatorForm() {
                           <TooltipContent className="max-w-sm p-2">
                             <div className="space-y-1">
                               <div className="text-sm font-medium">
-                                Average Voyage Length
+                                Total Sea Days Per Year
                               </div>
                               <div className="text-xs text-muted-foreground">
-                                Enter the typical duration of your voyages in
+                                Enter the total number of days your fleet spends at sea annually
                                 days. For varied routes, use your fleet's average
                                 voyage duration. Include sea days only, excluding
                                 port time.
