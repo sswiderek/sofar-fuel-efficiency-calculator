@@ -53,11 +53,10 @@ export default function CalculatorForm() {
   const form = useForm<CalculatorInput>({
     resolver: zodResolver(calculatorInputSchema),
     defaultValues: {
-      fleetSize: "",
       annualSeaDays: "",
-      fuelConsumption: "",
       fuelPrice: "",
       estimatedSavings: 5,
+      vessels: [{ type: "", count: 1, fuelConsumption: 0 }],
     },
   });
 
@@ -77,10 +76,11 @@ export default function CalculatorForm() {
     const values = form.getValues();
     const emptyFields = [];
 
-    if (!values.fleetSize) emptyFields.push("Fleet Size");
     if (!values.annualSeaDays) emptyFields.push("Annual Sea Days");
-    if (!values.fuelConsumption) emptyFields.push("Fuel Consumption");
     if (!values.fuelPrice) emptyFields.push("Fuel Price");
+    if (!values.vessels || values.vessels.length === 0) {
+      emptyFields.push("At least one vessel");
+    }
 
     if (emptyFields.length > 0) {
       toast({
@@ -96,14 +96,20 @@ export default function CalculatorForm() {
     setIsCalculating(true);
     try {
       const formData = {
-        fleetSize: Number(values.fleetSize),
         annualSeaDays: Number(values.annualSeaDays),
-        fuelConsumption: Number(values.fuelConsumption),
         fuelPrice: Number(values.fuelPrice),
         estimatedSavings: Number(values.estimatedSavings),
+        vessels: values.vessels.map((vessel) => ({
+          type: vessel.type,
+          count: Number(vessel.count),
+          fuelConsumption: Number(vessel.fuelConsumption),
+        })),
       };
 
-      if (Object.values(formData).some(isNaN)) {
+      if (
+        Object.values(formData).some(isNaN) ||
+        formData.vessels.some((v) => isNaN(v.count) || isNaN(v.fuelConsumption))
+      ) {
         toast({
           title: "Invalid Input",
           description: "Please ensure all fields contain valid numbers",
@@ -150,50 +156,106 @@ export default function CalculatorForm() {
           <Form {...form}>
             <form onSubmit={onSubmit} className="space-y-8 p-4 max-w-md">
               <div className="space-y-6">
-                {/* Fleet Size Field */}
-                <FormField
-                  control={form.control}
-                  name="fleetSize"
-                  render={({ field }) => (
-                    <FormItem>
-                      <div className="flex items-center gap-2">
-                        <FormLabel className="flex items-center gap-2">
-                          <ShipIcon className="h-4 w-4" />
-                          <span>Fleet Size</span>
-                        </FormLabel>
-                        <Tooltip delayDuration={100}>
-                          <TooltipTrigger asChild>
-                            {/* Removed onTouchStart */}
-                            <button
-                              type="button"
-                              className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
-                            >
-                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
-                            </button>
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            Number of ships in your fleet
-                          </TooltipContent>
-                        </Tooltip>
-                      </div>
-                      <FormControl>
-                        <Input
-                          type="number"
-                          placeholder="Enter number of ships (e.g. 10)"
-                          {...field}
-                          onChange={(e) =>
-                            field.onChange(
-                              e.target.value
-                                ? Number(e.target.value)
-                                : undefined
-                            )
-                          }
+                {/* Vessel List */}
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-sm font-medium">Vessels</h3>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        const currentVessels = form.getValues("vessels") || [];
+                        form.setValue("vessels", [
+                          ...currentVessels,
+                          { type: "", count: 1, fuelConsumption: 0 },
+                        ]);
+                      }}
+                    >
+                      Add Vessel Type
+                    </Button>
+                  </div>
+
+                  {form.watch("vessels")?.map((_, index) => (
+                    <div key={index} className="space-y-4 p-4 border rounded-lg">
+                      <FormField
+                        control={form.control}
+                        name={`vessels.${index}.type`}
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Vessel Type</FormLabel>
+                            <FormControl>
+                              <Input
+                                placeholder="e.g. Container Ship, Bulk Carrier"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <FormField
+                          control={form.control}
+                          name={`vessels.${index}.count`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Number of Ships</FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="number"
+                                  placeholder="e.g. 5"
+                                  {...field}
+                                  onChange={(e) =>
+                                    field.onChange(Number(e.target.value))
+                                  }
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
                         />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+
+                        <FormField
+                          control={form.control}
+                          name={`vessels.${index}.fuelConsumption`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Fuel Consumption (MT/Day)</FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="number"
+                                  placeholder="e.g. 50"
+                                  {...field}
+                                  onChange={(e) =>
+                                    field.onChange(Number(e.target.value))
+                                  }
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+
+                      <Button
+                        type="button"
+                        variant="destructive"
+                        size="sm"
+                        onClick={() => {
+                          const vessels = form.getValues("vessels");
+                          form.setValue(
+                            "vessels",
+                            vessels.filter((_, i) => i !== index)
+                          );
+                        }}
+                      >
+                        Remove Vessel Type
+                      </Button>
+                    </div>
+                  ))}
+                </div>
 
                 {/* Annual Sea Days Field */}
                 <FormField
@@ -247,63 +309,6 @@ export default function CalculatorForm() {
                 />
 
 
-                {/* Fuel Consumption Field */}
-                <FormField
-                  control={form.control}
-                  name="fuelConsumption"
-                  render={({ field }) => (
-                    <FormItem>
-                      <div className="flex items-center gap-2">
-                        <FormLabel className="flex items-center gap-2">
-                          <FuelIcon className="h-4 w-4" />
-                          <span>Fuel Consumption (MT/Day)</span>
-                        </FormLabel>
-                        <Tooltip delayDuration={100}>
-                          <TooltipTrigger asChild>
-                            {/* Removed onTouchStart */}
-                            <button
-                              type="button"
-                              className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
-                            >
-                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
-                            </button>
-                          </TooltipTrigger>
-                          <TooltipContent className="max-w-sm p-2">
-                            <div className="space-y-1">
-                              <div className="text-sm font-medium">
-                                Sea Fuel Consumption (MT/Day)
-                              </div>
-                              <div className="text-xs text-muted-foreground">
-                                Enter your fleet's average fuel consumption in
-                                Metric Tons per day while at sea. For mixed fleets, use a weighted
-                                average based on vessel operating days. Note: This calculator only considers
-                                fuel consumption while at sea, not in port.
-                              </div>
-                            </div>
-                          </TooltipContent>
-                        </Tooltip>
-                      </div>
-                      <FormControl>
-                        <Input
-                          type="number"
-                          placeholder="Enter fuel consumption (e.g. 50)"
-                          {...field}
-                          onChange={(e) =>
-                            field.onChange(
-                              e.target.value
-                                ? Number(e.target.value)
-                                : undefined
-                            )
-                          }
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-
-
                 {/* Fuel Price Field */}
                 <FormField
                   control={form.control}
@@ -317,7 +322,6 @@ export default function CalculatorForm() {
                         </FormLabel>
                         <Tooltip delayDuration={100}>
                           <TooltipTrigger asChild>
-                            {/* Removed onTouchStart */}
                             <button
                               type="button"
                               className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
