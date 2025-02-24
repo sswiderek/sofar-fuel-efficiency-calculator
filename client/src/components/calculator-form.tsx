@@ -192,7 +192,17 @@ export default function CalculatorForm() {
                         name={`vessels.${index}.type`}
                         render={({ field }) => (
                           <FormItem className="mb-4"> {/* Added margin bottom */}
-                            <FormLabel className="text-sm font-medium mb-1.5 block">Vessel Type</FormLabel>
+                            <div className="flex items-center gap-2">
+                              <FormLabel>Vessel Type</FormLabel>
+                              <Tooltip>
+                                <TooltipTrigger>
+                                  <InfoIcon className="h-4 w-4 text-slate-400" />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  <p className="max-w-xs">TEU (Twenty-foot Equivalent Unit) is a measure of container ship capacity. Vessel types are classified by size and cargo capacity.</p>
+                                </TooltipContent>
+                              </Tooltip>
+                            </div>
                             <FormControl>
                               <Select
                                 onValueChange={(value) => {
@@ -228,7 +238,17 @@ export default function CalculatorForm() {
                           name={`vessels.${index}.count`}
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-sm font-medium mb-1.5 block">Number of Ships</FormLabel>
+                              <div className="flex items-center gap-2">
+                                <FormLabel>Number of Ships</FormLabel>
+                                <Tooltip>
+                                  <TooltipTrigger>
+                                    <InfoIcon className="h-4 w-4 text-slate-400" />
+                                  </TooltipTrigger>
+                                  <TooltipContent>
+                                    <p className="max-w-xs">Enter the number of vessels of this specific type in your fleet</p>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </div>
                               <FormControl>
                                 <Input
                                   type="number"
@@ -250,7 +270,17 @@ export default function CalculatorForm() {
                           name={`vessels.${index}.fuelConsumption`}
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-sm font-medium mb-1.5 block">Fuel Consumption (MT/Day)</FormLabel>
+                              <div className="flex items-center gap-2">
+                                <FormLabel>Fuel Consumption (MT/Day)</FormLabel>
+                                <Tooltip>
+                                  <TooltipTrigger>
+                                    <InfoIcon className="h-4 w-4 text-slate-400" />
+                                  </TooltipTrigger>
+                                  <TooltipContent>
+                                    <p className="max-w-xs">Average fuel consumption in Metric Tonnes per day while at sea. Typical ranges from 20-150 MT/day depending on vessel size.</p>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </div>
                               <FormControl>
                                 <Input
                                   type="number"
