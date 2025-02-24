@@ -231,7 +231,7 @@ export default function CalculatorForm() {
                               <div className="flex items-center gap-2">
                                 <div className="flex items-center gap-2">
                 <FormLabel>Number of Ships</FormLabel>
-                <AnchorIcon className="h-4 w-4 text-slate-500" />
+                <AnchorIcon className="mr-2 h-4 w-4 text-muted-foreground" />
               </div>
                                 <Tooltip>
                                   <TooltipTrigger>
@@ -266,7 +266,7 @@ export default function CalculatorForm() {
                               <div className="flex items-center gap-2">
                                 <div className="flex items-center gap-2">
                 <FormLabel>Fuel Consumption (MT/Day)</FormLabel>
-                <GaugeIcon className="h-4 w-4 text-slate-500" />
+                <GaugeIcon className="mr-2 h-4 w-4 text-muted-foreground" />
               </div>
                                 <Tooltip>
                                   <TooltipTrigger>
