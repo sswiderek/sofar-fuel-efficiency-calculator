@@ -28,7 +28,8 @@ import {
   FuelIcon,
   DollarSignIcon,
 } from "lucide-react";
-import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
+// Assuming these imports are available or need to be added based on your UI library
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover"; 
 import ResultsDisplay from "./results-display";
 import { apiRequest } from "@/lib/queryClient";
 import {
@@ -160,7 +161,6 @@ export default function CalculatorForm() {
   }
 
   return (
-    <TooltipProvider>
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative max-w-full">
         <div className="space-y-8 pt-4 max-w-full overflow-hidden">
@@ -195,14 +195,16 @@ export default function CalculatorForm() {
                           <FormItem className="mb-4">
                             <div className="flex items-center gap-2">
                               <FormLabel>Vessel Type</FormLabel>
-                              <Tooltip>
-                                <TooltipTrigger>
-                                  <InfoIcon className="h-4 w-4 text-slate-400" />
-                                </TooltipTrigger>
-                                <TooltipContent className="max-w-[300px] text-xs">
+                              <Popover>
+                                <PopoverTrigger asChild>
+                                  <button className="focus:outline-none">
+                                    <InfoIcon className="h-4 w-4 text-slate-400" />
+                                  </button>
+                                </PopoverTrigger>
+                                <PopoverContent className="max-w-[300px] text-xs">
                                   <p>TEU (Twenty-foot Equivalent Unit) is a measure of container ship capacity. Vessel types are classified by size and cargo capacity.</p>
-                                </TooltipContent>
-                              </Tooltip>
+                                </PopoverContent>
+                              </Popover>
                             </div>
                             <FormControl>
                               <Select
@@ -241,14 +243,16 @@ export default function CalculatorForm() {
                             <FormItem>
                               <div className="flex items-center gap-2">
                                 <FormLabel>Number of Ships</FormLabel>
-                                <Tooltip>
-                                  <TooltipTrigger>
-                                    <InfoIcon className="h-4 w-4 text-slate-400" />
-                                  </TooltipTrigger>
-                                  <TooltipContent className="max-w-[300px] text-xs">
+                                <Popover>
+                                  <PopoverTrigger asChild>
+                                    <button className="focus:outline-none">
+                                      <InfoIcon className="h-4 w-4 text-slate-400" />
+                                    </button>
+                                  </PopoverTrigger>
+                                  <PopoverContent className="max-w-[300px] text-xs">
                                     <p>Enter the number of vessels of this specific type in your fleet</p>
-                                  </TooltipContent>
-                                </Tooltip>
+                                  </PopoverContent>
+                                </Popover>
                               </div>
                               <FormControl>
                                 <Input
@@ -273,14 +277,16 @@ export default function CalculatorForm() {
                             <FormItem>
                               <div className="flex items-center gap-2">
                                 <FormLabel>Fuel Consumption (MT/Day)</FormLabel>
-                                <Tooltip>
-                                  <TooltipTrigger>
-                                    <InfoIcon className="h-4 w-4 text-slate-400" />
-                                  </TooltipTrigger>
-                                  <TooltipContent className="max-w-[300px] text-xs">
+                                <Popover>
+                                  <PopoverTrigger asChild>
+                                    <button className="focus:outline-none">
+                                      <InfoIcon className="h-4 w-4 text-slate-400" />
+                                    </button>
+                                  </PopoverTrigger>
+                                  <PopoverContent className="max-w-[300px] text-xs">
                                     <p>Average fuel consumption in Metric Tonnes per day while at sea. Typical ranges from 20-150 MT/day depending on vessel size.</p>
-                                  </TooltipContent>
-                                </Tooltip>
+                                  </PopoverContent>
+                                </Popover>
                               </div>
                               <FormControl>
                                 <Input
@@ -329,16 +335,16 @@ export default function CalculatorForm() {
                           <TimerIcon className="h-4 w-4" />
                           <span>Annual Sea Days</span>
                         </FormLabel>
-                        <Tooltip delayDuration={100}>
-                          <TooltipTrigger asChild>
+                        <Popover delayDuration={100}>
+                          <PopoverTrigger asChild>
                             <button
                               type="button"
                               className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
                             >
                               <InfoIcon className="h-4 w-4 text-muted-foreground" />
                             </button>
-                          </TooltipTrigger>
-                          <TooltipContent className="max-w-sm p-2">
+                          </PopoverTrigger>
+                          <PopoverContent className="max-w-sm p-2">
                             <div className="space-y-1">
                               <div className="text-sm font-medium">
                                 Total Sea Days Per Year
@@ -347,8 +353,8 @@ export default function CalculatorForm() {
                                 Enter the total number of days your fleet spends at sea per year. This is the sum of all days when vessels are actively sailing, excluding time spent in port or at anchor.
                               </div>
                             </div>
-                          </TooltipContent>
-                        </Tooltip>
+                          </PopoverContent>
+                        </Popover>
                       </div>
                       <FormControl>
                         <Input
@@ -382,16 +388,16 @@ export default function CalculatorForm() {
                           <DollarSignIcon className="h-4 w-4" />
                           <span>Fuel Price (USD/MT)</span>
                         </FormLabel>
-                        <Tooltip delayDuration={100}>
-                          <TooltipTrigger asChild>
+                        <Popover delayDuration={100}>
+                          <PopoverTrigger asChild>
                             <button
                               type="button"
                               className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
                             >
                               <InfoIcon className="h-4 w-4 text-muted-foreground" />
                             </button>
-                          </TooltipTrigger>
-                          <TooltipContent className="max-w-sm p-2">
+                          </PopoverTrigger>
+                          <PopoverContent className="max-w-sm p-2">
                             <div className="space-y-1">
                               <div className="text-sm font-medium">
                                 Monthly Average VLSFO Fuel Price
@@ -403,8 +409,8 @@ export default function CalculatorForm() {
                                 price fluctuations.
                               </div>
                             </div>
-                          </TooltipContent>
-                        </Tooltip>
+                          </PopoverContent>
+                        </Popover>
                       </div>
                       <FormControl>
                         <Input
@@ -474,6 +480,5 @@ export default function CalculatorForm() {
         </div>
       </div>
     </div>
-    </TooltipProvider>
   );
 }
