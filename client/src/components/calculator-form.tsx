@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast"
-import { Anchor, Gauge, Ship, Warehouse, Fuel } from "lucide-react"; // Added missing imports
+import { Anchor, Gauge, Ship, Warehouse, Fuel } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
@@ -283,7 +283,7 @@ export default function CalculatorForm() {
                                     <InfoIcon className="h-4 w-4 text-slate-400" />
                                   </TooltipTrigger>
                                   <TooltipContent className="max-w-[300px] text-xs">
-                                    <p>Average fuel consumption in Metric Tonnes per day while at sea. Typical ranges from 20-150 MT/day depending on vessel size.</p>
+                                    <p>Average fuel consumption in Metric Tonnes per day while at sea. Typical ranges from 20-150 MT/day depending on vessel size.  Example: 50 MT/day</p>
                                   </TooltipContent>
                                 </Tooltip>
                               </div>
