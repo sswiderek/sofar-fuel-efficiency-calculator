@@ -27,6 +27,8 @@ import {
   TimerIcon,
   FuelIcon,
   DollarSignIcon,
+  AnchorIcon,
+  GaugeIcon,
 } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
 import ResultsDisplay from "./results-display";
