@@ -167,7 +167,7 @@ export default function CalculatorForm() {
                 {/* Vessel List */}
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-sm font-medium">Vessels</h3>
+                    <h3 className="text-lg font-semibold mb-3">Vessels</h3>
                     <Button
                       type="button"
                       variant="outline"
@@ -185,13 +185,13 @@ export default function CalculatorForm() {
                   </div>
 
                   {form.watch("vessels")?.map((_, index) => (
-                    <div key={index} className="space-y-4 p-4 border rounded-lg">
+                    <div key={index} className="bg-card p-4 rounded-lg border mb-4">
                       <FormField
                         control={form.control}
                         name={`vessels.${index}.type`}
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Vessel Type</FormLabel>
+                            <FormLabel className="text-sm font-medium mb-1.5 block">Vessel Type</FormLabel>
                             <FormControl>
                               <Select
                                 onValueChange={(value) => {
@@ -204,7 +204,7 @@ export default function CalculatorForm() {
                                 }}
                                 value={field.value}
                               >
-                                <SelectTrigger>
+                                <SelectTrigger className="w-full">
                                   <SelectValue placeholder="Select vessel type" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -221,16 +221,17 @@ export default function CalculatorForm() {
                         )}
                       />
 
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-2 gap-6">
                         <FormField
                           control={form.control}
                           name={`vessels.${index}.count`}
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Number of Ships</FormLabel>
+                              <FormLabel className="text-sm font-medium mb-1.5 block">Number of Ships</FormLabel>
                               <FormControl>
                                 <Input
                                   type="number"
+                                  className="w-full"
                                   placeholder="e.g. 5"
                                   {...field}
                                   onChange={(e) =>
@@ -248,10 +249,11 @@ export default function CalculatorForm() {
                           name={`vessels.${index}.fuelConsumption`}
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Fuel Consumption (MT/Day)</FormLabel>
+                              <FormLabel className="text-sm font-medium mb-1.5 block">Fuel Consumption (MT/Day)</FormLabel>
                               <FormControl>
                                 <Input
                                   type="number"
+                                  className="w-full"
                                   placeholder="e.g. 50"
                                   {...field}
                                   onChange={(e) =>
@@ -269,6 +271,7 @@ export default function CalculatorForm() {
                         type="button"
                         variant="destructive"
                         size="sm"
+                        className="w-full sm:w-auto"
                         onClick={() => {
                           const vessels = form.getValues("vessels");
                           form.setValue(
