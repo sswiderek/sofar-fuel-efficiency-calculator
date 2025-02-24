@@ -182,9 +182,9 @@ export default function CalculatorForm() {
                           <FormItem className="mb-4">
                             <div className="flex items-center gap-2">
                               <div className="flex items-center gap-2">
-                <FormLabel>Vessel Type</FormLabel>
-                <ShipIcon className="h-4 w-4 text-slate-500" />
-              </div>
+                                <ShipIcon className="h-4 w-4 text-foreground" />
+                                <FormLabel>Vessel Type</FormLabel>
+                              </div>
                               <Tooltip>
                                 <TooltipTrigger>
                                   <InfoIcon className="h-4 w-4 text-slate-400" />
