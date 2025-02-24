@@ -251,34 +251,7 @@ export default function CalculatorForm() {
                   )}
                 />
 
-                {/* Port Time Field */}
-                <FormField
-                  control={form.control}
-                  name="portTime"
-                  render={({ field }) => (
-                    <FormItem>
-                      <div className="flex items-center gap-2">
-                        <FormLabel className="flex items-center gap-2">
-                          <TimerIcon className="h-4 w-4" />
-                          <span>Port Time (Days)</span>
-                        </FormLabel>
-                        <Tooltip delayDuration={100}>
-                          <TooltipTrigger asChild>
-                            {/* Removed onTouchStart */}
-                            <button
-                              type="button"
-                              className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
-                            >
-                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
-                            </button>
-                          </TooltipTrigger>
-                          <TooltipContent className="max-w-sm p-2">
-                            <div className="space-y-1">
-                              <div className="text-sm font-medium">
-                                Port Time Duration
-                              </div>
-                              <div className="text-xs text-muted-foreground">
-                                Enter the average time your vessels spend in port
+                
                                 per voyage. For mixed routes, use your fleet's
                                 average port duration across all voyages.
                               </div>
