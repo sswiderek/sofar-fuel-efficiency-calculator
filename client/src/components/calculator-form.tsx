@@ -28,7 +28,7 @@ import {
   FuelIcon,
   DollarSignIcon,
 } from "lucide-react";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
 import ResultsDisplay from "./results-display";
 import { apiRequest } from "@/lib/queryClient";
 import {
@@ -442,7 +442,7 @@ export default function CalculatorForm() {
                 </Button>
               </motion.div>
 
-              </form>
+            </form>
           </Form>
         </div>
         <div>
@@ -473,5 +473,6 @@ export default function CalculatorForm() {
         </div>
       </div>
     </div>
+    </TooltipProvider>
   );
 }
