@@ -329,7 +329,7 @@ export default function CalculatorForm() {
                                   <InfoIcon className="h-4 w-4 text-slate-400" />
                                 </TooltipTrigger>
                                 <TooltipContent className="max-w-[300px] text-xs">
-                                  <p>Enter the average days per year that this vessel type spends at sea (not cumulative across all ships). Example: 280 days</p>
+                                  <p>Enter the days at sea per year for a single vessel of this type. Do not multiply by fleet size. Example: 280 days</p>
                                 </TooltipContent>
                               </Tooltip>
                             </div>
