@@ -48,11 +48,21 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           <div className="flex items-center gap-2">
             <LeafIcon className="h-4 w-4" />
             <h3 className="text-sm font-medium">CO₂ Reduction</h3>
-            <SmartTooltip content="Annual reduction in carbon dioxide emissions" />
+            <SmartTooltip content="Annual reduction in carbon dioxide emissions based on fuel savings" />
           </div>
           <p className="text-2xl font-bold">{Math.round(co2Reduction).toLocaleString()} MT</p>
           <p className="text-sm opacity-90">Annual emissions saved</p>
         </div>
+      </div>
+
+      <div className="space-y-1">
+        <div className="flex items-center gap-2">
+          <h2 className="text-sm font-medium text-slate-600">Optimized Annual Cost</h2>
+          <SmartTooltip content="Projected annual fuel costs after implementing Wayfinder optimization" />
+        </div>
+        <p className="text-4xl font-bold text-slate-900">
+          ${fuelCostWithWayfinder.toLocaleString()}
+        </p>
       </div>
     </div>
   );
