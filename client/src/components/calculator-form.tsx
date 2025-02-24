@@ -326,7 +326,7 @@ export default function CalculatorForm() {
                       <div className="flex items-center gap-2">
                         <FormLabel className="flex items-center gap-2">
                           <TimerIcon className="h-4 w-4" />
-                          <span>Average Days at Sea Per Vessel</span>
+                          <span>Days at Sea Per Vessel</span>
                         </FormLabel>
                         <Tooltip delayDuration={100}>
                           <TooltipTrigger asChild>
