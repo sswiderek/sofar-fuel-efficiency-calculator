@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast"
-import { Anchor, Boxes as BoxesIcon, Ship, Warehouse, Fuel } from "lucide-react";
+import { Anchor, Boxes as BoxesIcon, Ship, Wheat, Fuel } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
@@ -215,7 +215,7 @@ export default function CalculatorForm() {
                                       {key.includes('container-ship') ? (
                                         <BoxesIcon className="h-4 w-4" />
                                       ) : key.includes('bulk-carrier') ? (
-                                        <Warehouse className="h-4 w-4" />
+                                        <Wheat className="h-4 w-4" />
                                       ) : key.includes('tanker') ? (
                                         <Fuel className="h-4 w-4" />
                                       ) : (
