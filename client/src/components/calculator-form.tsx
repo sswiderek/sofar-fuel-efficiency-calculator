@@ -326,7 +326,7 @@ export default function CalculatorForm() {
                       <div className="flex items-center gap-2">
                         <FormLabel className="flex items-center gap-2">
                           <TimerIcon className="h-4 w-4" />
-                          <span>Annual Sea Days</span>
+                          <span>Days at Sea (per vessel annually)</span>
                         </FormLabel>
                         <Tooltip delayDuration={100}>
                           <TooltipTrigger asChild>
@@ -340,10 +340,10 @@ export default function CalculatorForm() {
                           <TooltipContent className="max-w-sm p-2">
                             <div className="space-y-1">
                               <div className="text-sm font-medium">
-                                Total Sea Days Per Year
+                                Annual Operating Days Per Vessel
                               </div>
                               <div className="text-xs text-muted-foreground">
-                                Enter the total number of days your fleet spends at sea per year. This is the sum of all days when vessels are actively sailing, excluding time spent in port or at anchor.
+                                Enter how many days each vessel typically spends at sea per year. For example, if your ships operate 280 days per year, enter 280 - our calculator will automatically account for your total fleet size. Time in port or at anchor should not be included.
                               </div>
                             </div>
                           </TooltipContent>
