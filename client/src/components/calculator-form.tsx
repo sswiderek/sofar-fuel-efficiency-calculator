@@ -249,7 +249,7 @@ export default function CalculatorForm() {
                           name={`vessels.${index}.fuelConsumption`}
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-sm font-medium mb-1.5 block">Fuel Consumption (MT/Day)</FormLabel>
+                              <FormLabel className="text-sm font-medium mb-1.5 block whitespace-nowrap">Fuel Consumption (MT/Day)</FormLabel>
                               <FormControl>
                                 <Input
                                   type="number"
