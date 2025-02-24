@@ -124,17 +124,22 @@
 }
 
 /* Tooltip Styles */
+[data-radix-popper-content-wrapper] {
+  width: auto !important;
+  max-width: none !important;
+  transform-origin: var(--radix-tooltip-content-transform-origin);
+  animation: none !important;
+}
+
 .TooltipContent {
-  max-width: 320px !important;
   width: max-content !important;
-  white-space: normal !important;
+  max-width: 400px !important;
+  white-space: pre-wrap !important;
   word-wrap: break-word !important;
   line-height: 1.4 !important;
   padding: 0.75rem !important;
-  z-index: 50 !important;
-}
-
-[data-radix-popper-content-wrapper] {
-  width: max-content !important;
-  max-width: 320px !important;
+  z-index: 999 !important;
+  animation: none !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
 }
