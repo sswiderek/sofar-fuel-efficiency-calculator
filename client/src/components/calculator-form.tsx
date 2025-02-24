@@ -221,7 +221,7 @@ export default function CalculatorForm() {
                         )}
                       />
 
-                      <div className="grid grid-cols-[2fr_3fr] gap-6">
+                      <div className="grid grid-cols-2 gap-6">
                         <FormField
                           control={form.control}
                           name={`vessels.${index}.count`}
