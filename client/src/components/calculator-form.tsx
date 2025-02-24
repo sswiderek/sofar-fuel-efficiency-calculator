@@ -374,7 +374,7 @@ export default function CalculatorForm() {
                         <Input
                           type="text"
                           inputMode="decimal"
-                          placeholder="e.g. 280"
+                          placeholder="Enter days at sea"
                           {...field}
                           value={field.value === undefined ? '' : field.value}
                           onChange={(e) => {
