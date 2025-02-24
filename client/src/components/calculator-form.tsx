@@ -343,7 +343,7 @@ export default function CalculatorForm() {
                                 Average Annual Sea Days
                               </div>
                               <div className="text-xs text-muted-foreground">
-                                Enter the average number of days your vessels spend at sea per year. It's okay if individual ships vary - we're looking for a fleet-wide average. For example, if some ships operate 260 days and others 300 days, you might enter 280. Time in port or at anchor should not be included.
+                                Enter the typical number of days each vessel spends at sea annually. If your ships have different schedules (e.g., some at sea 260 days, others 300 days), use the fleet average (e.g., 280 days). Exclude time spent in port or at anchor.
                               </div>
                             </div>
                           </TooltipContent>
