@@ -229,7 +229,7 @@ export default function CalculatorForm() {
                                       ) : (
                                         <Ship className="h-4 w-4" />
                                       )}
-                                      <span className="ml-2">{value.label}</span>
+                                      <span>{value.label}</span>
                                     </SelectItem>
                                   ))}
                                 </SelectContent>
