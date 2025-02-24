@@ -20,7 +20,7 @@ export function registerRoutes(app: Express): Server {
 
       // Calculate annual fuel consumption using total sea days
       const annualFuelConsumption = data.vessels.reduce((total, vessel) => {
-        return total + (vessel.count * data.annualSeaDays * vessel.fuelConsumption);
+        return total + (vessel.count * vessel.seaDaysPerYear * vessel.fuelConsumption);
       }, 0);
       const totalFuelCost = Math.round(annualFuelConsumption * data.fuelPrice);
 
