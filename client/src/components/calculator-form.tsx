@@ -229,9 +229,9 @@ export default function CalculatorForm() {
                           name={`vessels.${index}.count`}
                           render={({ field }) => (
                             <FormItem>
-                              <div className="flex items-center gap-2">
+                              <div className="flex items-center gap-1.5">
                                 <div className="flex items-center gap-2">
-                <Anchor className="mr-2 h-4 w-4 text-foreground" />
+                <AnchorIcon className="h-4 w-4 text-foreground" />
                 <FormLabel>Number of Ships</FormLabel>
               </div>
                                 <Tooltip>
@@ -264,9 +264,9 @@ export default function CalculatorForm() {
                           name={`vessels.${index}.fuelConsumption`}
                           render={({ field }) => (
                             <FormItem>
-                              <div className="flex items-center gap-2">
+                              <div className="flex items-center gap-1.5">
                                 <div className="flex items-center gap-2">
-                <Gauge className="mr-2 h-4 w-4 text-foreground" />
+                <GaugeIcon className="h-4 w-4 text-foreground" />
                 <FormLabel>Fuel Consumption (MT/Day)</FormLabel>
               </div>
                                 <Tooltip>
