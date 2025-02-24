@@ -130,6 +130,8 @@
   max-width: 300px !important;
   pointer-events: none !important;
   z-index: 9999 !important;
+  transform: translateX(-100%) !important;
+  margin-right: 8px !important;
 }
 
 .input-with-icon {
