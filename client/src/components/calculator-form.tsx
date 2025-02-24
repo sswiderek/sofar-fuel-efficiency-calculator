@@ -224,10 +224,9 @@ export default function CalculatorForm() {
                                 Total Sea Days Per Year
                               </div>
                               <div className="text-xs text-muted-foreground">
-                                Enter the total number of days your fleet spends at sea annually
-                                days. For varied routes, use your fleet's average
-                                voyage duration. Include sea days only, excluding
-                                port time.
+                                Enter the total number of days your fleet spends at sea per year. 
+                                This is the sum of all days when vessels are actively sailing,
+                                excluding time spent in port or at anchor.
                               </div>
                             </div>
                           </TooltipContent>
@@ -236,7 +235,7 @@ export default function CalculatorForm() {
                       <FormControl>
                         <Input
                           type="number"
-                          placeholder="Enter voyage duration (e.g. 30)"
+                          placeholder="Enter annual sea days (e.g. 280)"
                           {...field}
                           onChange={(e) =>
                             field.onChange(
