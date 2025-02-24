@@ -186,7 +186,7 @@ export default function CalculatorForm() {
                     </Button>
                   </div>
                   {form.watch("vessels")?.map((_, index) => (
-                    <div key={index} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-slate-200/60 shadow-sm">
+                    <div key={index} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-slate-200/60 shadow-sm w-[750px]"> {/* Width added here */}
                       <FormField
                         control={form.control}
                         name={`vessels.${index}.type`}
@@ -232,7 +232,7 @@ export default function CalculatorForm() {
                         )}
                       />
 
-                      <div className="grid grid-cols-2 gap-8 mt-4 min-w-[650px]"> {/* Added margin top and min width */}
+                      <div className="grid grid-cols-2 gap-8 mt-4"> {/* Added margin top and min width */}
                         <FormField
                           control={form.control}
                           name={`vessels.${index}.count`}
