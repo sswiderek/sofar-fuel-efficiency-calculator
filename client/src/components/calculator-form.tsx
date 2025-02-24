@@ -162,7 +162,7 @@ export default function CalculatorForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
         <div className="space-y-8 pt-4">
           <Form {...form}>
-            <form onSubmit={onSubmit} className="space-y-8 p-4 max-w-md">
+            <form onSubmit={onSubmit} className="space-y-8 p-4 max-w-lg">
               <div className="space-y-6">
                 {/* Vessel List */}
                 <div className="space-y-4">
