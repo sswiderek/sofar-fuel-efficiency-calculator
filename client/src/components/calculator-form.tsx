@@ -169,23 +169,7 @@ export default function CalculatorForm() {
               <div className="space-y-8">
                 {/* Vessel List */}
                 <div className="space-y-6">
-                  <div className="flex justify-between items-center">
-                    <h3 className="text-sm font-medium text-slate-700">Fleet Configuration</h3>
-                    <Button
-                      type="button"
-                      variant="outline"
-                      size="sm"
-                      onClick={() => {
-                        const vessels = form.getValues("vessels") || [];
-                        form.setValue("vessels", [
-                          ...vessels,
-                          { type: "container-ship-small", count: 1, fuelConsumption: 40 }
-                        ]);
-                      }}
-                    >
-                      Add Vessel Type
-                    </Button>
-                  </div>
+                  <h3 className="text-sm font-medium text-slate-700">Fleet Configuration</h3>
                   {form.watch("vessels")?.map((_, index) => (
                     <div key={index} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-slate-200/60 shadow-sm w-full">
                       <FormField
@@ -316,6 +300,21 @@ export default function CalculatorForm() {
                       </Button>
                     </div>
                   ))}
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    className="w-full"
+                    onClick={() => {
+                      const vessels = form.getValues("vessels") || [];
+                      form.setValue("vessels", [
+                        ...vessels,
+                        { type: "container-ship-small", count: 1, fuelConsumption: 40 }
+                      ]);
+                    }}
+                  >
+                    Add Vessel Type
+                  </Button>
                 </div>
 
                 {/* Annual Sea Days Field */}
