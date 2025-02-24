@@ -259,6 +259,11 @@ export default function CalculatorForm() {
                           </TooltipContent>
                         </Tooltip>
                       </div>
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </form>
                       <FormControl>
                         <Input
                           type="number"
