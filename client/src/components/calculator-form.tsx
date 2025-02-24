@@ -232,7 +232,7 @@ export default function CalculatorForm() {
                         )}
                       />
 
-                      <div className="grid grid-cols-2 gap-6 mt-4"> {/* Added margin top */}
+                      <div className="grid grid-cols-2 gap-8 mt-4 min-w-[650px]"> {/* Added margin top and min width */}
                         <FormField
                           control={form.control}
                           name={`vessels.${index}.count`}
