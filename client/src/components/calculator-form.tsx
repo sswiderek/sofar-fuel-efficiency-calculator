@@ -162,30 +162,12 @@ export default function CalculatorForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
         <div className="space-y-8 pt-4">
           <Form {...form}>
-            <form onSubmit={onSubmit} className="space-y-8 p-4 max-w-lg">
-              <div className="space-y-6">
+            <form onSubmit={onSubmit} className="space-y-8 p-6">
+              <div className="space-y-8">
                 {/* Vessel List */}
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold mb-3">Vessels</h3>
-                    <Button
-                      type="button"
-                      variant="outline"
-                      size="sm"
-                      onClick={() => {
-                        const currentVessels = form.getValues("vessels") || [];
-                        form.setValue("vessels", [
-                          ...currentVessels,
-                          { type: "", count: 1, fuelConsumption: 0 },
-                        ]);
-                      }}
-                    >
-                      Add Vessel Type
-                    </Button>
-                  </div>
-
+                <div className="space-y-6">
                   {form.watch("vessels")?.map((_, index) => (
-                    <div key={index} className="bg-card p-4 rounded-lg border mb-4">
+                    <div key={index} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-slate-200/60 shadow-sm">
                       <FormField
                         control={form.control}
                         name={`vessels.${index}.type`}
@@ -231,7 +213,7 @@ export default function CalculatorForm() {
                               <FormControl>
                                 <Input
                                   type="number"
-                                  className="w-full"
+                                  className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
                                   placeholder="e.g. 5"
                                   {...field}
                                   onChange={(e) =>
@@ -253,7 +235,7 @@ export default function CalculatorForm() {
                               <FormControl>
                                 <Input
                                   type="number"
-                                  className="w-full"
+                                  className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
                                   placeholder="e.g. 50"
                                   {...field}
                                   onChange={(e) =>
@@ -269,9 +251,9 @@ export default function CalculatorForm() {
 
                       <Button
                         type="button"
-                        variant="destructive"
+                        variant="outline"
                         size="sm"
-                        className="w-full sm:w-auto"
+                        className="mt-4 w-full sm:w-auto text-slate-600 hover:text-red-600 hover:border-red-200 transition-colors"
                         onClick={() => {
                           const vessels = form.getValues("vessels");
                           form.setValue(
@@ -330,6 +312,7 @@ export default function CalculatorForm() {
                                 : undefined
                             )
                           }
+                          className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
                         />
                       </FormControl>
                       <FormMessage />
@@ -385,6 +368,7 @@ export default function CalculatorForm() {
                                 : undefined
                             )
                           }
+                          className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
                         />
                       </FormControl>
                       <div className="text-xs text-slate-500 mt-1">
