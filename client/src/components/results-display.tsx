@@ -13,7 +13,7 @@ interface ResultsDisplayProps {
 export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   const {
     totalFuelCost,
-    scenarios: { average },
+    scenarios,
     co2Reduction,
     carsOffRoad,
   } = results;
