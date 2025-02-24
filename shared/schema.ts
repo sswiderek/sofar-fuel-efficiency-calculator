@@ -9,6 +9,7 @@ export const vesselTypes = {
   "bulk-carrier-large": { label: "Bulk Carrier (Panamax)", defaultConsumption: 40 },
   "tanker-small": { label: "Oil Tanker (Medium Range)", defaultConsumption: 35 },
   "tanker-large": { label: "Oil Tanker (VLCC)", defaultConsumption: 90 },
+  "custom": { label: "Custom Vessel Type", defaultConsumption: 50 },
 } as const;
 
 export const vesselSchema = z.object({
