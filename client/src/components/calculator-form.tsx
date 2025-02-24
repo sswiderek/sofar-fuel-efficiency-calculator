@@ -212,8 +212,12 @@ export default function CalculatorForm() {
                                 <SelectContent>
                                   {Object.entries(vesselTypes).map(([key, value]) => (
                                     <SelectItem key={key} value={key} className="flex items-center gap-2">
-                                      {key.includes('container-ship') ? (
-                                        <ShipIcon className="h-4 w-4" />
+                                      {key.includes('container-ship-small') ? (
+                                        <Gauge className="h-4 w-4" />
+                                      ) : key.includes('container-ship-medium') ? (
+                                        <TimerIcon className="h-4 w-4" />
+                                      ) : key.includes('container-ship-large') ? (
+                                        <GaugeIcon className="h-4 w-4" />
                                       ) : key.includes('bulk-carrier') ? (
                                         <Warehouse className="h-4 w-4" />
                                       ) : key.includes('tanker') ? (
