@@ -160,6 +160,7 @@ export default function CalculatorForm() {
   }
 
   return (
+    <TooltipProvider>
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative max-w-full">
         <div className="space-y-8 pt-4 max-w-full overflow-hidden">
