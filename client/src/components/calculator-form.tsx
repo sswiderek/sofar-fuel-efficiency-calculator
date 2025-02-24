@@ -172,7 +172,7 @@ export default function CalculatorForm() {
                         control={form.control}
                         name={`vessels.${index}.type`}
                         render={({ field }) => (
-                          <FormItem>
+                          <FormItem className="mb-4"> {/* Added margin bottom */}
                             <FormLabel className="text-sm font-medium mb-1.5 block">Vessel Type</FormLabel>
                             <FormControl>
                               <Select
@@ -203,7 +203,7 @@ export default function CalculatorForm() {
                         )}
                       />
 
-                      <div className="grid grid-cols-2 gap-6">
+                      <div className="grid grid-cols-2 gap-6 mt-4"> {/* Added margin top */}
                         <FormField
                           control={form.control}
                           name={`vessels.${index}.count`}
