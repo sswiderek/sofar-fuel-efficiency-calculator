@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/use-toast"
+import { Anchor, Gauge } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
@@ -230,8 +231,8 @@ export default function CalculatorForm() {
                             <FormItem>
                               <div className="flex items-center gap-2">
                                 <div className="flex items-center gap-2">
+                <Anchor className="mr-2 h-4 w-4 text-foreground" />
                 <FormLabel>Number of Ships</FormLabel>
-                <AnchorIcon className="mr-2 h-4 w-4 text-muted-foreground" />
               </div>
                                 <Tooltip>
                                   <TooltipTrigger>
@@ -265,8 +266,8 @@ export default function CalculatorForm() {
                             <FormItem>
                               <div className="flex items-center gap-2">
                                 <div className="flex items-center gap-2">
+                <Gauge className="mr-2 h-4 w-4 text-foreground" />
                 <FormLabel>Fuel Consumption (MT/Day)</FormLabel>
-                <GaugeIcon className="mr-2 h-4 w-4 text-muted-foreground" />
               </div>
                                 <Tooltip>
                                   <TooltipTrigger>
