@@ -225,11 +225,11 @@ export default function CalculatorForm() {
                                       ) : key.includes('tanker-small') ? (
                                         <img src="/images/oil_tanker.png" alt="Medium Range Tanker" className="h-7 w-7 object-contain" />
                                       ) : key.includes('tanker-large') ? (
-                                        <img src="/images/oil_tanker.png" alt="VLCC Tanker" className="h-10 w-10 object-contain" />
+                                        <img src="/images/oil_tanker.png" alt="VLCC" className="h-10 w-10 object-contain" />
                                       ) : (
-                                        <Anchor className="h-4 w-4" />
+                                        <Ship className="h-4 w-4" />
                                       )}
-                                      {value.label}
+                                      <span>{value.label}</span>
                                     </SelectItem>
                                   ))}
                                 </SelectContent>
