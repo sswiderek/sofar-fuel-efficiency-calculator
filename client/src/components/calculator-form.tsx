@@ -23,7 +23,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import {
-  //InfoIcon,
+  InfoIcon,
   ShipIcon,
   TimerIcon,
   FuelIcon,
@@ -184,7 +184,7 @@ export default function CalculatorForm() {
                               </div>
                               <Tooltip>
                                 <TooltipTrigger>
-                                  <Anchor className="h-4 w-4 text-slate-400" />
+                                  <InfoIcon className="h-4 w-4 text-slate-400" />
                                 </TooltipTrigger>
                                 <TooltipContent className="max-w-[300px] text-xs">
                                   <p>TEU (Twenty-foot Equivalent Unit) is a measure of container ship capacity. Vessel types are classified by size and cargo capacity.</p>
@@ -256,7 +256,7 @@ export default function CalculatorForm() {
               </div>
                                 <Tooltip>
                                   <TooltipTrigger>
-                                    <Anchor className="h-4 w-4 text-slate-400" />
+                                    <InfoIcon className="h-4 w-4 text-slate-400" />
                                   </TooltipTrigger>
                                   <TooltipContent className="max-w-[300px] text-xs">
                                     <p>Enter the number of vessels of this specific type in your fleet</p>
@@ -291,7 +291,7 @@ export default function CalculatorForm() {
               </div>
                                 <Tooltip>
                                   <TooltipTrigger>
-                                    <Anchor className="h-4 w-4 text-slate-400" />
+                                    <InfoIcon className="h-4 w-4 text-slate-400" />
                                   </TooltipTrigger>
                                   <TooltipContent className="max-w-[300px] text-xs">
                                     <p>Average fuel consumption in Metric Tonnes per day while at sea. Typical ranges from 20-150 MT/day depending on vessel size.  Example: 50 MT/day</p>
@@ -326,7 +326,7 @@ export default function CalculatorForm() {
                               </div>
                               <Tooltip>
                                 <TooltipTrigger>
-                                  <Anchor className="h-4 w-4 text-slate-400" />
+                                  <InfoIcon className="h-4 w-4 text-slate-400" />
                                 </TooltipTrigger>
                                 <TooltipContent className="max-w-[300px] text-xs">
                                   <p>Enter the days at sea per year for a single vessel of this type. Do not multiply by fleet size. Example: 280 days</p>
@@ -400,7 +400,7 @@ export default function CalculatorForm() {
                               type="button"
                               className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
                             >
-                              <Anchor className="h-4 w-4 text-muted-foreground" />
+                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
                             </button>
                           </TooltipTrigger>
                           <TooltipContent className="max-w-sm p-2">
