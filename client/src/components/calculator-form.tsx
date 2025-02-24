@@ -218,8 +218,10 @@ export default function CalculatorForm() {
                                         <img src="/images/container_ship.png" alt="Medium Container Ship" className="h-8 w-8 object-contain" />
                                       ) : key.includes('container-ship-large') ? (
                                         <img src="/images/container_ship.png" alt="Large Container Ship" className="h-10 w-10 object-contain" />
-                                      ) : key.includes('bulk-carrier') ? (
-                                        <Wheat className="h-4 w-4" />
+                                      ) : key.includes('bulk-carrier-small') ? (
+                                        <img src="/images/bulk_carrier.png" alt="Handysize Bulk Carrier" className="h-7 w-7 object-contain" />
+                                      ) : key.includes('bulk-carrier-large') ? (
+                                        <img src="/images/bulk_carrier.png" alt="Panamax Bulk Carrier" className="h-10 w-10 object-contain" />
                                       ) : key.includes('tanker-small') ? (
                                         <img src="/images/oil_tanker.png" alt="Medium Range Tanker" className="h-7 w-7 object-contain" />
                                       ) : key.includes('tanker-large') ? (
