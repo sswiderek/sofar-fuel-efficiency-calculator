@@ -251,19 +251,92 @@ export default function CalculatorForm() {
                   )}
                 />
 
-                
-                                per voyage. For mixed routes, use your fleet's
+
+                {/* Voyage Length Field */}
+                <FormField
+                  control={form.control}
+                  name="voyageLength"
+                  render={({ field }) => (
+                    <FormItem>
+                      <div className="flex items-center gap-2">
+                        <FormLabel className="flex items-center gap-2">
+                          <TimerIcon className="h-4 w-4" />
+                          <span>Voyage Length (Days at Sea)</span>
+                        </FormLabel>
+                        <Tooltip delayDuration={100}>
+                          <TooltipTrigger asChild>
+                            <button
+                              type="button"
+                              className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
+                            >
+                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent className="max-w-sm p-2">
+                            <div className="space-y-1">
+                              <div className="text-sm font-medium">
+                                Average Voyage Length (Days at Sea)
+                              </div>
+                              <div className="text-xs text-muted-foreground">
+                                Enter the average number of days your vessels spend at sea per voyage.
+                                For mixed routes, use your fleet's average voyage length.
+                              </div>
+                            </div>
+                          </TooltipContent>
+                        </Tooltip>
+                      </div>
+                      <FormControl>
+                        <Input
+                          type="number"
+                          placeholder="Enter average voyage length (e.g. 10)"
+                          {...field}
+                          onChange={(e) =>
+                            field.onChange(
+                              e.target.value
+                                ? Number(e.target.value)
+                                : undefined
+                            )
+                          }
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* Port Time Field */}
+                <FormField
+                  control={form.control}
+                  name="portTime"
+                  render={({ field }) => (
+                    <FormItem>
+                      <div className="flex items-center gap-2">
+                        <FormLabel className="flex items-center gap-2">
+                          <TimerIcon className="h-4 w-4" />
+                          <span>Port Time (Days)</span>
+                        </FormLabel>
+                        <Tooltip delayDuration={100}>
+                          <TooltipTrigger asChild>
+                            <button
+                              type="button"
+                              className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
+                            >
+                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent className="max-w-sm p-2">
+                            <div className="space-y-1">
+                              <div className="text-sm font-medium">
+                                Average Port Time (Days)
+                              </div>
+                              <div className="text-xs text-muted-foreground">
+                                Enter the average number of days your vessels spend in port per voyage. For mixed routes, use your fleet's
                                 average port duration across all voyages.
                               </div>
                             </div>
                           </TooltipContent>
                         </Tooltip>
                       </div>
-                    </FormItem>
-                  )}
-                />
-              </div>
-            </form>
                       <FormControl>
                         <Input
                           type="number"
