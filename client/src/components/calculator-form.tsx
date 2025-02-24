@@ -104,18 +104,20 @@ export default function CalculatorForm() {
     setIsCalculating(true);
     try {
       const formData = {
-        annualSeaDays: Number(values.annualSeaDays),
-        fuelPrice: Number(values.fuelPrice),
-        estimatedSavings: Number(values.estimatedSavings),
+        annualSeaDays: parseFloat(values.annualSeaDays),
+        fuelPrice: parseFloat(values.fuelPrice),
+        estimatedSavings: parseFloat(values.estimatedSavings.toString()),
         vessels: values.vessels.map((vessel) => ({
           type: vessel.type,
-          count: Number(vessel.count),
-          fuelConsumption: Number(vessel.fuelConsumption),
+          count: parseInt(vessel.count.toString()),
+          fuelConsumption: parseFloat(vessel.fuelConsumption.toString()),
         })),
       };
 
       if (
-        Object.values(formData).some(isNaN) ||
+        isNaN(formData.annualSeaDays) || 
+        isNaN(formData.fuelPrice) || 
+        isNaN(formData.estimatedSavings) ||
         formData.vessels.some((v) => isNaN(v.count) || isNaN(v.fuelConsumption))
       ) {
         toast({
