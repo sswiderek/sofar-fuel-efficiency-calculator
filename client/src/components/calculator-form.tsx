@@ -158,11 +158,11 @@ export default function CalculatorForm() {
   }
 
   return (
-    <div className="space-y-6 max-w-2xl mx-auto"> {/* Added max-width for narrower form */}
+    <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
         <div className="space-y-8 pt-4">
           <Form {...form}>
-            <form onSubmit={onSubmit} className="space-y-8 p-4"> {/* Removed max-w-lg */}
+            <form onSubmit={onSubmit} className="space-y-8 p-4 max-w-lg">
               <div className="space-y-6">
                 {/* Vessel List */}
                 <div className="space-y-4">
@@ -226,7 +226,7 @@ export default function CalculatorForm() {
                           control={form.control}
                           name={`vessels.${index}.count`}
                           render={({ field }) => (
-                            <FormItem className="flex-1"> {/* Added flex-1 for better alignment */}
+                            <FormItem>
                               <FormLabel className="text-sm font-medium mb-1.5 block">Number of Ships</FormLabel>
                               <FormControl>
                                 <Input
@@ -248,7 +248,7 @@ export default function CalculatorForm() {
                           control={form.control}
                           name={`vessels.${index}.fuelConsumption`}
                           render={({ field }) => (
-                            <FormItem className="flex-1"> {/* Added flex-1 for better alignment */}
+                            <FormItem>
                               <FormLabel className="text-sm font-medium mb-1.5 block">Fuel Consumption (MT/Day)</FormLabel>
                               <FormControl>
                                 <Input
@@ -271,7 +271,7 @@ export default function CalculatorForm() {
                         type="button"
                         variant="destructive"
                         size="sm"
-                        className="mt-4 w-full sm:w-auto" /* Added margin top */
+                        className="w-full sm:w-auto"
                         onClick={() => {
                           const vessels = form.getValues("vessels");
                           form.setValue(
@@ -404,7 +404,7 @@ export default function CalculatorForm() {
               </div>
 
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <Button className="w-full mt-6" disabled={isCalculating} type="submit">
+                <Button className="w-full" disabled={isCalculating} type="submit">
                   {isCalculating ? "Calculating..." : "Calculate Savings"}
                 </Button>
               </motion.div>
