@@ -54,8 +54,7 @@ export default function CalculatorForm() {
     resolver: zodResolver(calculatorInputSchema),
     defaultValues: {
       fleetSize: "",
-      voyageLength: "",
-      portTime: "",
+      annualSeaDays: "",
       fuelConsumption: "",
       fuelPrice: "",
       estimatedSavings: 5,
@@ -79,8 +78,7 @@ export default function CalculatorForm() {
     const emptyFields = [];
 
     if (!values.fleetSize) emptyFields.push("Fleet Size");
-    if (!values.voyageLength) emptyFields.push("Voyage Length (Days at Sea)");
-    if (!values.portTime) emptyFields.push("Port Time (Days)");
+    if (!values.annualSeaDays) emptyFields.push("Annual Sea Days");
     if (!values.fuelConsumption) emptyFields.push("Fuel Consumption");
     if (!values.fuelPrice) emptyFields.push("Fuel Price");
 
@@ -99,8 +97,7 @@ export default function CalculatorForm() {
     try {
       const formData = {
         fleetSize: Number(values.fleetSize),
-        voyageLength: Number(values.voyageLength),
-        portTimePerVoyage: Number(values.portTime),
+        annualSeaDays: Number(values.annualSeaDays),
         fuelConsumption: Number(values.fuelConsumption),
         fuelPrice: Number(values.fuelPrice),
         estimatedSavings: Number(values.estimatedSavings),
@@ -224,9 +221,7 @@ export default function CalculatorForm() {
                                 Total Sea Days Per Year
                               </div>
                               <div className="text-xs text-muted-foreground">
-                                Enter the total number of days your fleet spends at sea per year. 
-                                This is the sum of all days when vessels are actively sailing,
-                                excluding time spent in port or at anchor.
+                                Enter the total number of days your fleet spends at sea per year. This is the sum of all days when vessels are actively sailing, excluding time spent in port or at anchor.
                               </div>
                             </div>
                           </TooltipContent>
@@ -251,110 +246,6 @@ export default function CalculatorForm() {
                   )}
                 />
 
-
-                {/* Voyage Length Field */}
-                <FormField
-                  control={form.control}
-                  name="voyageLength"
-                  render={({ field }) => (
-                    <FormItem>
-                      <div className="flex items-center gap-2">
-                        <FormLabel className="flex items-center gap-2">
-                          <TimerIcon className="h-4 w-4" />
-                          <span>Voyage Length (Days at Sea)</span>
-                        </FormLabel>
-                        <Tooltip delayDuration={100}>
-                          <TooltipTrigger asChild>
-                            <button
-                              type="button"
-                              className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
-                            >
-                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
-                            </button>
-                          </TooltipTrigger>
-                          <TooltipContent className="max-w-sm p-2">
-                            <div className="space-y-1">
-                              <div className="text-sm font-medium">
-                                Average Voyage Length (Days at Sea)
-                              </div>
-                              <div className="text-xs text-muted-foreground">
-                                Enter the average number of days your vessels spend at sea per voyage.
-                                For mixed routes, use your fleet's average voyage length.
-                              </div>
-                            </div>
-                          </TooltipContent>
-                        </Tooltip>
-                      </div>
-                      <FormControl>
-                        <Input
-                          type="number"
-                          placeholder="Enter average voyage length (e.g. 10)"
-                          {...field}
-                          onChange={(e) =>
-                            field.onChange(
-                              e.target.value
-                                ? Number(e.target.value)
-                                : undefined
-                            )
-                          }
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                {/* Port Time Field */}
-                <FormField
-                  control={form.control}
-                  name="portTime"
-                  render={({ field }) => (
-                    <FormItem>
-                      <div className="flex items-center gap-2">
-                        <FormLabel className="flex items-center gap-2">
-                          <TimerIcon className="h-4 w-4" />
-                          <span>Port Time (Days)</span>
-                        </FormLabel>
-                        <Tooltip delayDuration={100}>
-                          <TooltipTrigger asChild>
-                            <button
-                              type="button"
-                              className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
-                            >
-                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
-                            </button>
-                          </TooltipTrigger>
-                          <TooltipContent className="max-w-sm p-2">
-                            <div className="space-y-1">
-                              <div className="text-sm font-medium">
-                                Average Port Time (Days)
-                              </div>
-                              <div className="text-xs text-muted-foreground">
-                                Enter the average number of days your vessels spend in port per voyage. For mixed routes, use your fleet's
-                                average port duration across all voyages.
-                              </div>
-                            </div>
-                          </TooltipContent>
-                        </Tooltip>
-                      </div>
-                      <FormControl>
-                        <Input
-                          type="number"
-                          placeholder="Enter average port time (e.g. 5)"
-                          {...field}
-                          onChange={(e) =>
-                            field.onChange(
-                              e.target.value
-                                ? Number(e.target.value)
-                                : undefined
-                            )
-                          }
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
 
                 {/* Fuel Consumption Field */}
                 <FormField
