@@ -212,24 +212,26 @@ export default function CalculatorForm() {
                                 <SelectContent>
                                   {Object.entries(vesselTypes).map(([key, value]) => (
                                     <SelectItem key={key} value={key} className="flex items-center gap-2">
-                                      {key.includes('container-ship-small') ? (
-                                        <img src="/images/container_ship.png" alt="Small Container Ship" className="h-6 w-6 object-contain" />
-                                      ) : key.includes('container-ship-medium') ? (
-                                        <img src="/images/container_ship.png" alt="Medium Container Ship" className="h-8 w-8 object-contain" />
-                                      ) : key.includes('container-ship-large') ? (
-                                        <img src="/images/container_ship.png" alt="Large Container Ship" className="h-10 w-10 object-contain" />
-                                      ) : key.includes('bulk-carrier-small') ? (
-                                        <img src="/images/bulk_carrier.png" alt="Handysize Bulk Carrier" className="h-7 w-7 object-contain" />
-                                      ) : key.includes('bulk-carrier-large') ? (
-                                        <img src="/images/bulk_carrier.png" alt="Panamax Bulk Carrier" className="h-10 w-10 object-contain" />
-                                      ) : key.includes('tanker-small') ? (
-                                        <img src="/images/oil_tanker.png" alt="Medium Range Tanker" className="h-7 w-7 object-contain" />
-                                      ) : key.includes('tanker-large') ? (
-                                        <img src="/images/oil_tanker.png" alt="VLCC" className="h-10 w-10 object-contain" />
-                                      ) : (
-                                        <Ship className="h-4 w-4" />
-                                      )}
-                                      <span>{value.label}</span>
+                                      <div className="flex items-center">
+                                        {key.includes('container-ship-small') ? (
+                                          <img src="/images/container_ship.png" alt="Small Container Ship" className="h-6 w-6 object-contain mr-2" />
+                                        ) : key.includes('container-ship-medium') ? (
+                                          <img src="/images/container_ship.png" alt="Medium Container Ship" className="h-8 w-8 object-contain mr-2" />
+                                        ) : key.includes('container-ship-large') ? (
+                                          <img src="/images/container_ship.png" alt="Large Container Ship" className="h-10 w-10 object-contain mr-2" />
+                                        ) : key.includes('bulk-carrier-small') ? (
+                                          <img src="/images/bulk_carrier.png" alt="Handysize Bulk Carrier" className="h-7 w-7 object-contain mr-2" />
+                                        ) : key.includes('bulk-carrier-large') ? (
+                                          <img src="/images/bulk_carrier.png" alt="Panamax Bulk Carrier" className="h-10 w-10 object-contain mr-2" />
+                                        ) : key.includes('tanker-small') ? (
+                                          <img src="/images/oil_tanker.png" alt="Medium Range Tanker" className="h-7 w-7 object-contain mr-2" />
+                                        ) : key.includes('tanker-large') ? (
+                                          <img src="/images/oil_tanker.png" alt="VLCC" className="h-10 w-10 object-contain mr-2" />
+                                        ) : (
+                                          <Ship className="h-4 w-4 mr-2" />
+                                        )}
+                                        <span>{value.label}</span>
+                                      </div>
                                     </SelectItem>
                                   ))}
                                 </SelectContent>
