@@ -352,15 +352,13 @@ export default function CalculatorForm() {
                       <FormControl>
                         <Input
                           type="number"
-                          placeholder="Enter annual sea days (e.g. 280)"
+                          placeholder="Enter fuel consumption"
                           {...field}
-                          onChange={(e) =>
-                            field.onChange(
-                              e.target.value
-                                ? Number(e.target.value)
-                                : undefined
-                            )
-                          }
+                          value={field.value || ''}
+                          onChange={(e) => {
+                            const value = e.target.value;
+                            field.onChange(value ? Number(value) : undefined);
+                          }}
                           className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
                         />
                       </FormControl>
