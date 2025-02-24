@@ -275,7 +275,7 @@ export default function CalculatorForm() {
                             <FormItem>
                               <div className="flex items-center gap-1.5">
                                 <div className="flex items-center gap-2">
-                <GaugeIcon className="h-4 w-4 text-foreground" />
+                <FuelIcon className="h-4 w-4 text-foreground" />
                 <FormLabel>Fuel Consumption (MT/Day)</FormLabel>
               </div>
                                 <Tooltip>
