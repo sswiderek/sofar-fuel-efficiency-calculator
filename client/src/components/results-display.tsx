@@ -23,7 +23,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
       <div>
         <h2 className="text-lg font-semibold text-slate-900">Current Annual Costs</h2>
         <p className="text-3xl font-bold text-slate-900">
-          ${totalFuelCost.toLocaleString()}
+          ${(totalFuelCost || 0).toLocaleString()}
         </p>
       </div>
 
