@@ -271,7 +271,7 @@ export default function CalculatorForm() {
                         type="button"
                         variant="destructive"
                         size="sm"
-                        className="mt-4 w-full sm:w-auto" {/* Added margin top */}
+                        className="mt-4 w-full sm:w-auto" /* Added margin top */
                         onClick={() => {
                           const vessels = form.getValues("vessels");
                           form.setValue(
