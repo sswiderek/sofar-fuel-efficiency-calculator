@@ -178,7 +178,10 @@ export default function CalculatorForm() {
                         render={({ field }) => (
                           <FormItem className="mb-4">
                             <div className="flex items-center gap-2">
-                              <FormLabel>Vessel Type</FormLabel>
+                              <div className="flex items-center gap-2">
+                <FormLabel>Vessel Type</FormLabel>
+                <ShipIcon className="h-4 w-4 text-slate-500" />
+              </div>
                               <Tooltip>
                                 <TooltipTrigger>
                                   <InfoIcon className="h-4 w-4 text-slate-400" />
@@ -224,7 +227,10 @@ export default function CalculatorForm() {
                           render={({ field }) => (
                             <FormItem>
                               <div className="flex items-center gap-2">
-                                <FormLabel>Number of Ships</FormLabel>
+                                <div className="flex items-center gap-2">
+                <FormLabel>Number of Ships</FormLabel>
+                <AnchorIcon className="h-4 w-4 text-slate-500" />
+              </div>
                                 <Tooltip>
                                   <TooltipTrigger>
                                     <InfoIcon className="h-4 w-4 text-slate-400" />
@@ -256,7 +262,10 @@ export default function CalculatorForm() {
                           render={({ field }) => (
                             <FormItem>
                               <div className="flex items-center gap-2">
-                                <FormLabel>Fuel Consumption (MT/Day)</FormLabel>
+                                <div className="flex items-center gap-2">
+                <FormLabel>Fuel Consumption (MT/Day)</FormLabel>
+                <GaugeIcon className="h-4 w-4 text-slate-500" />
+              </div>
                                 <Tooltip>
                                   <TooltipTrigger>
                                     <InfoIcon className="h-4 w-4 text-slate-400" />
