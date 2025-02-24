@@ -351,14 +351,21 @@ export default function CalculatorForm() {
                       </div>
                       <FormControl>
                         <Input
-                          type="number"
-                          min="0"
+                          type="text"
+                          inputMode="decimal"
                           placeholder="Enter fuel consumption"
                           {...field}
-                          value={field.value || ''}
+                          value={field.value === undefined ? '' : field.value}
                           onChange={(e) => {
-                            const value = e.target.value;
-                            field.onChange(value === '' ? undefined : Number(value));
+                            const value = e.target.value.replace(/[^\d.]/g, '');
+                            if (value === '') {
+                              field.onChange(undefined);
+                            } else {
+                              const num = parseFloat(value);
+                              if (!isNaN(num)) {
+                                field.onChange(num);
+                              }
+                            }
                           }}
                           className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
                         />
