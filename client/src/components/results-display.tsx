@@ -91,7 +91,24 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
         <Card className="co2-tile p-5">
           <div className="metric-header">
             <LeafIcon className="metric-icon text-emerald-600" />
-            <span>Environmental Impact</span>
+            <div className="flex items-center gap-1">
+              <span>Environmental Impact</span>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Info className="h-4 w-4 text-slate-400" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <div className="max-w-[250px] space-y-2">
+                    <h4 className="font-medium">CO₂ Emissions</h4>
+                    <div className="text-sm text-slate-600">
+                      <p>Calculations based on:</p>
+                      <p className="pl-2 text-xs">• 1 MT of fuel produces ~3.1 MT of CO₂</p>
+                      <p className="pl-2 text-xs">• Reduction based on optimized fuel consumption</p>
+                    </div>
+                  </div>
+                </TooltipContent>
+              </Tooltip>
+            </div>
           </div>
           <div className="space-y-2 mt-2">
             <div>
