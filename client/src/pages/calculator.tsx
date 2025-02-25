@@ -41,15 +41,6 @@ export default function Calculator() {
             <CalculatorForm />
             <div className="mt-8">
               <div className="space-y-6">
-                <div className="bg-blue-600 backdrop-blur-sm rounded-xl p-6">
-                  <h3 className="text-lg font-semibold text-white mb-4">
-                    Real-World Success Stories
-                  </h3>
-                  <p className="text-white/90 mb-2">2024 Savings Report: Major fuel savings achieved across global routes</p>
-                  <a href="#" className="text-white/90 hover:text-white flex items-center gap-1 text-sm">
-                    Download 2024 savings report <ChevronRightIcon className="h-4 w-4" />
-                  </a>
-                </div>
 
                 <Card className="bg-gradient-to-br from-blue-900 to-blue-800 hover:from-blue-800 hover:to-blue-700 text-white shadow-xl transform hover:scale-102 hover:shadow-2xl transition-all duration-300 border border-blue-700/50 cursor-pointer group overflow-hidden">
                   <a href="https://www.sofarocean.com/posts/wayfinder-voyage-optimization-savings-report-2024" target="_blank" rel="noopener noreferrer" className="block relative h-full">
