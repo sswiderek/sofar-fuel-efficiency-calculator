@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
@@ -22,7 +21,7 @@ interface ResultsDisplayProps {
   data: CalculationResult;
 }
 
-export function ResultsDisplay({ data }: ResultsDisplayProps) {
+export default function ResultsDisplay({ data }: ResultsDisplayProps) {
   return (
     <TooltipProvider>
       <div className="space-y-6">
@@ -49,88 +48,65 @@ export function ResultsDisplay({ data }: ResultsDisplayProps) {
             </CardContent>
           </Card>
 
-          <Card className="border shadow-sm bg-emerald-50">
+          <Card className="border shadow-sm bg-white">
             <CardContent className="p-4">
               <div className="space-y-2">
-                <div className="flex items-center gap-2 text-emerald-700">
+                <div className="flex items-center gap-2 text-slate-600">
                   <Settings className="h-4 w-4" />
                   <h3 className="text-sm font-medium">Optimized Cost</h3>
                   <Tooltip>
                     <TooltipTrigger>
-                      <InfoCircledIcon className="h-4 w-4 text-emerald-500" />
+                      <InfoCircledIcon className="h-4 w-4 text-slate-400" />
                     </TooltipTrigger>
                     <TooltipContent className="w-64">
-                      <p className="text-xs">Projected annual fuel costs after implementing route optimization and operational improvements</p>
+                      <p className="text-xs">Projected annual fuel costs after implementing recommended optimizations</p>
                     </TooltipContent>
                   </Tooltip>
                 </div>
                 <p className="text-2xl font-bold text-slate-900">
                   {formatCurrency(data.optimizedCost)}
                 </p>
-                <div className="flex items-center gap-2 text-emerald-700 text-sm">
-                  <TrendingDown className="h-4 w-4" />
-                  <span>{data.savingsPercentage}% reduction in fuel costs</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border shadow-sm bg-amber-50">
-            <CardContent className="p-4">
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-amber-700">
-                  <DollarSign className="h-4 w-4" />
-                  <h3 className="text-sm font-medium">Estimated Savings</h3>
-                  <Tooltip>
-                    <TooltipTrigger>
-                      <InfoCircledIcon className="h-4 w-4 text-amber-500" />
-                    </TooltipTrigger>
-                    <TooltipContent className="w-64">
-                      <p className="text-xs">Projected annual savings from implementing route optimization and operational improvements</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </div>
-                <p className="text-2xl font-bold text-slate-900">
-                  {formatCurrency(data.estimatedSavings)}
-                </p>
-                <p className="text-sm text-amber-700">Annual savings</p>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border shadow-sm bg-sky-50">
-            <CardContent className="p-4">
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sky-700">
-                  <Leaf className="h-4 w-4" />
-                  <h3 className="text-sm font-medium">CO₂ Reduction</h3>
-                  <Tooltip>
-                    <TooltipTrigger>
-                      <InfoCircledIcon className="h-4 w-4 text-sky-500" />
-                    </TooltipTrigger>
-                    <TooltipContent className="w-64">
-                      <p className="text-xs">Annual reduction in CO₂ emissions through optimized routing and improved operational efficiency</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </div>
-                <p className="text-2xl font-bold text-slate-900">
-                  {formatNumber(data.co2Reduction)} MT
-                </p>
-                <div className="flex items-center gap-1 text-sky-700 text-sm">
-                  <span>≈ {formatNumber(data.co2Reduction * 0.217)} cars off the road</span>
-                  <Tooltip>
-                    <TooltipTrigger>
-                      <InfoCircledIcon className="h-4 w-4 text-sky-500" />
-                    </TooltipTrigger>
-                    <TooltipContent className="w-64">
-                      <p className="text-xs">Based on average annual emissions of a passenger vehicle (4.6 metric tons CO₂)</p>
-                    </TooltipContent>
-                  </Tooltip>
+                <div className="flex items-center gap-1 text-xs text-emerald-600">
+                  <TrendingDown className="h-3 w-3" />
+                  <span>{Math.round((data.currentCost - data.optimizedCost) / data.currentCost * 100)}% reduction in fuel costs</span>
                 </div>
               </div>
             </CardContent>
           </Card>
         </div>
+
+        <Card className="border shadow-sm bg-slate-50">
+          <CardContent className="p-4">
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-slate-600">
+                <Leaf className="h-4 w-4" />
+                <h3 className="text-sm font-medium">CO₂ Reduction</h3>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <InfoCircledIcon className="h-4 w-4 text-slate-400" />
+                  </TooltipTrigger>
+                  <TooltipContent className="w-64">
+                    <p className="text-xs">Estimated annual reduction in CO₂ emissions from implementing recommended optimizations</p>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+              <p className="text-2xl font-bold text-slate-900">
+                {formatNumber(data.co2Reduction)} MT
+              </p>
+              <div className="flex items-center gap-1 text-xs text-slate-600">
+                <span>≈ {formatNumber(data.carsEquivalent)} cars off the road annually</span>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <InfoCircledIcon className="h-3 w-3 text-slate-400" />
+                  </TooltipTrigger>
+                  <TooltipContent className="w-64">
+                    <p className="text-xs">Equivalent to removing this many passenger vehicles from the road for one year</p>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </TooltipProvider>
   );
