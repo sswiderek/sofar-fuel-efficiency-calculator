@@ -212,7 +212,7 @@ export default function ResultsDisplay({ results }: Props) {
           </CardContent>
         </Card>
 
-        <Tabs defaultValue="conservative" className="w-full">
+        <Tabs defaultValue="conservative" className="w-full mb-12">
           <TabsList className="grid w-full grid-cols-3 bg-gray-50 p-1">
             {Object.entries(scenarios).map(([key, scenario]) => (
               <TabsTrigger
