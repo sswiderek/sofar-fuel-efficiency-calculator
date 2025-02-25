@@ -100,8 +100,7 @@ export default function ResultsDisplay({ results }: Props) {
 
   return (
     <TooltipProvider delayDuration={0} disableHoverableContent skipDelayDuration={0}>
-      <div className="mt-4">
-        <div className="space-y-4">
+      <div className="space-y-4 pt-6">
         <Card className="border bg-white shadow-sm">
           <CardContent className="p-3">
             <div className="space-y-1">
@@ -234,7 +233,6 @@ export default function ResultsDisplay({ results }: Props) {
             </div>
           </CardContent>
         </Card>
-        </div>
       </div>
     </TooltipProvider>
   );
