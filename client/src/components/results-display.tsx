@@ -18,11 +18,11 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
       <div className="space-y-3">
         <Card className="bg-[#0E6396] text-white p-4">
           <div className="flex items-center gap-2 text-white/90">
-            <DollarSign className="h-5 w-5" />
-            <span className="text-base font-medium">Annual Savings</span>
+            <DollarSign className="h-4 w-4" />
+            <span className="text-sm font-medium">Annual Savings</span>
           </div>
-          <div className="text-4xl font-bold mt-3">${(result.totalFuelCost * 0.05).toLocaleString()}</div>
-          <div className="text-sm text-white/90">Projected cost reduction</div>
+          <div className="text-2xl font-bold mt-2">${(result.totalFuelCost * 0.05).toLocaleString()}</div>
+          <div className="text-xs text-white/90">Projected cost reduction</div>
         </Card>
 
         <Card className="bg-white p-3.5">
