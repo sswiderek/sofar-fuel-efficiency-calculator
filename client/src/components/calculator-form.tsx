@@ -322,7 +322,7 @@ export default function CalculatorForm() {
                             <div className="flex items-center gap-1.5">
                               <div className="flex items-center gap-2">
                                 <TimerIcon className="h-4 w-4 text-foreground" />
-                                <FormLabel>Days at Sea Per Year</FormLabel>
+                                <FormLabel>Days at Sea Per Vessel Per Year</FormLabel>
                               </div>
                               <Tooltip>
                                 <TooltipTrigger>
