@@ -16,13 +16,13 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
     <div className="space-y-5">
       <h2 className="text-xl font-bold text-slate-800">Analysis Results</h2>
       <div className="space-y-3">
-        <Card className="bg-[#0E6396] text-white p-3.5">
+        <Card className="bg-[#0E6396] text-white p-4">
           <div className="flex items-center gap-2 text-white/90">
-            <DollarSign className="h-4 w-4" />
-            <span className="text-sm font-medium">Annual Savings</span>
+            <DollarSign className="h-5 w-5" />
+            <span className="text-base font-medium">Annual Savings</span>
           </div>
-          <div className="text-2xl font-bold mt-2">${(result.totalFuelCost * 0.05).toLocaleString()}</div>
-          <div className="text-xs text-white/80">Projected cost reduction</div>
+          <div className="text-4xl font-bold mt-3">${(result.totalFuelCost * 0.05).toLocaleString()}</div>
+          <div className="text-sm text-white/90">Projected cost reduction</div>
         </Card>
 
         <Card className="bg-white p-3.5">
@@ -79,7 +79,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             </Tooltip>
           </div>
           <div className="mt-4">
-            <div className="text-3xl font-bold text-emerald-600">{Math.round(result.totalFuelConsumption * 0.05).toLocaleString()}</div>
+            <div className="text-2xl font-bold text-emerald-600">{Math.round(result.totalFuelConsumption * 0.05).toLocaleString()}</div>
             <div className="text-sm text-slate-600">MT CO₂ Reduction</div>
             <div className="mt-4 space-y-2">
               <div>
