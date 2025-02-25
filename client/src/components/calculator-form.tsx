@@ -157,94 +157,155 @@ export default function CalculatorForm() {
                   <h3 className="text-sm font-medium text-slate-700">Fleet Configuration</h3>
                   {form.watch("vessels")?.map((_, index) => (
                     <div key={index} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-slate-200/60 shadow-sm w-full">
-                      <FormField
-                        control={form.control}
-                        name={`vessels.${index}.type`}
-                        render={({ field }) => (
-                          <FormItem className="mb-4">
-                            <div className="flex items-center gap-2">
-                              <div className="flex items-center gap-2">
-                                <ShipIcon className="h-4 w-4 text-foreground" />
-                                <FormLabel>Vessel Type</FormLabel>
-                              </div>
-                              <Tooltip>
-                                <TooltipTrigger>
-                                  <InfoIcon className="h-4 w-4 text-slate-400" />
-                                </TooltipTrigger>
-                                <TooltipContent className="max-w-[300px] text-xs">
-                                  <p>TEU (Twenty-foot Equivalent Unit) is a measure of container ship capacity. Vessel types are classified by size and cargo capacity.</p>
-                                </TooltipContent>
-                              </Tooltip>
-                            </div>
-                            <FormControl>
-                              <Select
-                                onValueChange={(value) => {
-                                  field.onChange(value);
-                                  // Set default fuel consumption and sea days
-                                  form.setValue(
-                                    `vessels.${index}.fuelConsumption`,
-                                    vesselTypes[value as keyof typeof vesselTypes].defaultConsumption
-                                  );
-                                  form.setValue(
-                                    `vessels.${index}.seaDaysPerYear`,
-                                    vesselTypes[value as keyof typeof vesselTypes].defaultSeaDays || 280
-                                  );
-                                }}
-                                value={field.value}
-                              >
-                                <SelectTrigger className="w-full">
-                                  <SelectValue placeholder="Select vessel type" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                  {Object.entries(vesselTypes).map(([key, value]) => (
-                                    <SelectItem key={key} value={key} className="flex items-center gap-2">
-                                      <div className="flex items-center">
-                                        {key.includes('container-ship-small') ? (
-                                          <img src="/images/container_ship.png" alt="Small Container Ship" className="h-6 w-6 object-contain mr-2" />
-                                        ) : key.includes('container-ship-medium') ? (
-                                          <img src="/images/container_ship.png" alt="Medium Container Ship" className="h-8 w-8 object-contain mr-2" />
-                                        ) : key.includes('container-ship-large') ? (
-                                          <img src="/images/container_ship.png" alt="Large Container Ship" className="h-10 w-10 object-contain mr-2" />
-                                        ) : key.includes('bulk-carrier-small') ? (
-                                          <img src="/images/bulk_carrier.png" alt="Handysize Bulk Carrier" className="h-7 w-7 object-contain mr-2" />
-                                        ) : key.includes('bulk-carrier-large') ? (
-                                          <img src="/images/bulk_carrier.png" alt="Panamax Bulk Carrier" className="h-10 w-10 object-contain mr-2" />
-                                        ) : key.includes('tanker-small') ? (
-                                          <img src="/images/oil_tanker.png" alt="Medium Range Tanker" className="h-7 w-7 object-contain mr-2" />
-                                        ) : key.includes('tanker-large') ? (
-                                          <img src="/images/oil_tanker.png" alt="VLCC" className="h-10 w-10 object-contain mr-2" />
-                                        ) : (
-                                          <Ship className="h-4 w-4 mr-2" />
-                                        )}
-                                        <span>{value.label}</span>
-                                      </div>
-                                    </SelectItem>
-                                  ))}
-                                </SelectContent>
-                              </Select>
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-
-                      <div className="grid grid-cols-[1fr_1.5fr] gap-8 mt-4">
+                      <div className="space-y-6">
                         <FormField
                           control={form.control}
-                          name={`vessels.${index}.count`}
+                          name={`vessels.${index}.type`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="flex items-center gap-2 text-sm font-medium text-slate-700">
+                                <ShipIcon className="h-4 w-4" />
+                                Vessel Type
+                              </FormLabel>
+                              <FormControl>
+                                <Select
+                                  onValueChange={(value) => {
+                                    field.onChange(value);
+                                    // Set default fuel consumption and sea days
+                                    form.setValue(
+                                      `vessels.${index}.fuelConsumption`,
+                                      vesselTypes[value as keyof typeof vesselTypes].defaultConsumption
+                                    );
+                                    form.setValue(
+                                      `vessels.${index}.seaDaysPerYear`,
+                                      vesselTypes[value as keyof typeof vesselTypes].defaultSeaDays || 280
+                                    );
+                                  }}
+                                  value={field.value}
+                                >
+                                  <SelectTrigger className="bg-white">
+                                    <SelectValue placeholder="Select vessel type" />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    {Object.entries(vesselTypes).map(([key, value]) => (
+                                      <SelectItem key={key} value={key} className="flex items-center gap-2">
+                                        <div className="flex items-center">
+                                          {key.includes('container-ship-small') ? (
+                                            <img src="/images/container_ship.png" alt="Small Container Ship" className="h-6 w-6 object-contain mr-2" />
+                                          ) : key.includes('container-ship-medium') ? (
+                                            <img src="/images/container_ship.png" alt="Medium Container Ship" className="h-8 w-8 object-contain mr-2" />
+                                          ) : key.includes('container-ship-large') ? (
+                                            <img src="/images/container_ship.png" alt="Large Container Ship" className="h-10 w-10 object-contain mr-2" />
+                                          ) : key.includes('bulk-carrier-small') ? (
+                                            <img src="/images/bulk_carrier.png" alt="Handysize Bulk Carrier" className="h-7 w-7 object-contain mr-2" />
+                                          ) : key.includes('bulk-carrier-large') ? (
+                                            <img src="/images/bulk_carrier.png" alt="Panamax Bulk Carrier" className="h-10 w-10 object-contain mr-2" />
+                                          ) : key.includes('tanker-small') ? (
+                                            <img src="/images/oil_tanker.png" alt="Medium Range Tanker" className="h-7 w-7 object-contain mr-2" />
+                                          ) : key.includes('tanker-large') ? (
+                                            <img src="/images/oil_tanker.png" alt="VLCC" className="h-10 w-10 object-contain mr-2" />
+                                          ) : (
+                                            <Ship className="h-4 w-4 mr-2" />
+                                          )}
+                                          <span>{value.label}</span>
+                                        </div>
+                                      </SelectItem>
+                                    ))}
+                                  </SelectContent>
+                                </Select>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        <div className="grid grid-cols-[1fr_1.5fr] gap-6">
+                          <FormField
+                            control={form.control}
+                            name={`vessels.${index}.count`}
+                            render={({ field }) => (
+                              <FormItem>
+                                <div className="flex items-center gap-1.5">
+                                  <div className="flex items-center gap-2">
+                    <AnchorIcon className="h-4 w-4 text-foreground" />
+                    <FormLabel>Number of Ships</FormLabel>
+                  </div>
+                                  <Tooltip>
+                                    <TooltipTrigger>
+                                      <InfoIcon className="h-4 w-4 text-slate-400" />
+                                    </TooltipTrigger>
+                                    <TooltipContent className="max-w-[300px] text-xs">
+                                      <p>Enter the number of vessels of this specific type in your fleet</p>
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </div>
+                                <FormControl>
+                                  <Input
+                                    type="number"
+                                    className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
+                                    placeholder="e.g. 5"
+                                    {...field}
+                                    onChange={(e) =>
+                                      field.onChange(Number(e.target.value))
+                                    }
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+
+                          <FormField
+                            control={form.control}
+                            name={`vessels.${index}.fuelConsumption`}
+                            render={({ field }) => (
+                              <FormItem>
+                                <div className="flex items-center gap-1.5">
+                                  <div className="flex flex-wrap items-center gap-2">
+                    <FuelIcon className="h-4 w-4 text-foreground" />
+                    <FormLabel className="whitespace-nowrap">Fuel Consumption (MT/Day)</FormLabel>
+                  </div>
+                                  <Tooltip>
+                                    <TooltipTrigger>
+                                      <InfoIcon className="h-4 w-4 text-slate-400" />
+                                    </TooltipTrigger>
+                                    <TooltipContent className="max-w-[300px] text-xs">
+                                      <p>Average fuel consumption in Metric Tonnes per day while at sea. Typical ranges from 20-150 MT/day depending on vessel size.  Example: 50 MT/day</p>
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </div>
+                                <FormControl>
+                                  <Input
+                                    type="number"
+                                    className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
+                                    placeholder="e.g. 50"
+                                    {...field}
+                                    onChange={(e) =>
+                                      field.onChange(Number(e.target.value))
+                                    }
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                        <FormField
+                          control={form.control}
+                          name={`vessels.${index}.seaDaysPerYear`}
                           render={({ field }) => (
                             <FormItem>
                               <div className="flex items-center gap-1.5">
                                 <div className="flex items-center gap-2">
-                <AnchorIcon className="h-4 w-4 text-foreground" />
-                <FormLabel>Number of Ships</FormLabel>
-              </div>
+                                  <TimerIcon className="h-4 w-4 text-foreground" />
+                                  <FormLabel>Days at Sea Per Vessel Per Year</FormLabel>
+                                </div>
                                 <Tooltip>
                                   <TooltipTrigger>
                                     <InfoIcon className="h-4 w-4 text-slate-400" />
                                   </TooltipTrigger>
                                   <TooltipContent className="max-w-[300px] text-xs">
-                                    <p>Enter the number of vessels of this specific type in your fleet</p>
+                                    <p>Enter the days at sea per year for a single vessel of this type. Do not multiply by fleet size. Example: 280 days</p>
                                   </TooltipContent>
                                 </Tooltip>
                               </div>
@@ -252,7 +313,7 @@ export default function CalculatorForm() {
                                 <Input
                                   type="number"
                                   className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
-                                  placeholder="e.g. 5"
+                                  placeholder="e.g. 280"
                                   {...field}
                                   onChange={(e) =>
                                     field.onChange(Number(e.target.value))
@@ -263,91 +324,22 @@ export default function CalculatorForm() {
                             </FormItem>
                           )}
                         />
-
-                        <FormField
-                          control={form.control}
-                          name={`vessels.${index}.fuelConsumption`}
-                          render={({ field }) => (
-                            <FormItem>
-                              <div className="flex items-center gap-1.5">
-                                <div className="flex flex-wrap items-center gap-2">
-                <FuelIcon className="h-4 w-4 text-foreground" />
-                <FormLabel className="whitespace-nowrap">Fuel Consumption (MT/Day)</FormLabel>
-              </div>
-                                <Tooltip>
-                                  <TooltipTrigger>
-                                    <InfoIcon className="h-4 w-4 text-slate-400" />
-                                  </TooltipTrigger>
-                                  <TooltipContent className="max-w-[300px] text-xs">
-                                    <p>Average fuel consumption in Metric Tonnes per day while at sea. Typical ranges from 20-150 MT/day depending on vessel size.  Example: 50 MT/day</p>
-                                  </TooltipContent>
-                                </Tooltip>
-                              </div>
-                              <FormControl>
-                                <Input
-                                  type="number"
-                                  className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
-                                  placeholder="e.g. 50"
-                                  {...field}
-                                  onChange={(e) =>
-                                    field.onChange(Number(e.target.value))
-                                  }
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          className="mt-4 w-full sm:w-auto text-slate-600 hover:text-red-600 hover:border-red-200 transition-colors"
+                          onClick={() => {
+                            const vessels = form.getValues("vessels");
+                            form.setValue(
+                              "vessels",
+                              vessels.filter((_, i) => i !== index)
+                            );
+                          }}
+                        >
+                          Remove Vessel Type
+                        </Button>
                       </div>
-                      <FormField
-                        control={form.control}
-                        name={`vessels.${index}.seaDaysPerYear`}
-                        render={({ field }) => (
-                          <FormItem>
-                            <div className="flex items-center gap-1.5">
-                              <div className="flex items-center gap-2">
-                                <TimerIcon className="h-4 w-4 text-foreground" />
-                                <FormLabel>Days at Sea Per Vessel Per Year</FormLabel>
-                              </div>
-                              <Tooltip>
-                                <TooltipTrigger>
-                                  <InfoIcon className="h-4 w-4 text-slate-400" />
-                                </TooltipTrigger>
-                                <TooltipContent className="max-w-[300px] text-xs">
-                                  <p>Enter the days at sea per year for a single vessel of this type. Do not multiply by fleet size. Example: 280 days</p>
-                                </TooltipContent>
-                              </Tooltip>
-                            </div>
-                            <FormControl>
-                              <Input
-                                type="number"
-                                className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
-                                placeholder="e.g. 280"
-                                {...field}
-                                onChange={(e) =>
-                                  field.onChange(Number(e.target.value))
-                                }
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <Button
-                        type="button"
-                        variant="outline"
-                        size="sm"
-                        className="mt-4 w-full sm:w-auto text-slate-600 hover:text-red-600 hover:border-red-200 transition-colors"
-                        onClick={() => {
-                          const vessels = form.getValues("vessels");
-                          form.setValue(
-                            "vessels",
-                            vessels.filter((_, i) => i !== index)
-                          );
-                        }}
-                      >
-                        Remove Vessel Type
-                      </Button>
                     </div>
                   ))}
                   <Button
