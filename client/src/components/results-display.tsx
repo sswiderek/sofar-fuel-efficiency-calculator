@@ -50,7 +50,26 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
         <Card className="optimized-tile p-5">
           <div className="metric-header">
             <TrendingDown className="metric-icon" />
-            <span>Costs Breakdown</span>
+            <div className="flex items-center gap-1">
+              <span>Costs Breakdown</span>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Info className="h-4 w-4 text-slate-400" />
+                </TooltipTrigger>
+                <TooltipContent className="w-[280px] p-3">
+                  <div className="space-y-2">
+                    <h4 className="font-medium">How Costs Are Calculated</h4>
+                    <div className="text-sm text-slate-600 space-y-2">
+                      <p>1. Current Cost</p>
+                      <p className="pl-2 text-xs">• Annual fuel use × Current fuel price</p>
+                      <p>2. Optimized Cost</p>
+                      <p className="pl-2 text-xs">• Current cost × (1 - 5% optimization)</p>
+                      <p className="text-xs mt-2 pt-2 border-t">Example: ${result.totalFuelCost.toLocaleString()} × 0.95 = ${(result.totalFuelCost * 0.95).toLocaleString()}</p>
+                    </div>
+                  </div>
+                </TooltipContent>
+              </Tooltip>
+            </div>
           </div>
           <div className="space-y-2 mt-2">
             <div className="text-sm">
