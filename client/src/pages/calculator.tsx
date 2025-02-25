@@ -41,16 +41,6 @@ export default function Calculator() {
             <CalculatorForm />
             <div className="mt-8">
               <div className="space-y-6">
-                <div className="bg-blue-600 backdrop-blur-sm rounded-xl p-6">
-                  <h3 className="text-lg font-semibold text-white mb-4">
-                    Real-World Success Stories
-                  </h3>
-                  <p className="text-white/90 mb-2">2024 Savings Report: Major fuel savings achieved across global routes</p>
-                  <a href="#" className="text-white/90 hover:text-white flex items-center gap-1 text-sm">
-                    Download 2024 savings report <ChevronRightIcon className="h-4 w-4" />
-                  </a>
-                </div>
-
                 <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 border border-sky-100"> {/* Removed shadow-lg */}
                   <h3 className="text-lg font-semibold text-slate-900 mb-4">
                     Assumptions Made in This Calculator
