@@ -41,13 +41,6 @@ export default function Calculator() {
             <CalculatorForm />
             <div className="mt-8">
               <div className="space-y-6">
-                <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 border border-sky-100">
-                  <h3 className="text-lg font-semibold text-slate-900 mb-4">
-                    Real-world Success Stories
-                  </h3>
-                  {/* Success stories content here */}
-                </div>
-                
                 <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 border border-sky-100"> {/* Removed shadow-lg */}
                   <h3 className="text-lg font-semibold text-slate-900 mb-4">
                     Assumptions Made in This Calculator
