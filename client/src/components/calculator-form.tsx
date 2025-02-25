@@ -26,7 +26,7 @@ import {
   InfoIcon,
   ShipIcon,
   TimerIcon,
-  FireIcon,
+  FuelIcon,
   DollarSignIcon,
   AnchorIcon,
   GaugeIcon,
