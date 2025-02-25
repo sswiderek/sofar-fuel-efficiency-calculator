@@ -14,8 +14,8 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   
   return (
     <div className="space-y-6">
-      <h2 className="text-xl font-semibold text-slate-800">Analysis Results</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <h2 className="text-2xl font-bold text-slate-800 mb-6">Analysis Results</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <Card className="savings-tile p-5">
           <div className="metric-header">
             <DollarSign className="metric-icon" />
