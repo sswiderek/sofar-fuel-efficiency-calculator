@@ -16,7 +16,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
     <div className="space-y-6">
       <h2 className="text-2xl font-bold text-slate-800">Analysis Results</h2>
       <div className="space-y-4">
-        <Card className="bg-blue-700 text-white p-6">
+        <Card className="bg-[#0E6396] text-white p-6">
           <div className="flex items-center gap-2 text-white/80">
             <DollarSign className="h-5 w-5" />
             <span>Annual Savings</span>
