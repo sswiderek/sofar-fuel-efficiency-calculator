@@ -1,13 +1,13 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
-import { InfoCircledIcon } from "@radix-ui/react-icons";
+import { InfoCircledIcon, Fuel as GasIcon } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "./ui/tooltip";
 import type { CalculationResult } from "@shared/schema";
 import { TrendingDown, DollarSign, Leaf, Settings } from "lucide-react";
 import { Popover, PopoverTrigger, PopoverContent } from "@radix-ui/react-popover";
 import React from 'react';
-import { ChartBarIcon, FireIcon, TrendingUpIcon, GasIcon } from '@heroicons/react/24/solid';
+import { ChartBarIcon, FireIcon, TrendingUpIcon } from '@heroicons/react/24/solid';
 
 
 const useTouchDevice = () => {
