@@ -19,7 +19,20 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
         <Card className="savings-tile p-5">
           <div className="metric-header">
             <DollarSign className="metric-icon" />
-            <span>Annual Savings</span>
+            <div className="flex items-center gap-2">
+              <span>Annual Savings</span>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Info className="h-4 w-4 text-slate-600 cursor-help" />
+                </TooltipTrigger>
+                <TooltipContent className="w-[280px] p-3">
+                  <div className="space-y-2">
+                    <h4 className="font-medium">How we calculate this:</h4>
+                    <p className="text-sm text-slate-600">Based on your fleet's annual fuel consumption of {result.totalFuelConsumption.toLocaleString()} metric tons and current VLSFO price of ${result.fuelPrice}/ton, applying a {result.savingsPercent}% optimization level.</p>
+                  </div>
+                </TooltipContent>
+              </Tooltip>
+            </div>
           </div>
           <div className="metric-value">${result.estimatedSavings.toLocaleString()}</div>
           <div className="metric-label">Projected cost reduction</div>
