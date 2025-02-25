@@ -1,7 +1,11 @@
-
 import { Card } from "@/components/ui/card";
 import { CalculationResult } from "@shared/schema";
 import { DollarSign, Fuel, LeafIcon, TrendingDown } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface ResultsDisplayProps {
   results: CalculationResult[] | null;
@@ -9,9 +13,9 @@ interface ResultsDisplayProps {
 
 export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   if (!results || results.length === 0) return null;
-  
+
   const result = results[0];
-  
+
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-bold text-slate-800 mb-6">Analysis Results</h2>
