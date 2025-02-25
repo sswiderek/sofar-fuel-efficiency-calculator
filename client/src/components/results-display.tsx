@@ -6,7 +6,7 @@ import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "./ui/t
 import type { CalculationResult } from "@shared/schema";
 import { TrendingDown, DollarSign, Leaf, Settings } from "lucide-react";
 import { Popover, PopoverTrigger, PopoverContent } from "@radix-ui/react-popover";
-import { ChartBarIcon, FuelIcon, TrendingUpIcon, GasIcon } from "@heroicons/react/24/solid"; // Assuming these icons are needed
+import { ChartBarIcon, FireIcon, TrendingUpIcon, GasIcon } from "@heroicons/react/24/solid"; // Assuming these icons are needed
 
 const useTouchDevice = () => {
   return (
