@@ -272,7 +272,7 @@ export default function CalculatorForm() {
                               <div className="flex items-center gap-1.5">
                                 <div className="flex items-center gap-2">
                 <FuelIcon className="h-4 w-4 text-foreground" />
-                <FormLabel>Fuel Consumption (MT/Day)</FormLabel>
+                <FormLabel>Fuel Consumption <span className="whitespace-nowrap">(MT/Day)</span></FormLabel>
               </div>
                                 <Tooltip>
                                   <TooltipTrigger>
