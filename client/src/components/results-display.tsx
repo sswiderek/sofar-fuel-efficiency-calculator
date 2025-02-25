@@ -130,22 +130,6 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
         </Card>
       </div>
 
-      {/* Scenarios comparison */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {results.map((result, i) => (
-          <Card key={i} className="bg-white/90 backdrop-blur-sm">
-            <CardContent className="pt-6">
-              <h3 className="text-sm font-medium text-slate-900 mb-2">{result.label}</h3>
-              <div className="flex items-center justify-between">
-                <p className="text-sm text-slate-600">Annual Savings</p>
-                <p className="text-lg font-bold text-emerald-600">
-                  {formatCurrency(result.estimatedSavings)}
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
       </div>
-    </div>
   );
 }
