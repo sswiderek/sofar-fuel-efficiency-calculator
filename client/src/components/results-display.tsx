@@ -16,13 +16,13 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
     <div className="space-y-6">
       <h2 className="text-2xl font-bold text-slate-800">Analysis Results</h2>
       <div className="space-y-4">
-        <Card className="bg-[#0E6396] text-white p-6">
+        <Card className="bg-[#0E6396] text-white p-4">
           <div className="flex items-center gap-2 text-white/80">
-            <DollarSign className="h-5 w-5" />
-            <span>Annual Savings</span>
+            <DollarSign className="h-4 w-4" />
+            <span className="text-sm">Annual Savings</span>
           </div>
-          <div className="text-4xl font-bold mt-2">${(result.totalFuelCost * 0.05).toLocaleString()}</div>
-          <div className="text-sm text-white/80 mt-1">Projected cost reduction</div>
+          <div className="text-3xl font-bold mt-1.5">${(result.totalFuelCost * 0.05).toLocaleString()}</div>
+          <div className="text-xs text-white/80 mt-0.5">Projected cost reduction</div>
         </Card>
 
         <Card className="bg-white p-6">
@@ -58,10 +58,10 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           </div>
         </Card>
 
-        <Card className="bg-emerald-50 p-6">
+        <Card className="bg-emerald-50 p-4">
           <div className="flex items-center gap-2">
-            <LeafIcon className="h-5 w-5 text-emerald-600" />
-            <span className="font-medium text-slate-700">Environmental Impact</span>
+            <LeafIcon className="h-4 w-4 text-emerald-600" />
+            <span className="font-medium text-sm text-slate-700">Environmental Impact</span>
             <Tooltip>
               <TooltipTrigger>
                 <Info className="h-4 w-4 text-slate-400" />
