@@ -106,6 +106,34 @@ export default function ResultsDisplay({ results }: Props) {
             <div className="space-y-1">
               <div className="flex items-center gap-2">
                 <h3 className="text-sm font-medium text-slate-600">
+                  Annual Fuel Consumption
+                </h3>
+                <SmartTooltip content={
+                  <TooltipContent side="top" sideOffset={5} className="w-72">
+                    <div className="space-y-2 py-1">
+                      <p className="font-medium">How we calculate annual fuel consumption:</p>
+                      <ul className="mt-1 space-y-1 text-slate-600">
+                        <li>Daily fuel consumption × Days at sea × Number of vessels</li>
+                      </ul>
+                    </div>
+                  </TooltipContent>
+                }>
+                  <InfoCircledIcon className="h-3.5 w-3.5 text-slate-400" />
+                </SmartTooltip>
+              </div>
+              <p className="text-2xl font-bold text-slate-900">
+                {formatNumber(result.totalFuelConsumption)} MT
+              </p>
+              <p className="text-xs text-slate-500">Total fuel consumed per year</p>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="border bg-white shadow-sm">
+          <CardContent className="p-3">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <h3 className="text-sm font-medium text-slate-600">
                   Current Annual Costs
                 </h3>
                 <SmartTooltip content={
