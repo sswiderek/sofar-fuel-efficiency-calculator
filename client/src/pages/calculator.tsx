@@ -41,25 +41,6 @@ export default function Calculator() {
             <CalculatorForm />
             <div className="mt-8">
               <div className="space-y-6">
-
-                <Card className="bg-gradient-to-br from-blue-900 to-blue-800 hover:from-blue-800 hover:to-blue-700 text-white shadow-xl transform hover:scale-102 hover:shadow-2xl transition-all duration-300 border border-blue-700/50 cursor-pointer group overflow-hidden">
-                  <a href="https://www.sofarocean.com/posts/wayfinder-voyage-optimization-savings-report-2024" target="_blank" rel="noopener noreferrer" className="block relative h-full">
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer"></div>
-                    <div className="flex flex-col justify-center min-h-[180px] p-6">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="p-2 rounded-lg bg-blue-700/50 group-hover:bg-blue-600/50 transition-colors duration-200">
-                          <TargetIcon className="h-5 w-5 text-blue-100" />
-                        </div>
-                        <CardTitle className="text-xl">Real-World Success Stories</CardTitle>
-                      </div>
-                      <p className="text-blue-200 text-base mb-3">2024 Savings Report: Major fuel savings achieved across global routes</p>
-                      <div className="flex items-center gap-2 text-blue-200 text-sm font-medium">
-                        <span>Download 2024 savings report</span>
-                        <ChevronRightIcon className="h-4 w-4" />
-                      </div>
-                    </div>
-                  </a>
-                </Card>
                 <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 border border-sky-100"> {/* Removed shadow-lg */}
                   <h3 className="text-lg font-semibold text-slate-900 mb-4">
                     Assumptions Made in This Calculator
@@ -111,6 +92,25 @@ export default function Calculator() {
                     </div>
                   </div>
                 </div>
+
+                <Card className="bg-gradient-to-br from-blue-900 to-blue-800 hover:from-blue-800 hover:to-blue-700 text-white shadow-xl transform hover:scale-102 hover:shadow-2xl transition-all duration-300 border border-blue-700/50 cursor-pointer group overflow-hidden">
+                  <a href="https://www.sofarocean.com/posts/wayfinder-voyage-optimization-savings-report-2024" target="_blank" rel="noopener noreferrer" className="block relative h-full">
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer"></div>
+                    <div className="flex flex-col justify-center min-h-[180px] p-6">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="p-2 rounded-lg bg-blue-700/50 group-hover:bg-blue-600/50 transition-colors duration-200">
+                          <TargetIcon className="h-5 w-5 text-blue-100" />
+                        </div>
+                        <CardTitle className="text-xl">Real-World Success Stories</CardTitle>
+                      </div>
+                      <p className="text-blue-200 text-base mb-3">2024 Savings Report: Major fuel savings achieved across global routes</p>
+                      <div className="flex items-center gap-2 text-blue-200 text-sm font-medium">
+                        <span>Download 2024 savings report</span>
+                        <ChevronRightIcon className="h-4 w-4" />
+                      </div>
+                    </div>
+                  </a>
+                </Card>
               </div>
             </div>
           </CardContent>
