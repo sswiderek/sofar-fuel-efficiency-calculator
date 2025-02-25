@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
@@ -5,39 +6,23 @@ import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "./ui/t
 import type { CalculationResult } from "@shared/schema";
 import { TrendingDown, DollarSign, Leaf, Settings } from "lucide-react";
 
-const useTouchDevice = () => {
-  return (
-    typeof window !== "undefined" &&
-    ("ontouchstart" in window || navigator.maxTouchPoints > 0)
-  );
-};
-
-interface Props {
-  results: CalculationResult[];
+function formatNumber(num: number): string {
+  return new Intl.NumberFormat().format(Math.round(num));
 }
 
-export default function ResultsDisplay({ results }: Props) {
-  const formatCurrency = (value: number) =>
-    new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      maximumFractionDigits: 0,
-    }).format(value);
+function formatCurrency(num: number): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+  }).format(num);
+}
 
-  const formatNumber = (value: number) =>
-    new Intl.NumberFormat("en-US", {
-      maximumFractionDigits: 0,
-    }).format(Math.round(value));
+interface ResultsDisplayProps {
+  data: CalculationResult;
+}
 
-  // Using the average scenario (index 1)
-  const data = {
-    currentCost: results[1].totalFuelCost,
-    optimizedCost: results[1].fuelCostWithWayfinder,
-    savings: results[1].estimatedSavings,
-    co2Reduction: results[1].co2Reduction,
-    improvement: ((results[1].estimatedSavings / results[1].totalFuelCost) * 100).toFixed(0)
-  };
-
+export function ResultsDisplay({ data }: ResultsDisplayProps) {
   return (
     <TooltipProvider>
       <div className="space-y-6">
@@ -53,7 +38,7 @@ export default function ResultsDisplay({ results }: Props) {
                       <InfoCircledIcon className="h-4 w-4 text-slate-400" />
                     </TooltipTrigger>
                     <TooltipContent className="w-64">
-                      <p className="text-xs">Based on your current fuel consumption and days at sea</p>
+                      <p className="text-xs">Total annual fuel costs based on your current consumption patterns and operational profile</p>
                     </TooltipContent>
                   </Tooltip>
                 </div>
@@ -75,46 +60,40 @@ export default function ResultsDisplay({ results }: Props) {
                       <InfoCircledIcon className="h-4 w-4 text-emerald-500" />
                     </TooltipTrigger>
                     <TooltipContent className="w-64">
-                      <p className="text-xs">Projected annual costs with Wayfinder optimization</p>
+                      <p className="text-xs">Projected annual fuel costs after implementing route optimization and operational improvements</p>
                     </TooltipContent>
                   </Tooltip>
                 </div>
                 <p className="text-2xl font-bold text-slate-900">
                   {formatCurrency(data.optimizedCost)}
                 </p>
-                <p className="text-sm font-medium text-emerald-700">
-                  {data.improvement}% reduction in fuel costs
-                </p>
+                <div className="flex items-center gap-2 text-emerald-700 text-sm">
+                  <TrendingDown className="h-4 w-4" />
+                  <span>{data.savingsPercentage}% reduction in fuel costs</span>
+                </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="border shadow-sm bg-orange-50">
+          <Card className="border shadow-sm bg-amber-50">
             <CardContent className="p-4">
               <div className="space-y-2">
-                <div className="flex items-center gap-2 text-orange-700">
-                  <TrendingDown className="h-4 w-4" />
+                <div className="flex items-center gap-2 text-amber-700">
+                  <DollarSign className="h-4 w-4" />
                   <h3 className="text-sm font-medium">Estimated Savings</h3>
                   <Tooltip>
                     <TooltipTrigger>
-                      <InfoCircledIcon className="h-4 w-4 text-orange-500" />
+                      <InfoCircledIcon className="h-4 w-4 text-amber-500" />
                     </TooltipTrigger>
                     <TooltipContent className="w-64">
-                      <div className="space-y-2">
-                        <p className="text-xs font-medium">Here's how we calculate your savings:</p>
-                        <ol className="text-xs space-y-1 list-decimal pl-4">
-                          <li>Calculate annual days at sea</li>
-                          <li>Factor in fleet size and daily fuel usage</li>
-                          <li>Apply optimization algorithms based on historical data</li>
-                        </ol>
-                      </div>
+                      <p className="text-xs">Projected annual savings from implementing route optimization and operational improvements</p>
                     </TooltipContent>
                   </Tooltip>
                 </div>
                 <p className="text-2xl font-bold text-slate-900">
-                  {formatCurrency(data.savings)}
+                  {formatCurrency(data.estimatedSavings)}
                 </p>
-                <p className="text-sm text-orange-700">Annual savings</p>
+                <p className="text-sm text-amber-700">Annual savings</p>
               </div>
             </CardContent>
           </Card>
@@ -130,16 +109,24 @@ export default function ResultsDisplay({ results }: Props) {
                       <InfoCircledIcon className="h-4 w-4 text-sky-500" />
                     </TooltipTrigger>
                     <TooltipContent className="w-64">
-                      <p className="text-xs">Annual reduction in CO₂ emissions through optimized routing</p>
+                      <p className="text-xs">Annual reduction in CO₂ emissions through optimized routing and improved operational efficiency</p>
                     </TooltipContent>
                   </Tooltip>
                 </div>
                 <p className="text-2xl font-bold text-slate-900">
                   {formatNumber(data.co2Reduction)} MT
                 </p>
-                <p className="text-sm text-sky-700">
-                  ≈ {formatNumber(data.co2Reduction * 0.217)} cars off the road
-                </p>
+                <div className="flex items-center gap-1 text-sky-700 text-sm">
+                  <span>≈ {formatNumber(data.co2Reduction * 0.217)} cars off the road</span>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <InfoCircledIcon className="h-4 w-4 text-sky-500" />
+                    </TooltipTrigger>
+                    <TooltipContent className="w-64">
+                      <p className="text-xs">Based on average annual emissions of a passenger vehicle (4.6 metric tons CO₂)</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
               </div>
             </CardContent>
           </Card>
