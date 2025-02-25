@@ -100,7 +100,23 @@
 @tailwind utilities;
 
 .result-tile {
-  @apply bg-white/90 backdrop-blur-sm shadow-sm border border-blue-100/50;
+  @apply bg-white/95 backdrop-blur-sm shadow-md border border-slate-200/50 rounded-lg transition-all duration-200 hover:shadow-lg hover:border-slate-300/50;
+}
+
+.metric-icon {
+  @apply h-5 w-5 opacity-70;
+}
+
+.metric-value {
+  @apply text-2xl font-bold text-slate-900 mt-2;
+}
+
+.metric-label {
+  @apply text-xs text-slate-500 mt-1;
+}
+
+.metric-header {
+  @apply flex items-center gap-2 text-sm font-medium text-slate-700;
 }
 
 .savings-tile {
