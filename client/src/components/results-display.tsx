@@ -9,10 +9,12 @@ interface ResultsDisplayProps {
     fuelCostWithWayfinder: number;
     co2Reduction: number;
     totalFuelConsumption: number;
-  };
+  } | null;
 }
 
 export default function ResultsDisplay({ results }: ResultsDisplayProps) {
+  if (!results) return null;
+  
   return (
     <div className="grid gap-4">
       <Card className="p-4">
@@ -21,6 +23,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           <p>Optimized Cost: ${results.fuelCostWithWayfinder.toLocaleString()}</p>
           <p>Estimated Savings: ${results.estimatedSavings.toLocaleString()}</p>
           <p>CO2 Reduction: {results.co2Reduction.toLocaleString()} MT</p>
+          <p>Annual Fuel Consumed: {results.totalFuelConsumption.toLocaleString()} MT</p>
         </div>
       </Card>
     </div>
