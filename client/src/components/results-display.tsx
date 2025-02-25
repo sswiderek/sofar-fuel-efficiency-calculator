@@ -1,8 +1,8 @@
 import { Card } from "@/components/ui/card";
 import { CalculationResult } from "@shared/schema";
 import { DollarSign, Fuel, LeafIcon, TrendingDown } from "lucide-react";
-import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"; // Assuming these components exist
-import { InfoIcon } from "@/components/ui/icons"; // Assuming this component exists
+import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"; 
+import { InfoIcon } from "@/components/icons";
 
 
 interface ResultsDisplayProps {
