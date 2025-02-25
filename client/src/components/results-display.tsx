@@ -428,7 +428,7 @@ export default function ResultsDisplay({ results }: Props) {
             </TabsContent>
           ))}
         </Tabs>
-        <div className="mb-6">
+        <div className="mt-12">
           <Card className="col-span-12 lg:col-span-12">
             <CardContent className="pt-6">
               <h2 className="text-xl font-semibold mb-4">Assumptions Made in This Calculator</h2>
