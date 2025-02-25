@@ -31,11 +31,12 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                 </TooltipTrigger>
                 <TooltipContent className="w-[280px] p-3">
                   <div className="space-y-2">
-                    <h4 className="font-medium">Calculation Breakdown</h4>
-                    <div className="text-sm text-slate-600 space-y-1">
-                      <p>• Annual fuel consumption: {result.totalFuelConsumption.toLocaleString()} MT</p>
-                      <p>• Current VLSFO price: ${result.totalFuelCost/result.totalFuelConsumption}/MT</p>
-                      <p>• Optimization level: 5%</p>
+                    <h4 className="font-medium">How We Calculate Your Savings</h4>
+                    <div className="text-sm text-slate-600 space-y-2">
+                      <p>1. Your annual fuel use: {result.totalFuelConsumption.toLocaleString()} MT</p>
+                      <p>2. Cost per ton: ${result.totalFuelCost/result.totalFuelConsumption}/MT</p>
+                      <p>3. Total fuel cost: ${result.totalFuelCost.toLocaleString()}</p>
+                      <p>4. Apply 5% optimization = ${(result.totalFuelCost * 0.05).toLocaleString()} saved per year</p>
                     </div>
                   </div>
                 </TooltipContent>
