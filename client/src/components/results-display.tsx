@@ -61,9 +61,11 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                     <h4 className="font-medium">How Costs Are Calculated</h4>
                     <div className="text-sm text-slate-600 space-y-2">
                       <p>1. Current Cost Calculation:</p>
-                      <p className="pl-2 text-xs">• Annual fuel use (MT) × Fuel price ($/MT)</p>
-                      <p className="pl-2 text-xs">• {result.totalFuelConsumption.toLocaleString()} MT × ${result.totalFuelCost/result.totalFuelConsumption}/MT</p>
-                      <p className="pl-2 text-xs">• = ${result.totalFuelCost.toLocaleString()}</p>
+                      <p className="pl-2 text-xs">• Daily fuel use × Sea days per year = Annual fuel use</p>
+                      <p className="pl-2 text-xs">• {(result.totalFuelConsumption/280).toFixed(1)} MT/day × 280 days = {result.totalFuelConsumption.toLocaleString()} MT/year</p>
+                      <p className="pl-2 text-xs">• Annual fuel use × Fuel price = Total cost</p>
+                      <p className="pl-2 text-xs">• {result.totalFuelConsumption.toLocaleString()} MT × ${(result.totalFuelCost/result.totalFuelConsumption).toFixed(2)}/MT</p>
+                      <p className="pl-2 text-xs">• = ${result.totalFuelCost.toLocaleString()}/year</p>
                       <p>2. Optimized Cost Calculation:</p>
                       <p className="pl-2 text-xs">• Current cost reduced by 5%</p>
                       <p className="pl-2 text-xs">• ${result.totalFuelCost.toLocaleString()} × 0.95</p>
