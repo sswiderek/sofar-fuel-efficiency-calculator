@@ -52,9 +52,17 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               <div className="metric-value text-emerald-600">{result.co2Reduction.toLocaleString()}</div>
               <div className="metric-label">MT CO₂ Reduction</div>
             </div>
-            <div className="mt-3">
-              <div className="text-lg font-semibold">{result.totalFuelConsumption.toLocaleString()}</div>
-              <div className="text-xs text-slate-500">MT Annual Fuel Usage</div>
+            <div className="mt-3 space-y-2">
+              <div>
+                <div className="text-sm text-slate-600">Current Usage:</div>
+                <div className="text-lg font-semibold">{result.totalFuelConsumption.toLocaleString()} MT/year</div>
+              </div>
+              <div>
+                <div className="text-sm text-slate-600">With Wayfinder:</div>
+                <div className="text-lg font-semibold text-emerald-600">
+                  {Math.round(result.totalFuelConsumption * (1 - result.estimatedSavings/100)).toLocaleString()} MT/year
+                </div>
+              </div>
             </div>
           </div>
         </Card>
