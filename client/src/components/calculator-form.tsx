@@ -128,27 +128,12 @@ export default function CalculatorForm() {
         return;
       }
 
-      const scenarios = [
-        { savings: 3, label: "Conservative Savings" },
-        { savings: 5, label: "Average Savings" },
-        { savings: 7, label: "Optimal Savings" },
-      ];
-
       try {
-        const responses = await Promise.all(
-          scenarios.map(async (scenario) => {
-            const data = { ...formData, estimatedSavings: scenario.savings };
-            const res = await apiRequest("POST", "/api/calculate", data);
-            if (!res.ok) throw new Error("API request failed");
-            const json = await res.json();
-            return { ...json, label: scenario.label };
-          })
-        );
-        if (Array.isArray(responses)) {
-          setResults(responses);
-        } else {
-          console.error("Responses is not an array:", responses);
-        }
+        const data = { ...formData, estimatedSavings: 5 };
+        const res = await apiRequest("POST", "/api/calculate", data);
+        if (!res.ok) throw new Error("API request failed");
+        const json = await res.json();
+        setResults([{ ...json, label: "Estimated Savings" }]);
       } catch (error) {
         console.error("API error:", error);
       }

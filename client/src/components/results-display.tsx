@@ -32,13 +32,13 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                 <TooltipContent className="w-[280px] p-3">
                   <div className="space-y-2">
                     <h4 className="font-medium">How we calculate this:</h4>
-                    <p className="text-sm text-slate-600">Based on your fleet's annual fuel consumption of {result.totalFuelConsumption.toLocaleString()} metric tons and current VLSFO price of ${result.fuelPrice}/ton, applying a {result.savingsPercent}% optimization level.</p>
+                    <p className="text-sm text-slate-600">Based on your fleet's annual fuel consumption of {result.totalFuelConsumption.toLocaleString()} metric tons and current VLSFO price of ${result.fuelPrice}/ton, applying a 5% optimization level.</p>
                   </div>
                 </TooltipContent>
               </Tooltip>
             </div>
           </div>
-          <div className="metric-value">${result.estimatedSavings.toLocaleString()}</div>
+          <div className="metric-value">${(result.totalFuelCost * 0.05).toLocaleString()}</div>
           <div className="metric-label">Projected cost reduction</div>
         </Card>
 
@@ -54,7 +54,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             </div>
             <div className="text-sm">
               <div className="text-slate-600">Optimized:</div>
-              <div className="text-lg font-semibold">${result.fuelCostWithWayfinder.toLocaleString()}</div>
+              <div className="text-lg font-semibold">${(result.totalFuelCost * 0.95).toLocaleString()}</div>
             </div>
           </div>
         </Card>
@@ -66,7 +66,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           </div>
           <div className="space-y-2 mt-2">
             <div>
-              <div className="metric-value text-emerald-600">{result.co2Reduction.toLocaleString()}</div>
+              <div className="metric-value text-emerald-600">{(result.totalFuelConsumption * 0.05).toLocaleString()}</div>
               <div className="metric-label">MT CO₂ Reduction</div>
             </div>
             <div className="mt-3 space-y-2">
@@ -77,7 +77,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               <div>
                 <div className="text-sm text-slate-600">With Wayfinder:</div>
                 <div className="text-lg font-semibold text-emerald-600">
-                  {Math.round(result.totalFuelConsumption * (1 - result.estimatedSavings/100)).toLocaleString()} MT/year
+                  {Math.round(result.totalFuelConsumption * 0.95).toLocaleString()} MT/year
                 </div>
               </div>
             </div>
