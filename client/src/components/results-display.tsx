@@ -6,8 +6,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
-import { useTouchDevice } from "@/lib/hooks";
-//import { SmartTooltip } from "./smart-tooltip"; // Removed because not used in the simplified version
+import { useTouchDevice } from "@/lib/hooks/useTouchDevice"; //Corrected import path
+
 
 interface Props {
   results: CalculationResult[];
