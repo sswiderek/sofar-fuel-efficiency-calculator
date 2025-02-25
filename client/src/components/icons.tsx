@@ -1,6 +1,9 @@
 
+import { Info } from "lucide-react"
 import type { LucideProps } from "lucide-react"
 
+export const InfoIcon = Info
+
 export const Icons = {
-  // Add any specific icons you need here
+  info: Info,
 } as const
