@@ -466,7 +466,7 @@ export default function CalculatorForm() {
               transition={{ duration: 0.5 }}
               className="mt-2 md:mt-8"
             >
-              <ResultsDisplay result={results[1]} />
+              <ResultsDisplay results={results} />
             </motion.div>
           ) : (
             <div className="h-full flex flex-col items-center justify-center gap-2 text-muted-foreground -mt-8">

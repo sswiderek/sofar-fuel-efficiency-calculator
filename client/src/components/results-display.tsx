@@ -10,10 +10,10 @@ import { useTouchDevice } from "@/lib/hooks/useTouchDevice"; //Corrected import 
 
 
 interface Props {
-  result: CalculationResult;
+  results: CalculationResult[];
 }
 
-export default function ResultsDisplay({ result }: Props) {
+export default function ResultsDisplay({ results }: Props) {
   const formatCurrency = (value: number) =>
     new Intl.NumberFormat("en-US", {
       style: "currency",
@@ -26,15 +26,16 @@ export default function ResultsDisplay({ result }: Props) {
       maximumFractionDigits: 0,
     }).format(Math.round(value));
 
-  const savings = result.estimatedSavings;
-  const totalCost = result.totalFuelCost;
-  const optimizedCost = result.fuelCostWithWayfinder;
+  const bestResult = results[1];
+  const savings = bestResult.estimatedSavings;
+  const totalCost = bestResult.totalFuelCost;
+  const optimizedCost = bestResult.fuelCostWithWayfinder;
   const savingsPercent = (savings / totalCost) * 100;
   const data = {
     currentCost: totalCost,
     optimizedCost: optimizedCost,
     savings: savings,
-    co2Reduction: result.co2Reduction,
+    co2Reduction: bestResult.co2Reduction,
     improvement: savingsPercent.toFixed(0),
   };
 
