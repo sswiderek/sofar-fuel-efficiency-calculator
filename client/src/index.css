@@ -104,7 +104,7 @@
 }
 
 .savings-tile {
-  @apply bg-[#0070A8] text-white;
+  @apply bg-gradient-to-br from-[#0070A8] to-[#005A8C] text-white shadow-lg border border-[#0070A8]/30 hover:from-[#0080BF] hover:to-[#006699] transition-colors;
 }
 
 .co2-tile {

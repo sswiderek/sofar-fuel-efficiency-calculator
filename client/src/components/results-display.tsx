@@ -160,7 +160,7 @@ export default function ResultsDisplay({ results }: Props) {
             </CardContent>
           </Card>
 
-          <Card className="border shadow-sm bg-sky-100"> {/* Light Blue/White Background */}
+          <Card className="savings-tile"> {/* Light Blue/White Background */}
             <CardContent className="p-2.5">
               <div className="space-y-1">
                 <div className="flex items-center gap-1">
