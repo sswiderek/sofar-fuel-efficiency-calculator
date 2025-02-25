@@ -42,7 +42,7 @@ export default function ResultsDisplay({ data }: ResultsDisplayProps) {
                   </Tooltip>
                 </div>
                 <p className="text-2xl font-bold text-slate-900">
-                  {formatCurrency(data.currentCost)}
+                  {formatCurrency(data.totalFuelCost)}
                 </p>
               </div>
             </CardContent>
