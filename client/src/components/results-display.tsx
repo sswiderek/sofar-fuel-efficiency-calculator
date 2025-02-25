@@ -6,6 +6,7 @@ import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "./ui/t
 import type { CalculationResult } from "@shared/schema";
 import { TrendingDown, DollarSign, Leaf, Settings } from "lucide-react";
 import { Popover, PopoverTrigger, PopoverContent } from "@radix-ui/react-popover";
+import { ChartBarIcon, FuelIcon, TrendingUpIcon, GasIcon } from "@heroicons/react/24/solid"; // Assuming these icons are needed
 
 const useTouchDevice = () => {
   return (
@@ -428,6 +429,41 @@ export default function ResultsDisplay({ results }: Props) {
             </TabsContent>
           ))}
         </Tabs>
+        <Card className="col-span-12 lg:col-span-12 mt-8"> {/* Added assumptions card */}
+          <CardContent className="pt-6">
+            <h2 className="text-xl font-semibold mb-4">Assumptions Made in This Calculator</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="flex items-start space-x-4">
+                <ChartBarIcon className="h-6 w-6 text-blue-500" />
+                <div>
+                  <h3 className="font-medium">Voyage Time and Port Operations</h3>
+                  <p className="text-sm text-gray-500">The calculator accounts for both sea time and necessary port operations between voyages, reflecting real-world shipping operations.</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <FuelIcon className="h-6 w-6 text-blue-500" />
+                <div>
+                  <h3 className="font-medium">VLSFO Fuel Type</h3>
+                  <p className="text-sm text-gray-500">Calculations use Very Low Sulfur Fuel Oil (VLSFO) prices, which is the primary marine fuel used to comply with IMO 2020 sulfur regulations.</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <TrendingUpIcon className="h-6 w-6 text-blue-500" />
+                <div>
+                  <h3 className="font-medium">Estimated Savings Range</h3>
+                  <p className="text-sm text-gray-500">The fuel savings percentage is estimated between 3% to 7%, based on typical results from Sofar Ocean's Wayfinder platform.</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <GasIcon className="h-6 w-6 text-blue-500" />
+                <div>
+                  <h3 className="font-medium">CO₂ Emissions Reduction</h3>
+                  <p className="text-sm text-gray-500">Each metric ton of fuel burned produces 3.15 metric tons of CO₂ based on standard shipping benchmarks.</p>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </TooltipProvider>
   );
