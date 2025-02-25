@@ -1,3 +1,4 @@
+import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "./ui/tooltip";
@@ -12,10 +13,15 @@ const useTouchDevice = () => {
   );
 };
 
-const SmartTooltip = ({ content, children }: { content: React.ReactNode; children: React.ReactNode }) => {
+interface SmartTooltipProps {
+  content: React.ReactNode;
+  children: React.ReactNode;
+}
+
+const SmartTooltip: React.FC<SmartTooltipProps> = ({ content, children }) => {
   const isTouch = useTouchDevice();
   const [isOpen, setIsOpen] = React.useState(false);
-  const triggerRef = React.useRef(null);
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
 
   const handleInteraction = React.useCallback((e: React.MouseEvent | React.TouchEvent) => {
     e.preventDefault();
@@ -55,9 +61,11 @@ const SmartTooltip = ({ content, children }: { content: React.ReactNode; childre
     </Popover>
   ) : (
     <TooltipProvider>
-      <Tooltip open={isOpen} onOpenChange={setIsOpen} delayDuration={300}>
+      <Tooltip>
         <TooltipTrigger asChild>
-          <div className="inline-block">{children}</div>
+          <button type="button" className="inline-block bg-transparent border-0">
+            {children}
+          </button>
         </TooltipTrigger>
         {content}
       </Tooltip>
