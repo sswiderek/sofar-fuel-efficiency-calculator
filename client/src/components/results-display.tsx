@@ -60,11 +60,14 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                   <div className="space-y-2">
                     <h4 className="font-medium">How Costs Are Calculated</h4>
                     <div className="text-sm text-slate-600 space-y-2">
-                      <p>1. Current Cost</p>
-                      <p className="pl-2 text-xs">• Annual fuel use × Current fuel price</p>
-                      <p>2. Optimized Cost</p>
-                      <p className="pl-2 text-xs">• Current cost × (1 - 5% optimization)</p>
-                      <p className="text-xs mt-2 pt-2 border-t">Example: ${result.totalFuelCost.toLocaleString()} × 0.95 = ${(result.totalFuelCost * 0.95).toLocaleString()}</p>
+                      <p>1. Current Cost Calculation:</p>
+                      <p className="pl-2 text-xs">• Annual fuel use (MT) × Fuel price ($/MT)</p>
+                      <p className="pl-2 text-xs">• {result.totalFuelConsumption.toLocaleString()} MT × ${result.totalFuelCost/result.totalFuelConsumption}/MT</p>
+                      <p className="pl-2 text-xs">• = ${result.totalFuelCost.toLocaleString()}</p>
+                      <p>2. Optimized Cost Calculation:</p>
+                      <p className="pl-2 text-xs">• Current cost reduced by 5%</p>
+                      <p className="pl-2 text-xs">• ${result.totalFuelCost.toLocaleString()} × 0.95</p>
+                      <p className="pl-2 text-xs">• = ${(result.totalFuelCost * 0.95).toLocaleString()}</p>
                     </div>
                   </div>
                 </TooltipContent>
