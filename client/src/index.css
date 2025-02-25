@@ -99,6 +99,22 @@
 @tailwind components;
 @tailwind utilities;
 
+.result-tile {
+  @apply bg-white/90 backdrop-blur-sm shadow-sm border border-blue-100/50;
+}
+
+.savings-tile {
+  @apply bg-[#0070A8] text-white;
+}
+
+.co2-tile {
+  @apply bg-white text-emerald-700;
+}
+
+.optimized-tile {
+  @apply bg-white text-slate-800;
+}
+
 @keyframes shimmer {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }

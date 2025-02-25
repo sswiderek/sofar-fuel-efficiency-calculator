@@ -142,17 +142,17 @@ export default function ResultsDisplay({ results }: Props) {
         </Card>
 
         <div className="grid grid-cols-2 gap-3">
-          <Card className="border shadow-sm bg-orange-50">
+          <Card className="border shadow-sm bg-sky-50"> {/* Light Blue/White Background */}
             <CardContent className="p-2.5">
               <div className="space-y-1">
-                <div className="flex items-center gap-1 text-amber-700">
+                <div className="flex items-center gap-1 text-sky-700">
                   <Settings className="h-3.5 w-3.5" />
                   <h3 className="text-sm font-medium">Optimized Cost</h3>
                 </div>
                 <p className="text-lg font-bold text-slate-900">
                   {formatCurrency(optimizedCost)}
                 </p>
-                <p className="text-[11px] font-medium text-amber-700">
+                <p className="text-[11px] font-medium text-sky-700">
                   <TrendingDown className="h-2.5 w-2.5 inline mr-1" />
                   {savingsPercent.toFixed(0)}% reduction in fuel costs
                 </p>
@@ -160,7 +160,7 @@ export default function ResultsDisplay({ results }: Props) {
             </CardContent>
           </Card>
 
-          <Card className="border shadow-sm text-white bg-orange-700">
+          <Card className="border shadow-sm bg-sky-100"> {/* Light Blue/White Background */}
             <CardContent className="p-2.5">
               <div className="space-y-1">
                 <div className="flex items-center gap-1">
@@ -190,7 +190,7 @@ export default function ResultsDisplay({ results }: Props) {
           </Card>
         </div>
 
-        <Card className="mt-3 md:mt-4 border shadow-sm bg-orange-50/50">
+        <Card className="mt-3 md:mt-4 border shadow-sm bg-emerald-50"> {/* Light Green/White Background */}
           <CardContent className="p-2.5">
             <div className="space-y-1">
               <div className="flex items-center gap-1 text-emerald-700">
