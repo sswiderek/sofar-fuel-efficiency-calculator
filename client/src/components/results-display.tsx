@@ -31,8 +31,12 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                 </TooltipTrigger>
                 <TooltipContent className="w-[280px] p-3">
                   <div className="space-y-2">
-                    <h4 className="font-medium">How we calculate this:</h4>
-                    <p className="text-sm text-slate-600">Based on your fleet's annual fuel consumption of {result.totalFuelConsumption.toLocaleString()} metric tons and current VLSFO price of ${result.fuelPrice}/ton, applying a 5% optimization level.</p>
+                    <h4 className="font-medium">Calculation Breakdown</h4>
+                    <div className="text-sm text-slate-600 space-y-1">
+                      <p>• Annual fuel consumption: {result.totalFuelConsumption.toLocaleString()} MT</p>
+                      <p>• Current VLSFO price: ${result.totalFuelCost/result.totalFuelConsumption}/MT</p>
+                      <p>• Optimization level: 5%</p>
+                    </div>
                   </div>
                 </TooltipContent>
               </Tooltip>
