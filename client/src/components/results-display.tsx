@@ -10,10 +10,10 @@ import { useTouchDevice } from "@/lib/hooks/useTouchDevice"; //Corrected import 
 
 
 interface Props {
-  results: CalculationResult[];
+  result: CalculationResult;
 }
 
-export default function ResultsDisplay({ results }: Props) {
+export default function ResultsDisplay({ result }: Props) {
   const formatCurrency = (value: number) =>
     new Intl.NumberFormat("en-US", {
       style: "currency",
@@ -26,7 +26,6 @@ export default function ResultsDisplay({ results }: Props) {
       maximumFractionDigits: 0,
     }).format(Math.round(value));
 
-  const result = results[1]; // Use the middle (average) scenario
   const savings = result.estimatedSavings;
   const totalCost = result.totalFuelCost;
   const optimizedCost = result.fuelCostWithWayfinder;
