@@ -1,7 +1,9 @@
-
 import { Card } from "@/components/ui/card";
 import { CalculationResult } from "@shared/schema";
 import { DollarSign, Fuel, LeafIcon, TrendingDown } from "lucide-react";
+import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"; // Assuming these components exist
+import { InfoIcon } from "@/components/ui/icons"; // Assuming this component exists
+
 
 interface ResultsDisplayProps {
   results: CalculationResult[] | null;
@@ -9,9 +11,9 @@ interface ResultsDisplayProps {
 
 export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   if (!results || results.length === 0) return null;
-  
+
   const result = results[0];
-  
+
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-bold text-slate-800 mb-6">Analysis Results</h2>
@@ -19,7 +21,22 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
         <Card className="savings-tile p-5">
           <div className="metric-header">
             <DollarSign className="metric-icon" />
-            <span>Annual Savings</span>
+            <div className="flex items-center gap-2">
+              <span>Annual Savings</span>
+              <Tooltip>
+                <TooltipTrigger>
+                  <InfoIcon className="w-4 h-4 text-slate-600" />
+                </TooltipTrigger>
+                <TooltipContent className="w-[280px] p-3">
+                  <h4 className="font-medium mb-2">Here's how we calculate your savings:</h4>
+                  <ol className="text-sm space-y-2 list-decimal list-outside ml-4">
+                    <li>We first calculate how many days your ships spend at sea annually, accounting for port time</li>
+                    <li>Then multiply by your fleet size, daily fuel usage, and fuel price</li>
+                    <li>Finally, apply the optimization level ({result.savingsPercent}%) to find potential savings</li>
+                  </ol>
+                </TooltipContent>
+              </Tooltip>
+            </div>
           </div>
           <div className="metric-value">${result.estimatedSavings.toLocaleString()}</div>
           <div className="metric-label">Projected cost reduction</div>
