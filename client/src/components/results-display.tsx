@@ -7,7 +7,7 @@ import type { CalculationResult } from "@shared/schema";
 import { TrendingDown, DollarSign, Leaf, Settings } from "lucide-react";
 import { Popover, PopoverTrigger, PopoverContent } from "@radix-ui/react-popover";
 import React from 'react';
-import { ChartBarIcon, FireIcon, TrendingUpIcon } from '@heroicons/react/24/solid';
+import { BarChart as BarChartIcon } from 'lucide-react';
 
 
 const useTouchDevice = () => {
