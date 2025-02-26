@@ -89,8 +89,34 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                     <div key={idx} className="bg-white rounded-lg p-3 border border-slate-200 mb-3 last:mb-0">
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <div className="font-medium text-slate-800">
-                            {vessel.count} × {vessel.type.split('-').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                          <div className="font-medium text-slate-800 flex items-center gap-2">
+                            {vessel.type.includes('container-ship-small') ? (
+                              <img src="/images/container_ship.png" alt="Container Ship (Feeder <3000 TEU)" className="h-6 w-6 object-contain" />
+                            ) : vessel.type.includes('container-ship-medium') ? (
+                              <img src="/images/container_ship.png" alt="Container Ship (Panamax 3000-5000 TEU)" className="h-8 w-8 object-contain" />
+                            ) : vessel.type.includes('container-ship-large') ? (
+                              <img src="/images/container_ship.png" alt="Container Ship (Post-Panamax >5000 TEU)" className="h-10 w-10 object-contain" />
+                            ) : vessel.type.includes('bulk-carrier-small') ? (
+                              <img src="/images/bulk_carrier.png" alt="Bulk Carrier (Handysize)" className="h-7 w-7 object-contain" />
+                            ) : vessel.type.includes('bulk-carrier-large') ? (
+                              <img src="/images/bulk_carrier.png" alt="Bulk Carrier (Panamax)" className="h-10 w-10 object-contain" />
+                            ) : vessel.type.includes('tanker-small') ? (
+                              <img src="/images/oil_tanker.png" alt="Oil Tanker (Medium Range)" className="h-7 w-7 object-contain" />
+                            ) : vessel.type.includes('tanker-large') ? (
+                              <img src="/images/oil_tanker.png" alt="Oil Tanker (VLCC)" className="h-10 w-10 object-contain" />
+                            ) : (
+                              <Ship className="h-4 w-4" />
+                            )}
+                            {vessel.count} × {
+                              vessel.type === 'container-ship-small' ? 'Container Ship (Feeder <3000 TEU)' :
+                              vessel.type === 'container-ship-medium' ? 'Container Ship (Panamax 3000-5000 TEU)' :
+                              vessel.type === 'container-ship-large' ? 'Container Ship (Post-Panamax >5000 TEU)' :
+                              vessel.type === 'bulk-carrier-small' ? 'Bulk Carrier (Handysize)' :
+                              vessel.type === 'bulk-carrier-large' ? 'Bulk Carrier (Panamax)' :
+                              vessel.type === 'tanker-small' ? 'Oil Tanker (Medium Range)' :
+                              vessel.type === 'tanker-large' ? 'Oil Tanker (VLCC)' :
+                              'Custom Vessel Type'
+                            }
                           </div>
                         </div>
                         <div className="grid grid-cols-2 gap-2 text-sm">
