@@ -26,34 +26,38 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
         </Card>
 
         <Card className="bg-white p-3.5">
-          <div className="flex items-center gap-2 text-slate-700">
-            <TrendingDown className="h-4 w-4" />
-            <span className="text-sm font-medium">Costs Breakdown</span>
-            <Tooltip>
-              <TooltipTrigger>
-                <Info className="h-4 w-4 text-slate-400" />
-              </TooltipTrigger>
-              <TooltipContent>
-                <div className="max-w-[250px] space-y-2">
-                  <h4 className="font-medium">Cost Calculation</h4>
-                  <div className="text-sm text-slate-600">
-                    <p>Based on:</p>
-                    <p className="pl-2 text-xs">• Annual fuel usage</p>
-                    <p className="pl-2 text-xs">• Current market prices</p>
-                    <p className="pl-2 text-xs">• 5% optimization savings</p>
-                  </div>
+          <div className="flex justify-between items-start">
+            <div className="space-y-4 flex-grow">
+              <div className="flex items-center gap-2">
+                <TrendingDown className="h-4 w-4" />
+                <span className="text-sm font-medium">Costs Breakdown</span>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <Info className="h-4 w-4 text-slate-400" />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <div className="max-w-[250px] space-y-2">
+                      <h4 className="font-medium">Cost Calculation</h4>
+                      <div className="text-sm text-slate-600">
+                        <p>Based on:</p>
+                        <p className="pl-2 text-xs">• Annual fuel usage</p>
+                        <p className="pl-2 text-xs">• Current market prices</p>
+                        <p className="pl-2 text-xs">• 5% optimization savings</p>
+                      </div>
+                    </div>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+              <div className="mt-4 space-y-3">
+                <div>
+                  <div className="text-sm text-slate-600">Current:</div>
+                  <div className="text-xl font-semibold">${result.totalFuelCost.toLocaleString()}</div>
                 </div>
-              </TooltipContent>
-            </Tooltip>
-          </div>
-          <div className="mt-4 space-y-3">
-            <div>
-              <div className="text-sm text-slate-600">Current:</div>
-              <div className="text-xl font-semibold">${result.totalFuelCost.toLocaleString()}</div>
-            </div>
-            <div>
-              <div className="text-sm text-slate-600">Optimized:</div>
-              <div className="text-xl font-semibold">${(result.totalFuelCost * 0.95).toLocaleString()}</div>
+                <div>
+                  <div className="text-sm text-slate-600">Optimized:</div>
+                  <div className="text-xl font-semibold">${(result.totalFuelCost * 0.95).toLocaleString()}</div>
+                </div>
+              </div>
             </div>
           </div>
         </Card>
