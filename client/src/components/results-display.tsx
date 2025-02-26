@@ -26,9 +26,52 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               <div className="text-4xl font-bold mt-3 tracking-tight">${(result.totalFuelCost * 0.05).toLocaleString()}</div>
               <div className="text-sm text-white/90 mt-1">Projected cost reduction</div>
             </div>
-            <div className="text-white/80 text-xs max-w-[180px] flex items-center h-full">
-              Using a conservative 5% of Wayfinder's proven 4-10% fuel savings, your fleet consuming {result.totalFuelConsumption.toLocaleString()} MT of fuel annually could save:
+            <div className="text-white/80 text-sm max-w-[240px] flex items-center h-full leading-snug">
+              Based on your fleet's annual fuel consumption of {result.totalFuelConsumption.toLocaleString()} MT, we project significant savings using Wayfinder's proven optimization technology. This conservative 5% estimate falls within our documented 4-10% efficiency improvements.
             </div>
+          </div>
+        </Card>
+
+        <Card className="bg-white p-6">
+          <div className="flex items-center gap-2.5 text-slate-600">
+            <Info className="h-5 w-5" />
+            <span className="text-base font-medium">Cost Breakdown</span>
+          </div>
+          <div className="mt-4 space-y-3">
+            <div>
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-slate-600">Current Annual Fuel Cost:</span>
+                <span className="text-xl font-semibold">${result.totalFuelCost.toLocaleString()}</span>
+              </div>
+              <p className="text-sm text-slate-500">
+                Calculated using current VLSFO price of ${result.fuelPrice}/MT × {result.totalFuelConsumption.toLocaleString()} MT annual consumption
+              </p>
+            </div>
+            <div className="pt-3 border-t">
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-slate-600">Cost with Wayfinder:</span>
+                <span className="text-xl font-semibold text-emerald-600">${(result.totalFuelCost * 0.95).toLocaleString()}</span>
+              </div>
+              <p className="text-sm text-slate-500">
+                Optimized routing and operations could reduce your annual fuel spend by ${(result.totalFuelCost * 0.05).toLocaleString()}
+              </p>
+            </div>
+          </div>
+        </Card>
+
+        <Card className="bg-emerald-50 p-6">
+          <div className="flex items-center gap-2.5 text-emerald-700">
+            <LeafIcon className="h-5 w-5" />
+            <span className="text-base font-medium">Environmental Impact</span>
+          </div>
+          <div className="mt-4">
+            <div className="text-3xl font-bold text-emerald-700">{(result.totalFuelConsumption * 0.05 * 3.11438).toFixed(0)} MT</div>
+            <div className="text-emerald-700 font-medium mt-1">Annual CO₂ Reduction</div>
+            <p className="text-sm text-emerald-600/90 mt-3 leading-relaxed">
+              By reducing fuel consumption by {(result.totalFuelConsumption * 0.05).toFixed(0)} MT annually, 
+              your fleet could prevent {(result.totalFuelConsumption * 0.05 * 3.11438).toFixed(0)} metric tons of CO₂ emissions. 
+              This is equivalent to taking {((result.totalFuelConsumption * 0.05 * 3.11438) / 4.6).toFixed(0)} cars off the road for a year.
+            </p>
           </div>
         </Card>
 
