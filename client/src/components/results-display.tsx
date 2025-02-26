@@ -16,25 +16,24 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   const carsOffRoad = co2Reduction / 4.6;
 
   return (
-    <div className="max-w-4xl space-y-5">
-      <h2 className="text-xl font-bold text-slate-800">Analysis Results</h2>
-      <div className="grid gap-4">
-
-        <Card className="bg-[#175D8D] p-6 mb-4">
-          <div className="flex items-center gap-2 text-white/90">
-            <DollarSign className="h-4 w-4" />
-            <span className="text-sm font-medium">Annual Savings</span>
+    <div className="max-w-4xl space-y-6">
+      <h2 className="text-2xl font-bold text-slate-800 mb-2">Analysis Results</h2>
+      <div className="grid gap-5">
+        <Card className="bg-gradient-to-br from-[#175D8D] to-[#0D4A75] p-7 shadow-xl border-0">
+          <div className="flex items-center gap-2.5 text-white/95">
+            <DollarSign className="h-5 w-5" strokeWidth={2} />
+            <span className="text-base font-semibold tracking-wide">Annual Savings</span>
           </div>
-          <div className="mt-4">
-            <div className="flex flex-col gap-1">
-              <div className="text-3xl font-bold tracking-tight text-white">
+          <div className="mt-5">
+            <div className="flex flex-col gap-1.5">
+              <div className="text-4xl font-bold tracking-tight text-white">
                 ${result.estimatedSavings.toLocaleString()}
               </div>
-              <div className="text-sm text-white/70">
+              <div className="text-sm font-medium text-white/80">
                 Projected Cost Reduction
               </div>
             </div>
-            <div className="text-sm text-white/80 mt-2">
+            <div className="text-sm leading-relaxed text-white/85 mt-4 font-medium">
               Based on your fleet's annual fuel consumption of {result.totalFuelConsumption.toLocaleString()} MT, 
               you could achieve significant savings with Wayfinder's proven optimization technology.
             </div>

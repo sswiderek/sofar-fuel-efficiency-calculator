@@ -100,23 +100,23 @@
 @tailwind utilities;
 
 .result-tile {
-  @apply bg-white/95 backdrop-blur-sm shadow-md border border-slate-200/50 rounded-xl transition-all duration-300 hover:shadow-xl hover:border-slate-300/50 p-6;
+  @apply bg-white/98 backdrop-blur-md shadow-lg border border-slate-200/60 rounded-xl transition-all duration-300 hover:shadow-xl hover:border-slate-300/60 p-7;
 }
 
 .metric-value {
-  @apply text-3xl font-bold text-slate-900 mt-3 tracking-tight;
+  @apply text-4xl font-bold text-slate-900 mt-4 tracking-tight leading-none;
 }
 
 .metric-label {
-  @apply text-sm text-slate-600 mt-1 font-medium;
+  @apply text-sm text-slate-600 mt-1.5 font-medium tracking-wide;
 }
 
 .metric-header {
-  @apply flex items-center gap-2.5 text-base font-semibold text-slate-700;
+  @apply flex items-center gap-3 text-base font-semibold text-slate-700 tracking-wide;
 }
 
 .savings-tile {
-  @apply bg-gradient-to-br from-blue-600 to-blue-700 text-white shadow-lg border-0;
+  @apply bg-gradient-to-br from-[#175D8D] to-[#0D4A75] text-white shadow-xl border-0;
 }
 
 .savings-tile .metric-value,
