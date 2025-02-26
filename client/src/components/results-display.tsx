@@ -94,7 +94,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                     <p>This shows your annual CO₂ savings based on:</p>
                     <ul className="mt-1 space-y-1">
                       <li>• Your fleet's fuel savings</li>
-                      <li>• 3.1 metric tons of CO₂ produced per ton of fuel</li>
+                      <li>• 3.15 metric tons of CO₂ produced per ton of fuel</li>
                     </ul>
                   </div>
                 </div>
@@ -102,7 +102,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             </Tooltip>
           </div>
           <div className="mt-3">
-            <div className="text-3xl font-bold text-emerald-700">{Math.round(result.totalFuelConsumption * 0.05 * 3.15).toLocaleString()} MT</div>
+            <div className="text-3xl font-bold text-emerald-700">{Math.round(result.co2Reduction).toLocaleString()} MT</div>
             <div className="text-base text-emerald-600 mt-1">Annual emissions saved</div>
             <div className="flex items-center gap-1.5 mt-3 text-emerald-600">
               <span>≈ {Math.round((result.totalFuelConsumption * 0.05 * 3.15) / 4.6).toLocaleString()} cars off the road</span>
