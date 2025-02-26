@@ -62,6 +62,9 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               <div className="text-sm text-slate-600">Optimized:</div>
               <div className="text-xl font-semibold">${(result.totalFuelCost * 0.95).toLocaleString()}</div>
             </div>
+            <div className="text-slate-600 text-xs max-w-[180px] mt-4">
+              Wayfinder's optimization strategies can significantly reduce your annual fuel costs by identifying areas for improvement in fleet management and fuel efficiency.
+            </div>
           </div>
         </Card>
 
@@ -96,6 +99,9 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               <div>
                 <div className="text-sm text-slate-600">With Wayfinder:</div>
                 <div className="text-lg font-medium">{(result.totalFuelConsumption * 0.95).toLocaleString()} MT/year</div>
+              </div>
+              <div className="text-slate-600 text-xs max-w-[180px] mt-4">
+                Based on IMO standards, each MT of fuel saved prevents 3.15 MT of CO₂ emissions, helping reduce your fleet's environmental impact.
               </div>
             </div>
           </div>
