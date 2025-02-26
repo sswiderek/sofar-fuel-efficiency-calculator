@@ -77,7 +77,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               <TooltipContent>
                 <div className="max-w-[250px] space-y-2">
                   <p className="text-sm leading-snug">
-                    CO₂ reduction is calculated using the standard maritime emission factor of 3.114 MT of CO₂ per MT of fuel burned. The reduction in fuel consumption leads directly to reduced emissions.
+                    CO₂ reduction is calculated using the standard maritime emission factor of 3.15 MT of CO₂ per MT of fuel burned. The reduction in fuel consumption leads directly to reduced emissions.
                   </p>
                 </div>
               </TooltipContent>
