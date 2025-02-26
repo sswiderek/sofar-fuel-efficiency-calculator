@@ -8,6 +8,9 @@ interface ResultsDisplayProps {
 }
 
 const formatNumber = (num: number) => {
+  if (num > 1000000) {
+    return (num / 1000000).toLocaleString(undefined, { maximumFractionDigits: 1 }) + ' M';
+  }
   return num.toLocaleString(undefined, { maximumFractionDigits: 1 });
 };
 
