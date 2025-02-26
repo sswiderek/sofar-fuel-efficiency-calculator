@@ -272,9 +272,18 @@ export default function CalculatorForm() {
                                       </button>
                                     </TooltipTrigger>
                                     <TooltipContent side="right" className="max-w-[280px]">
-                                      <p className="text-sm">
-                                        Average fuel consumption in Metric Tonnes per day while at sea. Typical ranges from 20-150 MT/day depending on vessel size.
+                                      <div className="p-1">
+                                      <h4 className="text-base font-semibold text-blue-900 mb-1">Days at Sea Per Year</h4>
+                                      <p className="text-sm text-slate-600 leading-relaxed">
+                                        Enter the number of days each vessel spends actively sailing at sea annually. 
+                                        Exclude time in port or maintenance periods.
+                                        <br /><br />
+                                        <span className="font-medium">Enter for one vessel only.</span> The calculation will 
+                                        account for your fleet size automatically.
+                                        <br /><br />
+                                        <span className="italic text-slate-500">Typical value: 280 days</span>
                                       </p>
+                                    </div>
                                     </TooltipContent>
                                   </Tooltip>
                                 </div>
