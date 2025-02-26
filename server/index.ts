@@ -56,25 +56,26 @@ app.use((req, res, next) => {
   const server = registerRoutes(app);
 
   app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
-    if (res.headersSent) {
-      console.error('Headers already sent:', err);
-      return _next(err);
-    }
-
-    const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
-    
-    console.error(`Error handling ${req.method} ${req.path}:`, err);
-    
-    try {
-      res.status(status).json({
-        error: true,
-        message,
-        path: req.path
-      });
-    } catch (e) {
-      console.error('Failed to send error response:', e);
-      _next(err);
+    // Check if client disconnected
+    if (!res.writableEnded && !res.headersSent) {
+      const status = err.status || err.statusCode || 500;
+      const message = err.message || "Internal Server Error";
+      
+      console.error(`Error handling ${req.method} ${req.path}:`, err);
+      
+      try {
+        res.status(status).json({
+          error: true,
+          message,
+          path: req.path
+        });
+      } catch (e) {
+        console.error('Failed to send error response:', e);
+        res.end();
+      }
+    } else {
+      console.log('Client disconnected, skipping error response');
+      res.end();
     }
   });
 
