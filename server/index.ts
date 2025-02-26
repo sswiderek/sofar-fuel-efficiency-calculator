@@ -90,9 +90,10 @@ app.use((req, res, next) => {
   const PORT = process.env.PORT || 5000;
   const HOST = '0.0.0.0';
   
-  // Disable HTTPS redirect in development
+  // Development specific settings
   if (process.env.NODE_ENV === 'development') {
     app.disable('trust proxy');
+    app.disable('x-powered-by');
   }
   
   server.listen(PORT, HOST, () => {
