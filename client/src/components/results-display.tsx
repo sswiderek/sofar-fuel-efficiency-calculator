@@ -44,17 +44,17 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           </div>
           <div className="mt-6">
             <div>
-              <div className="text-sm text-slate-600 mb-1">Current Annual Fuel Cost:</div>
-              <div className="text-3xl font-bold tracking-tight">${result.totalFuelCost.toLocaleString()}</div>
-              <div className="text-sm text-slate-500 mt-2">
+              <div className="text-sm text-slate-600">Current Annual Fuel Cost:</div>
+              <div className="text-2xl font-bold tracking-tight">${result.totalFuelCost.toLocaleString()}</div>
+              <div className="text-xs text-slate-500 mt-1">
                 Calculated using current VLSFO price of ${result.fuelPrice}/MT × {result.totalFuelConsumption} MT annual consumption
               </div>
             </div>
-            <div className="h-[1px] bg-slate-200 my-6" />
+            <div className="h-[1px] bg-slate-200 my-4" />
             <div>
-              <div className="text-sm text-slate-600 mb-1">Cost with Wayfinder:</div>
-              <div className="text-3xl font-bold tracking-tight text-emerald-600">${(result.totalFuelCost - annualSavings).toLocaleString()}</div>
-              <div className="text-sm text-slate-500 mt-2">
+              <div className="text-sm text-slate-600">Cost with Wayfinder:</div>
+              <div className="text-2xl font-bold tracking-tight text-emerald-600">${(result.totalFuelCost - annualSavings).toLocaleString()}</div>
+              <div className="text-xs text-slate-500 mt-1">
                 Optimized routing and operations could reduce your annual fuel spend by ${annualSavings.toLocaleString()}
               </div>
             </div>
