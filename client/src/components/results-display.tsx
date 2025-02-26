@@ -110,9 +110,9 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                 </TooltipTrigger>
                 <TooltipContent>
                   <div className="max-w-[250px] space-y-2">
-                    <h4 className="font-medium">Cars Equivalent</h4>
+                    <h4 className="font-medium">What does this mean?</h4>
                     <div className="text-sm text-slate-600">
-                      <p>Based on average annual emissions of 4.6 MT CO₂ per passenger vehicle</p>
+                      <p>This shows how many cars would need to stop driving for a year to match these CO₂ savings</p>
                     </div>
                   </div>
                 </TooltipContent>
