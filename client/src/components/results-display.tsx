@@ -19,21 +19,6 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
     <div className="max-w-4xl space-y-5">
       <h2 className="text-xl font-bold text-slate-800">Analysis Results</h2>
       <div className="grid gap-4">
-        <Card className="bg-gradient-to-br from-[#0E6396] to-[#0A4F78] text-white p-4">
-          <div className="flex items-center gap-2 text-white/90">
-            <DollarSign className="h-4 w-4" />
-            <span className="text-sm font-medium">Annual Savings</span>
-          </div>
-          <div className="flex justify-between items-start gap-3">
-            <div>
-              <div className="text-2xl font-bold mt-2 tracking-tight">${result.estimatedSavings.toLocaleString()}</div>
-              <div className="text-xs text-white/90">Projected cost reduction</div>
-            </div>
-            <div className="text-white/80 text-[0.7rem] max-w-[200px] flex items-center h-full leading-snug">
-              Based on your fleet's annual fuel consumption of {result.totalFuelConsumption.toLocaleString()} MT, we project significant savings using Wayfinder's proven optimization technology.
-            </div>
-          </div>
-        </Card>
 
         <Card className="bg-gradient-to-br from-emerald-50 to-white p-6 mb-4">
           <div className="flex items-center gap-2 text-slate-700">
