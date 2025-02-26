@@ -265,15 +265,24 @@ export default function CalculatorForm() {
                                     <FuelIcon className="h-4 w-4 text-foreground" />
                                     <FormLabel className="whitespace-nowrap">Fuel Consumption (MT/Day)</FormLabel>
                                   </div>
-                                  <Tooltip delayDuration={100}>
+                                  <Tooltip>
                                     <TooltipTrigger asChild>
-                                      <button type="button" className="p-1 -m-1 border-0 bg-transparent cursor-help">
+                                      <button 
+                                        type="button" 
+                                        className="p-1 -m-1 border-0 bg-transparent cursor-help"
+                                        aria-label="Fuel consumption information"
+                                      >
                                         <InfoIcon className="h-4 w-4 text-muted-foreground" />
                                       </button>
                                     </TooltipTrigger>
-                                    <TooltipContent side="top" align="center" className="max-w-[200px]">
-                                      <p className="text-sm">
-                                        Average daily fuel consumption while at sea (20-150 MT/day)
+                                    <TooltipContent 
+                                      side="top" 
+                                      align="start"
+                                      sideOffset={5}
+                                      className="max-w-[150px] z-50"
+                                    >
+                                      <p className="text-xs">
+                                        Average daily fuel consumption while at sea
                                       </p>
                                     </TooltipContent>
                                   </Tooltip>
