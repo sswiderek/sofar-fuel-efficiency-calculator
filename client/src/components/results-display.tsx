@@ -59,11 +59,18 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               <div className="text-xl font-semibold">${result.totalFuelCost.toLocaleString()}</div>
             </div>
             <div>
-              <div className="text-sm text-slate-600">Optimized:</div>
+              <div className="text-sm text-slate-600">With Wayfinder:</div>
               <div className="text-xl font-semibold">${(result.totalFuelCost * 0.95).toLocaleString()}</div>
             </div>
-            <div className="text-slate-600 text-xs max-w-[180px] ml-4">
-              Calculation: Current fuel cost × 0.95 (5% reduction from baseline fuel consumption)
+            <div className="text-slate-600 text-xs max-w-[240px] ml-6 flex items-center">
+              <div>
+                Here's how we calculate your optimized costs:
+                <ul className="list-disc mt-1 ml-3 space-y-1">
+                  <li>Start with your current annual fuel costs</li>
+                  <li>Apply Wayfinder's proven 5% efficiency improvement</li>
+                  <li>This reduction comes from optimized routing and operational improvements</li>
+                </ul>
+              </div>
             </div>
           </div>
         </Card>
