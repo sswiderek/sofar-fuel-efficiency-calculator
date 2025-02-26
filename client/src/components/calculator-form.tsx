@@ -309,7 +309,7 @@ export default function CalculatorForm() {
                                     <InfoIcon className="h-4 w-4 text-slate-400" />
                                   </TooltipTrigger>
                                   <TooltipContent className="max-w-[300px] text-xs">
-                                    <p>Enter the active sailing days per year for a single vessel of this type, excluding port stays and maintenance periods. Do not multiply by fleet size. Example: 280 days</p>
+                                    <p>Active Sailing Days: The number of days your ship spends at sea in a year. Don't include time in port or maintenance. Enter for one ship only, not your entire fleet. Typical value: 280 days</p>
                                   </TooltipContent>
                                 </Tooltip>
                               </div>
