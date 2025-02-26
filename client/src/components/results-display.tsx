@@ -26,8 +26,13 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             <span className="text-sm font-medium">Annual Savings</span>
           </div>
           <div className="mt-4">
-            <div className="text-3xl font-bold tracking-tight text-white">
-              ${result.estimatedSavings.toLocaleString()}
+            <div className="flex flex-col gap-1">
+              <div className="text-3xl font-bold tracking-tight text-white">
+                ${result.estimatedSavings.toLocaleString()}
+              </div>
+              <div className="text-sm text-white/70">
+                Projected Cost Reduction
+              </div>
             </div>
             <div className="text-sm text-white/80 mt-2">
               Based on your fleet's annual fuel consumption of {result.totalFuelConsumption.toLocaleString()} MT, 
