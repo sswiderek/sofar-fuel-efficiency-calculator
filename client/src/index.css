@@ -203,10 +203,11 @@
 
 [data-radix-popper-content-wrapper] {
   position: relative;
-  z-index: 50;
+  z-index: 9999;
 }
 
 .TooltipContent {
+  position: relative !important;
   background-color: rgba(0, 0, 0, 0.9) !important;
   border-radius: 0.375rem !important;
   padding: 0.75rem !important;
@@ -216,6 +217,10 @@
   max-width: 320px !important;
   white-space: normal !important;
   word-break: break-word !important;
-  z-index: 50 !important;
+  z-index: 9999 !important;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: none !important;
 }
