@@ -1,55 +1,124 @@
-
-import React from 'react';
 import { Card } from "@/components/ui/card";
-import { formatNumber } from "@/lib/utils";
-import { type CalculationResult } from "@shared/schema";
+import { CalculationResult } from "@shared/schema";
+import { DollarSign, Info, LeafIcon, TrendingDown } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
-type ResultsDisplayProps = {
-  results: CalculationResult | null;
-};
+interface ResultsDisplayProps {
+  results: CalculationResult[] | null;
+}
 
-const ResultsDisplay: React.FC<ResultsDisplayProps> = ({ results }) => {
-  if (!results) return null;
+export default function ResultsDisplay({ results }: ResultsDisplayProps) {
+  if (!results || results.length === 0) return null;
+
+  const result = results[0];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <Card className="p-6 bg-white/90 shadow-lg">
-        <h3 className="text-lg font-semibold mb-4 text-slate-800">Annual Fuel Costs</h3>
-        <div className="space-y-3">
-          <div className="flex justify-between items-center">
-            <span className="text-slate-600">Current Fuel Cost:</span>
-            <span className="font-medium text-lg">${formatNumber(results.totalFuelCost)}</span>
+    <div className="max-w-4xl space-y-5">
+      <h2 className="text-xl font-bold text-slate-800">Analysis Results</h2>
+      <div className="grid gap-4">
+        <Card className="bg-gradient-to-br from-[#0E6396] to-[#0A4F78] text-white p-6">
+          <div className="flex items-center gap-2.5 text-white/90">
+            <DollarSign className="h-5 w-5" />
+            <span className="text-base font-medium">Annual Savings</span>
           </div>
-          <div className="flex justify-between items-center">
-            <span className="text-slate-600">With Wayfinder:</span>
-            <span className="font-medium text-lg text-emerald-600">${formatNumber(results.fuelCostWithWayfinder)}</span>
+          <div className="flex justify-between items-start gap-4">
+            <div>
+              <div className="text-4xl font-bold mt-3 tracking-tight">${(result.totalFuelCost * 0.05).toLocaleString()}</div>
+              <div className="text-sm text-white/90 mt-1">Projected cost reduction</div>
+            </div>
+            <div className="text-white/80 text-xs max-w-[180px] flex items-center h-full">
+              Using a conservative 5% of Wayfinder's proven 4-10% fuel savings, your fleet consuming {result.totalFuelConsumption.toLocaleString()} MT of fuel annually could save:
+            </div>
           </div>
-          <div className="flex justify-between items-center pt-2 border-t">
-            <span className="text-slate-600">Annual Fuel Consumption:</span>
-            <span className="font-medium">{formatNumber(results.totalFuelConsumption)} MT</span>
-          </div>
-        </div>
-      </Card>
+        </Card>
 
-      <Card className="p-6 bg-white/90 shadow-lg">
-        <h3 className="text-lg font-semibold mb-4 text-slate-800">Potential Impact</h3>
-        <div className="space-y-3">
-          <div className="flex justify-between items-center">
-            <span className="text-slate-600">Annual Savings:</span>
-            <span className="font-medium text-lg text-emerald-600">${formatNumber(results.estimatedSavings)}</span>
+        <Card className="bg-white p-3.5">
+          <div className="flex items-center gap-2 text-slate-700">
+            <TrendingDown className="h-4 w-4" />
+            <span className="text-sm font-medium">Costs Breakdown</span>
+            <Tooltip>
+              <TooltipTrigger>
+                <Info className="h-4 w-4 text-slate-400" />
+              </TooltipTrigger>
+              <TooltipContent>
+                <div className="max-w-[250px] space-y-2">
+                  <h4 className="font-medium">Cost Calculation</h4>
+                  <div className="text-sm text-slate-600">
+                    <p>Based on:</p>
+                    <p className="pl-2 text-xs">• Annual fuel usage</p>
+                    <p className="pl-2 text-xs">• Current market prices</p>
+                    <p className="pl-2 text-xs">• 5% optimization savings</p>
+                  </div>
+                </div>
+              </TooltipContent>
+            </Tooltip>
           </div>
-          <div className="flex justify-between items-center">
-            <span className="text-slate-600">CO₂ Reduction:</span>
-            <span className="font-medium text-lg text-emerald-600">{formatNumber(results.co2Reduction)} MT</span>
+          <div className="mt-4 space-y-3">
+            <div className="flex gap-36">
+              <div className="flex flex-col gap-4">
+                <div>
+                  <div className="text-sm text-slate-600">Current:</div>
+                  <div className="text-xl font-semibold">${result.totalFuelCost.toLocaleString()}</div>
+                </div>
+                <div>
+                  <div className="text-sm text-slate-600">With Wayfinder:</div>
+                  <div className="text-xl font-semibold">${(result.totalFuelCost * 0.95).toLocaleString()}</div>
+                </div>
+              </div>
+              <div className="text-slate-600 text-xs max-w-[240px] flex items-start -mt-8">
+                <div>
+                  Here's how we calculate your optimized costs:
+                  <ul className="list-disc mt-1 ml-3 space-y-1">
+                    <li>Start with your current annual fuel costs</li>
+                    <li>Apply Wayfinder's proven 5% efficiency improvement</li>
+                    <li>This reduction comes from optimized routing and operational improvements</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="flex justify-between items-center pt-2 border-t">
-            <span className="text-slate-600">Fuel Reduction:</span>
-            <span className="font-medium">{formatNumber(results.fuelReduction)} MT</span>
+        </Card>
+
+        <Card className="bg-emerald-50/50 p-4">
+          <div className="flex items-center gap-2">
+            <LeafIcon className="h-5 w-5 text-emerald-600" />
+            <span className="text-lg font-medium text-emerald-700">CO₂ Reduction</span>
+            <Tooltip>
+              <TooltipTrigger>
+                <Info className="h-4 w-4 text-emerald-400" />
+              </TooltipTrigger>
+              <TooltipContent>
+                <div className="max-w-[250px] space-y-2">
+                  <h4 className="font-medium">How We Calculate CO₂ Reduction</h4>
+                  <div className="text-sm text-slate-600">
+                    <p>We calculate your annual CO₂ reduction by multiplying your fuel savings by 3.15 (the CO₂ emission factor), giving you the metric tons of CO₂ avoided per year.</p>
+                  </div>
+                </div>
+              </TooltipContent>
+            </Tooltip>
           </div>
-        </div>
-      </Card>
+          <div className="mt-3">
+            <div className="text-3xl font-bold text-emerald-700">{Math.round(result.co2Reduction).toLocaleString()} MT</div>
+            <div className="text-base text-emerald-600 mt-1">Annual emissions saved</div>
+            <div className="flex items-center gap-1.5 mt-3 text-emerald-600">
+              <span>≈ {Math.round((result.totalFuelConsumption * 0.05 * 3.15) / 4.6).toLocaleString()} cars off the road</span>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Info className="h-4 w-4 text-emerald-400" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <div className="max-w-[250px] space-y-2">
+                    <h4 className="font-medium">What does this mean?</h4>
+                    <div className="text-sm text-slate-600">
+                      <p>A typical car produces 4.6 metric tons of CO₂ per year. This shows how many cars would equal your fleet's CO₂ savings.</p>
+                    </div>
+                  </div>
+                </TooltipContent>
+              </Tooltip>
+            </div>
+          </div>
+        </Card>
+      </div>
     </div>
   );
-};
-
-export default ResultsDisplay;
+}

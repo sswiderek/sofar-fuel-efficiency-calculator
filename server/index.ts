@@ -1,3 +1,4 @@
+
 import path from 'path';
 
 import express, { type Request, Response, NextFunction } from "express";
@@ -66,7 +67,7 @@ app.use((req, res, next) => {
   } else {
     // Serve static files
     app.use(express.static('dist/public'));
-
+    
     // API routes should be handled before the catch-all
     app.use('/api', (req, res, next) => {
       if (req.path.startsWith('/api')) {
