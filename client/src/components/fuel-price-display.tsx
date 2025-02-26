@@ -63,7 +63,7 @@ export default function FuelPriceDisplay() {
           </div>
           <Tooltip>
             <TooltipTrigger>
-              <InfoIcon className="h-5 w-5 text-slate-400" />
+              <InfoIcon className="h-5 w-5 text-slate-400 cursor-help" /> {/* Changed here */}
             </TooltipTrigger>
             <TooltipContent side="right" className="bg-white border-blue-200 shadow-lg">
               <div className="space-y-2 p-3">
