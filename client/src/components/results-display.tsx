@@ -21,8 +21,15 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             <DollarSign className="h-5 w-5" />
             <span className="text-base font-medium">Annual Savings</span>
           </div>
-          <div className="text-4xl font-bold mt-3 tracking-tight">${(result.totalFuelCost * 0.05).toLocaleString()}</div>
-          <div className="text-sm text-white/90 mt-1">Projected cost reduction</div>
+          <div className="flex justify-between items-start gap-4">
+            <div>
+              <div className="text-4xl font-bold mt-3 tracking-tight">${(result.totalFuelCost * 0.05).toLocaleString()}</div>
+              <div className="text-sm text-white/90 mt-1">Projected cost reduction</div>
+            </div>
+            <div className="text-white/80 text-xs max-w-[180px] pt-1">
+              Based on {result.totalFuelConsumption.toLocaleString()} MT annual fuel usage × ${result.totalFuelCost / result.totalFuelConsumption}/MT × 5% optimization
+            </div>
+          </div>
         </Card>
 
         <Card className="bg-white p-3.5">
