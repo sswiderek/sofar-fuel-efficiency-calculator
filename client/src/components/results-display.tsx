@@ -80,14 +80,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                   VLSFO price: ${(result.fuelPrice || 0).toLocaleString()}/MT × {(result.totalFuelConsumption || 0).toLocaleString()} MT annual consumption
                 </div>
                 <div className="text-[0.7rem] bg-slate-50 p-2 rounded">
-                  <div className="font-medium mb-1">Consumption Breakdown:</div>
-                  {result.vessels.map((vessel, idx) => (
-                    <div key={idx} className="flex justify-between">
-                      <span>{vessel.count} × {vesselTypes[vessel.type].label}:</span>
-                      <span className="font-medium">{(vessel.count * vessel.fuelConsumption * vessel.seaDaysPerYear).toLocaleString()} MT/year</span>
-                    </div>
-                  ))}
-                  <div className="border-t border-slate-200 mt-1 pt-1 flex justify-between font-medium">
+                  <div className="flex justify-between font-medium">
                     <span>Total Annual Consumption:</span>
                     <span>{result.totalFuelConsumption.toLocaleString()} MT</span>
                   </div>
