@@ -134,7 +134,24 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               <div className="text-2xl font-bold tracking-tight text-emerald-600">
                 ${(totalFuelCost - annualSavings).toLocaleString()}
               </div>
-              <div className="text-sm text-slate-500 mt-1">
+              <div className="bg-slate-50 p-3 rounded-lg mt-2">
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div className="text-slate-600">Original Annual Cost:</div>
+                  <div className="text-right font-medium">${totalFuelCost.toLocaleString()}</div>
+
+                  <div className="text-slate-600">Optimization Savings:</div>
+                  <div className="text-right font-medium">5%</div>
+
+                  <div className="text-slate-600">Amount Saved:</div>
+                  <div className="text-right font-medium text-emerald-600">-${annualSavings.toLocaleString()}</div>
+
+                  <div className="text-slate-700 font-semibold border-t border-slate-200 pt-1 mt-1">Final Annual Cost:</div>
+                  <div className="text-right font-semibold text-emerald-700 border-t border-slate-200 pt-1 mt-1">
+                    ${(totalFuelCost - annualSavings).toLocaleString()}
+                  </div>
+                </div>
+              </div>
+              <div className="text-sm text-slate-500 mt-2">
                 Optimized routing and operations could reduce your annual fuel spend by ${annualSavings.toLocaleString()}
               </div>
             </div>
