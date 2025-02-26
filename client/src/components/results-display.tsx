@@ -79,13 +79,13 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           </div>
         </Card>
 
-        <Card className="bg-emerald-50 p-3.5">
+        <Card className="bg-emerald-50/50 p-4">
           <div className="flex items-center gap-2">
-            <LeafIcon className="h-4 w-4 text-emerald-600" />
-            <span className="text-sm font-medium text-slate-700">Environmental Impact</span>
+            <LeafIcon className="h-5 w-5 text-emerald-600" />
+            <span className="text-lg font-medium text-emerald-700">CO₂ Reduction</span>
             <Tooltip>
               <TooltipTrigger>
-                <Info className="h-4 w-4 text-slate-400" />
+                <Info className="h-4 w-4 text-emerald-400" />
               </TooltipTrigger>
               <TooltipContent>
                 <div className="max-w-[250px] space-y-2">
@@ -99,9 +99,25 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               </TooltipContent>
             </Tooltip>
           </div>
-          <div className="mt-4">
-            <div className="text-2xl font-bold text-emerald-600">{Math.round(result.totalFuelConsumption * 0.05).toLocaleString()}</div>
-            <div className="text-sm text-slate-600">MT CO₂ Reduction</div>
+          <div className="mt-3">
+            <div className="text-3xl font-bold text-emerald-700">{Math.round(result.totalFuelConsumption * 0.05 * 3.15).toLocaleString()} MT</div>
+            <div className="text-base text-emerald-600 mt-1">Annual emissions saved</div>
+            <div className="flex items-center gap-1.5 mt-3 text-emerald-600">
+              <span>≈ {Math.round((result.totalFuelConsumption * 0.05 * 3.15) / 4.6).toLocaleString()} cars off the road</span>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Info className="h-4 w-4 text-emerald-400" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <div className="max-w-[250px] space-y-2">
+                    <h4 className="font-medium">Cars Equivalent</h4>
+                    <div className="text-sm text-slate-600">
+                      <p>Based on average annual emissions of 4.6 MT CO₂ per passenger vehicle</p>
+                    </div>
+                  </div>
+                </TooltipContent>
+              </Tooltip>
+            </div>
           </div>
         </Card>
       </div>
