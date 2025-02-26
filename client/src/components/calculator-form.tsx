@@ -70,12 +70,22 @@ export default function CalculatorForm() {
     },
   });
 
+  // Create a ref for the results section
+  const resultsRef = React.useRef<HTMLDivElement>(null);
+
   // Update fuel price when data is fetched
   useEffect(() => {
     if (fuelPriceData?.price) {
       form.setValue("fuelPrice", fuelPriceData.price.toString());
     }
   }, [fuelPriceData, form]);
+
+  // Scroll to results when they become available
+  useEffect(() => {
+    if (results && resultsRef.current) {
+      resultsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [results]);
 
   async function onSubmit(formEvent: React.FormEvent) {
     formEvent.preventDefault();
@@ -438,6 +448,7 @@ export default function CalculatorForm() {
         <div>
           {results ? (
             <motion.div
+              ref={resultsRef}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
