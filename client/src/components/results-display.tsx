@@ -4,7 +4,7 @@ import { DollarSign, Info, LeafIcon, InfoIcon, TrendingDown } from "lucide-react
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface ResultsDisplayProps {
-  results: CalculationResult[] | null;
+  results: CalculationResult[];
 }
 
 export default function ResultsDisplay({ results }: ResultsDisplayProps) {
@@ -15,22 +15,6 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   const co2Reduction = result.co2Reduction;
   const carsOffRoad = co2Reduction / 4.6;
 
-  const vesselTypeCosts = {};
-  if (result.vessels && Array.isArray(result.vessels)) {
-    result.vessels.forEach(vessel => {
-      if (vessel && vessel.type) {
-        const type = vessel.type === 'container-ship-panama-3000-5000-teu' 
-          ? 'Container Ship (Panama 3000-5000 TEU)'
-          : vessel.type === 'oil-tanker-vlcc' 
-            ? 'Oil Tanker (VLCC)'
-            : vessel.type.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-        const annualCost = vessel.fuelConsumption * vessel.seaDaysPerYear * vessel.count * results[0].fuelPrice;
-        vesselTypeCosts[type] = (vesselTypeCosts[type] || 0) + annualCost;
-      }
-    });
-  }
-
-
   return (
     <div className="max-w-4xl space-y-6">
       <h2 className="text-xl font-bold text-slate-800 mb-2">Analysis Results</h2>
@@ -40,12 +24,14 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             <DollarSign className="h-5 w-5" strokeWidth={2} />
             <span className="text-base font-semibold tracking-wide">Annual Savings</span>
             <Tooltip>
-              <TooltipTrigger>
-                <Info className="h-4 w-4 cursor-help opacity-80 hover:opacity-100" />
+              <TooltipTrigger asChild>
+                <button className="p-0.5 hover:bg-white/10 rounded-full transition-colors">
+                  <Info className="h-4 w-4 cursor-help opacity-80 hover:opacity-100" />
+                </button>
               </TooltipTrigger>
               <TooltipContent>
                 <div className="max-w-[250px] space-y-2">
-                  <p className="text-sm leading-snug text-white">
+                  <p className="text-sm leading-snug">
                     These savings are calculated based on your fleet's fuel consumption and current VLSFO prices, incorporating Wayfinder's proven optimization algorithms.
                   </p>
                 </div>
@@ -55,7 +41,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           <div className="mt-5">
             <div className="flex flex-col gap-1.5">
               <div className="text-4xl font-bold tracking-tight text-white">
-                ${result.estimatedSavings.toLocaleString()}
+                ${annualSavings.toLocaleString()}
               </div>
               <div className="text-sm font-medium text-white/80">
                 Projected Cost Reduction
@@ -75,8 +61,10 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             </div>
             <span className="text-base font-medium">Cost Breakdown</span>
             <Tooltip>
-              <TooltipTrigger>
-                <Info className="h-4 w-4 cursor-help opacity-80 hover:opacity-100" />
+              <TooltipTrigger asChild>
+                <button className="p-0.5 hover:bg-slate-100 rounded-full transition-colors">
+                  <Info className="h-4 w-4 cursor-help opacity-80 hover:opacity-100" />
+                </button>
               </TooltipTrigger>
               <TooltipContent>
                 <div className="max-w-[250px] space-y-2">
@@ -91,55 +79,57 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             <div>
               <div className="text-sm text-slate-600">Current Annual Fuel Cost:</div>
               <div className="text-2xl font-bold tracking-tight">${result.totalFuelCost.toLocaleString()}</div>
-              <div className="space-y-1">
-                <div className="text-[0.7rem] text-slate-500">
-                  VLSFO price: ${(result.fuelPrice || 0).toLocaleString()}/MT × {(result.totalFuelConsumption || 0).toLocaleString()} MT annual consumption
-                </div>
-                <div className="text-[0.7rem] bg-slate-50 p-2 rounded">
-                  <div className="font-medium mb-2">Fleet Breakdown:</div>
-                  {Array.isArray(results?.[0]?.vessels) && results[0].vessels.map((vessel, index) => (
-                    <div key={index} className="mb-3 last:mb-0 pb-2 border-b border-slate-200 last:border-0">
-                      <div className="font-medium text-slate-700">
-                        {vessel.count} × {vessel.type.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
-                      </div>
-                      <div className="text-slate-600 pl-3 space-y-0.5">
-                        <div className="flex justify-between">
-                          <span>Daily Consumption:</span>
-                          <span>{vessel.fuelConsumption} MT/day</span>
+              <div className="bg-slate-50 p-4 rounded-lg mt-3 space-y-4">
+                <div className="space-y-1">
+                  <div className="text-sm font-medium text-slate-700 mb-2">Fleet Breakdown:</div>
+                  {result.vessels?.map((vessel, index) => (
+                    <div key={index} className="bg-white rounded-lg p-3 border border-slate-200 mb-3 last:mb-0">
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <div className="font-medium text-slate-800">
+                            {vessel.count} × {vessel.type.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                          </div>
                         </div>
-                        <div className="flex justify-between">
-                          <span>Days at Sea:</span>
-                          <span>{vessel.seaDaysPerYear} days/year</span>
-                        </div>
-                        <div className="flex justify-between font-medium">
-                          <span>Annual Consumption:</span>
-                          <span>{(vessel.fuelConsumption * vessel.seaDaysPerYear * vessel.count).toLocaleString()} MT</span>
-                        </div>
-                        <div className="flex justify-between font-medium">
-                          <span>Annual Fuel Cost:</span>
-                          <span>${((vessel.fuelConsumption * vessel.seaDaysPerYear * vessel.count * result.fuelPrice)).toLocaleString()}</span>
+                        <div className="grid grid-cols-2 gap-2 text-sm">
+                          <div className="text-slate-600">Daily Fuel Consumption:</div>
+                          <div className="text-right font-medium">{vessel.fuelConsumption} MT/day</div>
+
+                          <div className="text-slate-600">Days at Sea per Year:</div>
+                          <div className="text-right font-medium">{vessel.seaDaysPerYear} days</div>
+
+                          <div className="text-slate-600">Annual Consumption:</div>
+                          <div className="text-right font-medium">{(vessel.fuelConsumption * vessel.seaDaysPerYear * vessel.count).toLocaleString()} MT</div>
+
+                          <div className="text-slate-600">Annual Fuel Cost:</div>
+                          <div className="text-right font-medium text-slate-800">
+                            ${((vessel.fuelConsumption * vessel.seaDaysPerYear * vessel.count * result.fuelPrice)).toLocaleString()}
+                          </div>
                         </div>
                       </div>
                     </div>
                   ))}
-                  <div className="mt-3 pt-2 border-t border-slate-200">
-                    <div className="flex justify-between font-medium">
-                      <span>Total Annual Consumption:</span>
-                      <span>{result.totalFuelConsumption.toLocaleString()} MT</span>
-                    </div>
-                    <div className="flex justify-between font-medium mt-1">
-                      <span>Total Annual Fuel Cost:</span>
-                      <span>${results?.[0]?.totalFuelCost?.toLocaleString()}</span>
+                  <div className="mt-4 pt-3 border-t border-slate-200">
+                    <div className="grid grid-cols-2 gap-2 text-sm">
+                      <div className="text-slate-600 font-medium">VLSFO Price:</div>
+                      <div className="text-right font-medium">${result.fuelPrice.toLocaleString()}/MT</div>
+
+                      <div className="text-slate-600 font-medium">Total Annual Consumption:</div>
+                      <div className="text-right font-medium">{result.totalFuelConsumption.toLocaleString()} MT</div>
+
+                      <div className="text-slate-700 font-semibold">Total Annual Fuel Cost:</div>
+                      <div className="text-right font-semibold">${result.totalFuelCost.toLocaleString()}</div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="h-[1px] bg-slate-200 my-3" />
+            <div className="h-[1px] bg-slate-200 my-4" />
             <div>
               <div className="text-sm text-slate-600">Cost with Wayfinder:</div>
-              <div className="text-2xl font-bold tracking-tight text-emerald-600">${(result.totalFuelCost - annualSavings).toLocaleString()}</div>
-              <div className="text-[0.7rem] text-slate-500">
+              <div className="text-2xl font-bold tracking-tight text-emerald-600">
+                ${(result.totalFuelCost - annualSavings).toLocaleString()}
+              </div>
+              <div className="text-sm text-slate-500 mt-1">
                 Optimized routing and operations could reduce your annual fuel spend by ${annualSavings.toLocaleString()}
               </div>
             </div>
@@ -151,8 +141,10 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             <LeafIcon className="h-4 w-4" />
             <span className="text-sm font-medium">Environmental Impact</span>
             <Tooltip>
-              <TooltipTrigger>
-                <InfoIcon className="h-4 w-4 cursor-help opacity-80 hover:opacity-100" />
+              <TooltipTrigger asChild>
+                <button className="p-0.5 hover:bg-white/10 rounded-full transition-colors">
+                  <InfoIcon className="h-4 w-4 cursor-help opacity-80 hover:opacity-100" />
+                </button>
               </TooltipTrigger>
               <TooltipContent>
                 <div className="max-w-[250px] space-y-2">
@@ -166,30 +158,30 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           <div className="mt-3">
             <div className="text-2xl font-bold text-white">{Math.round(co2Reduction).toLocaleString()} MT</div>
             <div className="text-white/90 font-medium text-sm">Annual CO₂ Reduction</div>
-            <p className="text-[0.7rem] text-white/80 mt-2 leading-relaxed">
-              Reducing fuel by {(result.totalFuelConsumption * 0.05).toFixed(0)} MT annually prevents {Math.round(co2Reduction).toLocaleString()} MT of CO₂ emissions, equivalent to {Math.round(carsOffRoad).toLocaleString()} cars off the road yearly.
+            <p className="text-sm text-white/80 mt-2 leading-relaxed">
+              Reducing fuel consumption by {(result.totalFuelConsumption * 0.05).toFixed(0)} MT annually prevents {Math.round(co2Reduction).toLocaleString()} MT of CO₂ emissions, equivalent to taking {Math.round(carsOffRoad).toLocaleString()} cars off the road for a year.
             </p>
           </div>
         </Card>
-          {/*Added a summary of costs per vessel type*/}
-          <Card className="bg-white p-6">
-            <div className="flex items-center gap-2 text-slate-700">
-              <div className="rounded-full p-1 bg-slate-100">
-                <Info className="h-4 w-4" />
-              </div>
-              <span className="text-base font-medium">Cost Breakdown per Vessel Type</span>
+        {/*Added a summary of costs per vessel type*/}
+        <Card className="bg-white p-6">
+          <div className="flex items-center gap-2 text-slate-700">
+            <div className="rounded-full p-1 bg-slate-100">
+              <Info className="h-4 w-4" />
             </div>
-            <div className="mt-4">
-              {Object.entries(vesselTypeCosts).map(([type, cost]) => (
-                <div key={type} className="mb-2">
-                  <div className="flex justify-between">
-                    <span className="font-medium">{type}</span>
-                    <span>${cost.toLocaleString()}</span>
-                  </div>
+            <span className="text-base font-medium">Cost Breakdown per Vessel Type</span>
+          </div>
+          <div className="mt-4">
+            {Object.entries(vesselTypeCosts).map(([type, cost]) => (
+              <div key={type} className="mb-2">
+                <div className="flex justify-between">
+                  <span className="font-medium">{type}</span>
+                  <span>${cost.toLocaleString()}</span>
                 </div>
-              ))}
-            </div>
-          </Card>
+              </div>
+            ))}
+          </div>
+        </Card>
       </div>
     </div>
   );
