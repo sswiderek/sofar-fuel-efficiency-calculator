@@ -281,7 +281,7 @@ export default function CalculatorForm() {
                                         <span className="font-medium">Enter for one vessel only.</span> The calculation will 
                                         account for your fleet size automatically.
                                         <br /><br />
-                                        <span className="italic text-slate-500">Typical value: 280 days</span>
+                                        <span className="italic text-slate-500">Example value: 280 days</span>
                                       </p>
                                     </div>
                                     </TooltipContent>
