@@ -26,10 +26,10 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           </div>
           <div className="flex justify-between items-start gap-4">
             <div>
-              <div className="text-4xl font-bold mt-3 tracking-tight">${annualSavings.toLocaleString()}</div>
-              <div className="text-sm text-white/90 mt-1">Projected cost reduction</div>
+              <div className="text-3xl font-bold mt-3 tracking-tight">${annualSavings.toLocaleString()}</div>
+              <div className="text-xs text-white/90 mt-1">Projected cost reduction</div>
             </div>
-            <div className="text-white/80 text-sm max-w-[240px] flex items-center h-full leading-snug">
+            <div className="text-white/80 text-xs max-w-[240px] flex items-center h-full leading-snug">
               Based on your fleet's annual fuel consumption of {result.totalFuelConsumption.toLocaleString()} MT, we project significant savings using Wayfinder's proven optimization technology. This conservative 5% estimate falls within our documented 4-10% efficiency improvements.
             </div>
           </div>
@@ -45,8 +45,8 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           <div className="mt-6">
             <div>
               <div className="text-sm text-slate-600">Current Annual Fuel Cost:</div>
-              <div className="text-2xl font-bold tracking-tight">${result.totalFuelCost.toLocaleString()}</div>
-              <div className="text-xs text-slate-500 mt-1">
+              <div className="text-xl font-bold tracking-tight">${result.totalFuelCost.toLocaleString()}</div>
+              <div className="text-[0.75rem] text-slate-500 mt-1">
                 Calculated using current VLSFO price of ${(result.fuelPrice || 0).toLocaleString()}/MT × {(result.totalFuelConsumption || 0).toLocaleString()} MT annual consumption
               </div>
             </div>
