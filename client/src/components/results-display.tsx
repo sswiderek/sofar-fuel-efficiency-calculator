@@ -37,18 +37,24 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
 
         <Card className="bg-white p-6">
           <div className="flex items-center gap-2 text-slate-700">
-            <TrendingDown className="h-5 w-5" />
+            <div className="rounded-full p-1 bg-slate-100">
+              <Info className="h-4 w-4" />
+            </div>
             <span className="text-base font-medium">Cost Breakdown</span>
           </div>
-          <div className="mt-4 space-y-4">
+          <div className="mt-6">
             <div>
-              <div className="text-sm text-slate-600">Current Annual Fuel Cost:</div>
-              <div className="text-xl font-semibold">${result.totalFuelCost.toLocaleString()}</div>
+              <div className="text-sm text-slate-600 mb-1">Current Annual Fuel Cost:</div>
+              <div className="text-3xl font-bold tracking-tight">${result.totalFuelCost.toLocaleString()}</div>
+              <div className="text-xs text-slate-500 mt-2">
+                Calculated using current VLSFO price of ${result.fuelPrice}/MT × {result.totalFuelConsumption} MT annual consumption
+              </div>
             </div>
+            <div className="h-[1px] bg-slate-200 my-6" />
             <div>
-              <div className="text-sm text-slate-600">Cost with Wayfinder:</div>
-              <div className="text-xl font-semibold text-emerald-600">${(result.totalFuelCost - annualSavings).toLocaleString()}</div>
-              <div className="text-sm text-slate-600 mt-2">
+              <div className="text-sm text-slate-600 mb-1">Cost with Wayfinder:</div>
+              <div className="text-3xl font-bold tracking-tight text-emerald-600">${(result.totalFuelCost - annualSavings).toLocaleString()}</div>
+              <div className="text-xs text-slate-500 mt-2">
                 Optimized routing and operations could reduce your annual fuel spend by ${annualSavings.toLocaleString()}
               </div>
             </div>
