@@ -102,19 +102,6 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           <div className="mt-4">
             <div className="text-2xl font-bold text-emerald-600">{Math.round(result.totalFuelConsumption * 0.05).toLocaleString()}</div>
             <div className="text-sm text-slate-600">MT CO₂ Reduction</div>
-            <div className="mt-4 space-y-2">
-              <div>
-                <div className="text-sm text-slate-600">Current Usage:</div>
-                <div className="text-lg font-medium">{result.totalFuelConsumption.toLocaleString()} MT/year</div>
-              </div>
-              <div>
-                <div className="text-sm text-slate-600">With Wayfinder:</div>
-                <div className="text-lg font-medium">{(result.totalFuelConsumption * 0.95).toLocaleString()} MT/year</div>
-              </div>
-              <div className="text-slate-600 text-xs max-w-[180px] ml-4">
-                Calculation: Current consumption × 0.95 (5% reduction) × 3.15 (IMO CO₂ factor per MT fuel)
-              </div>
-            </div>
           </div>
         </Card>
       </div>
