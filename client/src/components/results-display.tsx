@@ -11,8 +11,8 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   if (!results || results.length === 0) return null;
 
   const result = results[0];
-  const annualSavings = result.totalFuelCost * 0.05;
-  const co2Reduction = result.totalFuelConsumption * 0.05 * 3.11438;
+  const annualSavings = result.estimatedSavings;
+  const co2Reduction = result.co2Reduction;
   const carsOffRoad = co2Reduction / 4.6;
 
   return (
