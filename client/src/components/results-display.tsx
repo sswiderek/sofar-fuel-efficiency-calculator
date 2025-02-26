@@ -10,7 +10,7 @@ interface ResultsDisplayProps {
 export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   if (!results || results.length === 0) return null;
 
-  const result = results[0];
+  const result = results[0]; // Assuming only one result for now
 
   return (
     <div className="max-w-4xl space-y-5">
