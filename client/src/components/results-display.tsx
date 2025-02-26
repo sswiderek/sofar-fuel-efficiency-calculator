@@ -80,6 +80,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                   VLSFO price: ${(result.fuelPrice || 0).toLocaleString()}/MT × {(result.totalFuelConsumption || 0).toLocaleString()} MT annual consumption
                 </div>
                 <div className="text-[0.7rem] bg-slate-50 p-2 rounded">
+                  <div className="font-medium mb-1">Cost Breakdown:</div>
                   <div className="flex justify-between font-medium">
                     <span>Total Annual Consumption:</span>
                     <span>{result.totalFuelConsumption.toLocaleString()} MT</span>
