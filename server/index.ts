@@ -19,10 +19,6 @@ app.use('/images', express.static('public/images', {
 }));
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  
   const start = Date.now();
   const path = req.path;
   let capturedJsonResponse: Record<string, any> | undefined = undefined;
@@ -88,28 +84,7 @@ app.use((req, res, next) => {
   // ALWAYS serve the app on port 5000
   // this serves both the API and the client
   const PORT = process.env.PORT || 5000;
-  const HOST = '0.0.0.0';
-  
-  // Configure secure headers and CORS
-  app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    res.header('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-    
-    // Handle both HTTP and HTTPS
-    if (req.method === 'OPTIONS') {
-      return res.sendStatus(200);
-    }
-    next();
-  });
-
-  // Development specific settings
-  if (process.env.NODE_ENV === 'development') {
-    app.disable('x-powered-by');
-  }
-  
-  server.listen(PORT, HOST, () => {
-    log(`serving on ${HOST}:${PORT} in ${app.get("env")} mode`);
+  server.listen(PORT, "0.0.0.0", () => {
+    log(`serving on port ${PORT} in ${app.get("env")} mode`);
   });
 })();
