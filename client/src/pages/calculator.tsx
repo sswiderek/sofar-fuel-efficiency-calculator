@@ -34,8 +34,8 @@ export default function Calculator() {
               <p className="text-xs text-slate-600 mb-2">Estimate fuel savings and environmental benefits with Sofar's Wayfinder:</p>
               <ul className="list-disc list-inside text-xs text-slate-600 space-y-0.5 ml-1">
                 <li>Enter fleet details and fuel consumption</li>
-                <li>View current costs and potential optimization</li>
-                <li>See financial savings and CO₂ reductions</li>
+                <li>Get detailed breakdown of fuel costs across your fleet</li>
+                <li>See 5% financial savings and CO₂ emission reductions</li>
               </ul>
             </div>
             <CalculatorForm />
