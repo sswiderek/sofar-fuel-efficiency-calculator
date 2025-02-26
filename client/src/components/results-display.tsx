@@ -23,6 +23,18 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           <div className="flex items-center gap-2.5 text-white/95">
             <DollarSign className="h-5 w-5" strokeWidth={2} />
             <span className="text-base font-semibold tracking-wide">Annual Savings</span>
+            <Tooltip>
+              <TooltipTrigger>
+                <Info className="h-4 w-4 cursor-help opacity-80 hover:opacity-100" />
+              </TooltipTrigger>
+              <TooltipContent>
+                <div className="max-w-[250px] space-y-2">
+                  <p className="text-sm leading-snug text-white">
+                    These savings are calculated based on your fleet's fuel consumption and current VLSFO prices, incorporating Wayfinder's proven optimization algorithms.
+                  </p>
+                </div>
+              </TooltipContent>
+            </Tooltip>
           </div>
           <div className="mt-5">
             <div className="flex flex-col gap-1.5">
