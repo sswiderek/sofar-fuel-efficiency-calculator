@@ -27,7 +27,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               <div className="text-sm text-white/90 mt-1">Projected cost reduction</div>
             </div>
             <div className="text-white/80 text-xs max-w-[180px] pt-1">
-              Based on {result.totalFuelConsumption.toLocaleString()} MT annual fuel usage × ${result.totalFuelCost / result.totalFuelConsumption}/MT × 5% optimization
+              Your fleet uses {result.totalFuelConsumption.toLocaleString()} MT of fuel annually. With 5% optimization, you could save this much on fuel costs.
             </div>
           </div>
         </Card>
