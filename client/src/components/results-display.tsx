@@ -37,10 +37,10 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
 
         <Card className="bg-white p-6">
           <div className="flex items-center gap-2 text-slate-700">
-            <TrendingDown className="h-5 w-5" />
+            <Info className="h-5 w-5" />
             <span className="text-base font-medium">Cost Breakdown</span>
           </div>
-          <div className="mt-4 space-y-6">
+          <div className="mt-4">
             <div>
               <div className="text-sm text-slate-600">Current Annual Fuel Cost:</div>
               <div className="text-2xl font-bold">${result.totalFuelCost.toLocaleString()}</div>
@@ -48,6 +48,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                 Calculated using current VLSFO price of ${result.fuelPrice}/MT × {result.totalFuelConsumption} MT annual consumption
               </div>
             </div>
+            <div className="h-px bg-slate-200 my-6" />
             <div>
               <div className="text-sm text-slate-600">Cost with Wayfinder:</div>
               <div className="text-2xl font-bold text-emerald-600">${(result.totalFuelCost - annualSavings).toLocaleString()}</div>
