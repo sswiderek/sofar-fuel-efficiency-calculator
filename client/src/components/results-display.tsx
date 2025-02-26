@@ -44,7 +44,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           </div>
           <div className="mt-4">
             <div className="text-3xl font-bold tracking-tight text-emerald-600">
-              ${result.annualSavings.toLocaleString()}
+              ${result.estimatedSavings.toLocaleString()}
             </div>
             <div className="text-sm text-slate-600 mt-2">
               Based on your fleet's annual fuel consumption of {result.totalFuelConsumption.toLocaleString()} MT, 
