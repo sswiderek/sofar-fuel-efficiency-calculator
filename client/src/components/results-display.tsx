@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { CalculationResult } from "@shared/schema";
-import { DollarSign, Info, LeafIcon, TrendingDown } from "lucide-react";
+import { DollarSign, Info, LeafIcon, TrendingDown, Car } from "lucide-react"; // Added Car import
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface ResultsDisplayProps {
@@ -261,7 +261,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               </div>
             </div>
             <div className="mt-3 pt-3 border-t border-white/10 text-sm text-white/80">
-              This reduction is equivalent to taking {Math.round(carsOffRoad).toLocaleString()} cars off the road for a year.
+              <Car className="inline-block h-4 w-4 mr-1.5 -mt-0.5" /> This reduction is equivalent to taking {formatNumber(carsOffRoad)} cars off the road for a year.
             </div>
           </div>
         </Card>
