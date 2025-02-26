@@ -47,7 +47,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               <div className="text-sm text-slate-600">Current Annual Fuel Cost:</div>
               <div className="text-2xl font-bold tracking-tight">${result.totalFuelCost.toLocaleString()}</div>
               <div className="text-xs text-slate-500 mt-1">
-                Calculated using current VLSFO price of ${result.fuelPrice.toLocaleString()}/MT × {result.totalFuelConsumption.toLocaleString()} MT annual consumption
+                Calculated using current VLSFO price of ${(result.fuelPrice || 0).toLocaleString()}/MT × {(result.totalFuelConsumption || 0).toLocaleString()} MT annual consumption
               </div>
             </div>
             <div className="h-[1px] bg-slate-200 my-4" />
