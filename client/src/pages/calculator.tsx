@@ -48,7 +48,7 @@ export default function Calculator() {
                   <div className="rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-5 py-1.5 shadow-lg">
                     <span className="text-sm text-white font-medium tracking-wide flex items-center">
                       <GlobeIcon className="h-4 w-4 mr-2 opacity-80" />
-                      Proven Results
+                      Success Stories
                     </span>
                   </div>
                 </div>
