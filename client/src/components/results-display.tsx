@@ -24,7 +24,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           : vessel.type === 'oil-tanker-vlcc' 
             ? 'Oil Tanker (VLCC)'
             : vessel.type.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-        const annualCost = vessel.fuelConsumption * vessel.seaDaysPerYear * vessel.count * result.fuelPrice;
+        const annualCost = vessel.fuelConsumption * vessel.seaDaysPerYear * vessel.count * results[0].fuelPrice;
         vesselTypeCosts[type] = (vesselTypeCosts[type] || 0) + annualCost;
       }
     });
