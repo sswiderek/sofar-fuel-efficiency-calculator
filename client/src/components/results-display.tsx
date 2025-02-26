@@ -91,12 +91,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                 <div className="max-w-[250px] space-y-2">
                   <h4 className="font-medium">How We Calculate CO₂ Reduction</h4>
                   <div className="text-sm text-slate-600">
-                    <p>We calculate your annual CO₂ reduction by:</p>
-                    <ul className="mt-1 space-y-1">
-                      <li>1. Calculating your fuel savings from route optimization</li>
-                      <li>2. Multiplying saved fuel by 3.15 (the CO₂ emission factor)</li>
-                      <li>3. Result shows metric tons of CO₂ avoided per year</li>
-                    </ul>
+                    <p>We calculate your annual CO₂ reduction by multiplying your fuel savings by 3.15 (the CO₂ emission factor), giving you the metric tons of CO₂ avoided per year.</p>
                   </div>
                 </div>
               </TooltipContent>
