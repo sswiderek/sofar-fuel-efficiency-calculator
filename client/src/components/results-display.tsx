@@ -16,14 +16,19 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   const carsOffRoad = co2Reduction / 4.6;
 
   const vesselTypeCosts = {};
-  const vessels = results[0].vessels || [];
-  vessels.forEach(vessel => {
-    if (vessel && vessel.type) {
-      const type = vessel.type.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-      const annualCost = vessel.fuelConsumption * vessel.seaDaysPerYear * vessel.count * vessel.fuelPrice;
-      vesselTypeCosts[type] = (vesselTypeCosts[type] || 0) + annualCost;
-    }
-  });
+  if (result.vessels && Array.isArray(result.vessels)) {
+    result.vessels.forEach(vessel => {
+      if (vessel && vessel.type) {
+        const type = vessel.type === 'container-ship-panama-3000-5000-teu' 
+          ? 'Container Ship (Panama 3000-5000 TEU)'
+          : vessel.type === 'oil-tanker-vlcc' 
+            ? 'Oil Tanker (VLCC)'
+            : vessel.type.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        const annualCost = vessel.fuelConsumption * vessel.seaDaysPerYear * vessel.count * result.fuelPrice;
+        vesselTypeCosts[type] = (vesselTypeCosts[type] || 0) + annualCost;
+      }
+    });
+  }
 
 
   return (
