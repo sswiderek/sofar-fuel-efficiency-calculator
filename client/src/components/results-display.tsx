@@ -248,9 +248,12 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                       </button>
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p className="max-w-[200px] text-sm">
-                        CO2 reduction is calculated using the standard maritime emission factor of 3.15 MT of CO2 per MT of fuel burned. The reduction in fuel consumption leads directly to reduced emissions.
-                      </p>
+                      <div className="max-w-[280px] space-y-2">
+                        <h4 className="text-sm font-medium mb-1.5">How is this calculated?</h4>
+                        <p className="text-sm leading-relaxed">
+                          For every ton of fuel saved, we reduce CO₂ emissions by 3.15 tons. This is based on standard maritime industry calculations - less fuel burned means fewer emissions released into the atmosphere.
+                        </p>
+                      </div>
                     </TooltipContent>
                   </Tooltip>
                 </div>
