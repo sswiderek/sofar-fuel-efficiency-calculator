@@ -65,15 +65,12 @@ export default function FuelPriceDisplay() {
             <TooltipTrigger>
               <InfoIcon className="h-5 w-5 text-slate-400 cursor-help" /> {/* Changed here */}
             </TooltipTrigger>
-            <TooltipContent side="right" className="bg-white border-blue-200 shadow-lg">
-              <div className="space-y-2 p-3">
-                <h4 className="font-medium text-blue-900">Price Information</h4>
-                <div className="max-w-[280px] space-y-2">
-                  <h4 className="font-medium text-blue-900 mb-1">About This Fuel Price</h4>
-                  <p className="text-sm text-blue-700 leading-relaxed">
-                    This is the price of marine-grade low sulfur fuel, which most ships use to meet environmental regulations. The price shown is a monthly average from the world's 20 largest ports.
-                  </p>
-                </div>
+            <TooltipContent side="right">
+              <div className="max-w-[280px] space-y-2">
+                <h4 className="text-sm font-medium mb-1.5">About This Fuel Price</h4>
+                <p className="text-sm leading-relaxed">
+                  This is the price of marine-grade low sulfur fuel, which most ships use to meet environmental regulations. The price shown is a monthly average from the world's 20 largest ports.
+                </p>
               </div>
             </TooltipContent>
           </Tooltip>
