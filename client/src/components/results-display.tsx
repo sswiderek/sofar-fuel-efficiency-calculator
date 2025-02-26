@@ -136,7 +136,6 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                       <span>Total Annual Consumption:</span>
                       <span>{result.totalFuelConsumption.toLocaleString()} MT</span>
                     </div>
-                  </div>
                 </div>
               </div>
             </div>
