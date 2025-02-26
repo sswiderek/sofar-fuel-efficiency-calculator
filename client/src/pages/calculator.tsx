@@ -39,60 +39,19 @@ export default function Calculator() {
               </ul>
             </div>
             <CalculatorForm />
-            <div className="mt-8">
-              <div className="space-y-6">
-                <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 border border-sky-100"> {/* Removed shadow-lg */}
-                  <h3 className="text-lg font-semibold text-slate-900 mb-4">
-                    Assumptions Made in This Calculator
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <div className="bg-sky-50/50 p-4 rounded-lg">
-                      <div className="flex items-start gap-3">
-                        <div className="bg-sky-100 p-2 rounded-lg">
-                          <BarChartIcon className="h-5 w-5 text-sky-700" />
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium text-slate-900">Voyage Time and Port Operations</p>
-                          <p className="text-xs text-slate-600 mt-1">The calculator accounts for both sea time and necessary port operations between voyages, reflecting real-world shipping operations.</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bg-sky-50/50 p-4 rounded-lg">
-                      <div className="flex items-start gap-3">
-                        <div className="bg-sky-100 p-2 rounded-lg">
-                          <FuelIcon className="h-5 w-5 text-sky-700" />
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium text-slate-900">VLSFO Fuel Type</p>
-                          <p className="text-xs text-slate-600 mt-1">Calculations use Very Low Sulfur Fuel Oil (VLSFO) prices, which is the primary marine fuel used to comply with IMO 2020 sulfur regulations.</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bg-sky-50/50 p-4 rounded-lg">
-                      <div className="flex items-start gap-3">
-                        <div className="bg-sky-100 p-2 rounded-lg">
-                          <TrendingUpIcon className="h-5 w-5 text-sky-700" />
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium text-slate-900">Estimated Savings Range</p>
-                          <p className="text-xs text-slate-600 mt-1">The fuel savings percentage is estimated between 3% to 7%, based on typical results from Sofar Ocean's Wayfinder platform.</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bg-sky-50/50 p-4 rounded-lg">
-                      <div className="flex items-start gap-3">
-                        <div className="bg-sky-100 p-2 rounded-lg">
-                          <LeafIcon className="h-5 w-5 text-sky-700" />
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium text-slate-900">CO₂ Emissions Reduction</p>
-                          <p className="text-xs text-slate-600 mt-1">Each metric ton of fuel burned produces 3.15 metric tons of CO₂ based on standard shipping benchmarks.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            <div className="mt-12 mb-8">
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-sky-200"></div>
                 </div>
-
+                <div className="relative flex justify-center">
+                  <span className="bg-white/80 backdrop-blur-sm px-4 text-sm text-sky-600 font-medium">
+                    Real-World Optimization
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-6">
                 <Card className="bg-gradient-to-br from-blue-900 to-blue-800 hover:from-blue-800 hover:to-blue-700 text-white shadow-xl transform hover:scale-102 hover:shadow-2xl transition-all duration-300 border border-blue-700/50 cursor-pointer group overflow-hidden">
                   <a href="https://www.sofarocean.com/posts/wayfinder-voyage-optimization-savings-report-2024" target="_blank" rel="noopener noreferrer" className="block relative h-full">
                     <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer"></div>
@@ -112,7 +71,6 @@ export default function Calculator() {
                   </a>
                 </Card>
               </div>
-            </div>
           </CardContent>
         </Card>
       </div>
