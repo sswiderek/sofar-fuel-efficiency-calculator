@@ -16,11 +16,14 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   const carsOffRoad = co2Reduction / 4.6;
 
   const vesselTypeCosts = {};
-  results[0].vessels.forEach(vessel => {
-    const type = vessel.type.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-    const annualCost = vessel.fuelConsumption * vessel.seaDaysPerYear * vessel.count * result.fuelPrice;
-    vesselTypeCosts[type] = (vesselTypeCosts[type] || 0) + annualCost;
-  })
+  const vessels = results[0].vessels || [];
+  vessels.forEach(vessel => {
+    if (vessel && vessel.type) {
+      const type = vessel.type.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+      const annualCost = vessel.fuelConsumption * vessel.seaDaysPerYear * vessel.count * vessel.fuelPrice;
+      vesselTypeCosts[type] = (vesselTypeCosts[type] || 0) + annualCost;
+    }
+  });
 
 
   return (
