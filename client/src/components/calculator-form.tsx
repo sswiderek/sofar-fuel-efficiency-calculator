@@ -272,18 +272,9 @@ export default function CalculatorForm() {
                                       </button>
                                     </TooltipTrigger>
                                     <TooltipContent side="right" className="max-w-[280px]">
-                                      <div className="p-1">
-                                      <h4 className="text-base font-semibold text-blue-900 mb-1">Days at Sea Per Year</h4>
-                                      <p className="text-sm text-slate-600 leading-relaxed">
-                                        Enter the number of days each vessel spends actively sailing at sea annually. 
-                                        Exclude time in port or maintenance periods.
-                                        <br /><br />
-                                        <span className="font-medium">Enter for one vessel only.</span> The calculation will 
-                                        account for your fleet size automatically.
-                                        <br /><br />
-                                        <span className="italic text-slate-500">Example value: 280 days</span>
+                                      <p className="text-sm">
+                                        Average fuel consumption in Metric Tonnes per day while at sea. Typical ranges from 20-150 MT/day depending on vessel size.
                                       </p>
-                                    </div>
                                     </TooltipContent>
                                   </Tooltip>
                                 </div>
@@ -314,13 +305,11 @@ export default function CalculatorForm() {
                                   <FormLabel>Days at Sea Per Vessel Per Year</FormLabel>
                                 </div>
                                 <Tooltip>
-                                  <TooltipTrigger asChild>
-                                    <button type="button" className="p-1 -m-1 border-0 bg-transparent cursor-help">
-                                      <InfoIcon className="h-4 w-4 text-slate-400" />
-                                    </button>
+                                  <TooltipTrigger>
+                                    <InfoIcon className="h-4 w-4 text-slate-400" />
                                   </TooltipTrigger>
                                   <TooltipContent className="max-w-[300px] text-xs">
-                                    <p>Active Sailing Days: The number of days your ship spends at sea in a year. Don't include time in port or maintenance. Enter for one ship only, not your entire fleet. Typical value: 280 days</p>
+                                    <p>Enter the active sailing days per year for a single vessel of this type, excluding port stays and maintenance periods. Do not multiply by fleet size. Example: 280 days</p>
                                   </TooltipContent>
                                 </Tooltip>
                               </div>
