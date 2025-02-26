@@ -305,8 +305,10 @@ export default function CalculatorForm() {
                                   <FormLabel>Days at Sea Per Vessel Per Year</FormLabel>
                                 </div>
                                 <Tooltip>
-                                  <TooltipTrigger>
-                                    <InfoIcon className="h-4 w-4 text-slate-400" />
+                                  <TooltipTrigger asChild>
+                                    <button type="button" className="p-1 -m-1 border-0 bg-transparent cursor-help">
+                                      <InfoIcon className="h-4 w-4 text-slate-400" />
+                                    </button>
                                   </TooltipTrigger>
                                   <TooltipContent className="max-w-[300px] text-xs">
                                     <p>Active Sailing Days: The number of days your ship spends at sea in a year. Don't include time in port or maintenance. Enter for one ship only, not your entire fleet. Typical value: 280 days</p>
