@@ -112,7 +112,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                   <div className="max-w-[250px] space-y-2">
                     <h4 className="font-medium">What does this mean?</h4>
                     <div className="text-sm text-slate-600">
-                      <p>This shows how many cars would need to stop driving for a year to match these CO₂ savings</p>
+                      <p>A typical car produces 4.6 metric tons of CO₂ per year. This shows how many cars would equal your fleet's CO₂ savings.</p>
                     </div>
                   </div>
                 </TooltipContent>
