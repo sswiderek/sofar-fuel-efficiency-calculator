@@ -83,19 +83,9 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           <div className="flex items-center gap-2">
             <LeafIcon className="h-5 w-5 text-emerald-600" />
             <span className="text-lg font-medium text-emerald-700">CO₂ Reduction</span>
-            <Tooltip>
-              <TooltipTrigger>
-                <Info className="h-4 w-4 text-emerald-400" />
-              </TooltipTrigger>
-              <TooltipContent>
-                <div className="max-w-[250px] space-y-2">
-                  <h4 className="font-medium">How We Calculate CO₂ Reduction</h4>
-                  <div className="text-sm text-slate-600">
-                    <p>We calculate your annual CO₂ reduction by multiplying your fuel savings by 3.15 (the CO₂ emission factor), giving you the metric tons of CO₂ avoided per year.</p>
-                  </div>
-                </div>
-              </TooltipContent>
-            </Tooltip>
+            <div className="mt-1.5 text-sm text-emerald-600/90">
+              We calculate your annual CO₂ reduction by multiplying your fuel savings by 3.15 (the CO₂ emission factor), giving you the metric tons of CO₂ avoided per year.
+            </div>
           </div>
           <div className="mt-3">
             <div className="text-3xl font-bold text-emerald-700">{Math.round(result.co2Reduction).toLocaleString()} MT</div>
