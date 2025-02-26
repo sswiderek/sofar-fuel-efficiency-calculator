@@ -6,10 +6,16 @@ import { getVLSFOPrice } from "./services/openai";
 export function registerRoutes(app: Express): Server {
   app.get("/api/vlsfo-price", async (req, res) => {
     try {
+      console.log("Fetching VLSFO price...");
       const price = await getVLSFOPrice();
+      console.log("VLSFO price fetched:", price);
       res.json(price);
     } catch (error) {
-      res.status(500).json({ error: "Failed to fetch VLSFO price" });
+      console.error("VLSFO price fetch error:", error);
+      res.status(500).json({ 
+        error: "Failed to fetch VLSFO price",
+        details: error instanceof Error ? error.message : String(error)
+      });
     }
   });
 
