@@ -81,17 +81,18 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
 
         <Card className="bg-emerald-50/50 p-4">
           <div className="flex justify-between items-start">
-            <div className="flex items-center gap-2">
-              <LeafIcon className="h-5 w-5 text-emerald-600" />
-              <span className="text-lg font-medium text-emerald-700">CO₂ Reduction</span>
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <LeafIcon className="h-5 w-5 text-emerald-600" />
+                <span className="text-lg font-medium text-emerald-700">CO₂ Reduction</span>
+              </div>
+              <div className="text-3xl font-bold text-emerald-700">{Math.round(result.co2Reduction).toLocaleString()} MT</div>
+              <div className="text-base text-emerald-600">Annual emissions saved</div>
             </div>
-            <div className="text-sm text-emerald-600/90 max-w-[280px] text-right">
+            <div className="text-sm text-emerald-600/90 max-w-[240px] text-right bg-emerald-50/50 p-3 rounded-lg">
               We calculate your annual CO₂ reduction by multiplying your fuel savings by 3.15 (the CO₂ emission factor), giving you the metric tons of CO₂ avoided per year.
             </div>
           </div>
-          <div className="mt-3">
-            <div className="text-3xl font-bold text-emerald-700">{Math.round(result.co2Reduction).toLocaleString()} MT</div>
-            <div className="text-base text-emerald-600 mt-1">Annual emissions saved</div>
             <div className="flex items-center gap-1.5 mt-3 text-emerald-600">
               <span>≈ {Math.round((result.totalFuelConsumption * 0.05 * 3.15) / 4.6).toLocaleString()} cars off the road</span>
               <Tooltip>
