@@ -35,7 +35,7 @@ export default function Calculator() {
               <ul className="list-disc list-inside text-xs text-slate-600 space-y-0.5 ml-1">
                 <li>Enter fleet details and fuel consumption</li>
                 <li>Get detailed breakdown of fuel costs across your fleet</li>
-                <li>See 5% financial savings and CO₂ emission reductions</li>
+                <li>See projected financial savings and CO₂ emission reductions</li>
               </ul>
             </div>
             <CalculatorForm />
