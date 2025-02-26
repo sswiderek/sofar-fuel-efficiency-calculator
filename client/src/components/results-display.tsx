@@ -15,6 +15,14 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   const co2Reduction = result.co2Reduction;
   const carsOffRoad = co2Reduction / 4.6;
 
+  const vesselTypeCosts = {};
+  results[0].vessels.forEach(vessel => {
+    const type = vessel.type.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    const annualCost = vessel.fuelConsumption * vessel.seaDaysPerYear * vessel.count * result.fuelPrice;
+    vesselTypeCosts[type] = (vesselTypeCosts[type] || 0) + annualCost;
+  })
+
+
   return (
     <div className="max-w-4xl space-y-6">
       <h2 className="text-xl font-bold text-slate-800 mb-2">Analysis Results</h2>
@@ -81,12 +89,6 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                 </div>
                 <div className="text-[0.7rem] bg-slate-50 p-2 rounded">
                   <div className="font-medium mb-2">Fleet Breakdown:</div>
-                  <div className="text-slate-600 mb-2">
-                    <div className="flex justify-between">
-                      <span>Fuel Price:</span>
-                      <span>${results?.[0]?.fuelPrice?.toLocaleString()}/MT</span>
-                    </div>
-                  </div>
                   {Array.isArray(results?.[0]?.vessels) && results[0].vessels.map((vessel, index) => (
                     <div key={index} className="mb-3 last:mb-0 pb-2 border-b border-slate-200 last:border-0">
                       <div className="font-medium text-slate-700">
@@ -105,19 +107,9 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                           <span>Annual Consumption:</span>
                           <span>{(vessel.fuelConsumption * vessel.seaDaysPerYear * vessel.count).toLocaleString()} MT</span>
                         </div>
-                      </div>
-                      <div className="text-slate-600 pl-3 space-y-0.5 mt-1">
-                        <div className="flex justify-between">
-                          <span>Daily Consumption:</span>
-                          <span>{vessel.fuelConsumption.toLocaleString()} MT/day</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Days at Sea:</span>
-                          <span>{vessel.seaDaysPerYear} days/year</span>
-                        </div>
                         <div className="flex justify-between font-medium">
-                          <span>Annual Consumption:</span>
-                          <span>{(vessel.fuelConsumption * vessel.seaDaysPerYear * vessel.count).toLocaleString()} MT</span>
+                          <span>Annual Fuel Cost:</span>
+                          <span>${((vessel.fuelConsumption * vessel.seaDaysPerYear * vessel.count * result.fuelPrice)).toLocaleString()}</span>
                         </div>
                       </div>
                     </div>
@@ -125,17 +117,13 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                   <div className="mt-3 pt-2 border-t border-slate-200">
                     <div className="flex justify-between font-medium">
                       <span>Total Annual Consumption:</span>
-                      <span>{results?.[0]?.totalAnnualConsumption?.toLocaleString()} MT</span>
+                      <span>{result.totalFuelConsumption.toLocaleString()} MT</span>
                     </div>
                     <div className="flex justify-between font-medium mt-1">
                       <span>Total Annual Fuel Cost:</span>
                       <span>${results?.[0]?.totalFuelCost?.toLocaleString()}</span>
                     </div>
                   </div>
-                    <div className="flex justify-between font-medium">
-                      <span>Total Annual Consumption:</span>
-                      <span>{result.totalFuelConsumption.toLocaleString()} MT</span>
-                    </div>
                 </div>
               </div>
             </div>
@@ -175,6 +163,25 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             </p>
           </div>
         </Card>
+          {/*Added a summary of costs per vessel type*/}
+          <Card className="bg-white p-6">
+            <div className="flex items-center gap-2 text-slate-700">
+              <div className="rounded-full p-1 bg-slate-100">
+                <Info className="h-4 w-4" />
+              </div>
+              <span className="text-base font-medium">Cost Breakdown per Vessel Type</span>
+            </div>
+            <div className="mt-4">
+              {Object.entries(vesselTypeCosts).map(([type, cost]) => (
+                <div key={type} className="mb-2">
+                  <div className="flex justify-between">
+                    <span className="font-medium">{type}</span>
+                    <span>${cost.toLocaleString()}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Card>
       </div>
     </div>
   );
