@@ -81,27 +81,10 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                 </div>
                 <div className="text-[0.7rem] bg-slate-50 p-2 rounded">
                   <div className="font-medium mb-2">Fleet Breakdown:</div>
-                  {result.vessels.map((vessel, index) => (
-                    <div key={index} className="mb-2 last:mb-0">
-                      <div className="font-medium text-slate-700">
-                        {vessel.count} × {vessel.type.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
-                      </div>
-                      <div className="text-slate-600 pl-3 space-y-0.5">
-                        <div className="flex justify-between">
-                          <span>Daily Consumption:</span>
-                          <span>{vessel.fuelConsumption} MT/day</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Days at Sea:</span>
-                          <span>{vessel.seaDaysPerYear} days/year</span>
-                        </div>
-                        <div className="flex justify-between font-medium">
-                          <span>Annual Consumption:</span>
-                          <span>{(vessel.fuelConsumption * vessel.seaDaysPerYear * vessel.count).toLocaleString()} MT</span>
-                        </div>
-                      </div>
+                  <div className="mb-2 last:mb-0">
+                    <div className="font-medium text-slate-700">
                     </div>
-                  ))}
+                  </div>
                   <div className="mt-3 pt-2 border-t border-slate-200">
                     <div className="flex justify-between font-medium">
                       <span>Total Annual Consumption:</span>
