@@ -65,7 +65,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                   <div className="text-xl font-semibold">${(result.totalFuelCost * 0.95).toLocaleString()}</div>
                 </div>
               </div>
-              <div className="text-slate-600 text-xs max-w-[240px] flex items-start pt-[3px]">
+              <div className="text-slate-600 text-xs max-w-[240px] flex items-start -mt-[3px]">
                 <div>
                   Here's how we calculate your optimized costs:
                   <ul className="list-disc mt-1 ml-3 space-y-1">
