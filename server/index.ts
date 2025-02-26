@@ -89,6 +89,15 @@ app.use((req, res, next) => {
   // this serves both the API and the client
   const PORT = process.env.PORT || 5000;
   const HOST = process.env.NODE_ENV === 'production' ? '0.0.0.0' : '0.0.0.0';
+  
+  app.enable('trust proxy');
+  app.use((req, res, next) => {
+    if (process.env.NODE_ENV === 'production' && !req.secure) {
+      return res.redirect('https://' + req.headers.host + req.url);
+    }
+    next();
+  });
+
   server.listen(PORT, HOST, () => {
     log(`serving on ${HOST}:${PORT} in ${app.get("env")} mode`);
   });
