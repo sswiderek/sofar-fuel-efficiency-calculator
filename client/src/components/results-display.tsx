@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card";
 import { CalculationResult } from "@shared/schema";
 import { DollarSign, Info, LeafIcon, TrendingDown } from "lucide-react";
@@ -14,23 +13,22 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   const result = results[0];
 
   return (
-    <div className="max-w-4xl w-full">
-      <h2 className="text-xl font-bold text-slate-800 mb-6">Analysis Results</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        <Card className="savings-tile col-span-full md:col-span-2 xl:col-span-1 p-6 relative overflow-hidden">
-          <div className="metric-header">
-            <DollarSign className="metric-icon" />
-            <span>Annual Savings</span>
+    <div className="max-w-4xl space-y-5">
+      <h2 className="text-xl font-bold text-slate-800">Analysis Results</h2>
+      <div className="grid gap-4">
+        <Card className="bg-gradient-to-br from-[#0E6396] to-[#0A4F78] text-white p-6">
+          <div className="flex items-center gap-2.5 text-white/90">
+            <DollarSign className="h-5 w-5" />
+            <span className="text-base font-medium">Annual Savings</span>
           </div>
-          <div className="metric-value">${(result.totalFuelCost * 0.05).toLocaleString()}</div>
-          <div className="metric-label">Projected cost reduction</div>
-          <div className="waves-small"></div>
+          <div className="text-4xl font-bold mt-3 tracking-tight">${(result.totalFuelCost * 0.05).toLocaleString()}</div>
+          <div className="text-sm text-white/90 mt-1">Projected cost reduction</div>
         </Card>
 
-        <Card className="optimized-tile p-6">
-          <div className="metric-header">
-            <TrendingDown className="metric-icon" />
-            <span>Costs Breakdown</span>
+        <Card className="bg-white p-3.5">
+          <div className="flex items-center gap-2 text-slate-700">
+            <TrendingDown className="h-4 w-4" />
+            <span className="text-sm font-medium">Costs Breakdown</span>
             <Tooltip>
               <TooltipTrigger>
                 <Info className="h-4 w-4 text-slate-400" />
@@ -60,10 +58,10 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           </div>
         </Card>
 
-        <Card className="co2-tile p-6">
-          <div className="metric-header">
-            <LeafIcon className="metric-icon text-emerald-600" />
-            <span>Environmental Impact</span>
+        <Card className="bg-emerald-50 p-3.5">
+          <div className="flex items-center gap-2">
+            <LeafIcon className="h-4 w-4 text-emerald-600" />
+            <span className="text-sm font-medium text-slate-700">Environmental Impact</span>
             <Tooltip>
               <TooltipTrigger>
                 <Info className="h-4 w-4 text-slate-400" />
