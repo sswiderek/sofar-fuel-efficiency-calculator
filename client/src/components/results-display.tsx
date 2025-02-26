@@ -58,20 +58,6 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               <Info className="h-4 w-4" />
             </div>
             <span className="text-base font-medium">Cost Breakdown</span>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <button className="p-0.5 hover:bg-slate-100 rounded-full transition-colors">
-                  <Info className="h-4 w-4 cursor-help opacity-80 hover:opacity-100" />
-                </button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <div className="max-w-[250px] space-y-2">
-                  <p className="text-sm leading-snug">
-                    The cost breakdown shows your current annual fuel costs based on consumption and VLSFO price, compared to projected costs with Wayfinder's optimization. The difference represents your potential savings.
-                  </p>
-                </div>
-              </TooltipContent>
-            </Tooltip>
           </div>
           <div className="mt-4">
             <div>
