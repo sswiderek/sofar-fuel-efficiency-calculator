@@ -260,8 +260,8 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                 <span className="font-medium">{formatNumber(co2Reduction)} MT</span>
               </div>
             </div>
-            <div className="mt-3 pt-3 border-t border-white/10 text-sm text-white/80">
-              <Car className="inline-block h-4 w-4 mr-1.5 -mt-0.5" /> This reduction is equivalent to taking {formatNumber(carsOffRoad)} cars off the road for a year.
+            <div className="mt-3 pt-3 border-t border-white/10 text-xs text-white/80">
+              <Car className="inline-block h-3.5 w-3.5 mr-1 -mt-0.5" /> This reduction is equivalent to taking {formatNumber(carsOffRoad)} cars off the road for a year.
             </div>
           </div>
         </Card>
