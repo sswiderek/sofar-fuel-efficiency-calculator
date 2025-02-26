@@ -54,7 +54,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             </Tooltip>
           </div>
           <div className="mt-4 space-y-3">
-            <div className="flex gap-8">
+            <div className="flex gap-12">
               <div className="flex flex-col gap-4">
                 <div>
                   <div className="text-sm text-slate-600">Current:</div>
@@ -65,7 +65,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                   <div className="text-xl font-semibold">${(result.totalFuelCost * 0.95).toLocaleString()}</div>
                 </div>
               </div>
-              <div className="text-slate-600 text-xs max-w-[240px] flex items-center">
+              <div className="text-slate-600 text-xs max-w-[240px] flex items-center self-center">
                 <div>
                   Here's how we calculate your optimized costs:
                   <ul className="list-disc mt-1 ml-3 space-y-1">
