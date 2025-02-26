@@ -115,7 +115,21 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                   ))}
                   <div className="mt-4 pt-3 border-t border-slate-200">
                     <div className="grid grid-cols-2 gap-2 text-sm">
-                      <div className="text-slate-600 font-medium">VLSFO Price:</div>
+                      <div className="text-slate-600 font-medium flex items-center gap-1">
+                        Fuel Price
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <button className="p-0.5 hover:bg-slate-100 rounded-full transition-colors">
+                              <Info className="h-3.5 w-3.5 cursor-help opacity-70 hover:opacity-100" />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p className="max-w-[300px] text-sm">
+                              VLSFO Fuel Type: Calculations use Very Low Sulfur Fuel Oil (VLSFO) prices, which is the primary marine fuel used to comply with IMO 2020 sulfur regulations.
+                            </p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </div>
                       <div className="text-right font-medium">${fuelPrice.toLocaleString()}/MT</div>
 
                       <div className="text-slate-600 font-medium">Total Annual Consumption:</div>
