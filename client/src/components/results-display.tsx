@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { CalculationResult } from "@shared/schema";
-import { DollarSign, Info, LeafIcon, TrendingDown } from "lucide-react";
+import { DollarSign, Info, LeafIcon, InfoIcon, TrendingDown } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface ResultsDisplayProps {
