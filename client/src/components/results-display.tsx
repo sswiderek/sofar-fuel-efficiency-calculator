@@ -1,3 +1,4 @@
+
 import { Card } from "@/components/ui/card";
 import { LeafIcon } from "lucide-react";
 import { CalculationResult } from "@/lib/types";
@@ -6,7 +7,7 @@ interface ResultsDisplayProps {
   result: CalculationResult;
 }
 
-export function ResultsDisplay({ result }: ResultsDisplayProps) {
+export default function ResultsDisplay({ result }: ResultsDisplayProps) {
   return (
     <div className="space-y-4">
       <Card className="bg-gradient-to-br from-blue-900 to-blue-800 text-white p-6">
@@ -24,25 +25,19 @@ export function ResultsDisplay({ result }: ResultsDisplayProps) {
       </Card>
 
       <Card className="p-6">
-        <div className="space-y-6">
+        <div className="flex items-center gap-2.5">
+          <span className="text-lg font-medium">Cost Breakdown</span>
+        </div>
+        <div className="mt-4 space-y-4">
           <div>
-            <h3 className="text-lg font-medium mb-4">Cost Breakdown</h3>
-            <div className="space-y-4">
-              <div>
-                <div className="text-slate-600 font-medium">Current Annual Fuel Cost:</div>
-                <div className="text-xl font-semibold">${result.totalFuelCost.toLocaleString()}</div>
-                <div className="text-sm text-slate-500">
-                  Calculated using current VLSFO price of ${result.fuelPrice} × {result.totalFuelConsumption.toLocaleString()} MT annual consumption
-                </div>
-              </div>
-              <div className="pt-2">
-                <div className="text-slate-600 font-medium">Cost with Wayfinder:</div>
-                <div className="text-xl font-semibold text-emerald-600">${(result.totalFuelCost * 0.95).toLocaleString()}</div>
-                <div className="text-sm text-slate-500">
-                  Optimized routing and operations could reduce your annual fuel spend by ${result.estimatedSavings.toLocaleString()}
-                </div>
-              </div>
-            </div>
+            <div className="text-sm text-slate-600">Current Annual Fuel Cost:</div>
+            <div className="text-2xl font-bold text-slate-900">${result.totalFuelCost.toLocaleString()}</div>
+            <div className="text-xs text-slate-500">Calculated using current VLSFO price of $1/MT × {result.totalFuelConsumption.toLocaleString()} MT annual consumption</div>
+          </div>
+          <div>
+            <div className="text-sm text-slate-600">Cost with Wayfinder:</div>
+            <div className="text-2xl font-bold text-emerald-600">${result.fuelCostWithWayfinder.toLocaleString()}</div>
+            <div className="text-xs text-slate-500">Optimized routing and operations could reduce your annual fuel spend by ${result.estimatedSavings.toLocaleString()}</div>
           </div>
         </div>
       </Card>
