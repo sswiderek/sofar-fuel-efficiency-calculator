@@ -89,12 +89,13 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               </TooltipTrigger>
               <TooltipContent>
                 <div className="max-w-[250px] space-y-2">
-                  <h4 className="font-medium">CO₂ Emissions</h4>
+                  <h4 className="font-medium">How We Calculate CO₂ Reduction</h4>
                   <div className="text-sm text-slate-600">
-                    <p>This shows your annual CO₂ savings based on:</p>
+                    <p>We calculate your annual CO₂ reduction by:</p>
                     <ul className="mt-1 space-y-1">
-                      <li>• Your fleet's fuel savings</li>
-                      <li>• 3.15 metric tons of CO₂ produced per ton of fuel</li>
+                      <li>1. Calculating your fuel savings from route optimization</li>
+                      <li>2. Multiplying saved fuel by 3.15 (the CO₂ emission factor)</li>
+                      <li>3. Result shows metric tons of CO₂ avoided per year</li>
                     </ul>
                   </div>
                 </div>
