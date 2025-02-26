@@ -91,7 +91,11 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                 <div className="max-w-[250px] space-y-2">
                   <h4 className="font-medium">CO₂ Emissions</h4>
                   <div className="text-sm text-slate-600">
-                    <p>Each metric ton of marine fuel produces about 3.1 metric tons of CO₂. By using less fuel, your fleet reduces its carbon footprint.</p>
+                    <p>This shows your annual CO₂ savings based on:</p>
+                    <ul className="mt-1 space-y-1">
+                      <li>• Your fleet's fuel savings</li>
+                      <li>• 3.1 metric tons of CO₂ produced per ton of fuel</li>
+                    </ul>
                   </div>
                 </div>
               </TooltipContent>
