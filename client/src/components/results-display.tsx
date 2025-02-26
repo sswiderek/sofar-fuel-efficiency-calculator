@@ -225,20 +225,6 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           <div className="flex items-center gap-2 text-white/95">
             <LeafIcon className="h-4 w-4" />
             <span className="text-sm font-medium">Environmental Impact</span>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <button className="p-0.5 hover:bg-white/10 rounded-full transition-colors cursor-help">
-                  <Info className="h-4 w-4 opacity-80 hover:opacity-100" />
-                </button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <div className="max-w-[250px] space-y-2">
-                  <p className="text-sm leading-snug">
-                    CO₂ reduction is calculated using the standard maritime emission factor of 3.15 MT of CO₂ per MT of fuel burned. The reduction in fuel consumption leads directly to reduced emissions.
-                  </p>
-                </div>
-              </TooltipContent>
-            </Tooltip>
           </div>
           <div className="mt-3">
             <div className="text-2xl font-bold text-white">{Math.round(co2Reduction).toLocaleString()} MT</div>
