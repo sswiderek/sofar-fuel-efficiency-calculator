@@ -249,7 +249,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                 <span>{formatNumber(totalFuelConsumption)} MT</span>
               </div>
               <div className="flex justify-between text-white/80">
-                <span>Estimated Reduction (5%)</span>
+                <span>Estimated Fuel Reduction (5%)</span>
                 <span>{formatNumber(totalFuelConsumption * 0.05)} MT</span>
               </div>
               <div className="flex justify-between text-white items-center mt-2 pt-2 border-t border-white/10">
