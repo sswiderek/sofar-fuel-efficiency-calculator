@@ -215,15 +215,15 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                   <span className="font-medium">CO₂ Reduction</span>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <button className="p-0.5 hover:bg-white/10 rounded-full transition-colors">
+                      <button className="p-0.5 hover:bg-white/10 rounded-full transition-colors cursor-help">
                         <Info className="h-3.5 w-3.5 opacity-70 hover:opacity-100" />
                       </button>
                     </TooltipTrigger>
-                    <TooltipContent>
-                      <div className="max-w-[280px] space-y-2">
-                        <h4 className="text-sm font-medium mb-1.5">How is this calculated?</h4>
+                    <TooltipContent side="right" className="max-w-[280px]">
+                      <div className="space-y-2">
+                        <h4 className="text-sm font-medium">How is this calculated?</h4>
                         <p className="text-sm leading-relaxed">
-                          For every ton of fuel saved, we reduce CO₂ emissions by 3.15 tons. This is based on standard maritime industry calculations - less fuel burned means fewer emissions released into the atmosphere.
+                          For every ton of fuel saved, we reduce CO₂ emissions by 3.15 tons. This is based on standard maritime industry calculations.
                         </p>
                       </div>
                     </TooltipContent>
