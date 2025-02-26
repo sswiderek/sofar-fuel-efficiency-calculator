@@ -139,7 +139,21 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                   <div className="text-slate-600">Original Annual Cost:</div>
                   <div className="text-right font-medium">${totalFuelCost.toLocaleString()}</div>
 
-                  <div className="text-slate-600">Optimization Savings:</div>
+                  <div className="text-slate-600">
+                    Fuel Savings:
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <button className="ml-1 p-0.5 hover:bg-slate-100 rounded-full transition-colors">
+                          <Info className="h-3.5 w-3.5 cursor-help opacity-70 hover:opacity-100" />
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="max-w-[250px] text-sm">
+                          The fuel savings percentage is estimated between 4% to 10%, based on typical results from Sofar Ocean's Wayfinder platform.
+                        </p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </div>
                   <div className="text-right font-medium">5%</div>
 
                   <div className="text-slate-600">Amount Saved:</div>
