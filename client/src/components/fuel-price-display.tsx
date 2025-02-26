@@ -67,7 +67,7 @@ export default function FuelPriceDisplay() {
                 <InfoIcon className="h-5 w-5 text-blue-600 hover:text-blue-700 transition-colors" />
               </button>
             </TooltipTrigger>
-            <TooltipContent side="right" className="!bg-white !border-2 !border-blue-200 !shadow-lg !p-4 !rounded-lg">
+            <TooltipContent side="right" className="bg-white border-2 border-blue-200 shadow-lg p-4 rounded-lg z-50">
               <div className="max-w-[280px]">
                 <h4 className="!text-base !font-semibold !text-blue-900 !mb-2">About This Fuel Price</h4>
                 <p className="!text-sm !text-slate-600 !leading-relaxed">
