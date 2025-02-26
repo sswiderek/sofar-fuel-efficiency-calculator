@@ -243,22 +243,36 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           <div className="mt-3">
             <div className="text-2xl font-bold text-white">{Math.round(co2Reduction).toLocaleString()} MT</div>
             <div className="text-white/90 font-medium text-sm">Annual CO₂ Reduction</div>
-            <p className="text-sm text-white/80 mt-2 leading-relaxed">
-              Reducing fuel consumption by {(totalFuelConsumption * 0.05).toFixed(0)} MT annually prevents {Math.round(co2Reduction).toLocaleString()} MT of CO₂ emissions, equivalent to taking {Math.round(carsOffRoad).toLocaleString()} cars off the road for a year.
-            </p>
-            <div className="mt-3 space-y-1 text-sm border-t border-emerald-100 pt-2">
-              <div className="flex justify-between text-white/70">
+            <div className="mt-3 space-y-2 text-sm border-t border-white/10 pt-3">
+              <div className="flex justify-between text-white/80">
                 <span>Annual Fuel Consumption</span>
                 <span>{formatNumber(totalFuelConsumption)} MT</span>
               </div>
-              <div className="flex justify-between text-white/70">
-                <span>Estimated Reduction ({estimatedSavings}%)</span>
-                <span>{formatNumber(totalFuelConsumption * (estimatedSavings / 100))} MT</span>
+              <div className="flex justify-between text-white/80">
+                <span>Estimated Reduction (5%)</span>
+                <span>{formatNumber(totalFuelConsumption * 0.05)} MT</span>
               </div>
-              <div className="flex justify-between font-medium text-white">
-                <span>Total CO₂ Reduction</span>
-                <span>{formatNumber(co2Reduction)} MT</span>
+              <div className="flex justify-between text-white items-center mt-2 pt-2 border-t border-white/10">
+                <div className="flex items-center gap-2">
+                  <span className="font-medium">CO₂ Reduction</span>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <button className="p-0.5 hover:bg-white/10 rounded-full transition-colors">
+                        <Info className="h-3.5 w-3.5 opacity-70 hover:opacity-100" />
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="max-w-[200px] text-sm">
+                        Each MT of fuel saved prevents 3.15 MT of CO₂ emissions
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
+                <span className="font-medium">{formatNumber(co2Reduction)} MT</span>
               </div>
+            </div>
+            <div className="mt-3 pt-3 border-t border-white/10 text-sm text-white/80">
+              This reduction is equivalent to taking {Math.round(carsOffRoad).toLocaleString()} cars off the road for a year.
             </div>
           </div>
         </Card>
