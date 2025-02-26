@@ -27,7 +27,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               <div className="text-sm text-white/90 mt-1">Projected cost reduction</div>
             </div>
             <div className="text-white/80 text-xs max-w-[180px] flex items-center h-full">
-              Using a conservative 5% of Wayfinder's proven 4-10% fuel savings, your fleet consuming {result.totalFuelConsumption.toLocaleString()} MT of fuel annually could save:
+              Based on your fleet's annual consumption of {result.totalFuelConsumption.toLocaleString()} MT, using Wayfinder's conservative 5% fuel savings could result in:
             </div>
           </div>
         </Card>
