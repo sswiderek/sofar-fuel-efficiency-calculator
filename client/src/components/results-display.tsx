@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { CalculationResult } from "@shared/schema";
-import { DollarSign, Info, LeafIcon, Car } from "lucide-react";
+import { DollarSign, Info, LeafIcon, TrendingDown, Car } from "lucide-react"; // Added Car import
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface ResultsDisplayProps {
@@ -24,6 +24,8 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   const totalFuelCost = result?.totalFuelCost || 0;
   const totalFuelConsumption = result?.totalFuelConsumption || 0;
   const fuelPrice = result?.fuelPrice || 0;
+  const estimatedSavings = result?.estimatedSavings || 0;
+
 
   return (
     <div className="max-w-4xl space-y-6">
@@ -68,8 +70,34 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                     <div key={idx} className="bg-white rounded-lg p-3 border border-slate-200 mb-3 last:mb-0">
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <div className="font-medium text-slate-800">
-                            {vessel.count} × {vessel.type.split('-').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                          <div className="font-medium text-slate-800 flex items-center gap-2">
+                            {vessel.type.includes('container-ship-small') ? (
+                              <img src="/images/container_ship.png" alt="Container Ship (Feeder <3000 TEU)" className="h-6 w-6 object-contain" />
+                            ) : vessel.type.includes('container-ship-medium') ? (
+                              <img src="/images/container_ship.png" alt="Container Ship (Panamax 3000-5000 TEU)" className="h-8 w-8 object-contain" />
+                            ) : vessel.type.includes('container-ship-large') ? (
+                              <img src="/images/container_ship.png" alt="Container Ship (Post-Panamax >5000 TEU)" className="h-10 w-10 object-contain" />
+                            ) : vessel.type.includes('bulk-carrier-small') ? (
+                              <img src="/images/bulk_carrier.png" alt="Bulk Carrier (Handysize)" className="h-7 w-7 object-contain" />
+                            ) : vessel.type.includes('bulk-carrier-large') ? (
+                              <img src="/images/bulk_carrier.png" alt="Bulk Carrier (Panamax)" className="h-10 w-10 object-contain" />
+                            ) : vessel.type.includes('tanker-small') ? (
+                              <img src="/images/oil_tanker.png" alt="Oil Tanker (Medium Range)" className="h-7 w-7 object-contain" />
+                            ) : vessel.type.includes('tanker-large') ? (
+                              <img src="/images/oil_tanker.png" alt="Oil Tanker (VLCC)" className="h-10 w-10 object-contain" />
+                            ) : (
+                              <Ship className="h-4 w-4" />
+                            )}
+                            {vessel.count} × {
+                              vessel.type === 'container-ship-small' ? 'Container Ship (Feeder <3000 TEU)' :
+                              vessel.type === 'container-ship-medium' ? 'Container Ship (Panamax 3000-5000 TEU)' :
+                              vessel.type === 'container-ship-large' ? 'Container Ship (Post-Panamax >5000 TEU)' :
+                              vessel.type === 'bulk-carrier-small' ? 'Bulk Carrier (Handysize)' :
+                              vessel.type === 'bulk-carrier-large' ? 'Bulk Carrier (Panamax)' :
+                              vessel.type === 'tanker-small' ? 'Oil Tanker (Medium Range)' :
+                              vessel.type === 'tanker-large' ? 'Oil Tanker (VLCC)' :
+                              'Custom Vessel Type'
+                            }
                           </div>
                         </div>
                         <div className="grid grid-cols-2 gap-2 text-sm">
@@ -94,7 +122,21 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                   ))}
                   <div className="mt-4 pt-3 border-t border-slate-200">
                     <div className="grid grid-cols-2 gap-2 text-sm">
-                      <div className="text-slate-600 font-medium">VLSFO Price:</div>
+                      <div className="text-slate-600 font-medium flex items-center gap-1">
+                        Fuel Price:
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <button className="p-0.5 hover:bg-slate-100 rounded-full transition-colors">
+                              <Info className="h-3.5 w-3.5 cursor-help opacity-70 hover:opacity-100" />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p className="max-w-[300px] text-sm">
+                              VLSFO Fuel Type: Calculations use Very Low Sulfur Fuel Oil (VLSFO) prices, which is the primary marine fuel used to comply with IMO 2020 sulfur regulations.
+                            </p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </div>
                       <div className="text-right font-medium">${fuelPrice.toLocaleString()}/MT</div>
 
                       <div className="text-slate-600 font-medium">Total Annual Consumption:</div>
@@ -118,7 +160,21 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                   <div className="text-slate-600">Original Annual Cost:</div>
                   <div className="text-right font-medium">${totalFuelCost.toLocaleString()}</div>
 
-                  <div className="text-slate-600">Optimization Savings:</div>
+                  <div className="text-slate-600">
+                    Fuel Savings:
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <button className="ml-1 p-0.5 hover:bg-slate-100 rounded-full transition-colors">
+                          <Info className="h-3.5 w-3.5 cursor-help opacity-70 hover:opacity-100" />
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="max-w-[250px] text-sm">
+                          The fuel savings percentage is estimated between 4% to 10%, based on typical results from Sofar Ocean's Wayfinder platform.
+                        </p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </div>
                   <div className="text-right font-medium">5%</div>
 
                   <div className="text-slate-600">Amount Saved:</div>
@@ -151,7 +207,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                 <span>{formatNumber(totalFuelConsumption)} MT</span>
               </div>
               <div className="flex justify-between text-white/80">
-                <span>Estimated Reduction (5%)</span>
+                <span>Estimated Fuel Reduction (5%)</span>
                 <span>{formatNumber(totalFuelConsumption * 0.05)} MT</span>
               </div>
               <div className="flex justify-between text-white items-center mt-2 pt-2 border-t border-white/10">
@@ -159,15 +215,15 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                   <span className="font-medium">CO₂ Reduction</span>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <button className="p-0.5 hover:bg-white/10 rounded-full transition-colors cursor-help">
+                      <button className="p-0.5 hover:bg-white/10 rounded-full transition-colors">
                         <Info className="h-3.5 w-3.5 opacity-70 hover:opacity-100" />
                       </button>
                     </TooltipTrigger>
-                    <TooltipContent side="right" className="max-w-[280px]">
-                      <div className="space-y-2">
-                        <h4 className="text-sm font-medium">How is this calculated?</h4>
+                    <TooltipContent>
+                      <div className="max-w-[280px] space-y-2">
+                        <h4 className="text-sm font-medium mb-1.5">How is this calculated?</h4>
                         <p className="text-sm leading-relaxed">
-                          For every ton of fuel saved, we reduce CO₂ emissions by 3.15 tons. This is based on standard maritime industry calculations.
+                          For every ton of fuel saved, we reduce CO₂ emissions by 3.15 tons. This is based on standard maritime industry calculations - less fuel burned means fewer emissions released into the atmosphere.
                         </p>
                       </div>
                     </TooltipContent>
@@ -176,7 +232,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                 <span className="font-medium">{formatNumber(co2Reduction)} MT</span>
               </div>
             </div>
-            <div className="mt-3 pt-3 border-t border-white/10 text-sm text-white/80">
+            <div className="mt-3 pt-3 border-t border-white/10 text-xs text-white/80">
               <Car className="inline-block h-3.5 w-3.5 mr-1 -mt-0.5" /> This reduction is equivalent to taking {formatNumber(carsOffRoad)} cars off the road for a year.
             </div>
           </div>
