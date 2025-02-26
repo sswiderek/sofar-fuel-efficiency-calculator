@@ -83,7 +83,8 @@ app.use((req, res, next) => {
   // ALWAYS serve the app on port 5000
   // this serves both the API and the client
   const PORT = process.env.PORT || 5000;
-  server.listen(PORT, "0.0.0.0", () => {
-    log(`serving on port ${PORT} in ${app.get("env")} mode`);
+  const HOST = "0.0.0.0";
+  server.listen(PORT, HOST, () => {
+    log(`serving on http://${HOST}:${PORT} in ${app.get("env")} mode`);
   });
 })();
