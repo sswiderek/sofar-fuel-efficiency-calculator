@@ -66,15 +66,15 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           </div>
         </Card>
 
-        <Card className="bg-emerald-50 p-4">
-          <div className="flex items-center gap-2 text-emerald-700">
+        <Card className="bg-gradient-to-br from-emerald-600 to-emerald-700 p-6 shadow-xl border-0">
+          <div className="flex items-center gap-2 text-white/95">
             <LeafIcon className="h-4 w-4" />
             <span className="text-sm font-medium">Environmental Impact</span>
           </div>
           <div className="mt-3">
-            <div className="text-2xl font-bold text-emerald-700">{Math.round(co2Reduction).toLocaleString()} MT</div>
-            <div className="text-emerald-700 font-medium text-sm">Annual CO₂ Reduction</div>
-            <p className="text-[0.7rem] text-emerald-600/90 mt-2 leading-relaxed">
+            <div className="text-2xl font-bold text-white">{Math.round(co2Reduction).toLocaleString()} MT</div>
+            <div className="text-white/90 font-medium text-sm">Annual CO₂ Reduction</div>
+            <p className="text-[0.7rem] text-white/80 mt-2 leading-relaxed">
               Reducing fuel by {(result.totalFuelConsumption * 0.05).toFixed(0)} MT annually prevents {Math.round(co2Reduction).toLocaleString()} MT of CO₂ emissions, equivalent to {Math.round(carsOffRoad).toLocaleString()} cars off the road yearly.
             </p>
           </div>
