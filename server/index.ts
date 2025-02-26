@@ -92,9 +92,16 @@ app.use((req, res, next) => {
   
   // Development specific settings
   if (process.env.NODE_ENV === 'development') {
-    app.disable('trust proxy');
     app.disable('x-powered-by');
-    app.set('trust proxy', 1);
+    app.enable('trust proxy');
+    app.use((req, res, next) => {
+      if (req.secure) {
+        next();
+      } else {
+        res.header('Access-Control-Allow-Origin', '*');
+        next();
+      }
+    });
   }
   
   server.listen(PORT, HOST, () => {
