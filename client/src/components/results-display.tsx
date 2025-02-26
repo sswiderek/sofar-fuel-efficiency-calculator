@@ -26,8 +26,8 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               <div className="text-4xl font-bold mt-3 tracking-tight">${(result.totalFuelCost * 0.05).toLocaleString()}</div>
               <div className="text-sm text-white/90 mt-1">Projected cost reduction</div>
             </div>
-            <div className="text-white/80 text-xs max-w-[180px] pt-1">
-              With Wayfinder's proven 5% fuel optimization, your fleet could save significantly on {result.totalFuelConsumption.toLocaleString()} MT of annual fuel consumption.
+            <div className="text-white/80 text-xs max-w-[180px] flex items-center h-full">
+              Using a conservative 5% of Wayfinder's proven 4-10% fuel savings, your fleet of {result.totalFuelConsumption.toLocaleString()} MT annual consumption could save:
             </div>
           </div>
         </Card>
