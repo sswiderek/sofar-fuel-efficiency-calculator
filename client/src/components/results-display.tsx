@@ -17,6 +17,8 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   const totalFuelCost = result?.totalFuelCost || 0;
   const totalFuelConsumption = result?.totalFuelConsumption || 0;
   const fuelPrice = result?.fuelPrice || 0;
+  const estimatedSavings = result?.estimatedSavings || 0;
+
 
   return (
     <div className="max-w-4xl space-y-6">
@@ -237,6 +239,20 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             <p className="text-sm text-white/80 mt-2 leading-relaxed">
               Reducing fuel consumption by {(totalFuelConsumption * 0.05).toFixed(0)} MT annually prevents {Math.round(co2Reduction).toLocaleString()} MT of CO₂ emissions, equivalent to taking {Math.round(carsOffRoad).toLocaleString()} cars off the road for a year.
             </p>
+            <div className="mt-3 space-y-1 text-sm border-t border-emerald-100 pt-2">
+              <div className="flex justify-between text-white/70">
+                <span>Annual Fuel Consumption</span>
+                <span>{formatNumber(totalFuelConsumption)} MT</span>
+              </div>
+              <div className="flex justify-between text-white/70">
+                <span>Estimated Reduction ({estimatedSavings}%)</span>
+                <span>{formatNumber(totalFuelConsumption * (estimatedSavings / 100))} MT</span>
+              </div>
+              <div className="flex justify-between font-medium text-white">
+                <span>Total CO₂ Reduction</span>
+                <span>{formatNumber(co2Reduction)} MT</span>
+              </div>
+            </div>
           </div>
         </Card>
       </div>
