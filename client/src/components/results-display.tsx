@@ -99,21 +99,24 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               </TooltipContent>
             </Tooltip>
           </div>
-          <div className="mt-4">
-            <div className="text-2xl font-bold text-emerald-600">{Math.round(result.totalFuelConsumption * 0.05).toLocaleString()}</div>
-            <div className="text-sm text-slate-600">MT CO₂ Reduction</div>
-            <div className="mt-4 space-y-2">
-              <div>
-                <div className="text-sm text-slate-600">Current Usage:</div>
-                <div className="text-lg font-medium">{result.totalFuelConsumption.toLocaleString()} MT/year</div>
+          <div className="mt-4 space-y-4">
+            <div className="flex flex-col gap-3">
+              <div className="p-3 bg-emerald-100/50 rounded-lg">
+                <div className="text-sm text-slate-600">Current Annual Usage</div>
+                <div className="text-base font-medium text-emerald-900">Before optimization</div>
               </div>
-              <div>
-                <div className="text-sm text-slate-600">With Wayfinder:</div>
-                <div className="text-lg font-medium">{(result.totalFuelConsumption * 0.95).toLocaleString()} MT/year</div>
+              <div className="p-3 bg-emerald-100/50 rounded-lg">
+                <div className="text-sm text-slate-600">Optimized Usage</div>
+                <div className="text-base font-medium text-emerald-900">With Wayfinder optimization</div>
               </div>
-              <div className="text-slate-600 text-xs max-w-[180px] ml-4">
-                Calculation: Current consumption × 0.95 (5% reduction) × 3.15 (IMO CO₂ factor per MT fuel)
-              </div>
+            </div>
+            <div className="text-slate-600 text-xs">
+              <p className="font-medium mb-1">How we calculate this:</p>
+              <ul className="space-y-1 list-disc pl-4">
+                <li>Based on your current fuel consumption</li>
+                <li>Applying proven 5% efficiency improvement</li>
+                <li>Using IMO's CO₂ emission factor (3.15)</li>
+              </ul>
             </div>
           </div>
         </Card>
