@@ -5,10 +5,9 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 
 interface ResultsDisplayProps {
   results: CalculationResult[] | null;
-  fuelPrice: number; // Added fuelPrice prop
 }
 
-export default function ResultsDisplay({ results, fuelPrice }: ResultsDisplayProps) {
+export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   if (!results || results.length === 0) return null;
 
   const result = results[0];
@@ -48,7 +47,7 @@ export default function ResultsDisplay({ results, fuelPrice }: ResultsDisplayPro
               <div className="text-sm text-slate-600">Current Annual Fuel Cost:</div>
               <div className="text-2xl font-bold tracking-tight">${result.totalFuelCost.toLocaleString()}</div>
               <div className="text-[0.7rem] text-slate-500">
-                VLSFO price: ${fuelPrice.toLocaleString()}/MT × {(result.totalFuelConsumption || 0).toLocaleString()} MT annual consumption
+                VLSFO price: ${(result.fuelPrice || 0).toLocaleString()}/MT × {(result.totalFuelConsumption || 0).toLocaleString()} MT annual consumption
               </div>
             </div>
             <div className="h-[1px] bg-slate-200 my-3" />
