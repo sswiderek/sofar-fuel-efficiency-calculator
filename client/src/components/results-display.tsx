@@ -218,8 +218,8 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             <span className="text-sm font-medium">Environmental Impact</span>
             <Tooltip>
               <TooltipTrigger asChild>
-                <button className="p-0.5 hover:bg-white/10 rounded-full transition-colors">
-                  <InfoIcon className="h-4 w-4 cursor-help opacity-80 hover:opacity-100" />
+                <button className="p-0.5 hover:bg-white/10 rounded-full transition-colors cursor-help">
+                  <Info className="h-4 w-4 opacity-80 hover:opacity-100" />
                 </button>
               </TooltipTrigger>
               <TooltipContent>
