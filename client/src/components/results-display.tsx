@@ -116,7 +116,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                   <div className="mt-4 pt-3 border-t border-slate-200">
                     <div className="grid grid-cols-2 gap-2 text-sm">
                       <div className="text-slate-600 font-medium flex items-center gap-1">
-                        Fuel Price
+                        Fuel Price:
                         <Tooltip>
                           <TooltipTrigger asChild>
                             <button className="p-0.5 hover:bg-slate-100 rounded-full transition-colors">
