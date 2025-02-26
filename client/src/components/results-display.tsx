@@ -44,10 +44,10 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               <div className="text-sm font-medium text-white/80">
                 Projected Cost Reduction
               </div>
-            </div>
-            <div className="text-sm leading-relaxed text-white/85 mt-4 font-medium">
-              Based on your fleet's annual fuel consumption of {result.totalFuelConsumption.toLocaleString()} MT, 
-              you could achieve significant savings with Wayfinder's proven optimization technology.
+              <div className="text-sm leading-relaxed text-white/85 mt-4 font-medium">
+                Based on your fleet's annual fuel consumption of {result.totalFuelConsumption.toLocaleString()} MT, 
+                you could achieve significant savings with Wayfinder's proven optimization technology.
+              </div>
             </div>
           </div>
         </Card>
@@ -131,7 +131,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                       <span>Total Annual Fuel Cost:</span>
                       <span>${results?.[0]?.totalFuelCost?.toLocaleString()}</span>
                     </div>
-                  </div>">
+                  </div">
                     <div className="flex justify-between font-medium">
                       <span>Total Annual Consumption:</span>
                       <span>{result.totalFuelConsumption.toLocaleString()} MT</span>
