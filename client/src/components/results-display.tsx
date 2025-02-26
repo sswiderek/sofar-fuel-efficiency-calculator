@@ -35,17 +35,21 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           </div>
         </Card>
 
-        <Card className="bg-emerald-50 p-4">
-          <div className="flex items-center gap-2 text-emerald-700">
-            <LeafIcon className="h-4 w-4" />
-            <span className="text-sm font-medium">Environmental Impact</span>
+        <Card className="bg-gradient-to-br from-emerald-50 to-white p-6 mb-4">
+          <div className="flex items-center gap-2 text-slate-700">
+            <div className="rounded-full p-2 bg-emerald-100">
+              <DollarSign className="h-5 w-5 text-emerald-700" />
+            </div>
+            <span className="text-lg font-medium">Annual Savings</span>
           </div>
-          <div className="mt-3">
-            <div className="text-2xl font-bold text-emerald-700">{Math.round(co2Reduction).toLocaleString()} MT</div>
-            <div className="text-emerald-700 font-medium text-sm">Annual CO₂ Reduction</div>
-            <p className="text-[0.7rem] text-emerald-600/90 mt-2 leading-relaxed">
-              Reducing fuel by {(result.totalFuelConsumption * 0.05).toFixed(0)} MT annually prevents {Math.round(co2Reduction).toLocaleString()} MT of CO₂ emissions, equivalent to {Math.round(carsOffRoad).toLocaleString()} cars off the road yearly.
-            </p>
+          <div className="mt-4">
+            <div className="text-3xl font-bold tracking-tight text-emerald-600">
+              ${result.estimatedSavings.toLocaleString()}
+            </div>
+            <div className="text-sm text-slate-600 mt-2">
+              Based on your fleet's annual fuel consumption of {result.totalFuelConsumption.toLocaleString()} MT, 
+              you could achieve significant savings with Wayfinder's proven optimization technology.
+            </div>
           </div>
         </Card>
 
@@ -72,6 +76,20 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                 Optimized routing and operations could reduce your annual fuel spend by ${annualSavings.toLocaleString()}
               </div>
             </div>
+          </div>
+        </Card>
+
+        <Card className="bg-emerald-50 p-4">
+          <div className="flex items-center gap-2 text-emerald-700">
+            <LeafIcon className="h-4 w-4" />
+            <span className="text-sm font-medium">Environmental Impact</span>
+          </div>
+          <div className="mt-3">
+            <div className="text-2xl font-bold text-emerald-700">{Math.round(co2Reduction).toLocaleString()} MT</div>
+            <div className="text-emerald-700 font-medium text-sm">Annual CO₂ Reduction</div>
+            <p className="text-[0.7rem] text-emerald-600/90 mt-2 leading-relaxed">
+              Reducing fuel by {(result.totalFuelConsumption * 0.05).toFixed(0)} MT annually prevents {Math.round(co2Reduction).toLocaleString()} MT of CO₂ emissions, equivalent to {Math.round(carsOffRoad).toLocaleString()} cars off the road yearly.
+            </p>
           </div>
         </Card>
       </div>
