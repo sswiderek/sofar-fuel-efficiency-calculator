@@ -7,6 +7,10 @@ interface ResultsDisplayProps {
   results: CalculationResult[];
 }
 
+const formatNumber = (num: number) => {
+  return num.toLocaleString(undefined, { maximumFractionDigits: 1 });
+};
+
 export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   if (!results || results.length === 0) return null;
 
