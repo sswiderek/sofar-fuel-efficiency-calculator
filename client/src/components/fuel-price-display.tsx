@@ -68,9 +68,12 @@ export default function FuelPriceDisplay() {
             <TooltipContent side="right" className="bg-white border-blue-200 shadow-lg">
               <div className="space-y-2 p-3">
                 <h4 className="font-medium text-blue-900">Price Information</h4>
-                <p className="max-w-[250px] text-sm text-blue-700 leading-snug">
-                  Monthly average price from Ship & Bunker's Global 20 Ports index. Updated on the 1st of each month to smooth out daily price fluctuations.
-                </p>
+                <div className="max-w-[280px] space-y-2">
+                  <h4 className="font-medium text-blue-900 mb-1">About This Fuel Price</h4>
+                  <p className="text-sm text-blue-700 leading-relaxed">
+                    This is the price of marine-grade low sulfur fuel, which most ships use to meet environmental regulations. The price shown is a monthly average from the world's 20 largest ports.
+                  </p>
+                </div>
               </div>
             </TooltipContent>
           </Tooltip>
