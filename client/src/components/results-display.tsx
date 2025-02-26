@@ -27,7 +27,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           <div className="flex justify-between items-start gap-3">
             <div>
               <div className="text-2xl font-bold mt-2 tracking-tight">${result.estimatedSavings.toLocaleString()}</div>
-              <div className="text-xs text-white/90">Projected cost reduction</div>
+              <div className="text-xs text-white/80">Projected Cost Reduction</div>
             </div>
             <div className="text-white/80 text-[0.7rem] max-w-[200px] flex items-center h-full leading-snug">
               Based on your fleet's annual fuel consumption of {result.totalFuelConsumption.toLocaleString()} MT, we project significant savings using Wayfinder's proven optimization technology.
