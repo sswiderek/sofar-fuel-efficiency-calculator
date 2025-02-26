@@ -7,19 +7,28 @@ import { setupVite, serveStatic, log } from "./vite";
 const app = express();
 app.use(express.json());
 app.use((req, res, next) => {
-  // Handle proxy headers
-  if (req.headers['x-forwarded-proto'] === 'https') {
-    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-  }
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  console.log('Headers:', req.headers);
   
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   
+  // Force HTTPS in production
+  if (process.env.NODE_ENV === 'production' && !req.secure && req.headers['x-forwarded-proto'] !== 'https') {
+    return res.redirect(`https://${req.headers.host}${req.url}`);
+  }
+  
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
   next();
+});
+
+// Add error handler
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  console.error('Server error:', err);
+  res.status(500).json({ error: 'Internal server error', details: err.message });
 });
 
 // Redirect HTTP to HTTPS in production
