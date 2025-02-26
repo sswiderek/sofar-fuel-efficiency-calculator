@@ -39,7 +39,7 @@ export default function Calculator() {
               </ul>
             </div>
             <CalculatorForm />
-            
+
             <div className="my-8 relative">
               <div className="absolute inset-x-0 top-1/2 transform -translate-y-1/2 h-px bg-gradient-to-r from-transparent via-blue-200/70 to-transparent"></div>
               <div className="relative flex justify-center">
@@ -48,34 +48,21 @@ export default function Calculator() {
                 </span>
               </div>
             </div>
-            
+
             <Card className="bg-gradient-to-br from-blue-900 to-blue-800 hover:from-blue-800 hover:to-blue-700 text-white shadow-xl transform hover:scale-[1.01] hover:shadow-2xl transition-all duration-300 border border-blue-700/50 cursor-pointer group overflow-hidden rounded-xl">
-              <a href="https://www.sofarocean.com/posts/wayfinder-voyage-optimization-savings-report-2024" target="_blank" rel="noopener noreferrer" className="block relative h-full">
-                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer"></div>
-                <div className="flex flex-col justify-center min-h-[180px] p-6">
+              <div className="p-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="bg-white/20 rounded-full p-2.5">
+                    <span className="bg-blue-500/30 p-2 rounded-full">
                       <TargetIcon className="h-5 w-5 text-blue-100" />
-                    </div>
-                    <h3 className="text-xl font-bold">Real-World Success Stories</h3>
+                    </span>
+                    <h3 className="text-lg font-semibold text-white">Real-World Success Stories</h3>
                   </div>
-                  <p className="text-blue-100/90 mb-4">2024 Savings Report: Major fuel savings achieved across global routes</p>
-                  <div className="flex items-center text-sm font-medium text-blue-100 mt-2 transition-transform group-hover:translate-x-1">
-                    <span>Download 2024 savings report</span>
+                  <p className="text-blue-100 mb-3">2024 Savings Report: Major fuel savings achieved across global routes</p>
+                  <a href="#" className="inline-flex items-center text-sm font-medium text-blue-100 hover:text-white transition-colors">
+                    Download 2024 savings report
                     <ChevronRightIcon className="h-4 w-4 ml-1" />
-                  </div>-3">
-                    <div className="p-2 rounded-lg bg-blue-700/50 group-hover:bg-blue-600/50 transition-colors duration-200">
-                      <TargetIcon className="h-5 w-5 text-blue-100" />
-                    </div>
-                    <CardTitle className="text-xl">Real-World Success Stories</CardTitle>
-                  </div>
-                  <p className="text-blue-200 text-base mb-3">2024 Savings Report: Major fuel savings achieved across global routes</p>
-                  <div className="flex items-center gap-2 text-blue-200 text-sm font-medium">
-                    <span>Download 2024 savings report</span>
-                    <ChevronRightIcon className="h-4 w-4" />
-                  </div>
+                  </a>
                 </div>
-              </a>
             </Card>
           </CardContent>
         </Card>
