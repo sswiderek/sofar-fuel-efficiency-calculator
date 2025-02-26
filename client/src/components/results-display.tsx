@@ -80,10 +80,12 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
         </Card>
 
         <Card className="bg-emerald-50/50 p-4">
-          <div className="flex items-center gap-2">
-            <LeafIcon className="h-5 w-5 text-emerald-600" />
-            <span className="text-lg font-medium text-emerald-700">CO₂ Reduction</span>
-            <div className="mt-1.5 text-sm text-emerald-600/90">
+          <div className="flex justify-between items-start">
+            <div className="flex items-center gap-2">
+              <LeafIcon className="h-5 w-5 text-emerald-600" />
+              <span className="text-lg font-medium text-emerald-700">CO₂ Reduction</span>
+            </div>
+            <div className="text-sm text-emerald-600/90 max-w-[280px] text-right">
               We calculate your annual CO₂ reduction by multiplying your fuel savings by 3.15 (the CO₂ emission factor), giving you the metric tons of CO₂ avoided per year.
             </div>
           </div>
