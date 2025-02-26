@@ -1,13 +1,16 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
-export function formatNumber(num: number): string {
-  return new Intl.NumberFormat('en-US', { 
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2 
-  }).format(num)
+export function formatNumber(value: number | null | undefined): string {
+  if (value === null || value === undefined || isNaN(value)) {
+    return "0";
+  }
+  return value.toLocaleString('en-US', {
+    maximumFractionDigits: 0
+  });
 }
