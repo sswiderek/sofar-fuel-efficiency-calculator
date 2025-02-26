@@ -81,7 +81,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                 </div>
                 <div className="text-[0.7rem] bg-slate-50 p-2 rounded">
                   <div className="font-medium mb-2">Fleet Breakdown:</div>
-                  {result.vessels.map((vessel, index) => (
+                  {result?.vessels?.map((vessel, index) => (
                     <div key={index} className="mb-2 last:mb-0">
                       <div className="font-medium text-slate-700">
                         {vessel.count} × {vessel.type.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
