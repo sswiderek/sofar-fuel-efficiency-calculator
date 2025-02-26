@@ -94,6 +94,7 @@ app.use((req, res, next) => {
   if (process.env.NODE_ENV === 'development') {
     app.disable('trust proxy');
     app.disable('x-powered-by');
+    app.set('trust proxy', 1);
   }
   
   server.listen(PORT, HOST, () => {
