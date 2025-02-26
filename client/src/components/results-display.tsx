@@ -26,6 +26,20 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           <div className="flex items-center gap-2.5 text-white/95">
             <DollarSign className="h-5 w-5" strokeWidth={2} />
             <span className="text-base font-semibold tracking-wide">Annual Savings</span>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button className="p-0.5 hover:bg-white/10 rounded-full transition-colors">
+                  <Info className="h-4 w-4 cursor-help opacity-80 hover:opacity-100" />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <div className="max-w-[250px] space-y-2">
+                  <p className="text-sm leading-snug">
+                    These savings are calculated based on your fleet's fuel consumption and current VLSFO prices, incorporating Wayfinder's proven optimization algorithms.
+                  </p>
+                </div>
+              </TooltipContent>
+            </Tooltip>
           </div>
           <div className="mt-5">
             <div className="flex flex-col gap-1.5">
@@ -49,6 +63,20 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               <Info className="h-4 w-4" />
             </div>
             <span className="text-base font-medium">Cost Breakdown</span>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button className="p-0.5 hover:bg-slate-100 rounded-full transition-colors">
+                  <Info className="h-4 w-4 cursor-help opacity-80 hover:opacity-100" />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <div className="max-w-[250px] space-y-2">
+                  <p className="text-sm leading-snug">
+                    The cost breakdown shows your current annual fuel costs based on consumption and VLSFO price, compared to projected costs with Wayfinder's optimization. The difference represents your potential savings.
+                  </p>
+                </div>
+              </TooltipContent>
+            </Tooltip>
           </div>
           <div className="mt-4">
             <div>
@@ -115,6 +143,18 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                     <div className="grid grid-cols-2 gap-2 text-sm">
                       <div className="text-slate-600 font-medium flex items-center gap-1">
                         Fuel Price:
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <button className="p-0.5 hover:bg-slate-100 rounded-full transition-colors">
+                              <Info className="h-3.5 w-3.5 cursor-help opacity-70 hover:opacity-100" />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p className="max-w-[300px] text-sm">
+                              VLSFO Fuel Type: Calculations use Very Low Sulfur Fuel Oil (VLSFO) prices, which is the primary marine fuel used to comply with IMO 2020 sulfur regulations.
+                            </p>
+                          </TooltipContent>
+                        </Tooltip>
                       </div>
                       <div className="text-right font-medium">${fuelPrice.toLocaleString()}/MT</div>
 
@@ -141,6 +181,18 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
 
                   <div className="text-slate-600">
                     Fuel Savings:
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <button className="ml-1 p-0.5 hover:bg-slate-100 rounded-full transition-colors">
+                          <Info className="h-3.5 w-3.5 cursor-help opacity-70 hover:opacity-100" />
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="max-w-[250px] text-sm">
+                          The fuel savings percentage is estimated between 4% to 10%, based on typical results from Sofar Ocean's Wayfinder platform.
+                        </p>
+                      </TooltipContent>
+                    </Tooltip>
                   </div>
                   <div className="text-right font-medium">5%</div>
 
@@ -164,6 +216,20 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           <div className="flex items-center gap-2 text-white/95">
             <LeafIcon className="h-4 w-4" />
             <span className="text-sm font-medium">Environmental Impact</span>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button className="p-0.5 hover:bg-white/10 rounded-full transition-colors cursor-help">
+                  <Info className="h-4 w-4 opacity-80 hover:opacity-100" />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <div className="max-w-[250px] space-y-2">
+                  <p className="text-sm leading-snug">
+                    CO₂ reduction is calculated using the standard maritime emission factor of 3.15 MT of CO₂ per MT of fuel burned. The reduction in fuel consumption leads directly to reduced emissions.
+                  </p>
+                </div>
+              </TooltipContent>
+            </Tooltip>
           </div>
           <div className="mt-3">
             <div className="text-2xl font-bold text-white">{Math.round(co2Reduction).toLocaleString()} MT</div>
