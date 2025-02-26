@@ -227,9 +227,9 @@ export default function CalculatorForm() {
                               <FormItem>
                                 <div className="flex items-center gap-1.5">
                                   <div className="flex items-center gap-2">
-                                    <AnchorIcon className="h-4 w-4 text-foreground" />
-                                    <FormLabel>Number of Ships</FormLabel>
-                                  </div>
+                    <AnchorIcon className="h-4 w-4 text-foreground" />
+                    <FormLabel>Number of Ships</FormLabel>
+                  </div>
                                   <Tooltip>
                                     <TooltipTrigger>
                                       <InfoIcon className="h-4 w-4 text-slate-400" />
@@ -262,27 +262,18 @@ export default function CalculatorForm() {
                               <FormItem>
                                 <div className="flex items-center gap-1.5">
                                   <div className="flex flex-wrap items-center gap-2">
-                                    <FuelIcon className="h-4 w-4 text-foreground" />
-                                    <FormLabel className="whitespace-nowrap">Fuel Consumption (MT/Day)</FormLabel>
-                                  </div>
-                                  <Tooltip>
+                    <FuelIcon className="h-4 w-4 text-foreground" />
+                    <FormLabel className="whitespace-nowrap">Fuel Consumption (MT/Day)</FormLabel>
+                  </div>
+                                  <Tooltip delayDuration={100}>
                                     <TooltipTrigger asChild>
-                                      <button 
-                                        type="button" 
-                                        className="p-1 -m-1 border-0 bg-transparent cursor-help"
-                                        aria-label="Fuel consumption information"
-                                      >
+                                      <button type="button" className="p-1 -m-1 border-0 bg-transparent cursor-help">
                                         <InfoIcon className="h-4 w-4 text-muted-foreground" />
                                       </button>
                                     </TooltipTrigger>
-                                    <TooltipContent 
-                                      side="top" 
-                                      align="start"
-                                      sideOffset={5}
-                                      className="max-w-[150px] z-50"
-                                    >
-                                      <p className="text-xs">
-                                        Average daily fuel consumption while at sea
+                                    <TooltipContent side="right" className="max-w-[280px]">
+                                      <p className="text-sm">
+                                        Average fuel consumption in Metric Tonnes per day while at sea. Typical ranges from 20-150 MT/day depending on vessel size.
                                       </p>
                                     </TooltipContent>
                                   </Tooltip>
