@@ -131,7 +131,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                       <span>Total Annual Fuel Cost:</span>
                       <span>${results?.[0]?.totalFuelCost?.toLocaleString()}</span>
                     </div>
-                  </div">
+                  </div>
                     <div className="flex justify-between font-medium">
                       <span>Total Annual Consumption:</span>
                       <span>{result.totalFuelConsumption.toLocaleString()} MT</span>
