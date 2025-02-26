@@ -1,3 +1,4 @@
+
 import path from 'path';
 
 import express, { type Request, Response, NextFunction } from "express";
@@ -6,30 +7,6 @@ import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
 app.use(express.json());
-app.use((req, res, next) => {
-  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
-  console.log('Headers:', req.headers);
-  
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  
-  // Single HTTPS redirect for production
-  if (process.env.NODE_ENV === 'production' && req.headers['x-forwarded-proto'] !== 'https') {
-    return res.redirect(`https://${req.headers.host}${req.url}`);
-  }
-  
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-  next();
-});
-
-// Add error handler
-app.use((err: any, req: Request, res: Response, next: NextFunction) => {
-  console.error('Server error:', err);
-  res.status(500).json({ error: 'Internal server error', details: err.message });
-});
 app.use(express.urlencoded({ extended: false }));
 app.use('/images', express.static('public/images', {
   setHeaders: (res, path) => {
@@ -74,28 +51,12 @@ app.use((req, res, next) => {
 (async () => {
   const server = registerRoutes(app);
 
-  app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
-    // Check if client disconnected
-    if (!res.writableEnded && !res.headersSent) {
-      const status = err.status || err.statusCode || 500;
-      const message = err.message || "Internal Server Error";
-      
-      console.error(`Error handling ${req.method} ${req.path}:`, err);
-      
-      try {
-        res.status(status).json({
-          error: true,
-          message,
-          path: req.path
-        });
-      } catch (e) {
-        console.error('Failed to send error response:', e);
-        res.end();
-      }
-    } else {
-      console.log('Client disconnected, skipping error response');
-      res.end();
-    }
+  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+    const status = err.status || err.statusCode || 500;
+    const message = err.message || "Internal Server Error";
+
+    res.status(status).json({ message });
+    throw err;
   });
 
   // importantly only setup vite in development and after
@@ -106,7 +67,7 @@ app.use((req, res, next) => {
   } else {
     // Serve static files
     app.use(express.static('dist/public'));
-
+    
     // API routes should be handled before the catch-all
     app.use('/api', (req, res, next) => {
       if (req.path.startsWith('/api')) {
@@ -123,8 +84,7 @@ app.use((req, res, next) => {
   // ALWAYS serve the app on port 5000
   // this serves both the API and the client
   const PORT = process.env.PORT || 5000;
-  const HOST = "0.0.0.0";
-  server.listen(PORT, HOST, () => {
-    log(`serving on http://${HOST}:${PORT} in ${app.get("env")} mode`);
+  server.listen(PORT, "0.0.0.0", () => {
+    log(`serving on port ${PORT} in ${app.get("env")} mode`);
   });
 })();

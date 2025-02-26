@@ -81,7 +81,6 @@ interface VLSFOPrice {
 }
 
 export async function getVLSFOPrice(): Promise<VLSFOPrice> {
-  console.log('Starting VLSFO price fetch...');
   const currentDate = new Date();
   const previousMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1);
   const monthName = previousMonth.toLocaleString('en-US', { month: 'long' });
