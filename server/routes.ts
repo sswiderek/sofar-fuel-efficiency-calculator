@@ -26,7 +26,7 @@ export function registerRoutes(app: Express): Server {
 
       // Calculate savings based on estimated percentage
       const savingsPercent = data.estimatedSavings / 100;
-      
+
       const estimatedSavings = Math.round(totalFuelCost * savingsPercent);
       const fuelCostWithWayfinder = Math.round(totalFuelCost * (1 - savingsPercent));
 
@@ -35,17 +35,20 @@ export function registerRoutes(app: Express): Server {
       const co2Reduction = fuelSaved * 3.15; // MT CO2 per MT fuel
 
       const totalFuelConsumption = annualFuelConsumption;
-      
+
       const results: CalculationResult = {
         totalFuelCost,
         estimatedSavings,
         fuelCostWithWayfinder,
         co2Reduction,
-        totalFuelConsumption
+        totalFuelConsumption,
+        fuelPrice: data.fuelPrice,
+        vessels: data.vessels
       };
 
       res.json(results);
     } catch (error) {
+      console.error("Calculation error:", error);
       res.status(400).json({ error: "Invalid input data" });
     }
   });

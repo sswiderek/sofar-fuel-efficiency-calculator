@@ -1,4 +1,3 @@
-
 import { z } from "zod";
 
 export const vesselTypes = {
@@ -26,6 +25,7 @@ export const calculatorInputSchema = z.object({
 });
 
 export type CalculatorInput = z.infer<typeof calculatorInputSchema>;
+export type Vessel = z.infer<typeof vesselSchema>;
 
 export interface CalculationResult {
   totalFuelCost: number;
@@ -33,4 +33,6 @@ export interface CalculationResult {
   fuelCostWithWayfinder: number;
   co2Reduction: number;
   totalFuelConsumption: number;
+  fuelPrice: number;
+  vessels: Vessel[];
 }
