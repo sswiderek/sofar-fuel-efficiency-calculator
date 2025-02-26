@@ -154,7 +154,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                         Fuel Price:
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <button className="p-0.5 hover:bg-slate-100 rounded-full transition-colors cursor-pointer">
+                            <button className="p-0.5 hover:bg-slate-100 rounded-full transition-colors">
                               <Info className="h-3.5 w-3.5 cursor-help opacity-70 hover:opacity-100" />
                             </button>
                           </TooltipTrigger>
@@ -192,7 +192,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                     Fuel Savings:
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <button className="ml-1 p-0.5 hover:bg-slate-100 rounded-full transition-colors cursor-pointer">
+                        <button className="ml-1 p-0.5 hover:bg-slate-100 rounded-full transition-colors">
                           <Info className="h-3.5 w-3.5 cursor-help opacity-70 hover:opacity-100" />
                         </button>
                       </TooltipTrigger>
@@ -243,7 +243,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                   <span className="font-medium">CO₂ Reduction</span>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <button className="p-0.5 hover:bg-white/10 rounded-full transition-colors cursor-pointer">
+                      <button className="p-0.5 hover:bg-white/10 rounded-full transition-colors">
                         <Info className="h-3.5 w-3.5 opacity-70 hover:opacity-100" />
                       </button>
                     </TooltipTrigger>
