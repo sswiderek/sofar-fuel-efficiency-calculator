@@ -263,7 +263,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                     </TooltipTrigger>
                     <TooltipContent>
                       <p className="max-w-[200px] text-sm">
-                        Each MT of fuel saved prevents 3.15 MT of CO₂ emissions
+                        CO2 reduction is calculated using the standard maritime emission factor of 3.15 MT of CO2 per MT of fuel burned. The reduction in fuel consumption leads directly to reduced emissions.
                       </p>
                     </TooltipContent>
                   </Tooltip>
