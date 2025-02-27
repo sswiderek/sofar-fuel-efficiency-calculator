@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast"
-import { Anchor, Boxes as BoxesIcon, Ship, Wheat, Fuel, Scale } from "lucide-react"; // Added Scale Icon
+import { Anchor, Boxes as BoxesIcon, Ship, Wheat, Fuel, Scale as ScaleIcon } from "lucide-react"; 
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
@@ -12,7 +12,7 @@ import {
   vesselTypes,
   vesselCategories,
   vesselSizes,
-} from "@shared/schema"; // Assuming these are defined elsewhere
+} from "@shared/schema"; 
 import {
   Form,
   FormControl,
@@ -68,21 +68,18 @@ export default function CalculatorForm() {
     defaultValues: {
       fuelPrice: "",
       estimatedSavings: 5,
-      vessels: [{ category: "", size: "", count: 1, fuelConsumption: 0, seaDaysPerYear: 280 }], // Updated default values
+      vessels: [{ category: "", size: "", count: 1, fuelConsumption: 0, seaDaysPerYear: 280 }], 
     },
   });
 
-  // Create a ref for the results section
   const resultsRef = React.useRef<HTMLDivElement>(null);
 
-  // Update fuel price when data is fetched
   useEffect(() => {
     if (fuelPriceData?.price) {
       form.setValue("fuelPrice", fuelPriceData.price.toString());
     }
   }, [fuelPriceData, form]);
 
-  // Scroll to results when they become available
   useEffect(() => {
     if (results && resultsRef.current) {
       resultsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -165,7 +162,6 @@ export default function CalculatorForm() {
           <Form {...form}>
             <form onSubmit={onSubmit} className="space-y-8 p-6">
               <div className="space-y-8">
-                {/* Vessel List */}
                 <div className="space-y-6">
                   <h3 className="text-sm font-medium text-slate-700">Fleet Configuration</h3>
                   {form.watch("vessels")?.map((_, index) => (
@@ -195,9 +191,7 @@ export default function CalculatorForm() {
                                   <Select
                                     onValueChange={(value) => {
                                       field.onChange(value);
-                                      // Reset size when category changes
                                       form.setValue(`vessels.${index}.size`, Object.keys(vesselSizes[value as keyof typeof vesselSizes])[0]);
-                                      // Set default values based on first size option in the new category
                                       const firstSize = Object.keys(vesselSizes[value as keyof typeof vesselSizes])[0];
                                       const defaultValues = vesselSizes[value as keyof typeof vesselSizes][firstSize as keyof typeof vesselSizes[keyof typeof vesselSizes]];
                                       form.setValue(`vessels.${index}.fuelConsumption`, defaultValues.defaultConsumption);
@@ -256,9 +250,7 @@ export default function CalculatorForm() {
                                   <Select
                                     onValueChange={(value) => {
                                       field.onChange(value);
-                                      // Get the category value
                                       const category = form.getValues(`vessels.${index}.category`);
-                                      // Update consumption and sea days based on size
                                       const sizeData = vesselSizes[category as keyof typeof vesselSizes][value as keyof typeof vesselSizes[keyof typeof vesselSizes]];
                                       form.setValue(`vessels.${index}.fuelConsumption`, sizeData.defaultConsumption);
                                       form.setValue(`vessels.${index}.seaDaysPerYear`, sizeData.defaultSeaDays);
@@ -425,7 +417,7 @@ export default function CalculatorForm() {
                       const vessels = form.getValues("vessels") || [];
                       form.setValue("vessels", [
                         ...vessels,
-                        { category: "container-ship", size: "small", count: 1, fuelConsumption: 40, seaDaysPerYear: 280 } // Updated default values
+                        { category: "container-ship", size: "small", count: 1, fuelConsumption: 40, seaDaysPerYear: 280 } 
                       ]);
                     }}
                   >
@@ -434,7 +426,6 @@ export default function CalculatorForm() {
                 </div>
 
 
-                {/* Fuel Price Field */}
                 <FormField
                   control={form.control}
                   name="fuelPrice"
