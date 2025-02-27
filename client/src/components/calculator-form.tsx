@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast"
-import { Anchor, Boxes as BoxesIcon, Ship, Wheat, Fuel } from "lucide-react";
+import { Anchor, Boxes as BoxesIcon, Ship, Wheat, Fuel, Scale } from "lucide-react"; // Added Scale Icon
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
@@ -10,7 +10,9 @@ import {
   type CalculatorInput,
   type CalculationResult,
   vesselTypes,
-} from "@shared/schema";
+  vesselCategories,
+  vesselSizes,
+} from "@shared/schema"; // Assuming these are defined elsewhere
 import {
   Form,
   FormControl,
@@ -66,7 +68,7 @@ export default function CalculatorForm() {
     defaultValues: {
       fuelPrice: "",
       estimatedSavings: 5,
-      vessels: [{ type: "", count: 1, fuelConsumption: 0, seaDaysPerYear: 280, capacity: '', enginePower: '' }],
+      vessels: [{ category: "", size: "", count: 1, fuelConsumption: 0, seaDaysPerYear: 280 }], // Updated default values
     },
   });
 
@@ -118,12 +120,11 @@ export default function CalculatorForm() {
         fuelPrice: parseFloat(values.fuelPrice),
         estimatedSavings: parseFloat(values.estimatedSavings.toString()),
         vessels: values.vessels.map((vessel) => ({
-          type: vessel.type,
+          category: vessel.category,
+          size: vessel.size,
           count: parseInt(vessel.count.toString()),
           fuelConsumption: parseFloat(vessel.fuelConsumption.toString()),
           seaDaysPerYear: parseFloat(vessel.seaDaysPerYear.toString()),
-          capacity: vessel.capacity,
-          enginePower: vessel.enginePower,
         })),
       };
 
@@ -170,70 +171,126 @@ export default function CalculatorForm() {
                   {form.watch("vessels")?.map((_, index) => (
                     <div key={index} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-slate-200/60 shadow-sm w-full">
                       <div className="space-y-6">
-                        <FormField
-                          control={form.control}
-                          name={`vessels.${index}.type`}
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="flex items-center gap-2 text-sm font-medium text-slate-700">
-                                <ShipIcon className="h-4 w-4" />
-                                Vessel Type
-                              </FormLabel>
-                              <FormControl>
-                                <Select
-                                  onValueChange={(value) => {
-                                    field.onChange(value);
-                                    // Set default fuel consumption and sea days
-                                    form.setValue(
-                                      `vessels.${index}.fuelConsumption`,
-                                      vesselTypes[value as keyof typeof vesselTypes].defaultConsumption
-                                    );
-                                    form.setValue(
-                                      `vessels.${index}.seaDaysPerYear`,
-                                      vesselTypes[value as keyof typeof vesselTypes].defaultSeaDays || 280
-                                    );
-                                  }}
-                                  value={field.value}
-                                >
-                                  <SelectTrigger className="bg-white">
-                                    <SelectValue placeholder="Select vessel type" />
-                                  </SelectTrigger>
-                                  <SelectContent>
-                                    {Object.entries(vesselTypes).map(([key, value]) => (
-                                      <SelectItem key={key} value={key} className="flex items-center gap-2">
-                                        <div className="flex items-center">
-                                          {key.includes('container-ship-feeder') ? (
-                                            <img src="/images/container_ship.png" alt="Container Ship (Feeder <1000 TEU)" className="h-5 w-5 object-contain mr-2" />
-                                          ) : key.includes('container-ship-small') ? (
-                                            <img src="/images/container_ship.png" alt="Container Ship (Small Feeder 1000-2000 TEU)" className="h-6 w-6 object-contain mr-2" />
-                                          ) : key.includes('container-ship-medium') ? (
-                                            <img src="/images/container_ship.png" alt="Container Ship (Panamax 3000-5000 TEU)" className="h-8 w-8 object-contain mr-2" />
-                                          ) : key.includes('container-ship-large') ? (
-                                            <img src="/images/container_ship.png" alt="Container Ship (Post-Panamax 5000-10000 TEU)" className="h-10 w-10 object-contain mr-2" />
-                                          ) : key.includes('container-ship-vlarge') ? (
-                                            <img src="/images/container_ship.png" alt="Container Ship (ULCV >10000 TEU)" className="h-12 w-12 object-contain mr-2" />
-                                          ) : key.includes('bulk-carrier-small') ? (
-                                            <img src="/images/bulk_carrier.png" alt="Handysize Bulk Carrier" className="h-7 w-7 object-contain mr-2" />
-                                          ) : key.includes('bulk-carrier-large') ? (
-                                            <img src="/images/bulk_carrier.png" alt="Panamax Bulk Carrier" className="h-10 w-10 object-contain mr-2" />
-                                          ) : key.includes('tanker-small') ? (
-                                            <img src="/images/oil_tanker.png" alt="Medium Range Tanker" className="h-7 w-7 object-contain mr-2" />
-                                          ) : key.includes('tanker-large') ? (
-                                            <img src="/images/oil_tanker.png" alt="VLCC" className="h-10 w-10 object-contain mr-2" />
-                                          ) : (
-                                            <Ship className="h-4 w-4 mr-2" />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <FormField
+                            control={form.control}
+                            name={`vessels.${index}.category`}
+                            render={({ field }) => (
+                              <FormItem>
+                                <div className="flex items-center gap-1.5">
+                                  <div className="flex items-center gap-2">
+                                    <AnchorIcon className="h-4 w-4 text-foreground" />
+                                    <FormLabel>Vessel Category</FormLabel>
+                                  </div>
+                                  <Tooltip>
+                                    <TooltipTrigger>
+                                      <InfoIcon className="h-4 w-4 text-slate-400" />
+                                    </TooltipTrigger>
+                                    <TooltipContent className="max-w-[300px] text-xs">
+                                      <p>Select the general category of vessel</p>
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </div>
+                                <FormControl>
+                                  <Select
+                                    onValueChange={(value) => {
+                                      field.onChange(value);
+                                      // Reset size when category changes
+                                      form.setValue(`vessels.${index}.size`, Object.keys(vesselSizes[value as keyof typeof vesselSizes])[0]);
+                                      // Set default values based on first size option in the new category
+                                      const firstSize = Object.keys(vesselSizes[value as keyof typeof vesselSizes])[0];
+                                      const defaultValues = vesselSizes[value as keyof typeof vesselSizes][firstSize as keyof typeof vesselSizes[keyof typeof vesselSizes]];
+                                      form.setValue(`vessels.${index}.fuelConsumption`, defaultValues.defaultConsumption);
+                                      form.setValue(`vessels.${index}.seaDaysPerYear`, defaultValues.defaultSeaDays);
+                                    }}
+                                    value={field.value}
+                                  >
+                                    <SelectTrigger className="bg-white">
+                                      <SelectValue placeholder="Select vessel category" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                      {Object.entries(vesselCategories).map(([key, label]) => (
+                                        <SelectItem key={key} value={key} className="flex items-center gap-2">
+                                          <div className="flex items-center">
+                                            {key === 'container-ship' ? (
+                                              <img src="/images/container_ship.png" alt="Container Ship" className="h-6 w-6 object-contain mr-2" />
+                                            ) : key === 'bulk-carrier' ? (
+                                              <img src="/images/bulk_carrier.png" alt="Bulk Carrier" className="h-6 w-6 object-contain mr-2" />
+                                            ) : key === 'oil-tanker' ? (
+                                              <img src="/images/oil_tanker.png" alt="Oil Tanker" className="h-6 w-6 object-contain mr-2" />
+                                            ) : (
+                                              <ShipIcon className="h-4 w-4 mr-2" />
+                                            )}
+                                            {label}
+                                          </div>
+                                        </SelectItem>
+                                      ))}
+                                    </SelectContent>
+                                  </Select>
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+
+                          <FormField
+                            control={form.control}
+                            name={`vessels.${index}.size`}
+                            render={({ field }) => (
+                              <FormItem>
+                                <div className="flex items-center gap-1.5">
+                                  <div className="flex items-center gap-2">
+                                    <ScaleIcon className="h-4 w-4 text-foreground" />
+                                    <FormLabel>Vessel Size</FormLabel>
+                                  </div>
+                                  <Tooltip>
+                                    <TooltipTrigger>
+                                      <InfoIcon className="h-4 w-4 text-slate-400" />
+                                    </TooltipTrigger>
+                                    <TooltipContent className="max-w-[300px] text-xs">
+                                      <p>Select the specific size class for this vessel type</p>
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </div>
+                                <FormControl>
+                                  <Select
+                                    onValueChange={(value) => {
+                                      field.onChange(value);
+                                      // Get the category value
+                                      const category = form.getValues(`vessels.${index}.category`);
+                                      // Update consumption and sea days based on size
+                                      const sizeData = vesselSizes[category as keyof typeof vesselSizes][value as keyof typeof vesselSizes[keyof typeof vesselSizes]];
+                                      form.setValue(`vessels.${index}.fuelConsumption`, sizeData.defaultConsumption);
+                                      form.setValue(`vessels.${index}.seaDaysPerYear`, sizeData.defaultSeaDays);
+                                    }}
+                                    value={field.value}
+                                  >
+                                    <SelectTrigger className="bg-white">
+                                      <SelectValue placeholder="Select vessel size" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                      {form.getValues(`vessels.${index}.category`) && Object.entries(vesselSizes[form.getValues(`vessels.${index}.category`) as keyof typeof vesselSizes]).map(([key, value]) => (
+                                        <SelectItem key={key} value={key} className="flex items-center gap-2">
+                                          {form.getValues(`vessels.${index}.category`) === 'container-ship' && (
+                                            <div className="mr-2">
+                                              {key === 'feeder' && <img src="/images/container_ship.png" alt="Feeder" className="h-5 w-5 object-contain" />}
+                                              {key === 'small' && <img src="/images/container_ship.png" alt="Small Feeder" className="h-6 w-6 object-contain" />}
+                                              {key === 'medium' && <img src="/images/container_ship.png" alt="Panamax" className="h-7 w-7 object-contain" />}
+                                              {key === 'large' && <img src="/images/container_ship.png" alt="Post-Panamax" className="h-8 w-8 object-contain" />}
+                                              {key === 'vlarge' && <img src="/images/container_ship.png" alt="ULCV" className="h-9 w-9 object-contain" />}
+                                            </div>
                                           )}
-                                          <span>{value.label}</span>
-                                        </div>
-                                      </SelectItem>
-                                    ))}
-                                  </SelectContent>
-                                </Select>
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
+                                          {value.label}
+                                        </SelectItem>
+                                      ))}
+                                    </SelectContent>
+                                  </Select>
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
 
                         <div className="grid grid-cols-[1fr_1.5fr] gap-6">
                           <FormField
@@ -340,33 +397,6 @@ export default function CalculatorForm() {
                             </FormItem>
                           )}
                         />
-                        {/* Added fields for more granular vessel specifications */}
-                        <FormField
-                          control={form.control}
-                          name={`vessels.${index}.capacity`}
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Vessel Capacity (DWT/TEU)</FormLabel>
-                              <FormControl>
-                                <Input type="text" {...field} placeholder="e.g., 50000 DWT or 2000 TEU"/>
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name={`vessels.${index}.enginePower`}
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Engine Power (kW)</FormLabel>
-                              <FormControl>
-                                <Input type="number" {...field} placeholder="e.g., 20000"/>
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
 
                         <Button
                           type="button"
@@ -395,7 +425,7 @@ export default function CalculatorForm() {
                       const vessels = form.getValues("vessels") || [];
                       form.setValue("vessels", [
                         ...vessels,
-                        { type: "container-ship-small", count: 1, fuelConsumption: 40, seaDaysPerYear: 280, capacity: '', enginePower: '' }
+                        { category: "container-ship", size: "small", count: 1, fuelConsumption: 40, seaDaysPerYear: 280 } // Updated default values
                       ]);
                     }}
                   >
