@@ -191,11 +191,18 @@ export default function CalculatorForm() {
                                   <Select
                                     onValueChange={(value) => {
                                       field.onChange(value);
-                                      form.setValue(`vessels.${index}.size`, Object.keys(vesselSizes[value as keyof typeof vesselSizes])[0]);
-                                      const firstSize = Object.keys(vesselSizes[value as keyof typeof vesselSizes])[0];
-                                      const defaultValues = vesselSizes[value as keyof typeof vesselSizes][firstSize as keyof typeof vesselSizes[keyof typeof vesselSizes]];
-                                      form.setValue(`vessels.${index}.fuelConsumption`, defaultValues.defaultConsumption);
-                                      form.setValue(`vessels.${index}.seaDaysPerYear`, defaultValues.defaultSeaDays);
+                                      // Safely get the first size for this vessel category
+                                      if (vesselSizes[value as keyof typeof vesselSizes]) {
+                                        const firstSize = Object.keys(vesselSizes[value as keyof typeof vesselSizes])[0];
+                                        form.setValue(`vessels.${index}.size`, firstSize);
+                                        
+                                        // Safely get default values
+                                        const sizeData = vesselSizes[value as keyof typeof vesselSizes][firstSize as keyof typeof vesselSizes[keyof typeof vesselSizes]];
+                                        if (sizeData) {
+                                          form.setValue(`vessels.${index}.fuelConsumption`, sizeData.defaultConsumption);
+                                          form.setValue(`vessels.${index}.seaDaysPerYear`, sizeData.defaultSeaDays);
+                                        }
+                                      }
                                     }}
                                     value={field.value}
                                   >
@@ -267,6 +274,19 @@ export default function CalculatorForm() {
                                     <SelectContent>
                                       {form.getValues(`vessels.${index}.category`) && Object.entries(vesselSizes[form.getValues(`vessels.${index}.category`) as keyof typeof vesselSizes]).map(([key, value]) => (
                                         <SelectItem key={key} value={key} className="flex items-center gap-2">
+                                          {form.getValues(`vessels.${index}.category`) === 'bulk-carrier' && (
+                                            <img 
+                                              src="/images/bulk_carrier.png" 
+                                              alt="Bulk Carrier" 
+                                              className={`
+                                                ${key === 'small' ? 'h-5 w-5' : ''}
+                                                ${key === 'medium' ? 'h-6 w-6' : ''}
+                                                ${key === 'large' ? 'h-7 w-7' : ''}
+                                                ${key === 'vlarge' ? 'h-8 w-8' : ''}
+                                                object-contain mr-2
+                                              `}
+                                            />
+                                          )}
                                           {form.getValues(`vessels.${index}.category`) === 'container-ship' && (
                                             <div className="mr-2">
                                               {key === 'feeder' && <img src="/images/container_ship.png" alt="Feeder" className="h-5 w-5 object-contain" />}
