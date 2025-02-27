@@ -66,7 +66,7 @@ export default function CalculatorForm() {
     defaultValues: {
       fuelPrice: "",
       estimatedSavings: 5,
-      vessels: [{ type: "", count: 1, fuelConsumption: 0, seaDaysPerYear: 280 }],
+      vessels: [{ type: "", count: 1, fuelConsumption: 0, seaDaysPerYear: 280, capacity: '', enginePower: '' }],
     },
   });
 
@@ -122,6 +122,8 @@ export default function CalculatorForm() {
           count: parseInt(vessel.count.toString()),
           fuelConsumption: parseFloat(vessel.fuelConsumption.toString()),
           seaDaysPerYear: parseFloat(vessel.seaDaysPerYear.toString()),
+          capacity: vessel.capacity,
+          enginePower: vessel.enginePower,
         })),
       };
 
@@ -334,6 +336,34 @@ export default function CalculatorForm() {
                             </FormItem>
                           )}
                         />
+                        {/* Added fields for more granular vessel specifications */}
+                        <FormField
+                          control={form.control}
+                          name={`vessels.${index}.capacity`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Vessel Capacity (DWT/TEU)</FormLabel>
+                              <FormControl>
+                                <Input type="text" {...field} placeholder="e.g., 50000 DWT or 2000 TEU"/>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name={`vessels.${index}.enginePower`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Engine Power (kW)</FormLabel>
+                              <FormControl>
+                                <Input type="number" {...field} placeholder="e.g., 20000"/>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
                         <Button
                           type="button"
                           variant="outline"
@@ -361,7 +391,7 @@ export default function CalculatorForm() {
                       const vessels = form.getValues("vessels") || [];
                       form.setValue("vessels", [
                         ...vessels,
-                        { type: "container-ship-small", count: 1, fuelConsumption: 40, seaDaysPerYear: 280 }
+                        { type: "container-ship-small", count: 1, fuelConsumption: 40, seaDaysPerYear: 280, capacity: '', enginePower: '' }
                       ]);
                     }}
                   >
