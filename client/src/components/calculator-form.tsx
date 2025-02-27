@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast"
-import { Anchor, Boxes as BoxesIcon, Ship, Wheat, Fuel, Scale as ScaleIcon } from "lucide-react"; 
+import { Anchor, Boxes as BoxesIcon, Ship, Wheat, Fuel, Scale, ScaleIcon } from "lucide-react"; 
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
@@ -251,9 +251,13 @@ export default function CalculatorForm() {
                                     onValueChange={(value) => {
                                       field.onChange(value);
                                       const category = form.getValues(`vessels.${index}.category`);
-                                      const sizeData = vesselSizes[category as keyof typeof vesselSizes][value as keyof typeof vesselSizes[keyof typeof vesselSizes]];
-                                      form.setValue(`vessels.${index}.fuelConsumption`, sizeData.defaultConsumption);
-                                      form.setValue(`vessels.${index}.seaDaysPerYear`, sizeData.defaultSeaDays);
+                                      if (category && value && vesselSizes[category as keyof typeof vesselSizes]) {
+                                        const sizeData = vesselSizes[category as keyof typeof vesselSizes][value as keyof typeof vesselSizes[keyof typeof vesselSizes]];
+                                        if (sizeData) {
+                                          form.setValue(`vessels.${index}.fuelConsumption`, sizeData.defaultConsumption);
+                                          form.setValue(`vessels.${index}.seaDaysPerYear`, sizeData.defaultSeaDays);
+                                        }
+                                      }
                                     }}
                                     value={field.value}
                                   >
