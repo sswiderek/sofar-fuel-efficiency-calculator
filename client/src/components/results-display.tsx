@@ -71,12 +71,16 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
                           <div className="font-medium text-slate-800 flex items-center gap-2">
-                            {vessel.type.includes('container-ship-small') ? (
-                              <img src="/images/container_ship.png" alt="Container Ship (Feeder <3000 TEU)" className="h-6 w-6 object-contain" />
+                            {vessel.type.includes('container-ship-feeder') ? (
+                              <img src="/images/container_ship.png" alt="Container Ship (Feeder <1000 TEU)" className="h-4 w-4 object-contain" />
+                            ) : vessel.type.includes('container-ship-small') ? (
+                              <img src="/images/container_ship.png" alt="Container Ship (Small Feeder 1000-2000 TEU)" className="h-6 w-6 object-contain" />
                             ) : vessel.type.includes('container-ship-medium') ? (
                               <img src="/images/container_ship.png" alt="Container Ship (Panamax 3000-5000 TEU)" className="h-8 w-8 object-contain" />
                             ) : vessel.type.includes('container-ship-large') ? (
-                              <img src="/images/container_ship.png" alt="Container Ship (Post-Panamax >5000 TEU)" className="h-10 w-10 object-contain" />
+                              <img src="/images/container_ship.png" alt="Container Ship (Post-Panamax 5000-10000 TEU)" className="h-10 w-10 object-contain" />
+                            ) : vessel.type.includes('container-ship-vlarge') ? (
+                              <img src="/images/container_ship.png" alt="Container Ship (ULCV >10000 TEU)" className="h-12 w-12 object-contain" />
                             ) : vessel.type.includes('bulk-carrier-small') ? (
                               <img src="/images/bulk_carrier.png" alt="Bulk Carrier (Handysize)" className="h-7 w-7 object-contain" />
                             ) : vessel.type.includes('bulk-carrier-large') ? (
@@ -89,9 +93,11 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                               <Ship className="h-4 w-4" />
                             )}
                             {vessel.count} × {
-                              vessel.type === 'container-ship-small' ? 'Container Ship (Feeder <3000 TEU)' :
+                              vessel.type === 'container-ship-feeder' ? 'Container Ship (Feeder <1000 TEU)' :
+                              vessel.type === 'container-ship-small' ? 'Container Ship (Small Feeder 1000-2000 TEU)' :
                               vessel.type === 'container-ship-medium' ? 'Container Ship (Panamax 3000-5000 TEU)' :
-                              vessel.type === 'container-ship-large' ? 'Container Ship (Post-Panamax >5000 TEU)' :
+                              vessel.type === 'container-ship-large' ? 'Container Ship (Post-Panamax 5000-10000 TEU)' :
+                              vessel.type === 'container-ship-vlarge' ? 'Container Ship (ULCV >10000 TEU)' :
                               vessel.type === 'bulk-carrier-small' ? 'Bulk Carrier (Handysize)' :
                               vessel.type === 'bulk-carrier-large' ? 'Bulk Carrier (Panamax)' :
                               vessel.type === 'tanker-small' ? 'Oil Tanker (Medium Range)' :

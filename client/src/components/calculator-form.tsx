@@ -202,12 +202,16 @@ export default function CalculatorForm() {
                                     {Object.entries(vesselTypes).map(([key, value]) => (
                                       <SelectItem key={key} value={key} className="flex items-center gap-2">
                                         <div className="flex items-center">
-                                          {key.includes('container-ship-small') ? (
-                                            <img src="/images/container_ship.png" alt="Small Container Ship" className="h-6 w-6 object-contain mr-2" />
+                                          {key.includes('container-ship-feeder') ? (
+                                            <img src="/images/container_ship.png" alt="Container Ship (Feeder <1000 TEU)" className="h-5 w-5 object-contain mr-2" />
+                                          ) : key.includes('container-ship-small') ? (
+                                            <img src="/images/container_ship.png" alt="Container Ship (Small Feeder 1000-2000 TEU)" className="h-6 w-6 object-contain mr-2" />
                                           ) : key.includes('container-ship-medium') ? (
-                                            <img src="/images/container_ship.png" alt="Medium Container Ship" className="h-8 w-8 object-contain mr-2" />
+                                            <img src="/images/container_ship.png" alt="Container Ship (Panamax 3000-5000 TEU)" className="h-8 w-8 object-contain mr-2" />
                                           ) : key.includes('container-ship-large') ? (
-                                            <img src="/images/container_ship.png" alt="Large Container Ship" className="h-10 w-10 object-contain mr-2" />
+                                            <img src="/images/container_ship.png" alt="Container Ship (Post-Panamax 5000-10000 TEU)" className="h-10 w-10 object-contain mr-2" />
+                                          ) : key.includes('container-ship-vlarge') ? (
+                                            <img src="/images/container_ship.png" alt="Container Ship (ULCV >10000 TEU)" className="h-12 w-12 object-contain mr-2" />
                                           ) : key.includes('bulk-carrier-small') ? (
                                             <img src="/images/bulk_carrier.png" alt="Handysize Bulk Carrier" className="h-7 w-7 object-contain mr-2" />
                                           ) : key.includes('bulk-carrier-large') ? (
