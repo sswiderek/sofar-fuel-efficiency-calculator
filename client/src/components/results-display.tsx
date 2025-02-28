@@ -22,6 +22,7 @@ const vesselCategories = {
   'oil-tanker': 'Oil Tanker',
 };
 
+// Updated vesselSizes to reflect more accurate and consistent naming
 const vesselSizes = {
   'container-ship': {
     'feeder': { label: 'Feeder (<1000 TEU)' },
@@ -31,10 +32,10 @@ const vesselSizes = {
     'vlarge': { label: 'ULCV (>10,000 TEU)' },
   },
   'bulk-carrier': {
-    'small': { label: 'Small (<50,000 DWT)' },
-    'medium': { label: 'Medium (50,000-100,000 DWT)' },
-    'large': { label: 'Large (100,000-150,000 DWT)' },
-    'vlarge': { label: 'VLCC (150,000+ DWT)' },
+    'small': { label: 'Handysize (10000-35000 DWT)' },
+    'medium': { label: 'Handymax (35000-50000 DWT)' },
+    'large': { label: 'Panamax (50000-80000 DWT)' },
+    'vlarge': { label: 'Capesize (>80000 DWT)' },
   },
   'oil-tanker': {
     'small': { label: 'Small (<50,000 DWT)' },
