@@ -31,15 +31,15 @@ const vesselSizes = {
     'vlarge': { label: 'ULCV (>10,000 TEU)' },
   },
   'bulk-carrier': {
-    'small': { label: 'Small (<50,000 DWT)' },
-    'medium': { label: 'Medium (50,000-100,000 DWT)' },
-    'large': { label: 'Large (100,000-150,000 DWT)' },
-    'vlarge': { label: 'VLCC (150,000+ DWT)' },
+    'small': { label: 'Handysize (<50,000 DWT)' },
+    'medium': { label: 'Panamax (50,000-80,000 DWT)' },
+    'large': { label: 'Capesize (80,000-200,000 DWT)' },
+    'vlarge': { label: 'VLOC (200,000+ DWT)' },
   },
   'oil-tanker': {
-    'small': { label: 'Small (<50,000 DWT)' },
-    'medium': { label: 'Medium (50,000-100,000 DWT)' },
-    'large': { label: 'Large (100,000-200,000 DWT)' },
+    'small': { label: 'Handysize (<50,000 DWT)' },
+    'medium': { label: 'Panamax (50,000-80,000 DWT)' },
+    'large': { label: 'Suezmax (120,000-200,000 DWT)' },
     'vlarge': { label: 'VLCC (200,000+ DWT)' },
   },
 };
