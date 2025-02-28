@@ -2,8 +2,7 @@ import { Card } from "@/components/ui/card";
 import { CalculationResult } from "@shared/schema";
 import { DollarSign, Info, LeafIcon, TrendingDown, Car, ChevronDown } from "lucide-react"; 
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"; // Added Collapsible imports
-
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 interface ResultsDisplayProps {
   results: CalculationResult[];
@@ -15,6 +14,61 @@ const formatNumber = (num: number) => {
   }
   return Math.round(num).toLocaleString(undefined, { maximumFractionDigits: 0 });
 };
+
+interface EnvironmentalMetricsProps {
+  annualFuelConsumption: number;
+  estimatedFuelReduction: number;
+  co2Reduction: number;
+  carsOffRoad: number;
+}
+
+const EnvironmentalMetrics: React.FC<EnvironmentalMetricsProps> = ({ annualFuelConsumption, estimatedFuelReduction, co2Reduction, carsOffRoad }) => {
+  return (
+    <Collapsible className="bg-slate-50 p-4 rounded-lg mt-3 space-y-4 border border-slate-200">
+      <CollapsibleTrigger className="flex items-center w-full p-4 justify-between font-medium hover:bg-slate-50 rounded-lg transition-colors">
+        <span>Environmental Impact</span>
+        <ChevronDown className="h-4 w-4 transition-transform duration-200 ui-open:rotate-180" />
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <div className="space-y-3">
+          <div className="flex justify-between items-center">
+            <div className="text-slate-600">Annual Fuel Consumption</div>
+            <div>{formatNumber(annualFuelConsumption)} MT</div>
+          </div>
+          <div className="flex justify-between items-center">
+            <div className="text-slate-600">Estimated Fuel Reduction (5%)</div>
+            <div>{formatNumber(estimatedFuelReduction)} MT</div>
+          </div>
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-1.5">
+              <span className="text-slate-600">CO₂ Reduction</span>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button className="inline-flex" aria-label="More information about CO2 reduction calculation">
+                    <Info className="h-3.5 w-3.5 opacity-70 hover:opacity-100" />
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <div className="max-w-[280px] space-y-2">
+                    <h4 className="text-sm font-medium mb-1.5">How is this calculated?</h4>
+                    <p className="text-sm leading-relaxed">
+                      For every ton of fuel saved, we reduce CO₂ emissions by 3.15 tons. This is based on standard maritime industry calculations - less fuel burned means fewer emissions released into the atmosphere.
+                    </p>
+                  </div>
+                </TooltipContent>
+              </Tooltip>
+            </div>
+            <div>{formatNumber(co2Reduction)} MT</div>
+          </div>
+          <div className="text-xs text-slate-500">
+            <Car className="inline-block h-3.5 w-3.5 mr-1 -mt-0.5" /> This reduction is equivalent to taking {formatNumber(carsOffRoad)} cars off the road for a year.
+          </div>
+        </div>
+      </CollapsibleContent>
+    </Collapsible>
+  );
+};
+
 
 export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   if (!results || results.length === 0) return null;
@@ -54,50 +108,13 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           </div>
         </Card>
 
-        <Card className="bg-gradient-to-br from-emerald-600 to-emerald-700 p-6 shadow-xl border-0">
-          <div className="flex items-center gap-2 text-white/95">
-            <LeafIcon className="h-4 w-4" />
-            <span className="text-sm font-medium">Environmental Impact</span>
-          </div>
-          <div className="mt-3">
-            <div className="text-2xl font-bold text-white">{Math.round(co2Reduction).toLocaleString()} MT</div>
-            <div className="text-white/90 font-medium text-sm">Annual CO₂ Reduction</div>
-            <div className="mt-3 space-y-2 text-sm border-t border-white/10 pt-3">
-              <div className="flex justify-between text-white/80">
-                <span>Annual Fuel Consumption</span>
-                <span>{formatNumber(totalFuelConsumption)} MT</span>
-              </div>
-              <div className="flex justify-between text-white/80">
-                <span>Estimated Fuel Reduction (5%)</span>
-                <span>{formatNumber(totalFuelConsumption * 0.05)} MT</span>
-              </div>
-              <div className="flex justify-between text-white items-center mt-2 pt-2 border-t border-white/10">
-                <div className="flex items-center gap-2">
-                  <span className="font-medium">CO₂ Reduction</span>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <button className="p-0.5 hover:bg-white/10 rounded-full transition-colors">
-                        <Info className="h-3.5 w-3.5 opacity-70 hover:opacity-100" />
-                      </button>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <div className="max-w-[280px] space-y-2">
-                        <h4 className="text-sm font-medium mb-1.5">How is this calculated?</h4>
-                        <p className="text-sm leading-relaxed">
-                          For every ton of fuel saved, we reduce CO₂ emissions by 3.15 tons. This is based on standard maritime industry calculations - less fuel burned means fewer emissions released into the atmosphere.
-                        </p>
-                      </div>
-                    </TooltipContent>
-                  </Tooltip>
-                </div>
-                <span className="font-medium">{formatNumber(co2Reduction)} MT</span>
-              </div>
-            </div>
-            <div className="mt-3 pt-3 border-t border-white/10 text-xs text-white/80">
-              <Car className="inline-block h-3.5 w-3.5 mr-1 -mt-0.5" /> This reduction is equivalent to taking {formatNumber(carsOffRoad)} cars off the road for a year.
-            </div>
-          </div>
-        </Card>
+        <EnvironmentalMetrics 
+            annualFuelConsumption={result.totalFuelConsumption}
+            estimatedFuelReduction={result.totalFuelConsumption * 0.05}
+            co2Reduction={co2Reduction}
+            carsOffRoad={carsOffRoad}
+          />
+
 
         <Card className="bg-white p-6">
           <div className="flex items-center gap-2 text-slate-700">
@@ -110,7 +127,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             <div>
               <div className="text-sm text-slate-600">Current Annual Fuel Cost:</div>
               <div className="text-2xl font-bold tracking-tight">${totalFuelCost.toLocaleString()}</div>
-              <Collapsible className="bg-slate-50 p-4 rounded-lg mt-3 space-y-4 border border-slate-200"> {/* Added Collapsible */}
+              <Collapsible className="bg-slate-50 p-4 rounded-lg mt-3 space-y-4 border border-slate-200">
                 <CollapsibleTrigger className="flex items-center w-full p-4 justify-between font-medium hover:bg-slate-50 rounded-lg transition-colors">
                   <span>Fleet Breakdown</span>
                   <ChevronDown className="h-4 w-4 transition-transform duration-200 ui-open:rotate-180" />
@@ -121,7 +138,6 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
                           <div className="font-medium text-slate-800 flex items-center gap-2">
-                            {/* Vessel Icon Rendering (Placeholder) */}
                             {vessel.category === 'container-ship' ? (
                               <img 
                                 src="/images/container_ship.png" 
@@ -225,7 +241,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               <div className="text-2xl font-bold tracking-tight text-emerald-600">
                 ${(totalFuelCost - annualSavings).toLocaleString()}
               </div>
-              <Collapsible className="bg-slate-50 p-3 rounded-lg mt-2 border border-slate-200"> {/* Added Collapsible */}
+              <Collapsible className="bg-slate-50 p-3 rounded-lg mt-2 border border-slate-200">
                 <CollapsibleTrigger className="flex items-center w-full p-4 justify-between font-medium hover:bg-slate-50 rounded-lg transition-colors">
                   <span>Savings Breakdown</span>
                   <ChevronDown className="h-4 w-4 transition-transform duration-200 ui-open:rotate-180" />
