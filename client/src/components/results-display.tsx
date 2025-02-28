@@ -108,6 +108,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             </div>
           </div>
         </Card>
+        </Card>
 
         <Card className="bg-white p-6">
           <div className="flex items-center gap-2 text-slate-700">
