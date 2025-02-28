@@ -16,6 +16,35 @@ const formatNumber = (num: number) => {
   return Math.round(num).toLocaleString(undefined, { maximumFractionDigits: 0 });
 };
 
+const vesselCategories = {
+  'container-ship': 'Container Ship',
+  'bulk-carrier': 'Bulk Carrier',
+  'oil-tanker': 'Oil Tanker',
+};
+
+const vesselSizes = {
+  'container-ship': {
+    'feeder': { label: 'Feeder (<1000 TEU)' },
+    'small': { label: 'Small (1000-2000 TEU)' },
+    'medium': { label: 'Medium (2000-5000 TEU)' },
+    'large': { label: 'Large (5000-10000 TEU)' },
+    'vlarge': { label: 'ULCV (>10,000 TEU)' },
+  },
+  'bulk-carrier': {
+    'small': { label: 'Small (<50,000 DWT)' },
+    'medium': { label: 'Medium (50,000-100,000 DWT)' },
+    'large': { label: 'Large (100,000-150,000 DWT)' },
+    'vlarge': { label: 'VLCC (150,000+ DWT)' },
+  },
+  'oil-tanker': {
+    'small': { label: 'Small (<50,000 DWT)' },
+    'medium': { label: 'Medium (50,000-100,000 DWT)' },
+    'large': { label: 'Large (100,000-200,000 DWT)' },
+    'vlarge': { label: 'VLCC (200,000+ DWT)' },
+  },
+};
+
+
 export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   if (!results || results.length === 0) return null;
 
@@ -169,12 +198,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                               <Ship className="h-4 w-4" />
                             )}
                             <div className="flex items-center">
-                              <span className="text-sm">{vessel.count} × {
-                                vessel.category === 'container-ship' ? 'Container Ship' :
-                                vessel.category === 'bulk-carrier' ? 'Bulk Carrier' :
-                                vessel.category === 'oil-tanker' ? 'Oil Tanker' :
-                                'Custom Vessel Type'
-                              } ({vessel.size})</span>
+                              <span className="text-sm">{vessel.count} × {vesselCategories[vessel.category]} ({vesselSizes[vessel.category][vessel.size].label})</span>
                             </div>
                           </div>
                         </div>
