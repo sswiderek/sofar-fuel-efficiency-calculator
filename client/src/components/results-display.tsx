@@ -1,7 +1,9 @@
 import { Card } from "@/components/ui/card";
 import { CalculationResult } from "@shared/schema";
-import { DollarSign, Info, LeafIcon, TrendingDown, Car } from "lucide-react"; // Added Car import
+import { DollarSign, Info, LeafIcon, TrendingDown, Car, ChevronDown } from "lucide-react"; 
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"; // Added Collapsible imports
+
 
 interface ResultsDisplayProps {
   results: CalculationResult[];
@@ -63,14 +65,18 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             <div>
               <div className="text-sm text-slate-600">Current Annual Fuel Cost:</div>
               <div className="text-2xl font-bold tracking-tight">${totalFuelCost.toLocaleString()}</div>
-              <div className="bg-slate-50 p-4 rounded-lg mt-3 space-y-4">
-                <div className="space-y-1">
-                  <div className="text-sm font-medium text-slate-700 mb-2">Fleet Breakdown:</div>
+              <Collapsible className="bg-slate-50 p-4 rounded-lg mt-3 space-y-4 border border-slate-200"> {/* Added Collapsible */}
+                <CollapsibleTrigger className="flex items-center w-full p-4 justify-between font-medium hover:bg-slate-50 rounded-lg transition-colors">
+                  <span>Fleet Breakdown</span>
+                  <ChevronDown className="h-4 w-4 transition-transform duration-200 ui-open:rotate-180" />
+                </CollapsibleTrigger>
+                <CollapsibleContent>
                   {result?.vessels?.map((vessel, idx) => (
                     <div key={idx} className="bg-white rounded-lg p-3 border border-slate-200 mb-3 last:mb-0">
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
                           <div className="font-medium text-slate-800 flex items-center gap-2">
+                            {/* Vessel Icon Rendering (Placeholder) */}
                             {vessel.category === 'container-ship' ? (
                               <img 
                                 src="/images/container_ship.png" 
@@ -165,8 +171,8 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                       <div className="text-right font-semibold">${totalFuelCost.toLocaleString()}</div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </CollapsibleContent>
+              </Collapsible>
             </div>
             <div className="h-[1px] bg-slate-200 my-4" />
             <div>
@@ -174,37 +180,43 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               <div className="text-2xl font-bold tracking-tight text-emerald-600">
                 ${(totalFuelCost - annualSavings).toLocaleString()}
               </div>
-              <div className="bg-slate-50 p-3 rounded-lg mt-2">
-                <div className="grid grid-cols-2 gap-2 text-sm">
-                  <div className="text-slate-600">Original Annual Cost:</div>
-                  <div className="text-right font-medium">${totalFuelCost.toLocaleString()}</div>
+              <Collapsible className="bg-slate-50 p-3 rounded-lg mt-2 border border-slate-200"> {/* Added Collapsible */}
+                <CollapsibleTrigger className="flex items-center w-full p-4 justify-between font-medium hover:bg-slate-50 rounded-lg transition-colors">
+                  <span>Savings Breakdown</span>
+                  <ChevronDown className="h-4 w-4 transition-transform duration-200 ui-open:rotate-180" />
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <div className="grid grid-cols-2 gap-2 text-sm">
+                    <div className="text-slate-600">Original Annual Cost:</div>
+                    <div className="text-right font-medium">${totalFuelCost.toLocaleString()}</div>
 
-                  <div className="text-slate-600">
-                    Fuel Savings:
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <button className="ml-1 p-0.5 hover:bg-slate-100 rounded-full transition-colors">
-                          <Info className="h-3.5 w-3.5 cursor-help opacity-70 hover:opacity-100" />
-                        </button>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p className="max-w-[250px] text-sm">
-                          The fuel savings percentage is estimated between 4% to 10%, based on typical results from Sofar Ocean's Wayfinder platform.
-                        </p>
-                      </TooltipContent>
-                    </Tooltip>
+                    <div className="text-slate-600">
+                      Fuel Savings:
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <button className="ml-1 p-0.5 hover:bg-slate-100 rounded-full transition-colors">
+                            <Info className="h-3.5 w-3.5 cursor-help opacity-70 hover:opacity-100" />
+                          </button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p className="max-w-[250px] text-sm">
+                            The fuel savings percentage is estimated between 4% to 10%, based on typical results from Sofar Ocean's Wayfinder platform.
+                          </p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
+                    <div className="text-right font-medium">5%</div>
+
+                    <div className="text-slate-600">Amount Saved:</div>
+                    <div className="text-right font-medium text-emerald-600">-${annualSavings.toLocaleString()}</div>
+
+                    <div className="text-slate-700 font-semibold border-t border-slate-200 pt-1 mt-1">Final Annual Cost:</div>
+                    <div className="text-right font-semibold text-emerald-700 border-t border-slate-200 pt-1 mt-1">
+                      ${(totalFuelCost - annualSavings).toLocaleString()}
+                    </div>
                   </div>
-                  <div className="text-right font-medium">5%</div>
-
-                  <div className="text-slate-600">Amount Saved:</div>
-                  <div className="text-right font-medium text-emerald-600">-${annualSavings.toLocaleString()}</div>
-
-                  <div className="text-slate-700 font-semibold border-t border-slate-200 pt-1 mt-1">Final Annual Cost:</div>
-                  <div className="text-right font-semibold text-emerald-700 border-t border-slate-200 pt-1 mt-1">
-                    ${(totalFuelCost - annualSavings).toLocaleString()}
-                  </div>
-                </div>
-              </div>
+                </CollapsibleContent>
+              </Collapsible>
               <div className="text-sm text-slate-500 mt-2">
                 Optimized routing and operations could reduce your annual fuel spend by ${annualSavings.toLocaleString()}
               </div>
