@@ -231,10 +231,10 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               <div className="text-2xl font-bold tracking-tight text-emerald-600">
                 ${(totalFuelCost - annualSavings).toLocaleString()}
               </div>
-              <Collapsible className="bg-slate-50 p-3 rounded-lg mt-2 border border-slate-200">
-                <CollapsibleTrigger className="flex items-center w-full p-4 justify-between font-medium hover:bg-slate-50 rounded-lg transition-colors">
+              <Collapsible className="mt-3 space-y-2">
+                <CollapsibleTrigger className="flex items-center w-full justify-between text-sm font-medium text-slate-600 py-2 border-t border-slate-200 hover:text-slate-900 transition-colors">
                   <span>Savings Breakdown</span>
-                  <ChevronDown className="h-4 w-4 transition-transform duration-200 ui-open:rotate-180" />
+                  <ChevronDown className="h-3.5 w-3.5 text-slate-400 transition-transform duration-200 data-[state=open]:rotate-180" />
                 </CollapsibleTrigger>
                 <CollapsibleContent>
                   <div className="grid grid-cols-2 gap-2 text-sm">
