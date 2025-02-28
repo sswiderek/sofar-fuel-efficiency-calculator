@@ -195,7 +195,7 @@ export default function CalculatorForm() {
                                       if (vesselSizes[value as keyof typeof vesselSizes]) {
                                         const firstSize = Object.keys(vesselSizes[value as keyof typeof vesselSizes])[0];
                                         form.setValue(`vessels.${index}.size`, firstSize);
-                                        
+
                                         // Safely get default values
                                         const sizeData = vesselSizes[value as keyof typeof vesselSizes][firstSize as keyof typeof vesselSizes[keyof typeof vesselSizes]];
                                         if (sizeData) {
@@ -274,29 +274,34 @@ export default function CalculatorForm() {
                                     <SelectContent>
                                       {form.getValues(`vessels.${index}.category`) && Object.entries(vesselSizes[form.getValues(`vessels.${index}.category`) as keyof typeof vesselSizes]).map(([key, value]) => (
                                         <SelectItem key={key} value={key} className="flex items-center gap-2">
-                                          {form.getValues(`vessels.${index}.category`) === 'bulk-carrier' && (
-                                            <img 
-                                              src="/images/bulk_carrier.png" 
-                                              alt="Bulk Carrier" 
-                                              className={`
-                                                ${key === 'small' ? 'h-5 w-5' : ''}
-                                                ${key === 'medium' ? 'h-6 w-6' : ''}
-                                                ${key === 'large' ? 'h-7 w-7' : ''}
-                                                ${key === 'vlarge' ? 'h-8 w-8' : ''}
-                                                object-contain mr-2
-                                              `}
-                                            />
-                                          )}
-                                          {form.getValues(`vessels.${index}.category`) === 'container-ship' && (
-                                            <div className="mr-2">
-                                              {key === 'feeder' && <img src="/images/container_ship.png" alt="Feeder" className="h-5 w-5 object-contain" />}
-                                              {key === 'small' && <img src="/images/container_ship.png" alt="Small Feeder" className="h-6 w-6 object-contain" />}
-                                              {key === 'medium' && <img src="/images/container_ship.png" alt="Panamax" className="h-7 w-7 object-contain" />}
-                                              {key === 'large' && <img src="/images/container_ship.png" alt="Post-Panamax" className="h-8 w-8 object-contain" />}
-                                              {key === 'vlarge' && <img src="/images/container_ship.png" alt="ULCV" className="h-9 w-9 object-contain" />}
-                                            </div>
-                                          )}
-                                          {value.label}
+                                          <div className="flex items-center">
+                                            {form.getValues(`vessels.${index}.category`) === 'bulk-carrier' && (
+                                              <img 
+                                                src="/images/bulk_carrier.png" 
+                                                alt="Bulk Carrier" 
+                                                className={`
+                                                  ${key === 'small' ? 'h-5 w-5' : ''}
+                                                  ${key === 'medium' ? 'h-6 w-6' : ''}
+                                                  ${key === 'large' ? 'h-7 w-7' : ''}
+                                                  ${key === 'vlarge' ? 'h-8 w-8' : ''}
+                                                  object-contain mr-2
+                                                `}
+                                              />
+                                            )}
+                                            {form.getValues(`vessels.${index}.category`) === 'container-ship' && (
+                                              <div className="mr-2">
+                                                {key === 'feeder' && <img src="/images/container_ship.png" alt="Feeder" className="h-5 w-5 object-contain" />}
+                                                {key === 'small' && <img src="/images/container_ship.png" alt="Small Feeder" className="h-6 w-6 object-contain" />}
+                                                {key === 'medium' && <img src="/images/container_ship.png" alt="Panamax" className="h-7 w-7 object-contain" />}
+                                                {key === 'large' && <img src="/images/container_ship.png" alt="Post-Panamax" className="h-8 w-8 object-contain" />}
+                                                {key === 'vlarge' && <img src="/images/container_ship.png" alt="ULCV" className="h-9 w-9 object-contain" />}
+                                              </div>
+                                            )}
+                                            {form.getValues(`vessels.${index}.category`) === 'oil-tanker' && (
+                                              <img src="/images/oil_tanker.png" alt="Oil Tanker" className="h-6 w-6 object-contain" />
+                                            )}
+                                            {value.label}
+                                          </div>
                                         </SelectItem>
                                       ))}
                                     </SelectContent>
