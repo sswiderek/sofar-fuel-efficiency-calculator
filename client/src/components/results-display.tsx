@@ -60,15 +60,15 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
 
 
   return (
-    <div className="max-w-4xl space-y-4"> {/* Reduced space-y to 4 */}
+    <div className="max-w-4xl space-y-6">
       <h2 className="text-xl font-bold text-slate-800 mb-2">Analysis Results</h2>
-      <div className="grid gap-4"> {/* Reduced gap to 4 */}
-        <Card className="bg-gradient-to-br from-[#175D8D] to-[#0D4A75] p-6 shadow-xl border-0"> {/*Reduced padding */}
+      <div className="grid gap-5">
+        <Card className="bg-gradient-to-br from-[#175D8D] to-[#0D4A75] p-7 shadow-xl border-0">
           <div className="flex items-center gap-2.5 text-white/95">
             <DollarSign className="h-5 w-5" strokeWidth={2} />
             <span className="text-base font-semibold tracking-wide">Annual Savings</span>
           </div>
-          <div className="mt-4"> {/*Reduced margin */}
+          <div className="mt-5">
             <div className="flex flex-col gap-1.5">
               <div className="text-4xl font-bold tracking-tight text-white">
                 ${annualSavings.toLocaleString()}
@@ -76,7 +76,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               <div className="text-sm font-medium text-white/80">
                 Projected Cost Reduction
               </div>
-              <div className="text-sm leading-relaxed text-white/85 mt-3 font-medium"> {/*Reduced margin */}
+              <div className="text-sm leading-relaxed text-white/85 mt-4 font-medium">
                 Based on your fleet's annual fuel consumption of {totalFuelConsumption.toLocaleString()} MT, 
                 you could achieve significant savings with Wayfinder's proven optimization technology.
               </div>
@@ -84,7 +84,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           </div>
         </Card>
 
-        <Card className="bg-gradient-to-br from-emerald-600 to-emerald-700 p-5 shadow-xl border-0"> {/*Reduced padding */}
+        <Card className="bg-gradient-to-br from-emerald-600 to-emerald-700 p-6 shadow-xl border-0">
           <div className="flex items-center gap-2 text-white/95">
             <LeafIcon className="h-4 w-4" />
             <span className="text-sm font-medium">Environmental Impact</span>
@@ -93,12 +93,12 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             <div className="text-2xl font-bold text-white">{Math.round(co2Reduction).toLocaleString()} MT</div>
             <div className="text-white/90 font-medium text-sm">Annual CO₂ Reduction</div>
 
-            <Collapsible className="mt-2 w-full"> {/*Reduced margin */}
-              <CollapsibleTrigger className="flex items-center w-full justify-between text-sm font-medium bg-emerald-800/40 py-2 px-3 rounded-md border border-emerald-600/30 hover:bg-emerald-800/60 transition-colors text-white/90">
+            <Collapsible className="mt-3 w-full">
+              <CollapsibleTrigger className="flex items-center w-full justify-between text-sm font-medium bg-emerald-800/40 py-2.5 px-3 rounded-md border border-emerald-600/30 hover:bg-emerald-800/60 transition-colors text-white/90">
                 <span>Calculation Details</span>
                 <ChevronDown className="h-4 w-4 transition-transform duration-200 data-[state=open]:rotate-180" />
               </CollapsibleTrigger>
-              <CollapsibleContent className="space-y-2 text-sm pt-1.5"> {/*Reduced padding */}
+              <CollapsibleContent className="space-y-2 text-sm pt-2 animate-accordion-down">
                 <div className="flex justify-between text-white/80">
                   <span>Annual Fuel Consumption</span>
                   <span>{formatNumber(totalFuelConsumption)} MT</span>
@@ -130,31 +130,31 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                 </div>
               </CollapsibleContent>
             </Collapsible>
-            <div className="mt-2 pt-2 border-t border-white/10 text-xs text-white/80"> {/*Reduced margin */}
+            <div className="mt-3 pt-3 border-t border-white/10 text-xs text-white/80">
               <Car className="inline-block h-3.5 w-3.5 mr-1 -mt-0.5" /> This reduction is equivalent to taking {formatNumber(carsOffRoad)} cars off the road for a year.
             </div>
           </div>
         </Card>
 
-        <Card className="bg-white p-5"> {/*Reduced padding */}
+        <Card className="bg-white p-6">
           <div className="flex items-center gap-2 text-slate-700">
             <div className="rounded-full p-1 bg-slate-100">
               <Info className="h-4 w-4" />
             </div>
             <span className="text-base font-medium">Cost Breakdown</span>
           </div>
-          <div className="mt-3"> {/*Reduced margin */}
+          <div className="mt-4">
             <div>
               <div className="text-sm text-slate-600">Current Annual Fuel Cost:</div>
               <div className="text-2xl font-bold tracking-tight">${totalFuelCost.toLocaleString()}</div>
-              <Collapsible className="mt-2 space-y-2"> {/*Reduced margin */}
-                <CollapsibleTrigger className="flex items-center w-full justify-between text-sm font-medium bg-slate-50 py-2 px-3 rounded-md border border-slate-200 hover:bg-slate-100 transition-colors">
+              <Collapsible className="mt-3 space-y-2">
+                <CollapsibleTrigger className="flex items-center w-full justify-between text-sm font-medium bg-slate-50 py-2.5 px-3 rounded-md border border-slate-200 hover:bg-slate-100 transition-colors">
                   <span>Fleet Breakdown</span>
                   <ChevronDown className="h-4 w-4 text-primary transition-transform duration-200 data-[state=open]:rotate-180" />
                 </CollapsibleTrigger>
                 <CollapsibleContent>
                   {result?.vessels?.map((vessel, idx) => (
-                    <div key={idx} className="bg-white rounded-lg p-3 border border-slate-200 mb-2 last:mb-0"> {/*Reduced margin */}
+                    <div key={idx} className="bg-white rounded-lg p-3 border border-slate-200 mb-3 last:mb-0">
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
                           <div className="font-medium text-slate-800 flex items-center gap-2">
@@ -223,7 +223,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                       </div>
                     </div>
                   ))}
-                  <div className="mt-3 pt-2 border-t border-slate-200"> {/*Reduced margin */}
+                  <div className="mt-4 pt-3 border-t border-slate-200">
                     <div className="grid grid-cols-2 gap-2 text-sm">
                       <div className="text-slate-600 font-medium flex items-center gap-1">
                         Fuel Price:
@@ -252,14 +252,14 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                 </CollapsibleContent>
               </Collapsible>
             </div>
-            <div className="h-[1px] bg-slate-200 my-3" /> {/*Reduced margin */}
+            <div className="h-[1px] bg-slate-200 my-4" />
             <div>
-              <div className="text-sm text-slate-600 mt-2"> {/*Reduced margin */}Cost with Wayfinder:</div>
-              <div className="text-xl font-bold tracking-tight text-emerald-600"> {/*Reduced font size */}
+              <div className="text-sm text-slate-600">Cost with Wayfinder:</div>
+              <div className="text-2xl font-bold tracking-tight text-emerald-600">
                 ${(totalFuelCost - annualSavings).toLocaleString()}
               </div>
-              <Collapsible className="mt-2 space-y-2"> {/*Reduced margin */}
-                <CollapsibleTrigger className="flex items-center w-full justify-between text-sm font-medium bg-slate-50 py-2 px-3 rounded-md border border-slate-200 hover:bg-slate-100 transition-colors">
+              <Collapsible className="mt-3 space-y-2">
+                <CollapsibleTrigger className="flex items-center w-full justify-between text-sm font-medium bg-slate-50 py-2.5 px-3 rounded-md border border-slate-200 hover:bg-slate-100 transition-colors">
                   <span>Savings Breakdown</span>
                   <ChevronDown className="h-4 w-4 text-primary transition-transform duration-200 data-[state=open]:rotate-180" />
                 </CollapsibleTrigger>
@@ -302,20 +302,20 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           </div>
         </Card>
 
-        <Card className="bg-gradient-to-r from-blue-900 to-blue-800 p-5 mt-4 shadow-xl border-0"> {/*Reduced padding and margin */}
+        <Card className="bg-gradient-to-r from-blue-900 to-blue-800 p-6 mt-5 shadow-xl border-0">
           <div className="flex items-center gap-2.5 text-white/95">
             <div className="rounded-full bg-blue-700/40 p-1.5">
               <DollarSign className="h-4 w-4" />
             </div>
             <span className="text-base font-semibold tracking-wide">Real-World Success Stories</span>
           </div>
-          <div className="mt-3"> {/*Reduced margin */}
-            <p className="text-white/90 font-medium text-sm"> {/*Reduced font size */}
+          <div className="mt-4">
+            <p className="text-white/90 font-medium">
               2024 Savings Report: Major fuel savings achieved across global routes
             </p>
             <a 
               href="/download/2024-savings-report" 
-              className="inline-flex items-center mt-2 text-sm text-white/80 hover:text-white group" /* Reduced margin */
+              className="inline-flex items-center mt-3 text-sm text-white/80 hover:text-white group"
             >
               Download 2024 savings report 
               <ChevronDown className="h-4 w-4 ml-1 rotate-[-90deg] group-hover:translate-x-0.5 transition-transform" />
