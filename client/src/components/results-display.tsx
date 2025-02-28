@@ -301,6 +301,27 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             </div>
           </div>
         </Card>
+
+        <Card className="bg-gradient-to-r from-blue-900 to-blue-800 p-6 mt-5 shadow-xl border-0">
+          <div className="flex items-center gap-2.5 text-white/95">
+            <div className="rounded-full bg-blue-700/40 p-1.5">
+              <DollarSign className="h-4 w-4" />
+            </div>
+            <span className="text-base font-semibold tracking-wide">Real-World Success Stories</span>
+          </div>
+          <div className="mt-4">
+            <p className="text-white/90 font-medium">
+              2024 Savings Report: Major fuel savings achieved across global routes
+            </p>
+            <a 
+              href="/download/2024-savings-report" 
+              className="inline-flex items-center mt-3 text-sm text-white/80 hover:text-white group"
+            >
+              Download 2024 savings report 
+              <ChevronDown className="h-4 w-4 ml-1 rotate-[-90deg] group-hover:translate-x-0.5 transition-transform" />
+            </a>
+          </div>
+        </Card>
       </div>
     </div>
   );
