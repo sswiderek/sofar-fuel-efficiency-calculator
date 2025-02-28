@@ -100,7 +100,7 @@
 @tailwind utilities;
 
 .result-tile {
-  @apply bg-white/95 backdrop-blur-md shadow-lg border border-slate-200/60 rounded-xl transition-all duration-300 hover:shadow-xl hover:border-slate-300/60 p-6 mb-3;
+  @apply bg-white/95 backdrop-blur-md shadow-lg border border-slate-200/60 rounded-xl transition-all duration-300 hover:shadow-xl hover:border-slate-300/60 p-7;
 }
 
 .metric-value {

@@ -60,9 +60,9 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
 
 
   return (
-    <div className="max-w-4xl space-y-3">
+    <div className="max-w-4xl space-y-6">
       <h2 className="text-xl font-bold text-slate-800 mb-2">Analysis Results</h2>
-      <div className="grid gap-3">
+      <div className="grid gap-5">
         <Card className="bg-gradient-to-br from-[#175D8D] to-[#0D4A75] p-7 shadow-xl border-0">
           <div className="flex items-center gap-2.5 text-white/95">
             <DollarSign className="h-5 w-5" strokeWidth={2} />
