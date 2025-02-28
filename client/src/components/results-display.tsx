@@ -93,9 +93,9 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             <div className="text-white/90 font-medium text-sm">Annual CO₂ Reduction</div>
 
             <Collapsible className="mt-3 w-full">
-              <CollapsibleTrigger className="flex items-center justify-between w-full py-2 text-white/90 hover:text-white text-sm border-t border-white/10">
-                <span className="font-medium">View calculation details</span>
-                <ChevronDown className="h-4 w-4 transition-transform duration-200 ui-open:rotate-180" />
+              <CollapsibleTrigger className="flex items-center w-full justify-between text-sm font-medium bg-emerald-800/40 py-2.5 px-3 rounded-md border border-emerald-600/30 hover:bg-emerald-800/60 transition-colors text-white/90">
+                <span>Calculation Details</span>
+                <ChevronDown className="h-4 w-4 transition-transform duration-200 data-[state=open]:rotate-180" />
               </CollapsibleTrigger>
               <CollapsibleContent className="space-y-2 text-sm pt-2 animate-accordion-down">
                 <div className="flex justify-between text-white/80">
