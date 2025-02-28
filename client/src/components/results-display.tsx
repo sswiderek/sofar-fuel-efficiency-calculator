@@ -62,21 +62,27 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           <div className="mt-3">
             <div className="text-2xl font-bold text-white">{Math.round(co2Reduction).toLocaleString()} MT</div>
             <div className="text-white/90 font-medium text-sm">Annual CO₂ Reduction</div>
-            <div className="mt-3 space-y-2 text-sm border-t border-white/10 pt-3">
-              <div className="flex justify-between text-white/80">
-                <span>Annual Fuel Consumption</span>
-                <span>{formatNumber(totalFuelConsumption)} MT</span>
-              </div>
-              <div className="flex justify-between text-white/80">
-                <span>Estimated Fuel Reduction (5%)</span>
-                <span>{formatNumber(totalFuelConsumption * 0.05)} MT</span>
-              </div>
-              <div className="flex justify-between text-white items-center mt-2 pt-2 border-t border-white/10">
-                <div className="flex items-center gap-2">
-                  <span className="font-medium">CO₂ Reduction</span>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <button className="p-0.5 hover:bg-white/10 rounded-full transition-colors">
+            
+            <Collapsible className="mt-3 w-full">
+              <CollapsibleTrigger className="flex items-center justify-between w-full py-2 text-white/90 hover:text-white text-sm border-t border-white/10">
+                <span className="font-medium">View calculation details</span>
+                <ChevronDown className="h-4 w-4 transition-transform duration-200 ui-open:rotate-180" />
+              </CollapsibleTrigger>
+              <CollapsibleContent className="space-y-2 text-sm pt-2 animate-accordion-down">
+                <div className="flex justify-between text-white/80">
+                  <span>Annual Fuel Consumption</span>
+                  <span>{formatNumber(totalFuelConsumption)} MT</span>
+                </div>
+                <div className="flex justify-between text-white/80">
+                  <span>Estimated Fuel Reduction (5%)</span>
+                  <span>{formatNumber(totalFuelConsumption * 0.05)} MT</span>
+                </div>
+                <div className="flex justify-between text-white items-center mt-2 pt-2 border-t border-white/10">
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium">CO₂ Reduction</span>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <button className="p-0.5 hover:bg-white/10 rounded-full transition-colors">
                         <Info className="h-3.5 w-3.5 opacity-70 hover:opacity-100" />
                       </button>
                     </TooltipTrigger>
