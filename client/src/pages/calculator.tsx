@@ -40,19 +40,7 @@ export default function Calculator() {
             </div>
             <CalculatorForm />
             <div className="mt-12 mb-8">
-              <div className="relative py-6">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-blue-200/70 shadow-sm"></div>
-                </div>
-                <div className="relative flex justify-center">
-                  <div className="rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-5 py-1.5 shadow-lg">
-                    <span className="text-sm text-white font-medium tracking-wide flex items-center">
-                      <GlobeIcon className="h-4 w-4 mr-2 opacity-80" />
-                      Proven Results
-                    </span>
-                  </div>
-                </div>
-              </div>
+              
             </div>
             <div className="space-y-6">
                 
