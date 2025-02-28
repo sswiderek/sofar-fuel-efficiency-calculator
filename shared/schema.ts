@@ -11,11 +11,11 @@ export const vesselCategories = {
 // Define size options for each vessel category
 export const vesselSizes = {
   "container-ship": {
-    "feeder": { label: "Feeder (<1000 TEU)", defaultConsumption: 25, defaultSeaDays: 280 },
-    "small": { label: "Small Feeder (1000-2000 TEU)", defaultConsumption: 40, defaultSeaDays: 280 },
-    "medium": { label: "Panamax (3000-5000 TEU)", defaultConsumption: 80, defaultSeaDays: 280 },
-    "large": { label: "Post-Panamax (5000-10000 TEU)", defaultConsumption: 150, defaultSeaDays: 280 },
-    "vlarge": { label: "ULCV (>10000 TEU)", defaultConsumption: 220, defaultSeaDays: 280 }
+    "feeder": { label: "Feeder (<1,000 TEU)", defaultConsumption: 25, defaultSeaDays: 280 },
+    "small": { label: "Small Feeder (1,000-2,000 TEU)", defaultConsumption: 40, defaultSeaDays: 280 },
+    "medium": { label: "Panamax (3,000-5,000 TEU)", defaultConsumption: 80, defaultSeaDays: 280 },
+    "large": { label: "Post-Panamax (5,000-10,000 TEU)", defaultConsumption: 150, defaultSeaDays: 280 },
+    "vlarge": { label: "ULCV (>10,000 TEU)", defaultConsumption: 220, defaultSeaDays: 280 }
   },
   "bulk-carrier": {
     "small": { label: "Handysize (10000-35000 DWT)", defaultConsumption: 25, defaultSeaDays: 280 },

@@ -300,7 +300,7 @@ export default function CalculatorForm() {
                                             {form.getValues(`vessels.${index}.category`) === 'oil-tanker' && (
                                               <img src="/images/oil_tanker.png" alt="Oil Tanker" className="h-6 w-6 object-contain" />
                                             )}
-                                            {value.label.replace(/(?<=\d)(?=\d)/g, ',')}
+                                            {value.label.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                           </div>
                                         </SelectItem>
                                       ))}
