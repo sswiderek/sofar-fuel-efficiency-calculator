@@ -100,15 +100,15 @@
 @tailwind utilities;
 
 .result-tile {
-  @apply bg-white/95 backdrop-blur-md shadow-lg border border-slate-200/60 rounded-xl transition-all duration-300 hover:shadow-xl hover:border-slate-300/60 p-7;
+  @apply bg-white/95 backdrop-blur-md shadow-lg border border-slate-200/60 rounded-xl transition-all duration-300 hover:shadow-xl hover:border-slate-300/60 p-5;
 }
 
 .metric-value {
-  @apply text-3xl font-bold text-slate-900 mt-4 tracking-tight leading-none;
+  @apply text-2xl font-bold text-slate-900 mt-3 tracking-tight leading-none;
 }
 
 .metric-label {
-  @apply text-sm text-slate-600 mt-1.5 font-medium tracking-wide;
+  @apply text-sm text-slate-600 mt-1 font-medium tracking-wide;
 }
 
 .metric-header {
