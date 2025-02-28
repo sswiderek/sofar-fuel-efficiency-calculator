@@ -135,9 +135,9 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                                 className={`
                                   ${vessel.size === 'feeder' ? 'h-5 w-5' : ''}
                                   ${vessel.size === 'small' ? 'h-6 w-6' : ''}
-                                  ${vessel.size === 'medium' ? 'h-8 w-8' : ''}
-                                  ${vessel.size === 'large' ? 'h-10 w-10' : ''}
-                                  ${vessel.size === 'vlarge' ? 'h-12 w-12' : ''}
+                                  ${vessel.size === 'medium' ? 'h-7 w-7' : ''}
+                                  ${vessel.size === 'large' ? 'h-8 w-8' : ''}
+                                  ${vessel.size === 'vlarge' ? 'h-9 w-9' : ''}
                                   object-contain
                                 `} 
                               />
@@ -146,10 +146,10 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                                 src="/images/bulk_carrier.png" 
                                 alt="Bulk Carrier" 
                                 className={`
-                                  ${vessel.size === 'small' ? 'h-7 w-7' : ''}
-                                  ${vessel.size === 'medium' ? 'h-8 w-8' : ''}
-                                  ${vessel.size === 'large' ? 'h-9 w-9' : ''}
-                                  ${vessel.size === 'vlarge' ? 'h-10 w-10' : ''}
+                                  ${vessel.size === 'small' ? 'h-5 w-5' : ''}
+                                  ${vessel.size === 'medium' ? 'h-6 w-6' : ''}
+                                  ${vessel.size === 'large' ? 'h-7 w-7' : ''}
+                                  ${vessel.size === 'vlarge' ? 'h-8 w-8' : ''}
                                   object-contain
                                 `}
                               />
@@ -158,22 +158,24 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                                 src="/images/oil_tanker.png" 
                                 alt="Oil Tanker" 
                                 className={`
-                                  ${vessel.size === 'small' ? 'h-7 w-7' : ''}
-                                  ${vessel.size === 'medium' ? 'h-8 w-8' : ''}
-                                  ${vessel.size === 'large' ? 'h-9 w-9' : ''}
-                                  ${vessel.size === 'vlarge' ? 'h-10 w-10' : ''}
+                                  ${vessel.size === 'small' ? 'h-5 w-5' : ''}
+                                  ${vessel.size === 'medium' ? 'h-6 w-6' : ''}
+                                  ${vessel.size === 'large' ? 'h-7 w-7' : ''}
+                                  ${vessel.size === 'vlarge' ? 'h-8 w-8' : ''}
                                   object-contain
                                 `}
                               />
                             ) : (
                               <Ship className="h-4 w-4" />
                             )}
-                            {vessel.count} × {
-                              vessel.category === 'container-ship' ? 'Container Ship' :
-                              vessel.category === 'bulk-carrier' ? 'Bulk Carrier' :
-                              vessel.category === 'oil-tanker' ? 'Oil Tanker' :
-                              'Custom Vessel Type'
-                            } ({vessel.size})
+                            <div className="flex items-center">
+                              <span className="text-sm">{vessel.count} × {
+                                vessel.category === 'container-ship' ? 'Container Ship' :
+                                vessel.category === 'bulk-carrier' ? 'Bulk Carrier' :
+                                vessel.category === 'oil-tanker' ? 'Oil Tanker' :
+                                'Custom Vessel Type'
+                              } ({vessel.size})</span>
+                            </div>
                           </div>
                         </div>
                         <div className="grid grid-cols-2 gap-2 text-sm">
