@@ -315,7 +315,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             </p>
             <a 
               href="/download/2024-savings-report" 
-              className="inline-flex items-center mt-2 text-sm text-white/80 hover:text-white group" {/*Reduced margin*/}
+              className="inline-flex items-center mt-2 text-sm text-white/80 hover:text-white group" /* Reduced margin */
             >
               Download 2024 savings report 
               <ChevronDown className="h-4 w-4 ml-1 rotate-[-90deg] group-hover:translate-x-0.5 transition-transform" />
