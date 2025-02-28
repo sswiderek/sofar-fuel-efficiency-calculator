@@ -62,15 +62,23 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           <div className="mt-3">
             <div className="text-2xl font-bold text-white">{Math.round(co2Reduction).toLocaleString()} MT</div>
             <div className="text-white/90 font-medium text-sm">Annual CO₂ Reduction</div>
-            <div className="mt-3 space-y-2 text-sm border-t border-white/10 pt-3">
-              <div className="flex justify-between text-white/80">
-                <span>Annual Fuel Consumption</span>
-                <span>{formatNumber(totalFuelConsumption)} MT</span>
-              </div>
-              <div className="flex justify-between text-white/80">
-                <span>Estimated Fuel Reduction (5%)</span>
-                <span>{formatNumber(totalFuelConsumption * 0.05)} MT</span>
-              </div>
+            <Collapsible className="mt-3 space-y-2 text-sm border-t border-white/10 pt-3" defaultOpen={false}>
+              <CollapsibleTrigger className="flex items-center w-full justify-between text-white/80 hover:text-white py-1">
+                <span className="font-medium">Environmental Details</span>
+                <ChevronDown className="h-4 w-4 transition-transform duration-200 ui-open:rotate-180" />
+              </CollapsibleTrigger>
+              <CollapsibleContent>
+                <div className="space-y-2 mt-2">
+                  <div className="flex justify-between text-white/80">
+                    <span>Annual Fuel Consumption</span>
+                    <span>{formatNumber(totalFuelConsumption)} MT</span>
+                  </div>
+                  <div className="flex justify-between text-white/80">
+                    <span>Estimated Fuel Reduction (5%)</span>
+                    <span>{formatNumber(totalFuelConsumption * 0.05)} MT</span>
+                  </div>
+                </div>
+              </CollapsibleContent>
               <div className="flex justify-between text-white items-center mt-2 pt-2 border-t border-white/10">
                 <div className="flex items-center gap-2">
                   <span className="font-medium">CO₂ Reduction</span>
