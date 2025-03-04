@@ -244,14 +244,6 @@ export default function CalculatorForm() {
                                     <ScaleIcon className="h-4 w-4 text-foreground" />
                                     <FormLabel>Vessel Size</FormLabel>
                                   </div>
-                                  <Tooltip>
-                                    <TooltipTrigger>
-                                      <InfoIcon className="h-4 w-4 text-slate-400" />
-                                    </TooltipTrigger>
-                                    <TooltipContent className="max-w-[300px] text-xs">
-                                      <p>Select the specific size class for this vessel type</p>
-                                    </TooltipContent>
-                                  </Tooltip>
                                 </div>
                                 <FormControl>
                                   <Select
@@ -324,14 +316,6 @@ export default function CalculatorForm() {
                     <AnchorIcon className="h-4 w-4 text-foreground" />
                     <FormLabel>Number of Ships</FormLabel>
                   </div>
-                                  <Tooltip>
-                                    <TooltipTrigger>
-                                      <InfoIcon className="h-4 w-4 text-slate-400" />
-                                    </TooltipTrigger>
-                                    <TooltipContent className="max-w-[300px] text-xs">
-                                      <p>Enter the number of vessels of this specific type in your fleet</p>
-                                    </TooltipContent>
-                                  </Tooltip>
                                 </div>
                                 <FormControl>
                                   <Input
@@ -394,14 +378,6 @@ export default function CalculatorForm() {
                                   <TimerIcon className="h-4 w-4 text-foreground" />
                                   <FormLabel>Days at Sea Per Vessel Per Year</FormLabel>
                                 </div>
-                                <Tooltip>
-                                  <TooltipTrigger>
-                                    <InfoIcon className="h-4 w-4 text-slate-400" />
-                                  </TooltipTrigger>
-                                  <TooltipContent className="max-w-[300px] text-xs">
-                                    <p>Enter the active sailing days per year for a single vessel of this type, excluding port stays and maintenance periods. Do not multiply by fleet size. Example: 280 days</p>
-                                  </TooltipContent>
-                                </Tooltip>
                               </div>
                               <FormControl>
                                 <Input
