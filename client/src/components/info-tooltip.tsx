@@ -27,7 +27,7 @@ export function InfoTooltip({
           </button>
         </TooltipTrigger>
         <TooltipContent 
-          className="max-w-[300px] p-4 text-sm bg-blue-900 text-white rounded-lg shadow-lg"
+          className="max-w-[300px] p-4 text-sm bg-slate-100 text-slate-800 rounded-lg shadow-lg border border-slate-200"
           sideOffset={5}
         >
           {children}
