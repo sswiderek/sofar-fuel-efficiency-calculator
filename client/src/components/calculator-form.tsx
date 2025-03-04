@@ -5,6 +5,7 @@ import { Anchor, Boxes as BoxesIcon, Ship, Wheat, Fuel, Scale, ScaleIcon } from 
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
+import { InfoTooltip } from "@/components/info-tooltip";
 import {
   calculatorInputSchema,
   type CalculatorInput,
