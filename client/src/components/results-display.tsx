@@ -234,8 +234,9 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                               <Info className="h-3.5 w-3.5 opacity-70 hover:opacity-100" />
                             </button>
                           </TooltipTrigger>
-                          <TooltipContent>
-                            <p className="text-sm">VLSFO Fuel Type: Calculations use Very Low Sulfur Fuel Oil (VLSFO) prices, which is the primary marine fuel used to comply with IMO 2020 sulfur regulations.</p>
+                          <TooltipContent className="p-3">
+                            <h3 className="font-medium text-slate-800">Fuel Reduction</h3>
+                            <p className="text-sm text-slate-600 mt-1">The fuel savings percentage is estimated between 4% to 10%, based on typical results from Sofar Ocean's Wayfinder platform.</p>
                           </TooltipContent>
                         </Tooltip>
                       </div>
