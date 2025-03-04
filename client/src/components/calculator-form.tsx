@@ -43,7 +43,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { Info } from 'lucide-react';
 
 interface VLSFOPrice {
   price: number | null;
@@ -178,16 +177,8 @@ export default function CalculatorForm() {
                                   <div className="flex items-center gap-2">
                                     <AnchorIcon className="h-4 w-4 text-foreground" />
                                     <FormLabel>Vessel Category</FormLabel>
-                                    <Tooltip>
-                                      <TooltipTrigger asChild>
-                                        <Info size={16} className="text-muted-foreground cursor-help ml-2" />
-                                      </TooltipTrigger>
-                                      <TooltipContent side="right" className="max-w-[260px]">
-                                        <p>Select your vessel type to calculate appropriate fuel consumption patterns based on industry standards.</p>
-                                      </TooltipContent>
-                                    </Tooltip>
                                   </div>
-
+                                  
                                 </div>
                                 <FormControl>
                                   <Select
@@ -345,7 +336,7 @@ export default function CalculatorForm() {
                     <FuelIcon className="h-4 w-4 text-foreground" />
                     <FormLabel className="whitespace-nowrap">Fuel Consumption (MT/Day)</FormLabel>
                   </div>
-
+                                  
                                 </div>
                                 <FormControl>
                                   <Input
