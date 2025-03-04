@@ -20,15 +20,18 @@ export function InfoTooltip({
 }: InfoTooltipProps) {
   return (
     <TooltipProvider>
-      <Tooltip>
+      <Tooltip delayDuration={200}>
         <TooltipTrigger asChild>
           <button type="button" className={`inline-flex items-center text-gray-400 hover:text-gray-600 ml-1 ${className}`}>
             <Info className={`${iconClassName} translate-y-[0.1em]`} />
           </button>
         </TooltipTrigger>
         <TooltipContent 
-          className="max-w-[300px] p-4 text-sm bg-slate-100 text-slate-800 rounded-lg shadow-lg border border-slate-200"
-          sideOffset={5}
+          side="right" 
+          align="start" 
+          sideOffset={5} 
+          className="max-w-[300px] p-4 text-sm bg-slate-100 text-slate-800 rounded-lg shadow-lg border border-slate-200 z-[100]"
+          avoidCollisions={true}
         >
           {children}
         </TooltipContent>
