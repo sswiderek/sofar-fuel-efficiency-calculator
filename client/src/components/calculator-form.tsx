@@ -179,17 +179,12 @@ export default function CalculatorForm() {
                                     <AnchorIcon className="h-4 w-4 text-foreground" />
                                     <FormLabel className="relative text-slate-700 font-medium flex items-center gap-1.5">
                                       <span>Vessel Category</span>
-                                      <Tooltip>
-                                        <TooltipTrigger asChild>
-                                          <InfoIcon className="h-4 w-4 text-slate-500 cursor-help hover:text-slate-700" />
-                                        </TooltipTrigger>
-                                        <TooltipContent className="bg-blue-50 border-blue-100 text-blue-950" side="right" align="start" sideOffset={10}>
-                                          <h4 className="font-semibold mb-2 text-slate-700">Vessel Category</h4>
-                                          <p className="text-slate-600 leading-relaxed">
-                                            Classification of vessel by intended use or cargo type. Different vessel categories have distinct operational profiles and fuel consumption patterns.
-                                          </p>
-                                        </TooltipContent>
-                                      </Tooltip>
+                                      <InfoTooltip>
+                                        <h4 className="font-semibold mb-2 text-slate-700">Vessel Category</h4>
+                                        <p className="text-slate-600 leading-relaxed">
+                                          Classification of vessel by intended use or cargo type. Different vessel categories have distinct operational profiles and fuel consumption patterns.
+                                        </p>
+                                      </InfoTooltip>
                                     </FormLabel>
                                   </div>
 
@@ -251,16 +246,12 @@ export default function CalculatorForm() {
                                     <ScaleIcon className="h-4 w-4 text-foreground" />
                                     <FormLabel className="relative text-slate-700 font-medium flex items-center gap-1.5">
                                       <span>Vessel Size</span>
-                                      <Tooltip>
-                                        <TooltipTrigger asChild>
-                                          <InfoIcon className="h-4 w-4 text-slate-500 cursor-help hover:text-slate-700" />
-                                        </TooltipTrigger>
-                                        <TooltipContent className="bg-blue-50 border-blue-100 text-blue-950" side="right" align="start" sideOffset={10}>
-                                          <div className="text-wrap max-w-[300px]">
-                                            Standard size classification for the selected vessel category. Larger vessels typically carry more cargo but may be more efficient per ton carried.
-                                          </div>
-                                        </TooltipContent>
-                                      </Tooltip>
+                                      <InfoTooltip>
+                                        <h4 className="font-semibold mb-2 text-slate-700">Vessel Size</h4>
+                                        <p className="text-slate-600 leading-relaxed">
+                                          Standard size classification for the selected vessel category. Larger vessels typically consume more fuel but may be more efficient per ton of cargo carried.
+                                        </p>
+                                      </InfoTooltip>
                                     </FormLabel>
                                   </div>
                                 </div>
@@ -335,17 +326,12 @@ export default function CalculatorForm() {
                     <AnchorIcon className="h-4 w-4 text-foreground" />
                     <FormLabel className="relative text-slate-700 font-medium flex items-center gap-1.5">
                       <span>Number of Ships</span>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <InfoIcon className="h-4 w-4 text-slate-500 cursor-help hover:text-slate-700" />
-                        </TooltipTrigger>
-                        <TooltipContent className="bg-blue-50 border-blue-100 text-blue-950" side="right" align="start" sideOffset={10}>
-                          <h4 className="font-semibold mb-2 text-slate-700">Number of Ships</h4>
-                          <p className="text-slate-600 leading-relaxed">
-                            Total count of vessels of this specific category and size in your fleet. Calculations will be multiplied by this number for fleet-wide estimates.
-                          </p>
-                        </TooltipContent>
-                      </Tooltip>
+                      <InfoTooltip>
+                        <h4 className="font-semibold mb-2 text-slate-700">Number of Ships</h4>
+                        <p className="text-slate-600 leading-relaxed">
+                          Total count of vessels of this specific category and size in your fleet. Calculations will be multiplied by this number for fleet-wide estimates.
+                        </p>
+                      </InfoTooltip>
                     </FormLabel>
                   </div>
                                 </div>
@@ -375,16 +361,12 @@ export default function CalculatorForm() {
                     <FuelIcon className="h-4 w-4 text-foreground" />
                     <FormLabel className="relative text-slate-700 font-medium flex items-center gap-1.5">
                       <span>Fuel Consumption (MT/Day)</span>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <InfoIcon className="h-4 w-4 text-slate-500 cursor-help hover:text-slate-700" />
-                        </TooltipTrigger>
-                        <TooltipContent className="bg-blue-50 border-blue-100 text-blue-950" side="right" align="start" sideOffset={10}>
-                          <div className="text-wrap max-w-[300px]">
-                            Daily Average fuel consumption in metric tons per day. This should be based on actual operational data for best accuracy. Includes fuel used for main and auxiliary power.
-                          </div>
-                        </TooltipContent>
-                      </Tooltip>
+                      <InfoTooltip>
+                        <h4 className="font-semibold mb-2 text-slate-700">Daily Fuel Consumption</h4>
+                        <p className="text-slate-600 leading-relaxed">
+                          Average fuel consumption in metric tons per day when vessel is at sea. This should reflect your actual operational data for most accurate results. Includes fuel used for propulsion and onboard power generation.
+                        </p>
+                      </InfoTooltip>
                     </FormLabel>
                   </div>
 
@@ -415,17 +397,12 @@ export default function CalculatorForm() {
                                   <TimerIcon className="h-4 w-4 text-foreground" />
                                   <FormLabel className="relative text-slate-700 font-medium flex items-center gap-1.5">
                                     <span>Days at Sea Per Vessel Per Year</span>
-                                    <Tooltip>
-                                      <TooltipTrigger asChild>
-                                        <InfoIcon className="h-4 w-4 text-slate-500 cursor-help hover:text-slate-700" />
-                                      </TooltipTrigger>
-                                      <TooltipContent className="bg-blue-50 border-blue-100 text-blue-950" side="right" align="start" sideOffset={10}>
-                                        <h4 className="font-semibold mb-2 text-slate-700">Annual Sea Days</h4>
-                                        <p className="text-slate-600 leading-relaxed">
-                                          Average number of days each vessel spends at sea annually. The default value of 280 days assumes typical port calls and maintenance periods. Adjust based on your operational schedule for more precise calculations.
-                                        </p>
-                                      </TooltipContent>
-                                    </Tooltip>
+                                    <InfoTooltip>
+                                      <h4 className="font-semibold mb-2 text-slate-700">Annual Sea Days</h4>
+                                      <p className="text-slate-600 leading-relaxed">
+                                        Average number of days each vessel spends at sea annually. The default value of 280 days assumes typical port calls and maintenance periods. Adjust based on your operational schedule for more precise calculations.
+                                      </p>
+                                    </InfoTooltip>
                                   </FormLabel>
                                 </div>
                               </div>
@@ -490,17 +467,12 @@ export default function CalculatorForm() {
                         <FormLabel className="flex items-center gap-2">
                           <DollarSignIcon className="h-4 w-4" />
                           <span>Fuel Price (USD/MT)</span>
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <InfoIcon className="h-4 w-4 text-slate-500 cursor-help hover:text-slate-700" />
-                            </TooltipTrigger>
-                            <TooltipContent className="bg-blue-50 border-blue-100 text-blue-950" side="right" align="start" sideOffset={10}>
-                              <h4 className="font-semibold mb-2 text-slate-700">Monthly Average VLSFO Fuel Price</h4>
-                              <p className="text-slate-600 leading-relaxed">
-                                Based on Ship & Bunker's Global 20 Ports Average. Monthly averages provide a stable baseline for calculations by smoothing out daily price fluctuations.
-                              </p>
-                            </TooltipContent>
-                          </Tooltip>
+                          <InfoTooltip>
+                            <h4 className="font-semibold mb-2 text-slate-700">Monthly Average VLSFO Fuel Price</h4>
+                            <p className="text-slate-600 leading-relaxed">
+                              Based on Ship & Bunker's Global 20 Ports Average. Monthly averages provide a stable baseline for calculations by smoothing out daily price fluctuations.
+                            </p>
+                          </InfoTooltip>
                         </FormLabel>
                       </div>
                       <FormControl>
