@@ -29,15 +29,11 @@ export function InfoTooltip({
         <TooltipContent 
           side="right" 
           align="start" 
-          sideOffset={5}
-          alignOffset={-5}
-          className="max-w-[350px] w-[350px] p-4 text-sm bg-slate-100 text-slate-800 rounded-lg shadow-lg border border-slate-200 z-[9999]"
+          sideOffset={5} 
+          className="max-w-[300px] p-4 text-sm bg-slate-100 text-slate-800 rounded-lg shadow-lg border border-slate-200 z-[9999]"
           avoidCollisions={true}
-          collisionPadding={20}
         >
-          <div className="tooltip-content-wrapper">
-            {children}
-          </div>
+          {children}
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
