@@ -27,8 +27,8 @@ export function InfoTooltip({
           </button>
         </TooltipTrigger>
         <TooltipContent 
-          side="right" 
-          align="start" 
+          side="top" 
+          align="center" 
           sideOffset={5} 
           className="max-w-[300px] p-4 text-sm bg-slate-100 text-slate-800 rounded-lg shadow-lg border border-slate-200 z-[9999]"
           avoidCollisions={true}
