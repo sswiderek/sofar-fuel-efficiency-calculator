@@ -177,7 +177,15 @@ export default function CalculatorForm() {
                                 <div className="flex items-center gap-1.5">
                                   <div className="flex items-center gap-2">
                                     <AnchorIcon className="h-4 w-4 text-foreground" />
-                                    <FormLabel>Vessel Category</FormLabel>
+                                    <FormLabel className="relative text-slate-700 font-medium flex items-center gap-1.5">
+                                      <span>Vessel Category</span>
+                                      <InfoTooltip>
+                                        <h4 className="font-semibold mb-2 text-slate-700">Vessel Category</h4>
+                                        <p className="text-slate-600 leading-relaxed">
+                                          Classification of vessel by intended use or cargo type. Different vessel categories have distinct operational profiles and fuel consumption patterns.
+                                        </p>
+                                      </InfoTooltip>
+                                    </FormLabel>
                                   </div>
 
                                 </div>
@@ -236,7 +244,15 @@ export default function CalculatorForm() {
                                 <div className="flex items-center gap-1.5">
                                   <div className="flex items-center gap-2">
                                     <ScaleIcon className="h-4 w-4 text-foreground" />
-                                    <FormLabel>Vessel Size</FormLabel>
+                                    <FormLabel className="relative text-slate-700 font-medium flex items-center gap-1.5">
+                                      <span>Vessel Size</span>
+                                      <InfoTooltip>
+                                        <h4 className="font-semibold mb-2 text-slate-700">Vessel Size</h4>
+                                        <p className="text-slate-600 leading-relaxed">
+                                          Standard size classification for the selected vessel category. Larger vessels typically consume more fuel but may be more efficient per ton of cargo carried.
+                                        </p>
+                                      </InfoTooltip>
+                                    </FormLabel>
                                   </div>
                                 </div>
                                 <FormControl>
@@ -308,7 +324,15 @@ export default function CalculatorForm() {
                                 <div className="flex items-center gap-1.5">
                                   <div className="flex items-center gap-2">
                     <AnchorIcon className="h-4 w-4 text-foreground" />
-                    <FormLabel>Number of Ships</FormLabel>
+                    <FormLabel className="relative text-slate-700 font-medium flex items-center gap-1.5">
+                      <span>Number of Ships</span>
+                      <InfoTooltip>
+                        <h4 className="font-semibold mb-2 text-slate-700">Number of Ships</h4>
+                        <p className="text-slate-600 leading-relaxed">
+                          Total count of vessels of this specific category and size in your fleet. Calculations will be multiplied by this number for fleet-wide estimates.
+                        </p>
+                      </InfoTooltip>
+                    </FormLabel>
                   </div>
                                 </div>
                                 <FormControl>
@@ -335,7 +359,15 @@ export default function CalculatorForm() {
                                 <div className="flex items-center gap-1.5">
                                   <div className="flex flex-wrap items-center gap-2">
                     <FuelIcon className="h-4 w-4 text-foreground" />
-                    <FormLabel className="whitespace-nowrap">Fuel Consumption (MT/Day)</FormLabel>
+                    <FormLabel className="relative text-slate-700 font-medium flex items-center gap-1.5">
+                      <span>Fuel Consumption (MT/Day)</span>
+                      <InfoTooltip>
+                        <h4 className="font-semibold mb-2 text-slate-700">Daily Fuel Consumption</h4>
+                        <p className="text-slate-600 leading-relaxed">
+                          Average fuel consumption in metric tons per day when vessel is at sea. This should reflect your actual operational data for most accurate results. Includes fuel used for propulsion and onboard power generation.
+                        </p>
+                      </InfoTooltip>
+                    </FormLabel>
                   </div>
 
                                 </div>
@@ -363,7 +395,15 @@ export default function CalculatorForm() {
                               <div className="flex items-center gap-1.5">
                                 <div className="flex items-center gap-2">
                                   <TimerIcon className="h-4 w-4 text-foreground" />
-                                  <FormLabel>Days at Sea Per Vessel Per Year</FormLabel>
+                                  <FormLabel className="relative text-slate-700 font-medium flex items-center gap-1.5">
+                                    <span>Days at Sea Per Vessel Per Year</span>
+                                    <InfoTooltip>
+                                      <h4 className="font-semibold mb-2 text-slate-700">Annual Sea Days</h4>
+                                      <p className="text-slate-600 leading-relaxed">
+                                        Average number of days each vessel spends at sea annually. The default value of 280 days assumes typical port calls and maintenance periods. Adjust based on your operational schedule for more precise calculations.
+                                      </p>
+                                    </InfoTooltip>
+                                  </FormLabel>
                                 </div>
                               </div>
                               <FormControl>
