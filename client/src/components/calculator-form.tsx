@@ -431,18 +431,18 @@ export default function CalculatorForm() {
                           <TooltipTrigger asChild>
                             <button
                               type="button"
-                              className="p-1 -m-1 border-0 bg-transparent cursor-pointer"
+                              className="p-1 -m-1 border-0 bg-transparent cursor-pointer group"
                             >
-                              <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                              <InfoIcon className="h-4 w-4 text-muted-foreground group-hover:text-slate-700 transition-colors" />
                             </button>
                           </TooltipTrigger>
-                          <TooltipContent className="bg-white border border-gray-200 shadow-md p-3 rounded-md max-w-[300px]">
-                            <div>
-                              <h4 className="font-medium text-blue-900">VLSFO Fuel Type</h4>
-                              <p className="max-w-[250px] text-sm text-blue-700 leading-snug">
-                                Calculations use Very Low Sulfur Fuel Oil (VLSFO) prices, which is the primary marine fuel used to comply with IMO 2020 sulfur regulations.
+                          <TooltipContent side="top" className="bg-white text-slate-900 border border-slate-200 shadow-md rounded-md p-3 text-sm max-w-[300px]">
+                            <p>VLSFO Fuel Type: Calculations use Very Low Sulfur Fuel Oil (VLSFO) prices, which is the primary marine fuel used to comply with IMO 2020 sulfur regulations.</p>
+                            {fuelPriceData?.price && !isFuelPriceError && (
+                              <p className="mt-2 text-xs text-slate-600">
+                                Current value reflects the global monthly average VLSFO price for {fuelPriceData.month} {fuelPriceData.year}.
                               </p>
-                            </div>
+                            )}
                           </TooltipContent>
                         </Tooltip>
                       </div>
