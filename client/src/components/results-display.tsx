@@ -271,18 +271,23 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
 
                     <div className="text-slate-600">
                       Fuel Savings:
-                      <Tooltip>
+                      <Tooltip delayDuration={100}>
                         <TooltipTrigger asChild>
-                          <button className="ml-1 p-0.5 hover:bg-slate-100 rounded-full transition-colors">
-                            <Info className="h-3.5 w-3.5 cursor-help opacity-70 hover:opacity-100" />
+                          <button
+                            type="button"
+                            className="ml-1 p-1 -m-1 border-0 bg-transparent cursor-pointer"
+                          >
+                            <Info className="h-4 w-4 text-muted-foreground" />
                           </button>
                         </TooltipTrigger>
-                        <TooltipContent side="top" className="bg-white border border-blue-100 shadow-md p-3 rounded-lg">
+                        <TooltipContent className="max-w-sm p-2">
                           <div className="space-y-1">
-                            <h4 className="font-medium text-blue-900">Fuel Reduction</h4>
-                            <p className="max-w-[250px] text-sm text-blue-700 leading-snug">
+                            <div className="text-sm font-medium">
+                              Fuel Reduction
+                            </div>
+                            <div className="text-xs text-muted-foreground">
                               The fuel savings percentage is estimated between 4% to 10%, based on typical results from Sofar Ocean's Wayfinder platform.
-                            </p>
+                            </div>
                           </div>
                         </TooltipContent>
                       </Tooltip>
