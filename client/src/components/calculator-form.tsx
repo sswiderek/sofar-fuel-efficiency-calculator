@@ -178,7 +178,7 @@ export default function CalculatorForm() {
                                     <AnchorIcon className="h-4 w-4 text-foreground" />
                                     <FormLabel>Vessel Category</FormLabel>
                                   </div>
-                                  
+
                                 </div>
                                 <FormControl>
                                   <Select
@@ -336,7 +336,7 @@ export default function CalculatorForm() {
                     <FuelIcon className="h-4 w-4 text-foreground" />
                     <FormLabel className="whitespace-nowrap">Fuel Consumption (MT/Day)</FormLabel>
                   </div>
-                                  
+
                                 </div>
                                 <FormControl>
                                   <Input
@@ -436,17 +436,12 @@ export default function CalculatorForm() {
                               <InfoIcon className="h-4 w-4 text-muted-foreground" />
                             </button>
                           </TooltipTrigger>
-                          <TooltipContent className="max-w-sm p-2">
-                            <div className="space-y-1">
-                              <div className="text-sm font-medium">
-                                Monthly Average VLSFO Fuel Price
-                              </div>
-                              <div className="text-xs text-muted-foreground">
-                                Based on Ship & Bunker's Global 20 Ports
-                                Average. Monthly averages provide a stable
-                                baseline for calculations by smoothing out daily
-                                price fluctuations.
-                              </div>
+                          <TooltipContent className="bg-white border border-gray-200 shadow-md p-3 rounded-md max-w-[300px]">
+                            <div>
+                              <h4 className="font-medium text-blue-900">VLSFO Fuel Type</h4>
+                              <p className="max-w-[250px] text-sm text-blue-700 leading-snug">
+                                Calculations use Very Low Sulfur Fuel Oil (VLSFO) prices, which is the primary marine fuel used to comply with IMO 2020 sulfur regulations.
+                              </p>
                             </div>
                           </TooltipContent>
                         </Tooltip>
