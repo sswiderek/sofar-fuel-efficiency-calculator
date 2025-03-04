@@ -232,12 +232,6 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                         <InfoTooltip>
                           We use Very Low Sulfur Fuel Oil (VLSFO) prices in our calculations as it's the maritime industry standard fuel that complies with IMO 2020 emissions regulations, which limit sulfur content to 0.5%.
                         </InfoTooltip>
-                        <InfoTooltip>
-                          <h4 className="font-medium text-blue-900">Price Information</h4>
-                          <p className="max-w-[250px] text-sm text-blue-700 leading-snug">
-                            Monthly average price from Ship & Bunker's Global 20 Ports index. Updated on the 1st of each month to smooth out daily price fluctuations.
-                          </p>
-                        </InfoTooltip>
                       </div>
                       <div className="text-right font-medium">${fuelPrice.toLocaleString()}/MT</div>
 
