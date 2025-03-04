@@ -205,36 +205,5 @@
   overflow: hidden;
 }
 
-/* New InfoTooltip component */
-/* This component will replace the previous tooltip styles */
-const InfoTooltip = ({ children, content }) => {
-  return (
-    <div data-radix-popper-content-wrapper>
-      <div className="TooltipContent">
-        {content}
-      </div>
-    </div>
-  );
-};
-
-/* Placeholder for results-display.tsx */
-// results-display.tsx
-import React from 'react';
-import InfoTooltip from './InfoTooltip'; // Adjust path as needed
-
-const ResultsDisplay = () => {
-  return (
-    <div>
-      {/* Example usage */}
-      <div>
-        Fuel Reduction
-        <InfoTooltip content="This is the fuel reduction tooltip.">
-          {/* Add more content here as needed */}
-          <span>More details</span>
-        </InfoTooltip>
-      </div>
-    </div>
-  );
-};
-
-export default ResultsDisplay;
+/* CSS cannot contain JSX component definitions */
+/* These were mistakenly added to the CSS file and should be removed */
