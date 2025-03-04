@@ -30,8 +30,9 @@ export function InfoTooltip({
           side="right" 
           align="start" 
           sideOffset={5} 
-          className="max-w-[300px] p-4 text-sm bg-slate-100 text-slate-800 rounded-lg shadow-lg border border-slate-200 z-[100]"
+          className="max-w-[300px] p-4 text-sm bg-slate-100 text-slate-800 rounded-lg shadow-lg border border-slate-200 z-[9999]"
           avoidCollisions={true}
+          forceMount
         >
           {children}
         </TooltipContent>

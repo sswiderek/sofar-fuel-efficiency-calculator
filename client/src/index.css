@@ -233,3 +233,14 @@
 
 /* CSS cannot contain JSX component definitions */
 /* These were mistakenly added to the CSS file and should be removed */
+/* Tooltip priority styling */
+[data-radix-popper-content-wrapper] {
+  z-index: 9999 !important;
+  position: relative;
+}
+
+/* Ensure Radix UI tooltip portals always appear on top */
+[data-radix-portal] {
+  z-index: 9999 !important;
+  position: relative;
+}
