@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { CalculationResult } from "@shared/schema";
 import { DollarSign, Info, LeafIcon, TrendingDown, Car, ChevronDown } from "lucide-react"; 
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"; 
 
 
@@ -60,6 +60,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
 
 
   return (
+    <TooltipProvider>
     <div className="max-w-4xl space-y-6">
       <h2 className="text-xl font-bold text-slate-800 mb-2">Analysis Results</h2>
       <div className="grid gap-5">
@@ -276,10 +277,13 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                             <Info className="h-3.5 w-3.5 cursor-help opacity-70 hover:opacity-100" />
                           </button>
                         </TooltipTrigger>
-                        <TooltipContent>
-                          <p className="max-w-[250px] text-sm">
-                            The fuel savings percentage is estimated between 4% to 10%, based on typical results from Sofar Ocean's Wayfinder platform.
-                          </p>
+                        <TooltipContent side="top" className="bg-white border border-blue-100 shadow-md p-3 rounded-lg">
+                          <div className="space-y-1">
+                            <h4 className="font-medium text-blue-900">Fuel Reduction</h4>
+                            <p className="max-w-[250px] text-sm text-blue-700 leading-snug">
+                              The fuel savings percentage is estimated between 4% to 10%, based on typical results from Sofar Ocean's Wayfinder platform.
+                            </p>
+                          </div>
                         </TooltipContent>
                       </Tooltip>
                     </div>
@@ -324,5 +328,6 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
         </Card>
       </div>
     </div>
+    </TooltipProvider>
   );
 }
