@@ -178,14 +178,7 @@ export default function CalculatorForm() {
                                     <AnchorIcon className="h-4 w-4 text-foreground" />
                                     <FormLabel>Vessel Category</FormLabel>
                                   </div>
-                                  <Tooltip>
-                                    <TooltipTrigger>
-                                      <InfoIcon className="h-4 w-4 text-slate-400" />
-                                    </TooltipTrigger>
-                                    <TooltipContent className="max-w-[300px] text-xs">
-                                      <p>Select the general category of vessel</p>
-                                    </TooltipContent>
-                                  </Tooltip>
+                                  
                                 </div>
                                 <FormControl>
                                   <Select
@@ -343,14 +336,7 @@ export default function CalculatorForm() {
                     <FuelIcon className="h-4 w-4 text-foreground" />
                     <FormLabel className="whitespace-nowrap">Fuel Consumption (MT/Day)</FormLabel>
                   </div>
-                                  <Tooltip>
-                                    <TooltipTrigger>
-                                      <InfoIcon className="h-4 w-4 text-slate-400" />
-                                    </TooltipTrigger>
-                                    <TooltipContent className="max-w-[300px] text-xs">
-                                      <p>Average fuel consumption in Metric Tonnes per day while at sea. Typical ranges from 20-150 MT/day depending on vessel size.  Example: 50 MT/day</p>
-                                    </TooltipContent>
-                                  </Tooltip>
+                                  
                                 </div>
                                 <FormControl>
                                   <Input
