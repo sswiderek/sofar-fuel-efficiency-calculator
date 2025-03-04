@@ -428,11 +428,9 @@ export default function CalculatorForm() {
                           <DollarSignIcon className="h-4 w-4" />
                           <span>Fuel Price (USD/MT)</span>
                           <InfoTooltip>
-                            <h4 className="font-semibold mb-2 text-slate-700">Price Information</h4>
+                            <h4 className="font-semibold mb-2 text-slate-700">Monthly Average VLSFO Fuel Price</h4>
                             <p className="text-slate-600 leading-relaxed">
-                              Monthly average price from Ship & Bunker's Global 20 Ports index. 
-                              <br /><br />
-                              Updated on the 1st of each month to smooth out daily price fluctuations.
+                              Based on Ship & Bunker's Global 20 Ports Average. Monthly averages provide a stable baseline for calculations by smoothing out daily price fluctuations.
                             </p>
                           </InfoTooltip>
                         </FormLabel>
