@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   Tooltip,
@@ -28,7 +27,7 @@ export function InfoTooltip({
           </button>
         </TooltipTrigger>
         <TooltipContent 
-          className="rounded-md bg-slate-800 px-3 py-2.5 text-sm text-white max-w-[250px] border border-slate-700 shadow-xl"
+          className="max-w-[300px] p-4 text-sm bg-blue-900 text-white rounded-lg shadow-lg"
           sideOffset={5}
         >
           {children}

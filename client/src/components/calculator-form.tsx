@@ -428,9 +428,11 @@ export default function CalculatorForm() {
                           <DollarSignIcon className="h-4 w-4" />
                           <span>Fuel Price (USD/MT)</span>
                           <InfoTooltip>
-                            <h4 className="font-medium text-blue-900">Price Information</h4>
-                            <p className="max-w-[250px] text-sm text-blue-700 leading-snug">
-                              Monthly average price from Ship & Bunker's Global 20 Ports index. Updated on the 1st of each month to smooth out daily price fluctuations.
+                            <h4 className="font-semibold mb-2 text-blue-100">Price Information</h4>
+                            <p className="text-blue-50 leading-relaxed">
+                              Monthly average price from Ship & Bunker's Global 20 Ports index. 
+                              <br /><br />
+                              Updated on the 1st of each month to smooth out daily price fluctuations.
                             </p>
                           </InfoTooltip>
                         </FormLabel>
