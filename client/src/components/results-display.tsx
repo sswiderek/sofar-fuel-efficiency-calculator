@@ -3,6 +3,7 @@ import { CalculationResult } from "@shared/schema";
 import { DollarSign, Info, LeafIcon, TrendingDown, Car, ChevronDown } from "lucide-react"; 
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"; 
+import { InfoTooltip } from "@/components/info-tooltip";
 
 
 interface ResultsDisplayProps {
@@ -228,17 +229,9 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                     <div className="grid grid-cols-2 gap-2 text-sm">
                       <div className="text-slate-600 font-medium">
                         Fuel Price:
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <button className="p-0.5 hover:bg-slate-100 rounded-full transition-colors">
-                              <Info className="h-3.5 w-3.5 opacity-70 hover:opacity-100" />
-                            </button>
-                          </TooltipTrigger>
-                          <TooltipContent className="p-3">
-                            <h3 className="font-medium text-slate-800">Fuel Reduction</h3>
-                            <p className="text-sm text-slate-600 mt-1">The fuel savings percentage is estimated between 4% to 10%, based on typical results from Sofar Ocean's Wayfinder platform.</p>
-                          </TooltipContent>
-                        </Tooltip>
+                        <InfoTooltip>
+                          The fuel savings percentage is estimated between 4% to 10%, based on typical results from Sofar Ocean's Wayfinder platform.
+                        </InfoTooltip>
                       </div>
                       <div className="text-right font-medium">${fuelPrice.toLocaleString()}/MT</div>
 
@@ -270,26 +263,9 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
 
                     <div className="text-slate-600">
                       Fuel Savings:
-                      <Tooltip delayDuration={100}>
-                        <TooltipTrigger asChild>
-                          <button
-                            type="button"
-                            className="ml-1 p-1 -m-1 border-0 bg-transparent cursor-pointer"
-                          >
-                            <Info className="h-4 w-4 text-muted-foreground" />
-                          </button>
-                        </TooltipTrigger>
-                        <TooltipContent className="max-w-sm p-2">
-                          <div className="space-y-1">
-                            <div className="text-sm font-medium">
-                              Fuel Reduction
-                            </div>
-                            <div className="text-xs text-muted-foreground">
-                              The fuel savings percentage is estimated between 4% to 10%, based on typical results from Sofar Ocean's Wayfinder platform.
-                            </div>
-                          </div>
-                        </TooltipContent>
-                      </Tooltip>
+                      <InfoTooltip>
+                        The fuel savings percentage is estimated between 4% to 10%, based on typical results from Sofar Ocean's Wayfinder platform.
+                      </InfoTooltip>
                     </div>
                     <div className="text-right font-medium">5%</div>
 
