@@ -228,6 +228,16 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                     <div className="grid grid-cols-2 gap-2 text-sm">
                       <div className="text-slate-600 font-medium">
                         Fuel Price:
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <button className="p-0.5 hover:bg-slate-100 rounded-full transition-colors">
+                              <Info className="h-3.5 w-3.5 opacity-70 hover:opacity-100" />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p className="text-sm">Tooltip content about fuel price.</p>
+                          </TooltipContent>
+                        </Tooltip>
                       </div>
                       <div className="text-right font-medium">${fuelPrice.toLocaleString()}/MT</div>
 
