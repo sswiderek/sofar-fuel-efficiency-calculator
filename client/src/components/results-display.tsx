@@ -234,8 +234,11 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                               <Info className="h-3.5 w-3.5 opacity-70 hover:opacity-100" />
                             </button>
                           </TooltipTrigger>
-                          <TooltipContent>
-                            <p className="text-sm">VLSFO Fuel Type: Calculations use Very Low Sulfur Fuel Oil (VLSFO) prices, which is the primary marine fuel used to comply with IMO 2020 sulfur regulations.</p>
+                          <TooltipContent className="bg-white p-3 rounded-lg shadow-lg border border-blue-100">
+                            <h4 className="font-medium text-blue-900">VLSFO Fuel Type</h4>
+                            <p className="max-w-[300px] text-sm text-blue-700 leading-snug mt-1">
+                              Calculations use Very Low Sulfur Fuel Oil (VLSFO) prices, which is the primary marine fuel used to comply with IMO 2020 sulfur regulations.
+                            </p>
                           </TooltipContent>
                         </Tooltip>
                       </div>
