@@ -235,7 +235,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                             </button>
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p className="text-sm">Tooltip content about fuel price.</p>
+                            <p className="text-sm">VLSFO Fuel Type: Calculations use Very Low Sulfur Fuel Oil (VLSFO) prices, which is the primary marine fuel used to comply with IMO 2020 sulfur regulations.</p>
                           </TooltipContent>
                         </Tooltip>
                       </div>
