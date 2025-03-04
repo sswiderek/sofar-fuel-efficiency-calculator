@@ -23,12 +23,13 @@ export function InfoTooltip({
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <button type="button" className={`inline-flex items-center text-blue-500 hover:text-blue-600 ${className}`}>
+          <button type="button" className={`inline-flex items-center text-gray-400 hover:text-gray-600 ${className}`}>
             <Info className={iconClassName} />
           </button>
         </TooltipTrigger>
         <TooltipContent 
-          className="rounded-md bg-black/90 px-2.5 py-2 text-xs text-white max-w-[200px]"
+          className="rounded-md bg-slate-800 px-3 py-2.5 text-sm text-white max-w-[250px] border border-slate-700 shadow-xl"
+          sideOffset={5}
         >
           {children}
         </TooltipContent>
