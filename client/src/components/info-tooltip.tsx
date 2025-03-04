@@ -23,7 +23,7 @@ export function InfoTooltip({
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <button type="button" className={`inline-flex items-center text-gray-400 hover:text-gray-600 ${className}`}>
+          <button type="button" className={`inline-flex items-center text-gray-400 hover:text-gray-600 align-[0.1em] ${className}`}>
             <Info className={iconClassName} />
           </button>
         </TooltipTrigger>
