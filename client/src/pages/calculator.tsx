@@ -39,7 +39,7 @@ export default function Calculator() {
               </ul>
             </div>
             <CalculatorForm />
-            <div className="mt-8 mb-6">
+            <div className="mt-8 mb-6 max-w-md">
               <Card className="bg-slate-50 border border-slate-200">
                 <CardContent className="pt-6">
                   <h3 className="font-semibold text-slate-800 mb-2 flex items-center gap-2">
