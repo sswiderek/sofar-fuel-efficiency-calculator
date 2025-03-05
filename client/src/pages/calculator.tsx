@@ -39,33 +39,8 @@ export default function Calculator() {
               </ul>
             </div>
             <CalculatorForm />
-            <div className="mt-8 mb-6 max-w-md">
-              <Card className="bg-slate-50 border border-slate-200">
-                <CardContent className="pt-6">
-                  <h3 className="font-semibold text-slate-800 mb-2 flex items-center gap-2">
-                    <TargetIcon className="h-4 w-4 text-primary" />
-                    Assumptions
-                  </h3>
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Fuel savings are estimated at 5% based on typical results from Wayfinder platform implementations.</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span>CO₂ emissions are calculated using an industry-standard conversion factor of 3.114 tonnes of CO₂ per tonne of fuel.</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Fuel prices are based on global VLSFO monthly averages across major bunkering ports.</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Calculations assume consistent operational profiles throughout the year.</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+            <div className="mt-12 mb-8">
+              
             </div>
             <div className="space-y-6">
                 
