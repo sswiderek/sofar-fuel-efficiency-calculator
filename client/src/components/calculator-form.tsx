@@ -472,15 +472,10 @@ export default function CalculatorForm() {
                   render={({ field }) => (
                     <FormItem>
                       <div className="flex items-center gap-2">
-                        <FormLabel className="flex items-center gap-2">
+                        <FormLabel className="flex items-center gap-1">
                           <DollarSignIcon className="h-4 w-4" />
                           <span>Fuel Price (USD/MT)</span>
-                          <InfoTooltip>
-                            <h4 className="font-semibold mb-2 text-slate-700">Monthly Average VLSFO Fuel Price</h4>
-                            <p className="text-slate-600 leading-relaxed">
-                              Based on Ship & Bunker's Global 20 Ports Average. Monthly averages provide a stable baseline for calculations by smoothing out daily price fluctuations.
-                            </p>
-                          </InfoTooltip>
+                          <InfoTooltip content="The average price of Very Low Sulfur Fuel Oil (VLSFO) per metric ton in USD. Default is current global average." />
                         </FormLabel>
                       </div>
                       <FormControl>
