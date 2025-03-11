@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CalculatorForm from "@/components/calculator-form";
-import { WavesIcon, Fuel as FuelIcon, DollarSign as DollarSignIcon, LeafIcon, Globe as GlobeIcon, SettingsIcon, BarChartIcon, TrendingUpIcon, TargetIcon, ChevronRightIcon } from "lucide-react";
+import { WavesIcon, Fuel as FuelIcon, DollarSign as DollarSignIcon, LeafIcon, Globe as GlobeIcon, SettingsIcon, BarChartIcon, TrendingUpIcon, TargetIcon, ChevronRightIcon, Info } from "lucide-react";
 
 export default function Calculator() {
   return (
@@ -40,12 +40,54 @@ export default function Calculator() {
             </div>
             <CalculatorForm />
             <div className="mt-12 mb-8">
-              
+
             </div>
             <div className="space-y-6">
-                
-              </div>
+
+            </div>
           </CardContent>
+
+          {/* Assumptions Section at the bottom of the page */}
+          <div className="mt-16 mb-12 border-t border-slate-200 pt-10">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-xl font-semibold text-slate-800 mb-6 flex items-center gap-2">
+                <Info className="h-5 w-5 text-primary" />
+                Assumptions
+              </h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="bg-slate-50 border border-slate-200">
+                  <CardContent className="pt-6">
+                    <h4 className="font-medium text-slate-800 mb-3">Fuel Savings</h4>
+                    <ul className="space-y-3 text-sm text-slate-600">
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary font-bold">•</span>
+                        <span>Fuel savings are estimated at 5% based on typical results from Wayfinder platform implementations.</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary font-bold">•</span>
+                        <span>Calculations assume consistent operational profiles throughout the year.</span>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+                <Card className="bg-slate-50 border border-slate-200">
+                  <CardContent className="pt-6">
+                    <h4 className="font-medium text-slate-800 mb-3">Emissions & Pricing</h4>
+                    <ul className="space-y-3 text-sm text-slate-600">
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary font-bold">•</span>
+                        <span>CO₂ emissions are calculated using an industry-standard conversion factor of 3.114 tonnes of CO₂ per tonne of fuel.</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary font-bold">•</span>
+                        <span>Fuel prices are based on global VLSFO monthly averages across major bunkering ports.</span>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
         </Card>
       </div>
     </div>
