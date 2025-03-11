@@ -479,19 +479,22 @@ export default function CalculatorForm() {
                         </FormLabel>
                       </div>
                       <FormControl>
-                        <Input
-                          type="number"
-                          placeholder="Enter fuel price"
-                          {...field}
-                          onChange={(e) =>
-                            field.onChange(
-                              e.target.value
-                                ? Number(e.target.value)
-                                : undefined
-                            )
-                          }
-                          className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
-                        />
+                        <div className="flex items-center">
+                          <span className="absolute left-2.5 text-gray-500">$</span>
+                          <Input
+                            placeholder="Enter fuel price"
+                            {...field}
+                            onChange={(e) =>
+                              field.onChange(
+                                e.target.value
+                                  ? Number(e.target.value)
+                                  : undefined
+                              )
+                            }
+                            className="w-full pl-7 bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
+                          />
+                          <InfoTooltip content="Enter current fuel price per metric ton" />
+                        </div>
                       </FormControl>
                       <div className="text-xs text-slate-500 mt-1">
                         {fuelPriceData?.isError ? (
