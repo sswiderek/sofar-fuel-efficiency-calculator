@@ -165,7 +165,7 @@ export default function CalculatorForm() {
               <div className="space-y-8">
                 <div className="space-y-6">
                   <h3 className="text-sm font-medium text-slate-700">Fleet Configuration</h3>
-                  {form.watch("vessels")?.map((_, index) => (
+                  {form.watch("vessels")?.map((vessel, index) => (
                     <div key={index} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-slate-200/60 shadow-sm w-full">
                       <div className="space-y-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -374,13 +374,16 @@ export default function CalculatorForm() {
                                 <FormControl>
                                   <Input
                                     type="number"
-                                    className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
-                                    placeholder="e.g. 50"
                                     {...field}
-                                    onChange={(e) =>
-                                      field.onChange(Number(e.target.value))
-                                    }
+                                    className={`w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200 ${vessel.category ? 'bg-slate-50 border-dashed' : ''}`}
+                                    placeholder={vessel.category ? "Estimated value" : "Enter value"}
+                                    onChange={(e) => field.onChange(Number(e.target.value))}
                                   />
+                                  {vessel.category && (
+                                    <div className="text-xs text-slate-500 text-right mt-0.5 italic">
+                                      Industry estimate - adjust as needed
+                                    </div>
+                                  )}
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -409,13 +412,18 @@ export default function CalculatorForm() {
                               <FormControl>
                                 <Input
                                   type="number"
-                                  className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
-                                  placeholder="e.g. 280"
+                                  className={`w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200 ${vessel.category ? 'bg-slate-50 border-dashed' : ''}`}
+                                  placeholder={vessel.category ? "Estimated value" : "Enter value"}
                                   {...field}
                                   onChange={(e) =>
                                     field.onChange(Number(e.target.value))
                                   }
                                 />
+                                {vessel.category && (
+                                  <div className="text-xs text-slate-500 text-right mt-0.5 italic">
+                                    Industry estimate - adjust as needed
+                                  </div>
+                                )}
                               </FormControl>
                               <FormMessage />
                             </FormItem>
