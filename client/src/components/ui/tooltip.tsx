@@ -7,11 +7,14 @@ import { cn } from "@/lib/utils"
 
 const TooltipProvider = TooltipPrimitive.Provider
 
-const Tooltip = ({ children, ...props }) => {
+const Tooltip = React.forwardRef<
+  React.ElementRef<typeof TooltipPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Root>
+>(({ children, ...props }, ref) => {
   const [open, setOpen] = React.useState(false);
-  const openTimeout = React.useRef(null);
+  const openTimeout = React.useRef<NodeJS.Timeout | null>(null);
 
-  const handleOpenChange = React.useCallback((nextOpen) => {
+  const handleOpenChange = React.useCallback((nextOpen: boolean) => {
     if (nextOpen) {
       openTimeout.current = setTimeout(() => setOpen(true), props.delayDuration || 200);
     } else {
@@ -27,17 +30,18 @@ const Tooltip = ({ children, ...props }) => {
   }, []);
 
   return (
-    <TooltipPrimitive.Root open={open} onOpenChange={handleOpenChange} {...props}>
+    <TooltipPrimitive.Root ref={ref} open={open} onOpenChange={handleOpenChange} {...props}>
       {children}
     </TooltipPrimitive.Root>
   );
-};
-
-const TooltipTrigger = React.forwardRef((props, ref) => {
-  console.log('TooltipTrigger render:', { props, hasRef: !!ref });
-  return <TooltipPrimitive.Trigger ref={ref} {...props} />;
 });
-TooltipTrigger.displayName = 'TooltipTrigger';
+Tooltip.displayName = "Tooltip";
+
+const TooltipTrigger = React.forwardRef<
+  React.ElementRef<typeof TooltipPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Trigger>
+>(({ ...props }, ref) => <TooltipPrimitive.Trigger ref={ref} {...props} />);
+TooltipTrigger.displayName = "TooltipTrigger";
 
 const TooltipContent = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
