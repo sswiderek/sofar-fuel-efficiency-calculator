@@ -290,13 +290,18 @@ export default function CalculatorForm() {
                                               />
                                             )}
                                             {form.getValues(`vessels.${index}.category`) === 'container-ship' && (
-                                              <div className="mr-2">
-                                                {key === 'feeder' && <img src="/images/container_ship.png" alt="Feeder" className="h-5 w-5 object-contain" />}
-                                                {key === 'small' && <img src="/images/container_ship.png" alt="Small Feeder" className="h-6 w-6 object-contain" />}
-                                                {key === 'medium' && <img src="/images/container_ship.png" alt="Panamax" className="h-7 w-7 object-contain" />}
-                                                {key === 'large' && <img src="/images/container_ship.png" alt="Post-Panamax (5,000-10,000 TEU)" className="h-8 w-8 object-contain" />}
-                                                {key === 'vlarge' && <img src="/images/container_ship.png" alt="ULCV (14,500+ TEU)" className="h-9 w-9 object-contain" />}
-                                              </div>
+                                              <img 
+                                                src="/images/container_ship.png" 
+                                                alt="Container Ship" 
+                                                className={`
+                                                  ${key === 'feeder' ? 'h-5 w-5' : ''}
+                                                  ${key === 'small' ? 'h-6 w-6' : ''}
+                                                  ${key === 'medium' ? 'h-7 w-7' : ''}
+                                                  ${key === 'large' ? 'h-8 w-8' : ''}
+                                                  ${key === 'vlarge' ? 'h-9 w-9' : ''}
+                                                  object-contain mr-2
+                                                `}
+                                              />
                                             )}
                                             {form.getValues(`vessels.${index}.category`) === 'oil-tanker' && (
                                               <img src="/images/oil_tanker.png" alt="Oil Tanker" className="h-6 w-6 object-contain" />
