@@ -516,9 +516,6 @@ export default function CalculatorForm() {
                             />
                           </FormControl>
                         </div>
-                        <InfoTooltip>
-                          Enter current fuel price per metric ton
-                        </InfoTooltip>
                       </div>
                       <div className="text-xs text-slate-500 mt-1">
                         {fuelPriceData?.isError ? (
