@@ -377,7 +377,7 @@ export default function CalculatorForm() {
                     </div>
                   </div>
 
-                                </div>
+                                </FormItem>
                                 <div>
                                   <FormControl>
                                     <Input
