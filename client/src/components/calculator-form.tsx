@@ -10,7 +10,6 @@ import {
   calculatorInputSchema,
   type CalculatorInput,
   type CalculationResult,
-  vesselTypes,
   vesselCategories,
   vesselSizes,
 } from "@shared/schema"; 
@@ -87,11 +86,8 @@ export default function CalculatorForm() {
     }
   }, [results]);
 
-  async function onSubmit(formEvent: React.FormEvent) {
-    formEvent.preventDefault();
-    if (!(formEvent.nativeEvent instanceof SubmitEvent)) {
-      return;
-    }
+  async function onSubmit(data: CalculatorInput) {
+    // Using react-hook-form's submission which gives us the data directly
 
     const values = form.getValues();
     const emptyFields = [];
@@ -156,12 +152,11 @@ export default function CalculatorForm() {
   }
 
   return (
-    <TooltipProvider>
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative max-w-full">
         <div className="space-y-8 pt-4 max-w-full overflow-hidden">
           <Form {...form}>
-            <form onSubmit={onSubmit} className="space-y-8 p-6">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-6">
               <div className="space-y-8">
                 <div className="space-y-6">
                   <h3 className="text-sm font-medium text-slate-700">Fleet Configuration</h3>
@@ -177,15 +172,17 @@ export default function CalculatorForm() {
                                 <div className="flex items-center gap-1.5">
                                   <div className="flex items-center gap-2">
                                     <AnchorIcon className="h-4 w-4 text-foreground" />
-                                    <FormLabel className="relative text-slate-700 font-medium flex items-center gap-1.5">
-                                      <span>Vessel Category</span>
+                                    <div className="flex items-center gap-1.5">
+                                      <FormLabel className="relative text-slate-700 font-medium">
+                                        Vessel Category
+                                      </FormLabel>
                                       <InfoTooltip>
                                         <h4 className="font-semibold mb-2 text-slate-700">Vessel Category</h4>
                                         <p className="text-slate-600 leading-relaxed">
                                           Classification of vessel by intended use or cargo type. Different vessel categories have distinct operational profiles and fuel consumption patterns.
                                         </p>
                                       </InfoTooltip>
-                                    </FormLabel>
+                                    </div>
                                   </div>
 
                                 </div>
@@ -244,15 +241,17 @@ export default function CalculatorForm() {
                                 <div className="flex items-center gap-1.5">
                                   <div className="flex items-center gap-2">
                                     <ScaleIcon className="h-4 w-4 text-foreground" />
-                                    <FormLabel className="relative text-slate-700 font-medium flex items-center gap-1.5">
-                                      <span>Vessel Size</span>
+                                    <div className="flex items-center gap-1.5">
+                                      <FormLabel className="relative text-slate-700 font-medium">
+                                        Vessel Size
+                                      </FormLabel>
                                       <InfoTooltip>
                                         <h4 className="font-semibold mb-2 text-slate-700">Vessel Size</h4>
                                         <p className="text-slate-600 leading-relaxed">
                                           Standard size classification for the selected vessel category. Larger vessels typically consume more fuel but may be more efficient per ton of cargo carried.
                                         </p>
                                       </InfoTooltip>
-                                    </FormLabel>
+                                    </div>
                                   </div>
                                 </div>
                                 <FormControl>
@@ -324,15 +323,17 @@ export default function CalculatorForm() {
                                 <div className="flex items-center gap-1.5">
                                   <div className="flex items-center gap-2">
                     <AnchorIcon className="h-4 w-4 text-foreground" />
-                    <FormLabel className="relative text-slate-700 font-medium flex items-center gap-1.5">
-                      <span>Number of Ships</span>
+                    <div className="flex items-center gap-1.5">
+                      <FormLabel className="relative text-slate-700 font-medium">
+                        Number of Ships
+                      </FormLabel>
                       <InfoTooltip>
                         <h4 className="font-semibold mb-2 text-slate-700">Number of Ships</h4>
                         <p className="text-slate-600 leading-relaxed">
                           Total count of vessels of this specific category and size in your fleet. Calculations will be multiplied by this number for fleet-wide estimates.
                         </p>
                       </InfoTooltip>
-                    </FormLabel>
+                    </div>
                   </div>
                                 </div>
                                 <FormControl>
@@ -359,32 +360,36 @@ export default function CalculatorForm() {
                                 <div className="flex items-center gap-1.5">
                                   <div className="flex flex-wrap items-center gap-2">
                     <FuelIcon className="h-4 w-4 text-foreground" />
-                    <FormLabel className="relative text-slate-700 font-medium flex items-center gap-1.5">
-                      <span>Fuel Consumption (MT/Day)</span>
+                    <div className="flex items-center gap-1.5">
+                      <FormLabel className="relative text-slate-700 font-medium">
+                        Fuel Consumption (MT/Day)
+                      </FormLabel>
                       <InfoTooltip>
                         <h4 className="font-semibold mb-2 text-slate-700">Daily Fuel Consumption</h4>
                         <p className="text-slate-600 leading-relaxed">
                           Average fuel consumption in metric tons per day when vessel is at sea. This should reflect your actual operational data for most accurate results. Includes fuel used for propulsion and onboard power generation.
                         </p>
                       </InfoTooltip>
-                    </FormLabel>
+                    </div>
                   </div>
 
                                 </div>
-                                <FormControl>
-                                  <Input
-                                    type="number"
-                                    {...field}
-                                    className={`w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200 ${vessel.category ? 'bg-slate-50 border-dashed' : ''}`}
-                                    placeholder={vessel.category ? "Estimated value" : "Enter value"}
-                                    onChange={(e) => field.onChange(Number(e.target.value))}
-                                  />
+                                <div>
+                                  <FormControl>
+                                    <Input
+                                      type="number"
+                                      {...field}
+                                      className={`w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200 ${vessel.category ? 'bg-slate-50 border-dashed' : ''}`}
+                                      placeholder={vessel.category ? "Estimated value" : "Enter value"}
+                                      onChange={(e) => field.onChange(Number(e.target.value))}
+                                    />
+                                  </FormControl>
                                   {vessel.category && (
                                     <div className="text-xs text-slate-500 text-right mt-0.5 italic">
                                       Industry estimate - adjust as needed
                                     </div>
                                   )}
-                                </FormControl>
+                                </div>
                                 <FormMessage />
                               </FormItem>
                             )}
@@ -398,33 +403,37 @@ export default function CalculatorForm() {
                               <div className="flex items-center gap-1.5">
                                 <div className="flex items-center gap-2">
                                   <TimerIcon className="h-4 w-4 text-foreground" />
-                                  <FormLabel className="relative text-slate-700 font-medium flex items-center gap-1.5">
-                                    <span>Days at Sea Per Vessel Per Year</span>
+                                  <div className="flex items-center gap-1.5">
+                                    <FormLabel className="relative text-slate-700 font-medium">
+                                      Days at Sea Per Vessel Per Year
+                                    </FormLabel>
                                     <InfoTooltip>
                                       <h4 className="font-semibold mb-2 text-slate-700">Annual Sea Days</h4>
                                       <p className="text-slate-600 leading-relaxed">
                                         Average number of days each vessel spends at sea annually. The default value of 280 days assumes typical port calls and maintenance periods. Adjust based on your operational schedule for more precise calculations.
                                       </p>
                                     </InfoTooltip>
-                                  </FormLabel>
+                                  </div>
                                 </div>
                               </div>
-                              <FormControl>
-                                <Input
-                                  type="number"
-                                  className={`w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200 ${vessel.category ? 'bg-slate-50 border-dashed' : ''}`}
-                                  placeholder={vessel.category ? "Estimated value" : "Enter value"}
-                                  {...field}
-                                  onChange={(e) =>
-                                    field.onChange(Number(e.target.value))
-                                  }
-                                />
+                              <div>
+                                <FormControl>
+                                  <Input
+                                    type="number"
+                                    className={`w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200 ${vessel.category ? 'bg-slate-50 border-dashed' : ''}`}
+                                    placeholder={vessel.category ? "Estimated value" : "Enter value"}
+                                    {...field}
+                                    onChange={(e) =>
+                                      field.onChange(Number(e.target.value))
+                                    }
+                                  />
+                                </FormControl>
                                 {vessel.category && (
                                   <div className="text-xs text-slate-500 text-right mt-0.5 italic">
                                     Industry estimate - adjust as needed
                                   </div>
                                 )}
-                              </FormControl>
+                              </div>
                               <FormMessage />
                             </FormItem>
                           )}
@@ -472,13 +481,17 @@ export default function CalculatorForm() {
                   render={({ field }) => (
                     <FormItem>
                       <div className="flex items-center gap-2">
-                        <FormLabel className="flex items-center gap-1">
+                        <div className="flex items-center gap-1.5">
                           <DollarSignIcon className="h-4 w-4" />
-                          <span>Fuel Price (USD/MT)</span>
-                          <InfoTooltip>
-                            The average price of Very Low Sulfur Fuel Oil (VLSFO) per metric ton in USD. Default is current global average.
-                          </InfoTooltip>
-                        </FormLabel>
+                          <div className="flex items-center gap-1.5">
+                            <FormLabel>
+                              Fuel Price (USD/MT)
+                            </FormLabel>
+                            <InfoTooltip>
+                              The average price of Very Low Sulfur Fuel Oil (VLSFO) per metric ton in USD. Default is current global average.
+                            </InfoTooltip>
+                          </div>
+                        </div>
                       </div>
                       <div className="flex items-center gap-2">
                         <div className="relative flex-1">
@@ -556,6 +569,5 @@ export default function CalculatorForm() {
         </div>
       </div>
     </div>
-    </TooltipProvider>
   );
 }
