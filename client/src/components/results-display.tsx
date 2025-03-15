@@ -201,7 +201,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                               <Ship className="h-4 w-4" />
                             )}
                             <div className="flex items-center">
-                              <span className="text-sm">{vessel.count} × {vesselCategories[vessel.category]} ({vesselSizes[vessel.category][vessel.size].label})</span>
+                              <span className="text-sm">{vessel.count} × {vesselCategories[vessel.category]}</span>
                             </div>
                           </div>
                         </div>
