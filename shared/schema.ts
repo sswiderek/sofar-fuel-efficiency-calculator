@@ -6,6 +6,7 @@ export const vesselCategories = {
   "bulk-carrier": "Bulk Carrier",
   "oil-tanker": "Tanker",
   "cruise-ship": "Cruise Ship",
+  "ro-ro": "Ro-Ro / General Cargo",
   "custom": "Custom Vessel"
 } as const;
 
@@ -37,6 +38,11 @@ export const vesselSizes = {
     "small": { label: "Small Expedition (<500 passengers)", defaultConsumption: 30, defaultSeaDays: 280 },
     "medium": { label: "Medium Mainstream (500-2,000 passengers)", defaultConsumption: 50, defaultSeaDays: 280 },
     "large": { label: "Large Mega (>2,000 passengers)", defaultConsumption: 80, defaultSeaDays: 280 }
+  },
+  "ro-ro": {
+    "small": { label: "Small / Feeder", defaultConsumption: 25, defaultSeaDays: 280 },
+    "medium": { label: "Medium", defaultConsumption: 40, defaultSeaDays: 280 },
+    "large": { label: "Large", defaultConsumption: 60, defaultSeaDays: 280 }
   },
   "custom": {
     "custom": { label: "Custom Size", defaultConsumption: 50, defaultSeaDays: 280 }
