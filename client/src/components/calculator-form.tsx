@@ -375,10 +375,10 @@ export default function CalculatorForm() {
                                     </div>
                                   </div>
                                   {vessel.category && (
-                                    <div className="absolute right-0 top-0 bg-amber-50 text-amber-600 text-xs px-1.5 py-0.5 rounded border border-amber-200/50">
+                                    <div className="absolute right-0 -top-6 bg-amber-50 text-amber-600 text-xs px-1.5 py-0.5 rounded border border-amber-200/50">
                                       Estimate
                                     </div>
-                                  )} {/* Absolute positioning for the badge */}
+                                  )}
                                 </div>
                                 <div>
                                   <FormControl>
