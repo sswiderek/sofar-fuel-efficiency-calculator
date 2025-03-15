@@ -299,9 +299,9 @@ export default function CalculatorForm() {
                                                 src="/images/ro_ro_ship.png" 
                                                 alt="Ro-Ro Ship"
                                                 className={`
-                                                  ${key === 'small' ? 'h-5 w-5' : ''}
-                                                  ${key === 'medium' ? 'h-7 w-7' : ''}
-                                                  ${key === 'large' ? 'h-9 w-9' : ''}
+                                                  ${key === 'small' ? 'h-6 w-6' : ''}
+                                                  ${key === 'medium' ? 'h-8 w-8' : ''}
+                                                  ${key === 'large' ? 'h-10 w-10' : ''}
                                                   object-contain mr-2
                                                 `}
                                               />
