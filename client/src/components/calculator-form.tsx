@@ -374,12 +374,7 @@ export default function CalculatorForm() {
                                       </div>
                                     </div>
                                   </div>
-                                  {vessel.category && (
-                                    <div className="absolute right-0 -top-6 bg-amber-50 text-amber-600 text-xs px-1.5 py-0.5 rounded border border-amber-200/50">
-                                      Estimate
-                                    </div>
-                                  )}
-                                </div>
+                                  </div>
                                 <div>
                                   <FormControl>
                                     <Input
@@ -391,8 +386,10 @@ export default function CalculatorForm() {
                                     />
                                   </FormControl>
                                   {vessel.category && (
-                                    <div className="text-xs text-slate-500 text-right mt-1.5 italic">
-                                      Industry estimate - adjust as needed
+                                    <div className="text-xs text-amber-600 text-right mt-1.5">
+                                      <span className="bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200/50">
+                                        Estimate
+                                      </span>
                                     </div>
                                   )}
                                 </div>
