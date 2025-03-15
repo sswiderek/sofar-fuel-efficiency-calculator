@@ -360,19 +360,21 @@ export default function CalculatorForm() {
                                 <div className="flex items-center gap-1.5">
                                   <div className="flex flex-wrap items-center gap-2">
                                     <FuelIcon className="h-4 w-4 text-foreground" />
-                                    <div className="flex items-center gap-1.5">
-                                      <div className="flex items-center gap-2">
+                                    <div className="space-y-1.5">
+                                      {vessel.category && (
+                                        <span className="text-xs bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded leading-none">Estimate</span>
+                                      )}
+                                      <div className="flex items-center gap-1.5">
                                         <FormLabel className="relative text-slate-700 font-medium">
                                           Fuel Consumption (MT/Day)
                                         </FormLabel>
-                                        <span className="text-xs bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded leading-none">Estimate</span>
+                                        <InfoTooltip>
+                                          <h4 className="font-semibold mb-2 text-slate-700">Daily Fuel Consumption</h4>
+                                          <p className="text-slate-600 leading-relaxed">
+                                            Pre-populated with an industry average estimate based on vessel type and size. For most accurate results, please adjust this value to match your vessel's actual operational data. Includes fuel used for propulsion and onboard power generation.
+                                          </p>
+                                        </InfoTooltip>
                                       </div>
-                                      <InfoTooltip>
-                                        <h4 className="font-semibold mb-2 text-slate-700">Daily Fuel Consumption</h4>
-                                        <p className="text-slate-600 leading-relaxed">
-                                          Pre-populated with an industry average estimate based on vessel type and size. For most accurate results, please adjust this value to match your vessel's actual operational data. Includes fuel used for propulsion and onboard power generation.
-                                        </p>
-                                      </InfoTooltip>
                                     </div>
                                   </div>
                                 </div>
