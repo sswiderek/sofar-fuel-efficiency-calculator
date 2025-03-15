@@ -388,7 +388,7 @@ export default function CalculatorForm() {
                                   {vessel.category && (
                                     <div className="text-xs text-amber-600 text-right mt-1.5">
                                       <span className="bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200/50">
-                                        Estimate
+                                        Industry estimate - adjust as needed
                                       </span>
                                     </div>
                                   )}
