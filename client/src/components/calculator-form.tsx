@@ -361,20 +361,15 @@ export default function CalculatorForm() {
                                   <div className="flex flex-wrap items-center gap-2">
                     <FuelIcon className="h-4 w-4 text-foreground" />
                     <div className="flex items-center gap-1.5">
-                      <FormLabel className="relative text-slate-700 font-medium flex items-center gap-2">
+                      <FormLabel className="relative text-slate-700 font-medium">
                         Fuel Consumption (MT/Day)
-                        {vessel.category && vessel.size && !field.value && (
-                          <>
-                            <span className="text-xs text-slate-500 italic">(Estimated)</span>
-                            <InfoTooltip>
-                              <h4 className="font-semibold mb-2 text-slate-700">Estimated Consumption</h4>
-                              <p className="text-slate-600 leading-relaxed">
-                                This is an estimated value based on typical consumption for this vessel type and size. For more accurate results, please adjust this value to match your vessel's actual consumption data.
-                              </p>
-                            </InfoTooltip>
-                          </>
-                        )}
                       </FormLabel>
+                      <InfoTooltip>
+                        <h4 className="font-semibold mb-2 text-slate-700">Daily Fuel Consumption</h4>
+                        <p className="text-slate-600 leading-relaxed">
+                          Average fuel consumption in metric tons per day when vessel is at sea. This should reflect your actual operational data for most accurate results. Includes fuel used for propulsion and onboard power generation.
+                        </p>
+                      </InfoTooltip>
                     </div>
                   </div>
 
