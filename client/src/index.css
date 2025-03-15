@@ -201,17 +201,13 @@
 .radix-tooltip-content {
   animation: fadeIn 200ms ease-out;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-  z-index: 1000 !important;
   max-width: 300px !important;
-  position: relative;
   overflow: visible !important;
 }
 
 [data-radix-tooltip-content] {
   max-width: 300px !important;
   width: max-content;
-  position: relative;
-  z-index: 1000 !important;
 }
 
 @keyframes fadeIn {
@@ -231,16 +227,13 @@
   overflow: hidden;
 }
 
-/* CSS cannot contain JSX component definitions */
-/* These were mistakenly added to the CSS file and should be removed */
 /* Tooltip priority styling */
 [data-radix-popper-content-wrapper] {
-  z-index: 99999 !important;
-  position: relative;
+  z-index: 999999 !important;
+  position: fixed !important;
 }
 
 /* Ensure Radix UI tooltip portals always appear on top */
 [data-radix-portal] {
-  z-index: 99999 !important;
-  position: relative;
+  z-index: 999999 !important;
 }
