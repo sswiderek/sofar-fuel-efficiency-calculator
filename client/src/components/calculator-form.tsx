@@ -214,6 +214,8 @@ export default function CalculatorForm() {
                                           <div className="flex items-center">
                                             {key === 'container-ship' ? (
                                               <img src="/images/container_ship.png" alt="Container Ship" className="h-6 w-6 object-contain mr-2" />
+                                            ) : key === 'cruise-ship' ? (
+                                              <img src="/images/cruise_ship.png" alt="Cruise Ship" className="h-6 w-6 object-contain mr-2" />
                                             ) : key === 'bulk-carrier' ? (
                                               <img src="/images/bulk_carrier.png" alt="Bulk Carrier" className="h-6 w-6 object-contain mr-2" />
                                             ) : key === 'oil-tanker' ? (
@@ -286,6 +288,18 @@ export default function CalculatorForm() {
                                                   ${key === 'large' ? 'h-6 w-6' : ''}
                                                   ${key === 'vlarge' ? 'h-7 w-7' : ''}
                                                   ${key === 'vlcc' ? 'h-8 w-8' : ''}
+                                                  object-contain mr-2
+                                                `}
+                                              />
+                                            )}
+                                            {form.getValues(`vessels.${index}.category`) === 'cruise-ship' && (
+                                              <img 
+                                                src="/images/cruise_ship.png" 
+                                                alt="Cruise Ship"
+                                                className={`
+                                                  ${key === 'small' ? 'h-4 w-4' : ''}
+                                                  ${key === 'medium' ? 'h-6 w-6' : ''}
+                                                  ${key === 'large' ? 'h-8 w-8' : ''}
                                                   object-contain mr-2
                                                 `}
                                               />

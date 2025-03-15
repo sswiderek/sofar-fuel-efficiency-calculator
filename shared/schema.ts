@@ -5,6 +5,7 @@ export const vesselCategories = {
   "container-ship": "Container Ship",
   "bulk-carrier": "Bulk Carrier",
   "oil-tanker": "Tanker",
+  "cruise-ship": "Cruise Ship",
   "custom": "Custom Vessel"
 } as const;
 
@@ -31,6 +32,11 @@ export const vesselSizes = {
     "suezmax": { label: "Suezmax (120,000-160,000 DWT)", defaultConsumption: 65, defaultSeaDays: 280 },
     "vlcc": { label: "VLCC (160,000-320,000 DWT)", defaultConsumption: 85, defaultSeaDays: 280 },
     "ulcc": { label: "ULCC (>320,000 DWT)", defaultConsumption: 95, defaultSeaDays: 280 }
+  },
+  "cruise-ship": {
+    "small": { label: "Small Expedition (<500 passengers)", defaultConsumption: 30, defaultSeaDays: 280 },
+    "medium": { label: "Medium Mainstream (500-2,000 passengers)", defaultConsumption: 50, defaultSeaDays: 280 },
+    "large": { label: "Large Mega (>2,000 passengers)", defaultConsumption: 80, defaultSeaDays: 280 }
   },
   "custom": {
     "custom": { label: "Custom Size", defaultConsumption: 50, defaultSeaDays: 280 }
