@@ -5,6 +5,9 @@ export const vesselCategories = {
   "container-ship": "Container Ship",
   "bulk-carrier": "Bulk Carrier",
   "oil-tanker": "Oil Tanker",
+  "chemical-tanker": "Chemical Tanker",
+  "ro-ro": "Ro-Ro Carrier",
+  "ore-carrier": "Ore Carrier",
   "custom": "Custom Vessel"
 } as const;
 
@@ -28,6 +31,24 @@ export const vesselSizes = {
     "medium": { label: "LR1 (45000-80000 DWT)", defaultConsumption: 45, defaultSeaDays: 280 },
     "large": { label: "LR2 (80000-160000 DWT)", defaultConsumption: 65, defaultSeaDays: 280 },
     "vlarge": { label: "VLCC (>160000 DWT)", defaultConsumption: 90, defaultSeaDays: 280 }
+  },
+  "chemical-tanker": {
+    "small": { label: "Small (5,000-10,000 DWT)", defaultConsumption: 25, defaultSeaDays: 280 },
+    "medium": { label: "Medium (10,000-20,000 DWT)", defaultConsumption: 35, defaultSeaDays: 280 },
+    "large": { label: "Large (20,000-40,000 DWT)", defaultConsumption: 45, defaultSeaDays: 280 },
+    "vlarge": { label: "Very Large (40,000+ DWT)", defaultConsumption: 55, defaultSeaDays: 280 }
+  },
+  "ro-ro": {
+    "small": { label: "Small RORO (up to 1,000 CEU)", defaultConsumption: 30, defaultSeaDays: 280 },
+    "medium": { label: "Medium RORO (1,000-4,000 CEU)", defaultConsumption: 45, defaultSeaDays: 280 },
+    "large": { label: "Large RORO (4,000-6,000 CEU)", defaultConsumption: 60, defaultSeaDays: 280 },
+    "vlarge": { label: "VLCC RORO (6,000+ CEU)", defaultConsumption: 75, defaultSeaDays: 280 }
+  },
+  "ore-carrier": {
+    "small": { label: "Handysize (10,000-35,000 DWT)", defaultConsumption: 30, defaultSeaDays: 280 },
+    "medium": { label: "Panamax (60,000-80,000 DWT)", defaultConsumption: 45, defaultSeaDays: 280 },
+    "large": { label: "Capesize (100,000-200,000 DWT)", defaultConsumption: 65, defaultSeaDays: 280 },
+    "vlarge": { label: "VLOC (200,000+ DWT)", defaultConsumption: 85, defaultSeaDays: 280 }
   },
   "custom": {
     "custom": { label: "Custom Size", defaultConsumption: 50, defaultSeaDays: 280 }
