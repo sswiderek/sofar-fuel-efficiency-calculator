@@ -389,7 +389,7 @@ export default function CalculatorForm() {
                                     />
                                   </FormControl>
                                   {vessel.category && (
-                                    <div className="text-xs text-slate-500 text-right mt-0.5 italic">
+                                    <div className="text-xs text-slate-500 text-right mt-1.5 italic">
                                       Industry estimate - adjust as needed
                                     </div>
                                   )}
@@ -433,7 +433,7 @@ export default function CalculatorForm() {
                                   />
                                 </FormControl>
                                 {vessel.category && (
-                                  <div className="text-xs text-slate-500 text-right mt-0.5 italic">
+                                  <div className="text-xs text-slate-500 text-right mt-1.5 italic">
                                     Industry estimate - adjust as needed
                                   </div>
                                 )}
