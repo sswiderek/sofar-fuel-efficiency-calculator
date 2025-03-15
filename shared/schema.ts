@@ -4,7 +4,7 @@ import { z } from "zod";
 export const vesselCategories = {
   "container-ship": "Container Ship",
   "bulk-carrier": "Bulk Carrier",
-  "oil-tanker": "Oil Tanker",
+  "oil-tanker": "Tanker",
   "custom": "Custom Vessel"
 } as const;
 
@@ -25,10 +25,12 @@ export const vesselSizes = {
     "vlcc": { label: "Bulk Carrier (VLCC)", defaultConsumption: 90, defaultSeaDays: 280 }
   },
   "oil-tanker": {
-    "small": { label: "MR (25000-45000 DWT)", defaultConsumption: 35, defaultSeaDays: 280 },
-    "medium": { label: "LR1 (45000-80000 DWT)", defaultConsumption: 45, defaultSeaDays: 280 },
-    "large": { label: "LR2 (80000-160000 DWT)", defaultConsumption: 65, defaultSeaDays: 280 },
-    "vlarge": { label: "VLCC (>160000 DWT)", defaultConsumption: 90, defaultSeaDays: 280 }
+    "small": { label: "Small Tanker (<50,000 DWT)", defaultConsumption: 35, defaultSeaDays: 280 },
+    "medium": { label: "Medium Tanker (50,000-80,000 DWT)", defaultConsumption: 45, defaultSeaDays: 280 },
+    "aframax": { label: "Aframax (80,000-120,000 DWT)", defaultConsumption: 55, defaultSeaDays: 280 },
+    "suezmax": { label: "Suezmax (120,000-160,000 DWT)", defaultConsumption: 65, defaultSeaDays: 280 },
+    "vlcc": { label: "VLCC (160,000-320,000 DWT)", defaultConsumption: 85, defaultSeaDays: 280 },
+    "ulcc": { label: "ULCC (>320,000 DWT)", defaultConsumption: 95, defaultSeaDays: 280 }
   },
   "custom": {
     "custom": { label: "Custom Size", defaultConsumption: 50, defaultSeaDays: 280 }

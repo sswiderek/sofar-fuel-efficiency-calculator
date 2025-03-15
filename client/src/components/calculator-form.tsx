@@ -217,7 +217,7 @@ export default function CalculatorForm() {
                                             ) : key === 'bulk-carrier' ? (
                                               <img src="/images/bulk_carrier.png" alt="Bulk Carrier" className="h-6 w-6 object-contain mr-2" />
                                             ) : key === 'oil-tanker' ? (
-                                              <img src="/images/oil_tanker.png" alt="Oil Tanker" className="h-6 w-6 object-contain mr-2" />
+                                              <img src="/images/oil_tanker.png" alt="Tanker" className="h-6 w-6 object-contain mr-2" />
                                             ) : (
                                               <ShipIcon className="h-4 w-4 mr-2" />
                                             )}
@@ -305,7 +305,19 @@ export default function CalculatorForm() {
                                               />
                                             )}
                                             {form.getValues(`vessels.${index}.category`) === 'oil-tanker' && (
-                                              <img src="/images/oil_tanker.png" alt="Oil Tanker" className="h-6 w-6 object-contain" />
+                                              <img 
+                                                src="/images/oil_tanker.png" 
+                                                alt="Tanker" 
+                                                className={`
+                                                  ${key === 'small' ? 'h-4 w-4' : ''}
+                                                  ${key === 'medium' ? 'h-5 w-5' : ''}
+                                                  ${key === 'aframax' ? 'h-6 w-6' : ''}
+                                                  ${key === 'suezmax' ? 'h-7 w-7' : ''}
+                                                  ${key === 'vlcc' ? 'h-8 w-8' : ''}
+                                                  ${key === 'ulcc' ? 'h-9 w-9' : ''}
+                                                  object-contain mr-2
+                                                `}
+                                              />
                                             )}
                                             {value.label.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                           </div>
