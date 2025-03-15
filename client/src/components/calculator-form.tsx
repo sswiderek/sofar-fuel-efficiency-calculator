@@ -294,11 +294,11 @@ export default function CalculatorForm() {
                                                 src="/images/container_ship.png" 
                                                 alt="Container Ship" 
                                                 className={`
-                                                  ${key === 'feeder' ? 'h-3 w-3' : ''}
-                                                  ${key === 'feedermax' ? 'h-3.5 w-3.5' : ''}
-                                                  ${key === 'panamax' ? 'h-4 w-4' : ''}
-                                                  ${key === 'postpanamax' ? 'h-4.5 w-4.5' : ''}
-                                                  ${key === 'ulcv' ? 'h-5 w-5' : ''}
+                                                  ${key === 'feeder' ? 'h-4 w-4' : ''}
+                                                  ${key === 'feedermax' ? 'h-5 w-5' : ''}
+                                                  ${key === 'panamax' ? 'h-6 w-6' : ''}
+                                                  ${key === 'postpanamax' ? 'h-7 w-7' : ''}
+                                                  ${key === 'ulcv' ? 'h-8 w-8' : ''}
                                                   object-contain mr-2
                                                 `}
                                               />
