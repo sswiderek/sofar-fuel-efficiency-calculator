@@ -76,7 +76,7 @@ export default function CalculatorForm() {
 
   useEffect(() => {
     if (fuelPriceData?.price) {
-      form.setValue("fuelPrice", fuelPriceData.price.toString());
+      form.setValue("fuelPrice", Number(fuelPriceData.price));
     }
   }, [fuelPriceData, form]);
 
