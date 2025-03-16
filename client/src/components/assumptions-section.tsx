@@ -29,8 +29,8 @@ export default function AssumptionsSection() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <AssumptionCard
           icon={<Clock className="h-5 w-5" />}
-          title="Voyage Time and Port Operations"
-          description="The calculator accounts for both sea time and necessary port operations between voyages, reflecting real-world shipping operations."
+          title="Average Vessel Speed"
+          description="Calculations assume vessels operate at economic speed (12-14 knots) with typical engine loads, which represents standard operating conditions."
         />
         <AssumptionCard
           icon={<Fuel className="h-5 w-5" />}
