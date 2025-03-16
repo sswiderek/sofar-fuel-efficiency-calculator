@@ -718,6 +718,7 @@ export default function CalculatorForm() {
                           <div className="flex items-center gap-1.5">
                             <FormLabel>Fuel Price (USD/MT)</FormLabel>
                             <InfoTooltip>
+                              <strong>Monthly Average VLSFO Fuel Price</strong><br/>
                               Based on Ship & Bunker's Global 20 Ports Average. Monthly
                               averages provide a stable baseline for calculations by smoothing
                               out daily price fluctuations.
