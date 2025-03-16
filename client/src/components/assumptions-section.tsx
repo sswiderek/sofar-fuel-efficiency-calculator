@@ -29,8 +29,8 @@ export default function AssumptionsSection() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <AssumptionCard
           icon={<Clock className="h-5 w-5" />}
-          title="Average Vessel Speed"
-          description="Calculations assume vessels operate at economic speed (12-14 knots) with typical engine loads, which represents standard operating conditions."
+          title="Main Engine Fuel Usage"
+          description="Calculations focus solely on fuel consumption for vessel propulsion (main engines), excluding auxiliary power generation used for onboard systems, to provide a clear baseline for route optimization potential."
         />
         <AssumptionCard
           icon={<Fuel className="h-5 w-5" />}
