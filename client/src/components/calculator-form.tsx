@@ -401,7 +401,7 @@ export default function CalculatorForm() {
                                           <SelectItem
                                             key={key}
                                             value={key}
-                                            className="flex items-center gap-2"
+                                            className={`flex items-center gap-2 ${key === 'newpanamax' ? 'text-sm' : ''}`}
                                           >
                                             <div className="flex items-center">
                                               {form.getValues(
