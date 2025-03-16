@@ -554,13 +554,7 @@ export default function CalculatorForm() {
                                             your vessel's actual operational data. Includes fuel used for
                                             propulsion only.
                                           </p>
-                                            type and size. For most accurate
-                                            results, please adjust this value to
-                                            match your vessel's actual
-                                            operational data. Includes fuel used
-                                            for propulsion only.
-                                          </p>
-                                      </InfoTooltip>
+                                        </InfoTooltip>
                                       </div>
                                     </div>
                                   </div>
