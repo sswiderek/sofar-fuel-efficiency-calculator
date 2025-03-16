@@ -4,7 +4,7 @@ import { z } from "zod";
 export const vesselCategories = {
   "container-ship": "Container Ship",
   "bulk-carrier": "Bulk Carrier",
-  "oil-tanker": "Oil Tanker",
+  "oil-tanker": "Tanker",
   "cruise-ship": "Cruise Ship",
   "ro-ro": "Ro-Ro / General Cargo",
   "custom": "Custom Vessel"
