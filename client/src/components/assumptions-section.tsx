@@ -25,12 +25,14 @@ function AssumptionCard({ icon, title, description }: AssumptionProps) {
 export default function AssumptionsSection() {
   return (
     <Card className="p-5 mb-6 bg-slate-50/80 backdrop-blur-sm border border-slate-200/60">
-      <h2 className="text-base font-semibold text-slate-900 mb-3">Assumptions Made in This Calculator</h2>
+      <h2 className="text-base font-semibold text-slate-900 mb-3">
+        Assumptions Made in This Calculator
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <AssumptionCard
           icon={<Clock className="h-5 w-5" />}
           title="Main Engine Fuel Usage"
-          description="Calculations focus solely on fuel consumption for vessel propulsion (main engines), excluding auxiliary power generation used for onboard systems, to provide a clear baseline for route optimization potential."
+          description="Calculations focus solely on fuel consumption for vessel propulsion (main engines), excluding auxiliary power generation used for onboard systems."
         />
         <AssumptionCard
           icon={<Fuel className="h-5 w-5" />}
