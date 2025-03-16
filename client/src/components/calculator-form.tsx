@@ -502,9 +502,6 @@ export default function CalculatorForm() {
                                         Number of Ships
                                       </FormLabel>
                                       <InfoTooltip>
-                                        <h4 className="font-semibold mb-2 text-slate-700">
-                                          Number of Ships
-                                        </h4>
                                         <p className="text-slate-600 leading-relaxed">
                                           Total count of vessels of this
                                           specific category and size in your
