@@ -607,7 +607,7 @@ export default function CalculatorForm() {
                 <img
                   src="/images/cargo-ship.png"
                   alt="Cargo Ship"
-                  className="w-32 h-32 object-contain mb-3"
+                  className="w-48 h-48 object-contain mb-3"
                 />
                 <div className="waves-small"></div>
               </div>
