@@ -549,8 +549,11 @@ export default function CalculatorForm() {
                                             Daily Fuel Consumption
                                           </h4>
                                           <p className="text-slate-600 leading-relaxed">
-                                            Pre-populated with an industry
-                                            average estimate based on vessel
+                                            Pre-populated with an industry average estimate based on vessel type
+                                            and size. For most accurate results, please adjust this value to match
+                                            your vessel's actual operational data. Includes fuel used for
+                                            propulsion only.
+                                          </p>
                                             type and size. For most accurate
                                             results, please adjust this value to
                                             match your vessel's actual
