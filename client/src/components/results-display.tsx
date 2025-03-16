@@ -21,7 +21,8 @@ const vesselCategories: Record<string, string> = {
   'container-ship': 'Container Ship',
   'bulk-carrier': 'Bulk Carrier',
   'oil-tanker': 'Oil Tanker',
-  'ro-ro': 'Ro-Ro / General Cargo', // Added ro-ro category
+  'ro-ro': 'Ro-Ro / General Cargo',
+  'custom': 'Custom Vessel'
 };
 
 // Updated vesselSizes to reflect more accurate and consistent naming
