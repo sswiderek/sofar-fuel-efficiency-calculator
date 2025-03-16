@@ -318,7 +318,12 @@ export default function CalculatorForm() {
                                     </SelectContent>
                                   </Select>
                                 </FormControl>
-                                <FormMessage className="text-xs mt-1.5 bg-red-50 text-red-700 px-1.5 py-0.5 rounded border border-red-200/50 inline-block" />
+                                <FormMessage className="text-xs mt-1.5 bg-red-50 text-red-700 px-2 py-1 rounded border border-red-200/50 inline-block">
+                                  {field.error?.message === "Invalid enum value. Expected 'container-ship' | 'bulk-carrier' | 'oil-tanker' | 'cruise-ship' | 'ro-ro' | 'custom', received" ? 
+                                    "Please select a vessel category" : 
+                                    field.error?.message
+                                  }
+                                </FormMessage>
                               </FormItem>
                             )}
                           />
@@ -496,7 +501,9 @@ export default function CalculatorForm() {
                                     </SelectContent>
                                   </Select>
                                 </FormControl>
-                                <FormMessage className="text-xs mt-1.5 bg-red-50 text-red-700 px-1.5 py-0.5 rounded border border-red-200/50 inline-block" />
+                                <FormMessage className="text-xs mt-1.5 bg-red-50 text-red-700 px-2 py-1 rounded border border-red-200/50 inline-block">
+                                  {field.error?.message}
+                                </FormMessage>
                               </FormItem>
                             )}
                           />
@@ -541,7 +548,9 @@ export default function CalculatorForm() {
                                     }
                                   />
                                 </FormControl>
-                                <FormMessage className="text-xs mt-1.5 bg-red-50 text-red-700 px-1.5 py-0.5 rounded border border-red-200/50 inline-block" />
+                                <FormMessage className="text-xs mt-1.5 bg-red-50 text-red-700 px-2 py-1 rounded border border-red-200/50 inline-block">
+                                  {field.error?.message}
+                                </FormMessage>
                               </FormItem>
                             )}
                           />
@@ -604,7 +613,9 @@ export default function CalculatorForm() {
                                     </div>
                                   )}
                                 </div>
-                                <FormMessage className="text-xs mt-1.5 bg-red-50 text-red-700 px-1.5 py-0.5 rounded border border-red-200/50 inline-block" />
+                                <FormMessage className="text-xs mt-1.5 bg-red-50 text-red-700 px-2 py-1 rounded border border-red-200/50 inline-block">
+                                  {field.error?.message}
+                                </FormMessage>
                               </FormItem>
                             )}
                           />
@@ -661,7 +672,9 @@ export default function CalculatorForm() {
                                   </div>
                                 )}
                               </div>
-                              <FormMessage className="text-xs mt-1.5 bg-red-50 text-red-700 px-1.5 py-0.5 rounded border border-red-200/50 inline-block" />
+                              <FormMessage className="text-xs mt-1.5 bg-red-50 text-red-700 px-2 py-1 rounded border border-red-200/50 inline-block">
+                                {field.error?.message}
+                              </FormMessage>
                             </FormItem>
                           )}
                         />
@@ -754,7 +767,9 @@ export default function CalculatorForm() {
                             ? `Latest monthly average: $${fuelPriceData.price}/MT (${fuelPriceData.month} ${fuelPriceData.year})`
                             : "Loading price data..."}
                       </div>
-                      <FormMessage className="text-xs mt-1.5 bg-red-50 text-red-700 px-1.5 py-0.5 rounded border border-red-200/50 inline-block" />
+                      <FormMessage className="text-xs mt-1.5 bg-red-50 text-red-700 px-2 py-1 rounded border border-red-200/50 inline-block">
+                        {field.error?.message}
+                      </FormMessage>
                     </FormItem>
                   )}
                 />
