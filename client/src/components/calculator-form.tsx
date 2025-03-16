@@ -326,14 +326,7 @@ export default function CalculatorForm() {
                                               <img 
                                                 src="/images/container_ship.png" 
                                                 alt="Container Ship" 
-                                                className={`
-                                                  ${key === 'feeder' ? 'h-4 w-4' : ''}
-                                                  ${key === 'feedermax' ? 'h-5 w-5' : ''}
-                                                  ${key === 'panamax' ? 'h-6 w-6' : ''}
-                                                  ${key === 'postpanamax' ? 'h-7 w-7' : ''}
-                                                  ${key === 'ulcv' ? 'h-8 w-8' : ''}
-                                                  object-contain mr-2
-                                                `}
+                                                className="h-4 w-4 object-contain mr-2"
                                               />
                                             )}
                                             {form.getValues(`vessels.${index}.category`) === 'oil-tanker' && (
