@@ -101,41 +101,41 @@ export const vesselIconSizes = {
 // Define size options for each vessel category
 export const vesselSizes = {
   "container-ship": {
-    "feeder": { label: "Feeder (Up to 500-1,000 TEU)", defaultConsumption: 25, defaultSeaDays: 280 },
-    "feedermax": { label: "Feedermax (1,000-3,000 TEU)", defaultConsumption: 40, defaultSeaDays: 280 },
-    "panamax": { label: "Panamax (3,000-5,000 TEU)", defaultConsumption: 80, defaultSeaDays: 280 },
-    "postpanamax": { label: "Post-Panamax (5,000-10,000 TEU)", defaultConsumption: 150, defaultSeaDays: 280 },
-    "newpanamax": { label: "New Panamax (10,000-14,000 TEU)", defaultConsumption: 200, defaultSeaDays: 280 },
-    "ulcv": { label: "ULCV (>14,000 TEU)", defaultConsumption: 220, defaultSeaDays: 280 }
+    "feeder": { label: "Feeder (Up to 0.5-1K TEU)", defaultConsumption: 25, defaultSeaDays: 280 },
+    "feedermax": { label: "Feedermax (1K-3K TEU)", defaultConsumption: 40, defaultSeaDays: 280 },
+    "panamax": { label: "Panamax (3K-5K TEU)", defaultConsumption: 80, defaultSeaDays: 280 },
+    "postpanamax": { label: "Post-Panamax (5K-10K TEU)", defaultConsumption: 150, defaultSeaDays: 280 },
+    "newpanamax": { label: "New Panamax (10K-14K TEU)", defaultConsumption: 200, defaultSeaDays: 280 },
+    "ulcv": { label: "ULCV (>14K TEU)", defaultConsumption: 220, defaultSeaDays: 280 }
   },
   "bulk-carrier": {
-    "small": { label: "Handysize (10000-35000 DWT)", defaultConsumption: 15, defaultSeaDays: 280 },
-    "medium": { label: "Handymax (35000-50000 DWT)", defaultConsumption: 20, defaultSeaDays: 280 },
-    "large": { label: "Panamax (50000-80000 DWT)", defaultConsumption: 25, defaultSeaDays: 280 },
-    "vlarge": { label: "Capesize (80,000-200,000 DWT)", defaultConsumption: 30, defaultSeaDays: 280 },
-    "vlcc": { label: "VLOC (>200,000 DWT)", defaultConsumption: 35, defaultSeaDays: 280 }
+    "small": { label: "Handysize (10K-35K DWT)", defaultConsumption: 15, defaultSeaDays: 280 },
+    "medium": { label: "Handymax (35K-50K DWT)", defaultConsumption: 20, defaultSeaDays: 280 },
+    "large": { label: "Panamax (50K-80K DWT)", defaultConsumption: 25, defaultSeaDays: 280 },
+    "vlarge": { label: "Capesize (80K-200K DWT)", defaultConsumption: 30, defaultSeaDays: 280 },
+    "vlcc": { label: "VLOC (>200K DWT)", defaultConsumption: 35, defaultSeaDays: 280 }
   },
   "oil-tanker": {
-    "small": { label: "Small Tanker (<50,000 DWT)", defaultConsumption: 35, defaultSeaDays: 280 },
-    "medium": { label: "Medium Tanker (50,000-80,000 DWT)", defaultConsumption: 45, defaultSeaDays: 280 },
-    "aframax": { label: "Aframax (80,000-120,000 DWT)", defaultConsumption: 55, defaultSeaDays: 280 },
-    "suezmax": { label: "Suezmax (120,000-160,000 DWT)", defaultConsumption: 65, defaultSeaDays: 280 },
-    "vlcc": { label: "VLCC (160,000-320,000 DWT)", defaultConsumption: 85, defaultSeaDays: 280 },
-    "ulcc": { label: "ULCC (>320,000 DWT)", defaultConsumption: 95, defaultSeaDays: 280 }
+    "small": { label: "Small Tanker (<50K DWT)", defaultConsumption: 35, defaultSeaDays: 280 },
+    "medium": { label: "Medium Tanker (50K-80K DWT)", defaultConsumption: 45, defaultSeaDays: 280 },
+    "aframax": { label: "Aframax (80K-120K DWT)", defaultConsumption: 55, defaultSeaDays: 280 },
+    "suezmax": { label: "Suezmax (120K-160K DWT)", defaultConsumption: 65, defaultSeaDays: 280 },
+    "vlcc": { label: "VLCC (160K-320K DWT)", defaultConsumption: 85, defaultSeaDays: 280 },
+    "ulcc": { label: "ULCC (>320K DWT)", defaultConsumption: 95, defaultSeaDays: 280 }
   },
   "cruise-ship": {
-    "small": { label: "Small (10,000-50,000 GT)", defaultConsumption: 35, defaultSeaDays: 280 },
-    "midsize": { label: "Mid-Size (50,000-100,000 GT)", defaultConsumption: 45, defaultSeaDays: 280 },
-    "large": { label: "Large (100,000-150,000 GT)", defaultConsumption: 55, defaultSeaDays: 280 },
-    "verylarge": { label: "Very Large (150,000-200,000 GT)", defaultConsumption: 65, defaultSeaDays: 280 },
-    "mega": { label: "Mega (>200,000 GT)", defaultConsumption: 75, defaultSeaDays: 280 }
+    "small": { label: "Small (10K-50K GT)", defaultConsumption: 35, defaultSeaDays: 280 },
+    "midsize": { label: "Mid-Size (50K-100K GT)", defaultConsumption: 45, defaultSeaDays: 280 },
+    "large": { label: "Large (100K-150K GT)", defaultConsumption: 55, defaultSeaDays: 280 },
+    "verylarge": { label: "Very Large (150K-200K GT)", defaultConsumption: 65, defaultSeaDays: 280 },
+    "mega": { label: "Mega (>200K GT)", defaultConsumption: 75, defaultSeaDays: 280 }
   },
   "ro-ro": {
-    "small": { label: "Small / Feeder (<10,000 GT)", defaultConsumption: 25, defaultSeaDays: 280 },
-    "medium": { label: "Medium (10,000-30,000 GT)", defaultConsumption: 40, defaultSeaDays: 280 },
-    "large": { label: "Large (30,000-50,000 GT)", defaultConsumption: 60, defaultSeaDays: 280 },
-    "verylarge": { label: "Very Large (50,000-70,000 GT)", defaultConsumption: 80, defaultSeaDays: 280 },
-    "extralarge": { label: "Extra Large (>70,000 GT)", defaultConsumption: 100, defaultSeaDays: 280 }
+    "small": { label: "Small / Feeder (<10K GT)", defaultConsumption: 25, defaultSeaDays: 280 },
+    "medium": { label: "Medium (10K-30K GT)", defaultConsumption: 40, defaultSeaDays: 280 },
+    "large": { label: "Large (30K-50K GT)", defaultConsumption: 60, defaultSeaDays: 280 },
+    "verylarge": { label: "Very Large (50K-70K GT)", defaultConsumption: 80, defaultSeaDays: 280 },
+    "extralarge": { label: "Extra Large (>70K GT)", defaultConsumption: 100, defaultSeaDays: 280 }
   },
   "custom": {
     "custom": { label: "Custom Size", defaultConsumption: 50, defaultSeaDays: 280 }
