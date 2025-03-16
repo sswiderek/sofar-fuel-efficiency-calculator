@@ -22,6 +22,7 @@ const vesselCategories: Record<string, string> = {
   'bulk-carrier': 'Bulk Carrier',
   'oil-tanker': 'Oil Tanker',
   'ro-ro': 'Ro-Ro / General Cargo',
+  'cruise-ship': 'Cruise Ship',
   'custom': 'Custom Vessel'
 };
 
@@ -202,10 +203,16 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                                 alt="Oil Tanker" 
                                 className="h-10 w-10 object-contain"
                               />
-                            ) : vessel.category === 'ro-ro' ? ( // Added ro-ro condition
+                            ) : vessel.category === 'ro-ro' ? (
                               <img 
                                 src="/images/ro_ro_ship.png" 
                                 alt="Ro-Ro Ship" 
+                                className="h-10 w-10 object-contain"
+                              />
+                            ) : vessel.category === 'cruise-ship' ? (
+                              <img 
+                                src="/images/cruise_ship.png" 
+                                alt="Cruise Ship" 
                                 className="h-10 w-10 object-contain"
                               />
                             ) : (
