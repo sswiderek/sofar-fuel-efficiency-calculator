@@ -35,9 +35,9 @@ export const vesselSizes = {
     "ulcc": { label: "ULCC (>320,000 DWT)", defaultConsumption: 95, defaultSeaDays: 280 }
   },
   "cruise-ship": {
-    "small": { label: "Small (<500 pax)", defaultConsumption: 30, defaultSeaDays: 280 },
-    "medium": { label: "Medium (500-2K pax)", defaultConsumption: 50, defaultSeaDays: 280 },
-    "large": { label: "Large (>2K pax)", defaultConsumption: 80, defaultSeaDays: 280 }
+    "small": { label: "Small Expedition (<500 passengers)", defaultConsumption: 30, defaultSeaDays: 280 },
+    "medium": { label: "Medium Mainstream (500-2,000 passengers)", defaultConsumption: 50, defaultSeaDays: 280 },
+    "large": { label: "Large Mega (>2,000 passengers)", defaultConsumption: 80, defaultSeaDays: 280 }
   },
   "ro-ro": {
     "small": { label: "Small / Feeder", defaultConsumption: 25, defaultSeaDays: 280 },
