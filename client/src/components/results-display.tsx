@@ -199,10 +199,10 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                                 src="/images/bulk_carrier.png" 
                                 alt="Bulk Carrier" 
                                 className={`
-                                  ${vessel.size === 'small' ? 'h-5 w-5' : ''}
-                                  ${vessel.size === 'medium' ? 'h-6 w-6' : ''}
-                                  ${vessel.size === 'large' ? 'h-7 w-7' : ''}
-                                  ${vessel.size === 'vlarge' ? 'h-8 w-8' : ''}
+                                  ${vessel.size === 'small' ? 'h-7 w-7' : ''}
+                                  ${vessel.size === 'medium' ? 'h-8 w-8' : ''}
+                                  ${vessel.size === 'large' ? 'h-9 w-9' : ''}
+                                  ${vessel.size === 'vlarge' ? 'h-10 w-10' : ''}
                                   object-contain
                                 `}
                               />
