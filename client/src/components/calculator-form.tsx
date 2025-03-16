@@ -718,9 +718,9 @@ export default function CalculatorForm() {
                           <div className="flex items-center gap-1.5">
                             <FormLabel>Fuel Price (USD/MT)</FormLabel>
                             <InfoTooltip>
-                              The average price of Very Low Sulfur Fuel Oil
-                              (VLSFO) per metric ton in USD. Default is current
-                              global average.
+                              Based on Ship & Bunker's Global 20 Ports Average. Monthly
+                              averages provide a stable baseline for calculations by smoothing
+                              out daily price fluctuations.
                             </InfoTooltip>
                           </div>
                         </div>
