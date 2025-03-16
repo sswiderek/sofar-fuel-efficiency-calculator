@@ -582,7 +582,7 @@ export default function CalculatorForm() {
                                       }
                                     />
                                   </FormControl>
-                                  {vessel.category && (
+                                  {vessel.category && vessel.size && (
                                     <div className="text-xs text-amber-600 text-right mt-1.5">
                                       <span className="bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200/50">
                                         Industry estimate - adjust as needed
@@ -639,7 +639,7 @@ export default function CalculatorForm() {
                                     }
                                   />
                                 </FormControl>
-                                {vessel.category && (
+                                {vessel.category && vessel.size && (
                                   <div className="text-xs text-amber-600 text-right mt-1.5">
                                     <span className="bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200/50">
                                       Industry estimate - adjust as needed
