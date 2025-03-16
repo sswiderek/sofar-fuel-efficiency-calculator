@@ -40,7 +40,7 @@ export const vesselSizes = {
     "midsize": { label: "Mid-Size (50,000-100,000 GT)", defaultConsumption: 45, defaultSeaDays: 280 },
     "large": { label: "Large (100,000-150,000 GT)", defaultConsumption: 55, defaultSeaDays: 280 },
     "verylarge": { label: "Very Large (150,000-200,000 GT)", defaultConsumption: 65, defaultSeaDays: 280 },
-    "mega": { label: "Mega (200,000+ GT)", defaultConsumption: 75, defaultSeaDays: 280 }
+    "mega": { label: "Mega (>200,000 GT)", defaultConsumption: 75, defaultSeaDays: 280 }
   },
   "ro-ro": {
     "small": { label: "Small / Feeder (<10,000 GT)", defaultConsumption: 25, defaultSeaDays: 280 },
