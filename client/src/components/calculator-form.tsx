@@ -315,6 +315,7 @@ export default function CalculatorForm() {
                                                   ${key === 'luxury' ? 'h-5 w-5' : ''}
                                                   ${key === 'premium' ? 'h-6 w-6' : ''}
                                                   ${key === 'megaship' ? 'h-7 w-7' : ''}
+                                                  ${key === 'ultra' ? 'h-8 w-8' : ''}
                                                   object-contain mr-2
                                                 `}
                                               />
