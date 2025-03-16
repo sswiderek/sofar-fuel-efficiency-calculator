@@ -639,13 +639,6 @@ export default function CalculatorForm() {
                                     }
                                   />
                                 </FormControl>
-                                {vessel.category && vessel.size && (
-                                  <div className="text-xs text-amber-600 text-right mt-1.5">
-                                    <span className="bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200/50">
-                                      Industry estimate - adjust as needed
-                                    </span>
-                                  </div>
-                                )}
                               </div>
                               <FormMessage className="text-xs mt-1.5 bg-red-50 text-red-700 px-1.5 py-0.5 rounded border border-red-200/50 inline-block" />
                             </FormItem>
