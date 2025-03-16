@@ -4,7 +4,7 @@ import { z } from "zod";
 export const vesselCategories = {
   "container-ship": "Container Ship",
   "bulk-carrier": "Bulk Carrier",
-  "oil-tanker": "Oil Tanker",
+  "oil-tanker": "Tanker",
   "cruise-ship": "Cruise Ship",
   "ro-ro": "Ro-Ro / General Cargo",
   "custom": "Custom Vessel"
@@ -142,20 +142,20 @@ export const vesselSizes = {
   }
 } as const;
 
-export type VesselCategory = keyof typeof vesselCategories;
-
 export const vesselSchema = z.object({
-  category: z.enum(['container-ship', 'bulk-carrier', 'oil-tanker', 'cruise-ship', 'ro-ro', 'custom']),
+  category: z.enum(Object.keys(vesselCategories) as [string, ...string[]]),
   size: z.string(),
-  count: z.number().int().positive(),
-  fuelConsumption: z.number().positive(),
-  seaDaysPerYear: z.number().int().min(1).max(365)
+  count: z.number().min(1, "Must have at least 1 ship"),
+  fuelConsumption: z.number().min(0.1, "Must consume some fuel"),
+  seaDaysPerYear: z.number().min(1, "Must have at least 1 sea day").max(365, "Cannot exceed 365 days per year"),
+  buildYear: z.number().optional(),
+  specificsProvided: z.boolean().optional()
 });
 
 export const calculatorInputSchema = z.object({
   vessels: z.array(vesselSchema),
-  fuelPrice: z.string().or(z.number()),
-  estimatedSavings: z.number()
+  fuelPrice: z.number().min(0.1, "Fuel price must be greater than 0").max(5000, "Please verify prices over $5000/MT"),
+  estimatedSavings: z.number().min(0).max(10)
 });
 
 export type CalculatorInput = z.infer<typeof calculatorInputSchema>;
