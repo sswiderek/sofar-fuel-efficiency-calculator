@@ -502,8 +502,15 @@ export default function CalculatorForm() {
                                         Number of Ships
                                       </FormLabel>
                                       <InfoTooltip>
+                                        <h4 className="font-semibold mb-2 text-slate-700">
+                                          Number of Ships
+                                        </h4>
                                         <p className="text-slate-600 leading-relaxed">
-                                          Number of identical vessels in your fleet
+                                          Total count of vessels of this
+                                          specific category and size in your
+                                          fleet. Calculations will be multiplied
+                                          by this number for fleet-wide
+                                          estimates.
                                         </p>
                                       </InfoTooltip>
                                     </div>
