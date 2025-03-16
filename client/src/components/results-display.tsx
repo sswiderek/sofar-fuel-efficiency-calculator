@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { CalculationResult } from "@shared/schema";
-import { DollarSign, Info, LeafIcon, TrendingDown, Car, ChevronDown } from "lucide-react"; 
+import { DollarSign, Info, LeafIcon, TrendingDown, Car, ChevronDown, Ship } from "lucide-react"; 
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"; 
 import { InfoTooltip } from "@/components/info-tooltip";
@@ -165,11 +165,15 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                                 src="/images/container_ship.png" 
                                 alt="Container Ship" 
                                 className={`
-                                  ${vessel.size === 'feeder' ? 'h-4 w-4' : ''}
-                                  ${vessel.size === 'small' ? 'h-4 w-4' : ''}
-                                  ${vessel.size === 'medium' ? 'h-4 w-4' : ''}
-                                  ${vessel.size === 'large' ? 'h-4 w-4' : ''}
-                                  ${vessel.size === 'vlarge' ? 'h-4 w-4' : ''}
+                                  ${vessel.size === 'feeder' ? 'h-3 w-3' : ''}
+                                  ${vessel.size === 'feedermax' ? 'h-3 w-3' : ''}
+                                  ${vessel.size === 'small' ? 'h-3 w-3' : ''}
+                                  ${vessel.size === 'medium' ? 'h-3 w-3' : ''}
+                                  ${vessel.size === 'large' ? 'h-3 w-3' : ''}
+                                  ${vessel.size === 'vlarge' ? 'h-3 w-3' : ''}
+                                  ${vessel.size === 'panamax' ? 'h-3 w-3' : ''}
+                                  ${vessel.size === 'postpanamax' ? 'h-3 w-3' : ''}
+                                  ${vessel.size === 'ulcv' ? 'h-3 w-3' : ''}
                                   object-contain
                                 `} 
                               />
