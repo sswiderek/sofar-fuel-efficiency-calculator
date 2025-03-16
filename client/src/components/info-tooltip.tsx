@@ -21,7 +21,7 @@ export function InfoTooltip({
 }: InfoTooltipProps) {
   // Use content or children, preferring content if both are provided
   const tooltipContent = content ?? children;
-  
+
   return (
     <Tooltip>
       <TooltipTrigger asChild>
