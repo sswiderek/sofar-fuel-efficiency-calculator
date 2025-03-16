@@ -23,8 +23,8 @@ export const vesselSizes = {
     "small": { label: "Handysize (10000-35000 DWT)", defaultConsumption: 15, defaultSeaDays: 280 },
     "medium": { label: "Handymax (35000-50000 DWT)", defaultConsumption: 20, defaultSeaDays: 280 },
     "large": { label: "Panamax (50000-80000 DWT)", defaultConsumption: 25, defaultSeaDays: 280 },
-    "vlarge": { label: "Capesize (80,000-400,000 DWT)", defaultConsumption: 30, defaultSeaDays: 280 },
-    "vlcc": { label: "VLCC (>400,000 DWT)", defaultConsumption: 35, defaultSeaDays: 280 }
+    "vlarge": { label: "Capesize (80,000-200,000 DWT)", defaultConsumption: 30, defaultSeaDays: 280 },
+    "vlcc": { label: "ULBC (>200,000 DWT)", defaultConsumption: 35, defaultSeaDays: 280 }
   },
   "oil-tanker": {
     "small": { label: "Small Tanker (<50,000 DWT)", defaultConsumption: 35, defaultSeaDays: 280 },
