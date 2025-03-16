@@ -54,18 +54,27 @@ const vesselSizes = {
   },
 };
 
-const vesselSizeNames = (size: string) => {
-    const sizeMap: Record<string, string> = {
-        'feeder': 'Feeder',
-        'feedermax': 'Feedermax',
-        'panamax': 'Panamax',
-        'postpanamax': 'Post-Panamax',
-        'newpanamax': 'New Panamax',
-        'ulcv': 'ULCV'
-    };
-    return sizeMap[size] || size.charAt(0).toUpperCase() + size.slice(1);
-}
 
+const getVesselName = (category: string, size: string): string => {
+  // Safely handle cases where category or size might be missing or invalid
+  const categoryData = vesselSizes[category];
+  if (!categoryData || !categoryData[size]) {
+      return "Unknown Vessel"; //or handle the error appropriately.
+  }
+  return categoryData[size].label;
+};
+
+const getIconSize = (size: string): string => {
+  const sizeMap: Record<string, string> = {
+    'feeder': 'h-6 w-6',
+    'small': 'h-5 w-5',
+    'medium': 'h-6 w-6',
+    'large': 'h-7 w-7',
+    'vlarge': 'h-8 w-8',
+  };
+  //Default size
+  return sizeMap[size] || "h-4 w-4";
+};
 
 export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   if (!results || results.length === 0) return null;
@@ -184,53 +193,39 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                               <img 
                                 src="/images/container_ship.png" 
                                 alt="Container Ship" 
-                                className={`
-                                  ${vessel.size === 'feeder' ? 'h-6 w-6' : ''}
-                                  ${vessel.size === 'feedermax' ? 'h-7 w-7' : ''}
-                                  ${vessel.size === 'panamax' ? 'h-8 w-8' : ''}
-                                  ${vessel.size === 'postpanamax' ? 'h-9 w-9' : ''}
-                                  ${vessel.size === 'newpanamax' ? 'h-10 w-10' : ''}
-                                  ${vessel.size === 'ulcv' ? 'h-11 w-11' : ''}
-                                  object-contain
-                                `} 
+                                className={`${getIconSize(vessel.size)} object-contain`} 
                               />
                             ) : vessel.category === 'bulk-carrier' ? (
                               <img 
                                 src="/images/bulk_carrier.png" 
                                 alt="Bulk Carrier" 
-                                className={`
-                                  ${vessel.size === 'small' ? 'h-5 w-5' : ''}
-                                  ${vessel.size === 'medium' ? 'h-6 w-6' : ''}
-                                  ${vessel.size === 'large' ? 'h-7 w-7' : ''}
-                                  ${vessel.size === 'vlarge' ? 'h-8 w-8' : ''}
-                                  object-contain
-                                `}
+                                className={`${getIconSize(vessel.size)} object-contain`}
                               />
                             ) : vessel.category === 'oil-tanker' ? (
                               <img 
                                 src="/images/oil_tanker.png" 
                                 alt="Oil Tanker" 
-                                className="h-10 w-10 object-contain"
+                                className={`${getIconSize(vessel.size)} object-contain`}
                               />
                             ) : vessel.category === 'ro-ro' ? (
                               <img 
                                 src="/images/ro_ro_ship.png" 
                                 alt="Ro-Ro Ship" 
-                                className="h-10 w-10 object-contain"
+                                className={`${getIconSize(vessel.size)} object-contain`}
                               />
                             ) : vessel.category === 'cruise-ship' ? (
                               <img 
                                 src="/images/cruise_ship.png" 
                                 alt="Cruise Ship" 
-                                className="h-10 w-10 object-contain"
+                                className={`${getIconSize(vessel.size)} object-contain`}
                               />
                             ) : (
                               <Ship className="h-4 w-4" />
                             )}
                             <div className="flex items-center">
                               <span className="text-sm">
-        {vessel.count} × {vesselCategories[vessel.category]} ({vesselSizeNames(vessel.size)})
-      </span>
+                                {vessel.count} × {vesselCategories[vessel.category]} ({getVesselName(vessel.category, vessel.size)})
+                              </span>
                             </div>
                           </div>
                         </div>
