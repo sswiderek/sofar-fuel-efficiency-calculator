@@ -560,7 +560,6 @@ export default function CalculatorForm() {
                                             operational data. Includes fuel used
                                             for propulsion only.
                                           </p>
-                                        </div>
                                       </InfoTooltip>
                                       </div>
                                     </div>
