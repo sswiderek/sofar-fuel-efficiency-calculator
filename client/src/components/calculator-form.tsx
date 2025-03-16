@@ -65,6 +65,13 @@ interface VLSFOPrice {
   errorMessage?: string;
 }
 
+// Type definition for vessel size data
+interface VesselSizeData {
+  label: string;
+  defaultConsumption: number;
+  defaultSeaDays: number;
+}
+
 export default function CalculatorForm() {
   const { toast } = useToast();
   const [results, setResults] = useState<CalculationResult[] | null>(null);
@@ -131,14 +138,14 @@ export default function CalculatorForm() {
     setIsCalculating(true);
     try {
       const formData = {
-        fuelPrice: parseFloat(values.fuelPrice),
-        estimatedSavings: parseFloat(values.estimatedSavings.toString()),
+        fuelPrice: Number(values.fuelPrice),
+        estimatedSavings: Number(values.estimatedSavings),
         vessels: values.vessels.map((vessel) => ({
           category: vessel.category,
           size: vessel.size,
-          count: parseInt(vessel.count.toString()),
-          fuelConsumption: parseFloat(vessel.fuelConsumption.toString()),
-          seaDaysPerYear: parseFloat(vessel.seaDaysPerYear.toString()),
+          count: Number(vessel.count),
+          fuelConsumption: Number(vessel.fuelConsumption),
+          seaDaysPerYear: Number(vessel.seaDaysPerYear),
         })),
       };
 
@@ -331,28 +338,40 @@ export default function CalculatorForm() {
                                       const category = form.getValues(
                                         `vessels.${index}.category`,
                                       );
-                                      if (
-                                        category &&
-                                        value &&
-                                        vesselSizes[
-                                          category as keyof typeof vesselSizes
-                                        ]
-                                      ) {
-                                        const sizeData =
-                                          vesselSizes[
-                                            category as keyof typeof vesselSizes
-                                          ][
-                                            value as keyof (typeof vesselSizes)[keyof typeof vesselSizes]
-                                          ];
-                                        if (sizeData) {
-                                          form.setValue(
-                                            `vessels.${index}.fuelConsumption`,
-                                            sizeData.defaultConsumption,
-                                          );
-                                          form.setValue(
-                                            `vessels.${index}.seaDaysPerYear`,
-                                            sizeData.defaultSeaDays,
-                                          );
+                                      if (category && value) {
+                                        try {
+                                          // Get the specific vessel size data for this category and size
+                                          const categoryData = vesselSizes[category as keyof typeof vesselSizes];
+                                          if (categoryData) {
+                                            const sizeKey = value as string;
+                                            const sizeData = categoryData[sizeKey as keyof typeof categoryData];
+                                            
+                                            // Safely access consumption and sea days with explicit type check
+                                            if (sizeData && 
+                                                typeof sizeData === 'object' && 
+                                                'defaultConsumption' in sizeData && 
+                                                'defaultSeaDays' in sizeData) {
+                                              const consumption = Number(sizeData.defaultConsumption);
+                                              const seaDays = Number(sizeData.defaultSeaDays);
+                                              
+                                              // Only update if values are valid numbers
+                                              if (!isNaN(consumption)) {
+                                                form.setValue(
+                                                  `vessels.${index}.fuelConsumption`,
+                                                  consumption
+                                                );
+                                              }
+                                              
+                                              if (!isNaN(seaDays)) {
+                                                form.setValue(
+                                                  `vessels.${index}.seaDaysPerYear`,
+                                                  seaDays
+                                                );
+                                              }
+                                            }
+                                          }
+                                        } catch (error) {
+                                          console.error("Error setting vessel data:", error);
                                         }
                                       }
                                     }}
