@@ -39,10 +39,9 @@ export default function Calculator() {
                 <li>See projected annual fuel savings and CO₂ emission reductions</li>
               </ul>
             </div>
-            <AssumptionsSection />
             <CalculatorForm />
             <div className="mt-12 mb-8">
-              
+              <AssumptionsSection />
             </div>
             <div className="space-y-6">
                 
