@@ -143,7 +143,9 @@ export const vesselSizes = {
 } as const;
 
 export const vesselSchema = z.object({
-  category: z.enum(Object.keys(vesselCategories) as [string, ...string[]]),
+  category: z.enum(Object.keys(vesselCategories) as [string, ...string[]], {
+    errorMap: () => ({ message: "Please select a vessel category" })
+  }),
   size: z.string(),
   count: z.number().min(1, "Must have at least 1 ship"),
   fuelConsumption: z.number().min(0.1, "Must consume some fuel"),
