@@ -4,10 +4,98 @@ import { z } from "zod";
 export const vesselCategories = {
   "container-ship": "Container Ship",
   "bulk-carrier": "Bulk Carrier",
-  "oil-tanker": "Tanker",
+  "oil-tanker": "Oil Tanker",
   "cruise-ship": "Cruise Ship",
   "ro-ro": "Ro-Ro / General Cargo",
   "custom": "Custom Vessel"
+} as const;
+
+// Define vessel names for Cost Breakdown in Response Panel
+export const vesselDisplayNames = {
+  "container-ship": {
+    "feeder": "Feeder",
+    "feedermax": "Feedermax",
+    "panamax": "Panamax",
+    "postpanamax": "Post-Panamax",
+    "newpanamax": "New Panamax",
+    "ulcv": "ULCV"
+  },
+  "bulk-carrier": {
+    "small": "Handysize",
+    "medium": "Handymax",
+    "large": "Panamax",
+    "vlarge": "Capesize",
+    "vlcc": "VLOC"
+  },
+  "oil-tanker": {
+    "small": "Small Tanker",
+    "medium": "Medium Tanker",
+    "aframax": "Aframax",
+    "suezmax": "Suezmax",
+    "vlcc": "VLCC",
+    "ulcc": "ULCC"
+  },
+  "cruise-ship": {
+    "small": "Small",
+    "midsize": "Mid-Size",
+    "large": "Large",
+    "verylarge": "Very Large",
+    "mega": "Mega"
+  },
+  "ro-ro": {
+    "small": "Small / Feeder",
+    "medium": "Medium",
+    "large": "Large",
+    "verylarge": "Very Large",
+    "extralarge": "Extra Large"
+  },
+  "custom": {
+    "custom": "Custom Size"
+  }
+} as const;
+
+// Define icon sizes for vessels in Cost Breakdown in Response Panel
+export const vesselIconSizes = {
+  "container-ship": {
+    "feeder": "h-6 w-6",
+    "feedermax": "h-7 w-7",
+    "panamax": "h-8 w-8",
+    "postpanamax": "h-9 w-9",
+    "newpanamax": "h-10 w-10",
+    "ulcv": "h-11 w-11"
+  },
+  "bulk-carrier": {
+    "small": "h-7 w-7",
+    "medium": "h-8 w-8",
+    "large": "h-9 w-9",
+    "vlarge": "h-10 w-10",
+    "vlcc": "h-11 w-11"
+  },
+  "oil-tanker": {
+    "small": "h-6 w-6",
+    "medium": "h-7 w-7",
+    "aframax": "h-8 w-8",
+    "suezmax": "h-9 w-9",
+    "vlcc": "h-10 w-10",
+    "ulcc": "h-11 w-11"
+  },
+  "cruise-ship": {
+    "small": "h-7 w-7",
+    "midsize": "h-8 w-8",
+    "large": "h-9 w-9",
+    "verylarge": "h-10 w-10",
+    "mega": "h-11 w-11"
+  },
+  "ro-ro": {
+    "small": "h-7 w-7",
+    "medium": "h-8 w-8",
+    "large": "h-9 w-9",
+    "verylarge": "h-10 w-10",
+    "extralarge": "h-11 w-11"
+  },
+  "custom": {
+    "custom": "h-9 w-9"
+  }
 } as const;
 
 // Define size options for each vessel category

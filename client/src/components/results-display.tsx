@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { CalculationResult } from "@shared/schema";
+import { CalculationResult, vesselCategories, vesselDisplayNames, vesselIconSizes } from "@shared/schema";
 import { DollarSign, Info, LeafIcon, TrendingDown, Car, ChevronDown, Ship } from "lucide-react"; 
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"; 
@@ -17,106 +17,28 @@ const formatNumber = (num: number) => {
   return Math.round(num).toLocaleString(undefined, { maximumFractionDigits: 0 });
 };
 
-const vesselCategories: Record<string, string> = {
-  'container-ship': 'Container Ship',
-  'bulk-carrier': 'Bulk Carrier',
-  'oil-tanker': 'Oil Tanker',
-  'ro-ro': 'Ro-Ro / General Cargo',
-  'cruise-ship': 'Cruise Ship',
-  'custom': 'Custom Vessel'
-};
-
-// Updated vesselSizes to reflect more accurate and consistent naming
-const vesselSizes = {
-  'container-ship': {
-    'feeder': { label: 'Feeder (<1000 TEU)' },
-    'small': { label: 'Small (1000-2000 TEU)' },
-    'medium': { label: 'Medium (2000-5000 TEU)' },
-    'large': { label: 'Large (5000-10000 TEU)' },
-    'vlarge': { label: 'ULCV (>10,000 TEU)' },
-  },
-  'bulk-carrier': {
-    'small': { label: 'Handysize (10000-35000 DWT)' },
-    'medium': { label: 'Handymax (35000-50000 DWT)' },
-    'large': { label: 'Panamax (50000-80000 DWT)' },
-    'vlarge': { label: 'Capesize (>80000 DWT)' },
-  },
-  'oil-tanker': {
-    'small': { label: 'Small (<50,000 DWT)' },
-    'medium': { label: 'Medium (50,000-100,000 DWT)' },
-    'large': { label: 'Large (100,000-200,000 DWT)' },
-    'vlarge': { label: 'VLCC (200,000+ DWT)' },
-  },
-  'ro-ro': { // Added ro-ro sizes (example sizes, adjust as needed)
-    'small': { label: 'Small (<10,000 GT)' },
-    'medium': { label: 'Medium (10,000-20,000 GT)' },
-    'large': { label: 'Large (20,000-30,000 GT)' },
-  },
-};
-
-const getVesselIconSize = (category: string, size: string): string => {
-  const sizeMap = {
-    'feeder': 'h-6 w-6',
-    'feedermax': 'h-7 w-7',
-    'panamax': 'h-8 w-8',
-    'postpanamax': 'h-9 w-9',
-    'newpanamax': 'h-10 w-10',
-    'ulcv': 'h-11 w-11',
-    'small': 'h-7 w-7',
-    'medium': 'h-8 w-8',
-    'large': 'h-9 w-9',
-    'vlarge': 'h-10 w-10',
-    'vlcc': 'h-11 w-11',
-    'custom': 'h-9 w-9'
-  };
-  return sizeMap[size] || 'h-8 w-8';
-};
-
-const vesselSizeNames = (category: string, size: string): string => {
-  if (category === 'container-ship') {
-    return {
-      'feeder': 'Feeder',
-      'feedermax': 'Feedermax',
-      'panamax': 'Panamax',
-      'postpanamax': 'Post-Panamax',
-      'newpanamax': 'New Panamax',
-      'ulcv': 'ULCV'
-    }[size] || size;
-  } else if (category === 'bulk-carrier') {
-    return {
-      'small': 'Handysize',
-      'medium': 'Handymax',
-      'large': 'Panamax',
-      'vlarge': 'Capesize',
-      'vlcc': 'VLOC'
-    }[size] || size;
-  } else if (category === 'oil-tanker') {
-    return {
-      'small': 'Small Tanker',
-      'medium': 'Medium Tanker',
-      'large': 'Aframax',
-      'vlarge': 'Suezmax',
-      'vlcc': 'VLCC',
-      'ulcc': 'ULCC'
-    }[size] || size;
-  } else if (category === 'cruise-ship') {
-    return {
-      'small': 'Small',
-      'medium': 'Mid-Size',
-      'large': 'Large',
-      'vlarge': 'Very Large',
-      'mega': 'Mega'
-    }[size] || size;
-  } else if (category === 'ro-ro') {
-    return {
-      'small': 'Small / Feeder',
-      'medium': 'Medium',
-      'large': 'Large',
-      'vlarge': 'Very Large',
-      'xlarge': 'Extra Large'
-    }[size] || size;
+// Get vessel display name from the schema
+const getVesselDisplayName = (category: string, size: string): string => {
+  if (vesselDisplayNames[category as keyof typeof vesselDisplayNames]) {
+    const categoryNames = vesselDisplayNames[category as keyof typeof vesselDisplayNames];
+    const displayName = categoryNames[size as keyof typeof categoryNames];
+    if (displayName) {
+      return displayName;
+    }
   }
   return size.charAt(0).toUpperCase() + size.slice(1);
+};
+
+// Get vessel icon size from the schema
+const getVesselIconSize = (category: string, size: string): string => {
+  if (vesselIconSizes[category as keyof typeof vesselIconSizes]) {
+    const categorySizes = vesselIconSizes[category as keyof typeof vesselIconSizes];
+    const iconSize = categorySizes[size as keyof typeof categorySizes];
+    if (iconSize) {
+      return iconSize;
+    }
+  }
+  return 'h-8 w-8'; // Default size
 };
 
 
@@ -243,38 +165,32 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                               <img 
                                 src="/images/bulk_carrier.png" 
                                 alt="Bulk Carrier" 
-                                className={`
-                                  ${vessel.size === 'small' ? 'h-7 w-7' : ''}
-                                  ${vessel.size === 'medium' ? 'h-8 w-8' : ''}
-                                  ${vessel.size === 'large' ? 'h-9 w-9' : ''}
-                                  ${vessel.size === 'vlarge' ? 'h-10 w-10' : ''}
-                                  object-contain
-                                `}
+                                className={`${getVesselIconSize(vessel.category, vessel.size)} object-contain`}
                               />
                             ) : vessel.category === 'oil-tanker' ? (
                               <img 
                                 src="/images/oil_tanker.png" 
                                 alt="Oil Tanker" 
-                                className="h-10 w-10 object-contain"
+                                className={`${getVesselIconSize(vessel.category, vessel.size)} object-contain`}
                               />
                             ) : vessel.category === 'ro-ro' ? (
                               <img 
                                 src="/images/ro_ro_ship.png" 
                                 alt="Ro-Ro Ship" 
-                                className="h-10 w-10 object-contain"
+                                className={`${getVesselIconSize(vessel.category, vessel.size)} object-contain`}
                               />
                             ) : vessel.category === 'cruise-ship' ? (
                               <img 
                                 src="/images/cruise_ship.png" 
                                 alt="Cruise Ship" 
-                                className="h-10 w-10 object-contain"
+                                className={`${getVesselIconSize(vessel.category, vessel.size)} object-contain`}
                               />
                             ) : (
                               <Ship className="h-4 w-4" />
                             )}
                             <div className="flex items-center">
                               <span className="text-sm">
-        {vessel.count} × {vesselCategories[vessel.category]} ({vesselSizeNames(vessel.category, vessel.size)})
+        {vessel.count} × {vesselCategories[vessel.category as keyof typeof vesselCategories]} ({getVesselDisplayName(vessel.category, vessel.size)})
       </span>
                             </div>
                           </div>
