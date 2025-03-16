@@ -54,17 +54,70 @@ const vesselSizes = {
   },
 };
 
-const vesselSizeNames = (size: string) => {
-    const sizeMap: Record<string, string> = {
-        'feeder': 'Feeder',
-        'feedermax': 'Feedermax',
-        'panamax': 'Panamax',
-        'postpanamax': 'Post-Panamax',
-        'newpanamax': 'New Panamax',
-        'ulcv': 'ULCV'
-    };
-    return sizeMap[size] || size.charAt(0).toUpperCase() + size.slice(1);
-}
+const getVesselIconSize = (category: string, size: string): string => {
+  const sizeMap = {
+    'feeder': 'h-6 w-6',
+    'feedermax': 'h-7 w-7',
+    'panamax': 'h-8 w-8',
+    'postpanamax': 'h-9 w-9',
+    'newpanamax': 'h-10 w-10',
+    'ulcv': 'h-11 w-11',
+    'small': 'h-7 w-7',
+    'medium': 'h-8 w-8',
+    'large': 'h-9 w-9',
+    'vlarge': 'h-10 w-10',
+    'vlcc': 'h-11 w-11',
+    'custom': 'h-9 w-9'
+  };
+  return sizeMap[size] || 'h-8 w-8';
+};
+
+const vesselSizeNames = (category: string, size: string): string => {
+  if (category === 'container-ship') {
+    return {
+      'feeder': 'Feeder',
+      'feedermax': 'Feedermax',
+      'panamax': 'Panamax',
+      'postpanamax': 'Post-Panamax',
+      'newpanamax': 'New Panamax',
+      'ulcv': 'ULCV'
+    }[size] || size;
+  } else if (category === 'bulk-carrier') {
+    return {
+      'small': 'Handysize',
+      'medium': 'Handymax',
+      'large': 'Panamax',
+      'vlarge': 'Capesize',
+      'vlcc': 'VLOC'
+    }[size] || size;
+  } else if (category === 'oil-tanker') {
+    return {
+      'small': 'Small Tanker',
+      'medium': 'Medium Tanker',
+      'large': 'Aframax',
+      'vlarge': 'Suezmax',
+      'vlcc': 'VLCC',
+      'ulcc': 'ULCC'
+    }[size] || size;
+  } else if (category === 'cruise-ship') {
+    return {
+      'small': 'Small',
+      'medium': 'Mid-Size',
+      'large': 'Large',
+      'vlarge': 'Very Large',
+      'mega': 'Mega'
+    }[size] || size;
+  } else if (category === 'ro-ro') {
+    return {
+      'small': 'Small / Feeder',
+      'medium': 'Medium',
+      'large': 'Large',
+      'vlarge': 'Very Large',
+      'xlarge': 'Extra Large'
+    }[size] || size;
+  }
+  return size.charAt(0).toUpperCase() + size.slice(1);
+};
 
 
 export default function ResultsDisplay({ results }: ResultsDisplayProps) {
@@ -184,15 +237,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                               <img 
                                 src="/images/container_ship.png" 
                                 alt="Container Ship" 
-                                className={`
-                                  ${vessel.size === 'feeder' ? 'h-6 w-6' : ''}
-                                  ${vessel.size === 'feedermax' ? 'h-7 w-7' : ''}
-                                  ${vessel.size === 'panamax' ? 'h-8 w-8' : ''}
-                                  ${vessel.size === 'postpanamax' ? 'h-9 w-9' : ''}
-                                  ${vessel.size === 'newpanamax' ? 'h-10 w-10' : ''}
-                                  ${vessel.size === 'ulcv' ? 'h-11 w-11' : ''}
-                                  object-contain
-                                `} 
+                                className={`${getVesselIconSize(vessel.category, vessel.size)} object-contain`}
                               />
                             ) : vessel.category === 'bulk-carrier' ? (
                               <img 
@@ -229,7 +274,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                             )}
                             <div className="flex items-center">
                               <span className="text-sm">
-        {vessel.count} × {vesselCategories[vessel.category]} ({vesselSizeNames(vessel.size)})
+        {vessel.count} × {vesselCategories[vessel.category]} ({vesselSizeNames(vessel.category, vessel.size)})
       </span>
                             </div>
                           </div>
