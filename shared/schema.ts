@@ -131,11 +131,11 @@ export const vesselSizes = {
     "mega": { label: "Mega (>200,000 GT)", defaultConsumption: 75, defaultSeaDays: 280 }
   },
   "ro-ro": {
-    "small": { label: "Small / Feeder (<10,000 GT)", defaultConsumption: 25, defaultSeaDays: 280 },
-    "medium": { label: "Medium (10,000-30,000 GT)", defaultConsumption: 40, defaultSeaDays: 280 },
-    "large": { label: "Large (30,000-50,000 GT)", defaultConsumption: 60, defaultSeaDays: 280 },
-    "verylarge": { label: "Very Large (50,000-70,000 GT)", defaultConsumption: 80, defaultSeaDays: 280 },
-    "extralarge": { label: "Extra Large (>70,000 GT)", defaultConsumption: 100, defaultSeaDays: 280 }
+    "small": { label: "Small (<10k GT)", defaultConsumption: 25, defaultSeaDays: 280 },
+    "medium": { label: "Medium (10-30k GT)", defaultConsumption: 40, defaultSeaDays: 280 },
+    "large": { label: "Large (30-50k GT)", defaultConsumption: 60, defaultSeaDays: 280 },
+    "verylarge": { label: "Very Large (50-70k GT)", defaultConsumption: 80, defaultSeaDays: 280 },
+    "extralarge": { label: "Extra Large (>70k GT)", defaultConsumption: 100, defaultSeaDays: 280 }
   },
   "custom": {
     "custom": { label: "Custom Size", defaultConsumption: 50, defaultSeaDays: 280 }
