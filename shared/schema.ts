@@ -35,11 +35,11 @@ export const vesselSizes = {
     "ulcc": { label: "ULCC (>320,000 DWT)", defaultConsumption: 95, defaultSeaDays: 280 }
   },
   "cruise-ship": {
-    "small": { label: "Small Ship (<20,000 GT)", defaultConsumption: 35, defaultSeaDays: 280 },
-    "midsize": { label: "Mid-Size (20,000-50,000 GT)", defaultConsumption: 45, defaultSeaDays: 280 },
-    "large": { label: "Large (50,000-120,000 GT)", defaultConsumption: 55, defaultSeaDays: 280 },
-    "mega": { label: "Mega Ship (120,000-200,000 GT)", defaultConsumption: 65, defaultSeaDays: 280 },
-    "oasis": { label: "Oasis Class (>200,000 GT)", defaultConsumption: 75, defaultSeaDays: 280 }
+    "boutique": { label: "Boutique (<10,000 GT)", defaultConsumption: 35, defaultSeaDays: 280 },
+    "luxury": { label: "Luxury (10,000-30,000 GT)", defaultConsumption: 45, defaultSeaDays: 280 },
+    "premium": { label: "Premium (30,000-100,000 GT)", defaultConsumption: 55, defaultSeaDays: 280 },
+    "megaship": { label: "Megaship (100,000-200,000 GT)", defaultConsumption: 65, defaultSeaDays: 280 },
+    "ultra": { label: "Ultra (>200,000 GT)", defaultConsumption: 75, defaultSeaDays: 280 }
   },
   "ro-ro": {
     "small": { label: "Small / Feeder", defaultConsumption: 25, defaultSeaDays: 280 },
