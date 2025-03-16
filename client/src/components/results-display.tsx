@@ -54,6 +54,10 @@ const vesselSizes = {
   },
 };
 
+const vesselSizeNames = (size: string) => {
+    return size.charAt(0).toUpperCase() + size.slice(1);
+}
+
 
 export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   if (!results || results.length === 0) return null;
@@ -220,7 +224,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                             )}
                             <div className="flex items-center">
                               <span className="text-sm">
-        {vessel.count} × {vesselCategories[vessel.category]} ({vesselSizes[vessel.category]?.[vessel.size]?.label || vessel.size})
+        {vessel.count} × {vesselCategories[vessel.category]} ({vesselSizeNames(vessel.size)})
       </span>
                             </div>
                           </div>
