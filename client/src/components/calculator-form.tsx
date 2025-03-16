@@ -558,10 +558,10 @@ export default function CalculatorForm() {
                                             results, please adjust this value to
                                             match your vessel's actual
                                             operational data. Includes fuel used
-                                            for propulsion and onboard power
-                                            generation.
+                                            for propulsion only.
                                           </p>
-                                        </InfoTooltip>
+                                        </div>
+                                      </InfoTooltip>
                                       </div>
                                     </div>
                                   </div>
