@@ -117,7 +117,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                         <div className="space-y-2">
                           <h4 className="font-medium text-slate-800">How is this calculated?</h4>
                           <p className="text-sm text-slate-600 leading-relaxed">
-                            For every ton of fuel saved, we reduce CO₂ emissions by 3.15 tons. This is based on standard maritime industry calculations - less fuel burned means fewer emissions released into the atmosphere.
+                            For every ton of fuel saved, CO₂ emissions are reduced by 3.15 tons. This is based on standard maritime industry calculations - less fuel burned means fewer emissions released into the atmosphere.
                           </p>
                         </div>
                       </TooltipContent>
