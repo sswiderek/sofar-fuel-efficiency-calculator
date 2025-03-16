@@ -236,24 +236,12 @@ export default function CalculatorForm() {
                                           `vessels.${index}.size`,
                                           firstSize,
                                         );
-
-                                        // Safely get default values
-                                        const sizeData =
-                                          vesselSizes[
-                                            value as keyof typeof vesselSizes
-                                          ][
-                                            firstSize as keyof (typeof vesselSizes)[keyof typeof vesselSizes]
-                                          ];
-                                        if (sizeData) {
-                                          form.setValue(
-                                            `vessels.${index}.fuelConsumption`,
-                                            sizeData.defaultConsumption,
-                                          );
-                                          form.setValue(
-                                            `vessels.${index}.seaDaysPerYear`,
-                                            sizeData.defaultSeaDays,
-                                          );
-                                        }
+                                        
+                                        // Clear fuel consumption when category changes
+                                        form.setValue(
+                                          `vessels.${index}.fuelConsumption`,
+                                          "",
+                                        );
                                       }
                                     }}
                                     value={field.value}
