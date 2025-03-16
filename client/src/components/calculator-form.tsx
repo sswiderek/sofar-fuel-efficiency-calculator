@@ -329,15 +329,8 @@ export default function CalculatorForm() {
                                         Vessel Size
                                       </FormLabel>
                                       <InfoTooltip>
-                                        <h4 className="font-semibold mb-2 text-slate-700">
-                                          Vessel Size
-                                        </h4>
                                         <p className="text-slate-600 leading-relaxed">
-                                          Standard size classification for the
-                                          selected vessel category. Larger
-                                          vessels typically consume more fuel
-                                          but may be more efficient per ton of
-                                          cargo carried.
+                                          Standard size classifications like Panamax, Capesize, etc.
                                         </p>
                                       </InfoTooltip>
                                     </div>
