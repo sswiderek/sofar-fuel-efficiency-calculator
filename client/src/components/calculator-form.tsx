@@ -210,15 +210,8 @@ export default function CalculatorForm() {
                                         Vessel Category
                                       </FormLabel>
                                       <InfoTooltip>
-                                        <h4 className="font-semibold mb-2 text-slate-700">
-                                          Vessel Category
-                                        </h4>
                                         <p className="text-slate-600 leading-relaxed">
-                                          Classification of vessel by intended
-                                          use or cargo type. Different vessel
-                                          categories have distinct operational
-                                          profiles and fuel consumption
-                                          patterns.
+                                          Select the type of vessel based on its cargo or use
                                         </p>
                                       </InfoTooltip>
                                     </div>
