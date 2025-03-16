@@ -193,12 +193,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                               <img 
                                 src="/images/oil_tanker.png" 
                                 alt="Oil Tanker" 
-                                className={`
-                                  ${vessel.size === 'small' ? 'h-5 w-5' : ''}
-                                  ${vessel.size === 'medium' ? 'h-6 w-6' : ''}
-                                  ${vessel.size === 'large' ? 'h-7 w-7' : ''}
-                                  ${vessel.size === 'vlarge' ? 'h-8 w-8' : ''}
-                                  object-contain
+                                className={`h-10 w-10 object-contain
                                 `}
                               />
                             ) : (
