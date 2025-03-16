@@ -217,7 +217,17 @@ export default function CalculatorForm() {
                                             ) : key === 'ro-ro' ? (
                                               <img src="/images/ro_ro_ship.png" alt="Ro-Ro Ship" className="h-6 w-6 object-contain mr-2" />
                                             ) : key === 'cruise-ship' ? (
-                                              <img src="/images/cruise_ship.png" alt="Cruise Ship" className="h-6 w-6 object-contain mr-2" />
+                                              <img 
+                                                src="/images/cruise_ship.png" 
+                                                alt="Cruise Ship" 
+                                                className={`
+                                                  ${key === 'boutique' ? 'h-4 w-4' : ''}
+                                                  ${key === 'premium' ? 'h-5 w-5' : ''}
+                                                  ${key === 'resort' ? 'h-6 w-6' : ''}
+                                                  ${key === 'mega' ? 'h-7 w-7' : ''}
+                                                  object-contain mr-2
+                                                `}
+                                              />
                                             ) : key === 'bulk-carrier' ? (
                                               <img src="/images/bulk_carrier.png" alt="Bulk Carrier" className="h-6 w-6 object-contain mr-2" />
                                             ) : key === 'oil-tanker' ? (
@@ -311,9 +321,10 @@ export default function CalculatorForm() {
                                                 src="/images/cruise_ship.png" 
                                                 alt="Cruise Ship"
                                                 className={`
-                                                  ${key === 'small' ? 'h-4 w-4' : ''}
-                                                  ${key === 'medium' ? 'h-6 w-6' : ''}
-                                                  ${key === 'large' ? 'h-8 w-8' : ''}
+                                                  ${key === 'boutique' ? 'h-4 w-4' : ''}
+                                                  ${key === 'premium' ? 'h-5 w-5' : ''}
+                                                  ${key === 'resort' ? 'h-6 w-6' : ''}
+                                                  ${key === 'mega' ? 'h-7 w-7' : ''}
                                                   object-contain mr-2
                                                 `}
                                               />
