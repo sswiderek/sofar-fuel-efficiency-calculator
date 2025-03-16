@@ -17,7 +17,7 @@ const formatNumber = (num: number) => {
   return Math.round(num).toLocaleString(undefined, { maximumFractionDigits: 0 });
 };
 
-const vesselCategories = {
+const vesselCategories: Record<string, string> = {
   'container-ship': 'Container Ship',
   'bulk-carrier': 'Bulk Carrier',
   'oil-tanker': 'Oil Tanker',
@@ -165,15 +165,15 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                                 src="/images/container_ship.png" 
                                 alt="Container Ship" 
                                 className={`
-                                  ${vessel.size === 'feeder' ? 'h-3 w-3' : ''}
-                                  ${vessel.size === 'feedermax' ? 'h-3 w-3' : ''}
-                                  ${vessel.size === 'small' ? 'h-3 w-3' : ''}
-                                  ${vessel.size === 'medium' ? 'h-3 w-3' : ''}
-                                  ${vessel.size === 'large' ? 'h-3 w-3' : ''}
-                                  ${vessel.size === 'vlarge' ? 'h-3 w-3' : ''}
-                                  ${vessel.size === 'panamax' ? 'h-3 w-3' : ''}
-                                  ${vessel.size === 'postpanamax' ? 'h-3 w-3' : ''}
-                                  ${vessel.size === 'ulcv' ? 'h-3 w-3' : ''}
+                                  ${vessel.size === 'feeder' ? 'h-6 w-6' : ''}
+                                  ${vessel.size === 'feedermax' ? 'h-6 w-6' : ''}
+                                  ${vessel.size === 'small' ? 'h-6 w-6' : ''}
+                                  ${vessel.size === 'medium' ? 'h-6 w-6' : ''}
+                                  ${vessel.size === 'large' ? 'h-6 w-6' : ''}
+                                  ${vessel.size === 'vlarge' ? 'h-6 w-6' : ''}
+                                  ${vessel.size === 'panamax' ? 'h-6 w-6' : ''}
+                                  ${vessel.size === 'postpanamax' ? 'h-6 w-6' : ''}
+                                  ${vessel.size === 'ulcv' ? 'h-6 w-6' : ''}
                                   object-contain
                                 `} 
                               />
