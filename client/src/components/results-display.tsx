@@ -55,7 +55,15 @@ const vesselSizes = {
 };
 
 const vesselSizeNames = (size: string) => {
-    return size.charAt(0).toUpperCase() + size.slice(1);
+    const sizeMap: Record<string, string> = {
+        'feeder': 'Feeder',
+        'feedermax': 'Feedermax',
+        'panamax': 'Panamax',
+        'postpanamax': 'Post-Panamax',
+        'newpanamax': 'New Panamax',
+        'ulcv': 'ULCV'
+    };
+    return sizeMap[size] || size.charAt(0).toUpperCase() + size.slice(1);
 }
 
 
