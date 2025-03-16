@@ -101,7 +101,7 @@ export const vesselIconSizes = {
 // Define size options for each vessel category
 export const vesselSizes = {
   "container-ship": {
-    "feeder": { label: "Feeder (Up to 0.5-1K TEU)", defaultConsumption: 25, defaultSeaDays: 280 },
+    "feeder": { label: "Feeder (0.5K-1K TEU)", defaultConsumption: 25, defaultSeaDays: 280 },
     "feedermax": { label: "Feedermax (1K-3K TEU)", defaultConsumption: 40, defaultSeaDays: 280 },
     "panamax": { label: "Panamax (3K-5K TEU)", defaultConsumption: 80, defaultSeaDays: 280 },
     "postpanamax": { label: "Post-Panamax (5K-10K TEU)", defaultConsumption: 150, defaultSeaDays: 280 },
