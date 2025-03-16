@@ -21,6 +21,7 @@ const vesselCategories: Record<string, string> = {
   'container-ship': 'Container Ship',
   'bulk-carrier': 'Bulk Carrier',
   'oil-tanker': 'Oil Tanker',
+  'ro-ro': 'Ro-Ro / General Cargo', // Added ro-ro category
 };
 
 // Updated vesselSizes to reflect more accurate and consistent naming
@@ -43,6 +44,11 @@ const vesselSizes = {
     'medium': { label: 'Medium (50,000-100,000 DWT)' },
     'large': { label: 'Large (100,000-200,000 DWT)' },
     'vlarge': { label: 'VLCC (200,000+ DWT)' },
+  },
+  'ro-ro': { // Added ro-ro sizes (example sizes, adjust as needed)
+    'small': { label: 'Small (<10,000 GT)' },
+    'medium': { label: 'Medium (10,000-20,000 GT)' },
+    'large': { label: 'Large (20,000-30,000 GT)' },
   },
 };
 
@@ -193,8 +199,13 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                               <img 
                                 src="/images/oil_tanker.png" 
                                 alt="Oil Tanker" 
-                                className={`h-10 w-10 object-contain
-                                `}
+                                className="h-10 w-10 object-contain"
+                              />
+                            ) : vessel.category === 'ro-ro' ? ( // Added ro-ro condition
+                              <img 
+                                src="/images/ro_ro_ship.png" 
+                                alt="Ro-Ro Ship" 
+                                className="h-10 w-10 object-contain"
                               />
                             ) : (
                               <Ship className="h-4 w-4" />
