@@ -78,7 +78,7 @@ export default function CalculatorForm() {
   const form = useForm<CalculatorInput>({
     resolver: zodResolver(calculatorInputSchema),
     defaultValues: {
-      fuelPrice: "",
+      fuelPrice: 0,
       estimatedSavings: 5,
       vessels: [
         {
@@ -240,7 +240,7 @@ export default function CalculatorForm() {
                                         // Clear fuel consumption when category changes
                                         form.setValue(
                                           `vessels.${index}.fuelConsumption`,
-                                          "",
+                                          0,
                                         );
                                       }
                                     }}
@@ -664,7 +664,7 @@ export default function CalculatorForm() {
                           category: "container-ship",
                           size: "small",
                           count: 1,
-                          fuelConsumption: 40,
+                          fuelConsumption: 0,
                           seaDaysPerYear: 280,
                         },
                       ]);
