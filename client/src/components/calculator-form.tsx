@@ -285,11 +285,11 @@ export default function CalculatorForm() {
                                                 src="/images/bulk_carrier.png" 
                                                 alt="Bulk Carrier" 
                                                 className={`
-                                                  ${key === 'small' ? 'h-1.5 w-1.5' : ''}
-                                                  ${key === 'medium' ? 'h-1.75 w-1.75' : ''}
-                                                  ${key === 'large' ? 'h-2 w-2' : ''}
-                                                  ${key === 'vlarge' ? 'h-2.25 w-2.25' : ''}
-                                                  ${key === 'vlcc' ? 'h-2.5 w-2.5' : ''}
+                                                  ${key === 'small' ? 'h-4 w-4' : ''}
+                                                  ${key === 'medium' ? 'h-4 w-4' : ''}
+                                                  ${key === 'large' ? 'h-4 w-4' : ''}
+                                                  ${key === 'vlarge' ? 'h-4 w-4' : ''}
+                                                  ${key === 'vlcc' ? 'h-4 w-4' : ''}
                                                   object-contain mr-2
                                                 `}
                                               />
