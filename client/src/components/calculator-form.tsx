@@ -612,12 +612,7 @@ export default function CalculatorForm() {
                                         Annual Sea Days
                                       </h4>
                                       <p className="text-slate-600 leading-relaxed">
-                                        Average number of days each vessel
-                                        spends at sea annually. The default
-                                        value of 280 days assumes typical port
-                                        calls and maintenance periods. Adjust
-                                        based on your operational schedule for
-                                        more precise calculations.
+                                        Average days at sea per vessel per year. Default is 280 days, accounting for port calls and maintenance. Adjust to match your schedule.
                                       </p>
                                     </InfoTooltip>
                                   </div>
