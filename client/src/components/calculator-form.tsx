@@ -311,10 +311,10 @@ export default function CalculatorForm() {
                                                 src="/images/cruise_ship.png" 
                                                 alt="Cruise Ship"
                                                 className={`
-                                                  ${key === 'expedition' ? 'h-4 w-4' : ''}
-                                                  ${key === 'small' ? 'h-5 w-5' : ''}
-                                                  ${key === 'medium' ? 'h-6 w-6' : ''}
-                                                  ${key === 'large' ? 'h-7 w-7' : ''}
+                                                  ${key === 'boutique' ? 'h-4 w-4' : ''}
+                                                  ${key === 'luxury' ? 'h-5 w-5' : ''}
+                                                  ${key === 'premium' ? 'h-6 w-6' : ''}
+                                                  ${key === 'megaship' ? 'h-7 w-7' : ''}
                                                   object-contain mr-2
                                                 `}
                                               />
