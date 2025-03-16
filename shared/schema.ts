@@ -116,8 +116,8 @@ export const vesselSizes = {
     "vlcc": { label: "VLOC (>200K DWT)", defaultConsumption: 35, defaultSeaDays: 280 }
   },
   "oil-tanker": {
-    "small": { label: "Small Tanker (<50K DWT)", defaultConsumption: 35, defaultSeaDays: 280 },
-    "medium": { label: "Medium Tanker (50K-80K DWT)", defaultConsumption: 45, defaultSeaDays: 280 },
+    "small": { label: "Small (<50K DWT)", defaultConsumption: 35, defaultSeaDays: 280 },
+    "medium": { label: "Medium (50K-80K DWT)", defaultConsumption: 45, defaultSeaDays: 280 },
     "aframax": { label: "Aframax (80K-120K DWT)", defaultConsumption: 55, defaultSeaDays: 280 },
     "suezmax": { label: "Suezmax (120K-160K DWT)", defaultConsumption: 65, defaultSeaDays: 280 },
     "vlcc": { label: "VLCC (160K-320K DWT)", defaultConsumption: 85, defaultSeaDays: 280 },
