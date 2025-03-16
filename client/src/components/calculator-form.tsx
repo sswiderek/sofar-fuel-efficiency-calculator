@@ -690,12 +690,16 @@ export default function CalculatorForm() {
                         <div className="flex items-center gap-1.5">
                           <DollarSignIcon className="h-4 w-4" />
                           <div className="flex items-center gap-1.5">
-                            <FormLabel>Fuel Price (USD/MT)</FormLabel>
+                            <FormLabel className="text-slate-700">Fuel Price (USD/MT)</FormLabel>
                             <InfoTooltip>
-                              <strong>Monthly Average VLSFO Fuel Price</strong><br/>
-                              Based on Ship & Bunker's Global 20 Ports Average. Monthly
-                              averages provide a stable baseline for calculations by smoothing
-                              out daily price fluctuations.
+                              <h4 className="text-slate-800 font-medium mb-1">
+                                Monthly Average VLSFO Fuel Price
+                              </h4>
+                              <p className="text-slate-600 leading-relaxed">
+                                Based on Ship & Bunker's Global 20 Ports Average. Monthly
+                                averages provide a stable baseline for calculations by smoothing
+                                out daily price fluctuations.
+                              </p>
                             </InfoTooltip>
                           </div>
                         </div>
