@@ -165,15 +165,15 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                                 src="/images/container_ship.png" 
                                 alt="Container Ship" 
                                 className={`
-                                  ${vessel.size === 'feeder' ? 'h-6 w-6' : ''}
-                                  ${vessel.size === 'feedermax' ? 'h-6 w-6' : ''}
-                                  ${vessel.size === 'small' ? 'h-6 w-6' : ''}
-                                  ${vessel.size === 'medium' ? 'h-6 w-6' : ''}
-                                  ${vessel.size === 'large' ? 'h-6 w-6' : ''}
-                                  ${vessel.size === 'vlarge' ? 'h-6 w-6' : ''}
-                                  ${vessel.size === 'panamax' ? 'h-6 w-6' : ''}
-                                  ${vessel.size === 'postpanamax' ? 'h-6 w-6' : ''}
-                                  ${vessel.size === 'ulcv' ? 'h-6 w-6' : ''}
+                                  ${vessel.size === 'feeder' ? 'h-8 w-8' : ''}
+                                  ${vessel.size === 'feedermax' ? 'h-8 w-8' : ''}
+                                  ${vessel.size === 'small' ? 'h-8 w-8' : ''}
+                                  ${vessel.size === 'medium' ? 'h-8 w-8' : ''}
+                                  ${vessel.size === 'large' ? 'h-8 w-8' : ''}
+                                  ${vessel.size === 'vlarge' ? 'h-8 w-8' : ''}
+                                  ${vessel.size === 'panamax' ? 'h-8 w-8' : ''}
+                                  ${vessel.size === 'postpanamax' ? 'h-8 w-8' : ''}
+                                  ${vessel.size === 'ulcv' ? 'h-8 w-8' : ''}
                                   object-contain
                                 `} 
                               />
