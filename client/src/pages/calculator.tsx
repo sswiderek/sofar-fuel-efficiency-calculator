@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CalculatorForm from "@/components/calculator-form";
+import AssumptionsSection from "@/components/assumptions-section";
 import { WavesIcon, Fuel as FuelIcon, DollarSign as DollarSignIcon, LeafIcon, Globe as GlobeIcon, SettingsIcon, BarChartIcon, TrendingUpIcon, TargetIcon, ChevronRightIcon } from "lucide-react";
 
 export default function Calculator() {
@@ -38,6 +39,7 @@ export default function Calculator() {
                 <li>See projected annual fuel savings and CO₂ emission reductions</li>
               </ul>
             </div>
+            <AssumptionsSection />
             <CalculatorForm />
             <div className="mt-12 mb-8">
               
