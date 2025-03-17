@@ -31,8 +31,8 @@ export default function AssumptionsSection() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <AssumptionCard
           icon={<BarChart3 className="h-5 w-5" />}
-          title="Proven Fuel Savings"
-          description="Based on real-world Wayfinder deployments, vessels typically achieve fuel savings of 4-10%. We use a conservative 5% in calculations to provide reliable estimates."
+          title="Expected Fuel Savings Rate"
+          description="Based on real-world Wayfinder deployments, vessels typically achieve fuel savings of 4-10%. We assume a conservative 5% in calculations to provide reliable estimates."
         />
         <AssumptionCard
           icon={<GaugeIcon className="h-5 w-5" />}
@@ -42,12 +42,12 @@ export default function AssumptionsSection() {
         <AssumptionCard
           icon={<Fuel className="h-5 w-5" />}
           title="VLSFO Fuel Type"
-          description="Calculations use Very Low Sulfur Fuel Oil (VLSFO) prices, which is the primary marine fuel used to comply with IMO 2020 sulfur regulations."
+          description="Calculations assume Very Low Sulfur Fuel Oil (VLSFO) prices, which is the primary marine fuel used to comply with IMO 2020 sulfur regulations."
         />
         <AssumptionCard
           icon={<Leaf className="h-5 w-5" />}
-          title="CO₂ Emissions Reduction"
-          description="Each metric ton of fuel burned produces 3.15 metric tons of CO₂, based on standard shipping benchmarks."
+          title="CO₂ Conversion Rate"
+          description="We assume each metric ton of fuel burned produces 3.15 metric tons of CO₂, based on standard shipping benchmarks."
         />
       </div>
     </Card>
