@@ -243,7 +243,7 @@ export default function CalculatorForm() {
                                           `vessels.${index}.size`,
                                           firstSize,
                                         );
-                                        
+
                                         // Clear fuel consumption when category changes
                                         form.setValue(
                                           `vessels.${index}.fuelConsumption`,
@@ -345,7 +345,7 @@ export default function CalculatorForm() {
                                           if (categoryData) {
                                             const sizeKey = value as string;
                                             const sizeData = categoryData[sizeKey as keyof typeof categoryData];
-                                            
+
                                             // Safely access consumption and sea days with explicit type check
                                             if (sizeData && 
                                                 typeof sizeData === 'object' && 
@@ -353,7 +353,7 @@ export default function CalculatorForm() {
                                                 'defaultSeaDays' in sizeData) {
                                               const consumption = Number(sizeData.defaultConsumption);
                                               const seaDays = Number(sizeData.defaultSeaDays);
-                                              
+
                                               // Only update if values are valid numbers
                                               if (!isNaN(consumption)) {
                                                 form.setValue(
@@ -361,7 +361,7 @@ export default function CalculatorForm() {
                                                   consumption
                                                 );
                                               }
-                                              
+
                                               if (!isNaN(seaDays)) {
                                                 form.setValue(
                                                   `vessels.${index}.seaDaysPerYear`,
@@ -541,28 +541,25 @@ export default function CalculatorForm() {
                             name={`vessels.${index}.fuelConsumption`}
                             render={({ field }) => (
                               <FormItem>
-                                <div className="relative flex items-center gap-1.5">
-                                  {" "}
+                                <div className="relative flex flex-col sm:flex-row sm:items-center gap-2">
                                   {/* Added relative positioning */}
-                                  <div className="flex flex-wrap items-center gap-2">
-                                    <FuelIcon className="h-4 w-4 text-foreground" />
-                                    <div className="space-y-1.5">
-                                      <div className="flex items-center gap-1.5">
-                                        <FormLabel className="relative text-slate-700 font-medium">
-                                          Fuel Consumption (MT/Day)
-                                        </FormLabel>
-                                        <InfoTooltip>
-                                          <h4 className="font-semibold mb-2 text-slate-700">
-                                            Daily Fuel Consumption
-                                          </h4>
-                                          <p className="text-slate-600 leading-relaxed">
-                                            Pre-populated with an industry average estimate based on vessel type
-                                            and size. For most accurate results, please adjust this value to match
-                                            your vessel's actual operational data. Includes fuel used for
-                                            propulsion only.
-                                          </p>
-                                        </InfoTooltip>
-                                      </div>
+                                  <div className="flex items-center gap-1.5">
+                                    <FuelIcon className="h-4 w-4 text-foreground shrink-0" />
+                                    <div className="flex items-center gap-1.5">
+                                      <FormLabel className="relative text-slate-700 font-medium whitespace-nowrap">
+                                        Fuel Consumption (MT/Day)
+                                      </FormLabel>
+                                      <InfoTooltip>
+                                        <h4 className="font-semibold mb-2 text-slate-700">
+                                          Daily Fuel Consumption
+                                        </h4>
+                                        <p className="text-slate-600 leading-relaxed">
+                                          Pre-populated with an industry average estimate based on vessel type
+                                          and size. For most accurate results, please adjust this value to match
+                                          your vessel's actual operational data. Includes fuel used for
+                                          propulsion only.
+                                        </p>
+                                      </InfoTooltip>
                                     </div>
                                   </div>
                                 </div>
