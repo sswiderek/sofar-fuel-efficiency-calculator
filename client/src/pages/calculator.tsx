@@ -32,13 +32,11 @@ export default function Calculator() {
           <CardContent>
             <div className="mb-4 p-4 bg-gradient-to-r from-sky-50 to-white border border-sky-100 rounded-lg">
               <h2 className="text-base font-medium text-slate-900 mb-1">How it works</h2>
-              <p className="text-xs text-slate-600 mb-2">This calculator demonstrates the potential impact of Wayfinder's weather routing optimization on your fleet:</p>
+              <p className="text-xs text-slate-600 mb-2">This calculator helps you estimate potential fuel savings and environmental impact using Sofar's Wayfinder platform:</p>
               <ul className="list-disc list-inside text-xs text-slate-600 space-y-0.5 ml-1">
-                <li>Input vessel details (type, size, count) and operational data</li>
-                <li>Use current VLSFO prices for accurate cost calculations</li>
-                <li>View annual fuel cost analysis and savings potential</li>
-                <li>Calculate environmental impact through CO₂ reduction metrics</li>
-                <li>Compare savings across different vessel categories</li>
+                <li>Enter your fleet details and operational data</li>
+                <li>Calculate annual fuel cost savings with real-time VLSFO prices</li>
+                <li>See projected CO₂ emission reductions for your fleet</li>
               </ul>
             </div>
             <CalculatorForm />
