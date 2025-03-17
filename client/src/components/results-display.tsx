@@ -254,7 +254,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                     <div className="text-slate-600">
                       Fuel Savings:
                       <InfoTooltip>
-                        The fuel savings percentage is estimated between 4% to 10%, based on typical results from Sofar Ocean's Wayfinder platform.
+                        Based on data from over 1,000 voyages, vessels using Wayfinder's weather routing typically achieve 4-10% fuel savings. We use a conservative 5% estimate for these calculations to provide reliable projections.
                       </InfoTooltip>
                     </div>
                     <div className="text-right font-medium">5%</div>
