@@ -1,5 +1,5 @@
 import React from "react";
-import { Clock, Fuel, BarChart3, Leaf, Cog } from "lucide-react";
+import { Clock, Fuel, BarChart3, Leaf, Gauge as GaugeIcon } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 type AssumptionProps = {
@@ -35,7 +35,7 @@ export default function AssumptionsSection() {
           description="Based on real-world Wayfinder deployments, vessels typically achieve fuel savings of 4-10%. We use a conservative 5% in calculations to provide reliable estimates."
         />
         <AssumptionCard
-          icon={<Cog className="h-5 w-5" />}
+          icon={<GaugeIcon className="h-5 w-5" />}
           title="Fuel Consumption Estimates"
           description="Fuel consumption estimates blend actual vessel data from our platform with industry standards based on vessel type and size. Individual performance varies with operating conditions."
         />
