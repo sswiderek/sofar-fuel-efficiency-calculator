@@ -9,6 +9,7 @@ import {
   Fuel,
   Scale,
   ScaleIcon,
+  Hash as HashIcon,
 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
