@@ -32,7 +32,7 @@ export default function AssumptionsSection() {
         <AssumptionCard
           icon={<BarChart3 className="h-5 w-5" />}
           title="Expected Fuel Savings Rate"
-          description="Based on real-world Wayfinder deployments, vessels typically achieve fuel savings of 4-10%. We assume a conservative 5% in calculations to provide reliable estimates."
+          description="Based on real-world Wayfinder deployments, vessels typically achieve fuel savings of 4-8%. We assume a conservative 5% in calculations to provide reliable estimates."
         />
         <AssumptionCard
           icon={<GaugeIcon className="h-5 w-5" />}
