@@ -276,24 +276,14 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
           </div>
         </Card>
 
-        <Card className="bg-gradient-to-r from-blue-900 to-blue-800 p-6 mt-5 shadow-xl border-0">
-          <div className="flex items-center gap-2.5 text-white/95">
-            <div className="rounded-full bg-blue-700/40 p-1.5">
-              <DollarSign className="h-4 w-4" />
+        <Card className="w-full bg-gradient-to-br from-blue-900 to-blue-800 text-white p-6 hover:from-blue-800 hover:to-blue-700 transition-all transform hover:scale-[1.02] shadow-xl hover:shadow-2xl cursor-pointer border border-blue-700" onClick={() => window.open('https://www.sofarocean.com/posts/wayfinder-voyage-optimization-savings-report-2024', '_blank')}>
+          <div className="flex items-center gap-4">
+            <DollarSign className="h-8 w-8 text-blue-300" />
+            <div>
+              <h3 className="text-lg font-semibold tracking-tight">Real-World Success Stories</h3>
+              <p className="text-sm text-blue-100">2024 Savings Report: Major fuel savings achieved across global routes</p>
+              <p className="text-sm text-blue-200 mt-2 flex items-center group">Download 2024 savings report <ChevronDown className="h-4 w-4 ml-1 rotate-270 group-hover:translate-x-1 transition-transform" /></p>
             </div>
-            <span className="text-base font-semibold tracking-wide">Real-World Success Stories</span>
-          </div>
-          <div className="mt-4">
-            <p className="text-white/90 font-medium">
-              2024 Savings Report: Major fuel savings achieved across global routes
-            </p>
-            <a 
-              href="/download/2024-savings-report" 
-              className="inline-flex items-center mt-3 text-sm text-white/80 hover:text-white group"
-            >
-              Download 2024 savings report 
-              <ChevronDown className="h-4 w-4 ml-1 rotate-[-90deg] group-hover:translate-x-0.5 transition-transform" />
-            </a>
           </div>
         </Card>
       </div>
