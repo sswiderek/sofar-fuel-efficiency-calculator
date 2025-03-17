@@ -30,9 +30,9 @@ export default function AssumptionsSection() {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <AssumptionCard
-          icon={<Fuel className="h-5 w-5" />}
-          title="VLSFO Fuel Type"
-          description="Calculations use Very Low Sulfur Fuel Oil (VLSFO) prices, which is the primary marine fuel used to comply with IMO 2020 sulfur regulations."
+          icon={<BarChart3 className="h-5 w-5" />}
+          title="Proven Fuel Savings"
+          description="Based on real-world Wayfinder deployments, vessels typically achieve fuel savings of 4-10%. We use a conservative 5% in calculations to provide reliable estimates."
         />
         <AssumptionCard
           icon={<Cog className="h-5 w-5" />}
@@ -40,9 +40,9 @@ export default function AssumptionsSection() {
           description="Fuel consumption estimates are derived from actual vessel data across our platform to maximize accuracy, though individual vessel performance may vary."
         />
         <AssumptionCard
-          icon={<BarChart3 className="h-5 w-5" />}
-          title="Proven Fuel Savings"
-          description="Based on real-world Wayfinder deployments, vessels typically achieve fuel savings of 4-10%. We use a conservative 5% in calculations to provide reliable estimates."
+          icon={<Fuel className="h-5 w-5" />}
+          title="VLSFO Fuel Type"
+          description="Calculations use Very Low Sulfur Fuel Oil (VLSFO) prices, which is the primary marine fuel used to comply with IMO 2020 sulfur regulations."
         />
         <AssumptionCard
           icon={<Leaf className="h-5 w-5" />}
