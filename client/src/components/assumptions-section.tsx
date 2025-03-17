@@ -41,7 +41,7 @@ export default function AssumptionsSection() {
         />
         <AssumptionCard
           icon={<BarChart3 className="h-5 w-5" />}
-          title="Estimated Savings Range"
+          title="Proven Fuel Savings"
           description="Based on real-world Wayfinder deployments, vessels typically achieve fuel savings of 4-10%. We use a conservative 5% in calculations to provide reliable estimates."
         />
         <AssumptionCard
