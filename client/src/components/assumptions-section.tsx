@@ -37,7 +37,7 @@ export default function AssumptionsSection() {
         <AssumptionCard
           icon={<Cog className="h-5 w-5" />}
           title="Fuel Consumption Estimates"
-          description="Fuel consumption estimates are derived from actual vessel data across our platform to maximize accuracy, though individual vessel performance may vary."
+          description="Fuel consumption estimates are based on industry standard ranges for each vessel type and size. Individual vessel performance may vary significantly based on operating conditions."
         />
         <AssumptionCard
           icon={<Fuel className="h-5 w-5" />}
