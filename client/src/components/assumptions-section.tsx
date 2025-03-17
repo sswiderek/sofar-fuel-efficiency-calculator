@@ -1,5 +1,5 @@
 import React from "react";
-import { Clock, Fuel, BarChart3, Leaf } from "lucide-react";
+import { Clock, Fuel, BarChart3, Leaf, Cog } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 type AssumptionProps = {
