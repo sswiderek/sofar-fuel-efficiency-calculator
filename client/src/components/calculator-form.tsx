@@ -40,6 +40,7 @@ import {
   DollarSignIcon,
   AnchorIcon,
   GaugeIcon,
+  FireIcon,
 } from "lucide-react";
 import {
   Tooltip,
@@ -501,11 +502,11 @@ export default function CalculatorForm() {
                             name={`vessels.${index}.count`}
                             render={({ field }) => (
                               <FormItem>
-                                <div className="flex items-center gap-1.5">
+                                <div className="flex items-center h-14 mb-1">
                                   <div className="flex items-center gap-2">
                                     <AnchorIcon className="h-4 w-4 text-foreground" />
                                     <div className="flex items-center gap-1.5">
-                                      <FormLabel className="relative text-slate-700 font-medium">
+                                      <FormLabel className="text-slate-700 font-medium">
                                         Number of Ships
                                       </FormLabel>
                                       <InfoTooltip>
@@ -523,12 +524,13 @@ export default function CalculatorForm() {
                                 <FormControl>
                                   <Input
                                     type="number"
-                                    className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
+                                    min={1}
                                     placeholder="e.g. 5"
                                     {...field}
                                     onChange={(e) =>
                                       field.onChange(Number(e.target.value))
                                     }
+                                    className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
                                   />
                                 </FormControl>
                                 <FormMessage className="text-xs mt-1.5 bg-red-50 text-red-700 px-1.5 py-0.5 rounded border border-red-200/50 inline-block" />
@@ -541,7 +543,7 @@ export default function CalculatorForm() {
                             name={`vessels.${index}.fuelConsumption`}
                             render={({ field }) => (
                               <FormItem>
-                                <div className="relative flex flex-col sm:flex-row sm:items-center gap-2">
+                                <div className="relative flex flex-col sm:flex-row sm:items-center gap-2 h-14 mb-1">
                                   {/* Added relative positioning */}
                                   <div className="flex items-center gap-1.5">
                                     <FuelIcon className="h-4 w-4 text-foreground shrink-0" />
