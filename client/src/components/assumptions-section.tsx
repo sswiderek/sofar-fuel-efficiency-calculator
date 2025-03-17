@@ -30,14 +30,14 @@ export default function AssumptionsSection() {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <AssumptionCard
-          icon={<Clock className="h-5 w-5" />}
-          title="Main Engine Fuel Usage"
-          description="Calculations focus solely on fuel consumption for vessel propulsion (main engines), excluding auxiliary power generation used for onboard systems."
-        />
-        <AssumptionCard
           icon={<Fuel className="h-5 w-5" />}
           title="VLSFO Fuel Type"
           description="Calculations use Very Low Sulfur Fuel Oil (VLSFO) prices, which is the primary marine fuel used to comply with IMO 2020 sulfur regulations."
+        />
+        <AssumptionCard
+          icon={<Clock className="h-5 w-5" />}
+          title="Main Engine Fuel Usage"
+          description="Calculations focus solely on fuel consumption for vessel propulsion (main engines), excluding auxiliary power generation used for onboard systems."
         />
         <AssumptionCard
           icon={<BarChart3 className="h-5 w-5" />}
