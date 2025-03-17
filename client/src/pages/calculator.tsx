@@ -35,7 +35,7 @@ export default function Calculator() {
               <p className="text-xs text-slate-600 mb-2">This calculator helps you estimate potential fuel savings and environmental impact using Sofar's Wayfinder platform:</p>
               <ul className="list-disc list-inside text-xs text-slate-600 space-y-0.5 ml-1">
                 <li>Enter your fleet details and operational data</li>
-                <li>Calculate annual fuel cost savings with real-time VLSFO prices</li>
+                <li>Calculate savings based on real-world weather routing data</li>
                 <li>See projected CO₂ emission reductions for your fleet</li>
               </ul>
             </div>
