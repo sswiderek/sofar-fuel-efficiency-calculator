@@ -42,7 +42,7 @@ export default function AssumptionsSection() {
         <AssumptionCard
           icon={<BarChart3 className="h-5 w-5" />}
           title="Estimated Savings Range"
-          description="The fuel savings percentage is estimated between 4% to 10%, based on typical results from Sofar Ocean's Wayfinder platform. Our calculator uses a 5% savings rate as a conservative baseline."
+          description="Fuel savings of 4-10% based on typical Wayfinder results. Calculator uses conservative 5% baseline."
         />
         <AssumptionCard
           icon={<Leaf className="h-5 w-5" />}
