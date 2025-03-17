@@ -220,7 +220,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                       <div className="text-slate-600 font-medium">
                         Fuel Price:
                         <InfoTooltip>
-                          We use Very Low Sulfur Fuel Oil (VLSFO) prices in our calculations as it's the maritime industry standard fuel that complies with IMO 2020 emissions regulations, which limit sulfur content to 0.5%.
+                          Based on Very Low Sulfur Fuel Oil (VLSFO) prices - the industry standard fuel required by IMO 2020 regulations for reduced emissions.
                         </InfoTooltip>
                       </div>
                       <div className="text-right font-medium">${fuelPrice.toLocaleString()}/MT</div>
