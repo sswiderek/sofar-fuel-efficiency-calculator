@@ -503,7 +503,7 @@ export default function CalculatorForm() {
                               <FormItem>
                                 <div className="flex items-center gap-1.5">
                                   <div className="flex items-center gap-2">
-                                    <AnchorIcon className="h-4 w-4 text-foreground" />
+                                    <HashIcon className="h-4 w-4 text-foreground" />
                                     <div className="flex items-center gap-1.5">
                                       <FormLabel className="relative text-slate-700 font-medium">
                                         Number of Ships
