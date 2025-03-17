@@ -35,7 +35,7 @@ export default function AssumptionsSection() {
           description="Calculations use Very Low Sulfur Fuel Oil (VLSFO) prices, which is the primary marine fuel used to comply with IMO 2020 sulfur regulations."
         />
         <AssumptionCard
-          icon={<Clock className="h-5 w-5" />}
+          icon={<Cog className="h-5 w-5" />}
           title="Main Engine Fuel Usage"
           description="Calculations focus solely on fuel consumption for vessel propulsion (main engines), excluding auxiliary power generation used for onboard systems."
         />
