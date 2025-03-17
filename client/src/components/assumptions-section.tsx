@@ -36,8 +36,8 @@ export default function AssumptionsSection() {
         />
         <AssumptionCard
           icon={<Cog className="h-5 w-5" />}
-          title="Main Engine Fuel Usage"
-          description="Calculations focus solely on fuel consumption for vessel propulsion (main engines), excluding auxiliary power generation used for onboard systems."
+          title="Fuel Consumption Estimates"
+          description="Fuel consumption estimates are derived from actual vessel data across our platform to maximize accuracy, though individual vessel performance may vary."
         />
         <AssumptionCard
           icon={<BarChart3 className="h-5 w-5" />}
