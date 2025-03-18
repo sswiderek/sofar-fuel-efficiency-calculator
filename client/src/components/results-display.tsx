@@ -269,10 +269,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                   </div>
                 </CollapsibleContent>
               </Collapsible>
-              <div className="text-sm text-slate-500 mt-2">
-                Optimized routing and operations could reduce your annual fuel spend by ${annualSavings.toLocaleString()}
               </div>
-            </div>
           </div>
         </Card>
 
