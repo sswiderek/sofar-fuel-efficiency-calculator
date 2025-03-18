@@ -134,33 +134,45 @@ export default function CalculatorForm() {
             // First set the entire vessels array to ensure the proper number of vessels is created
             form.setValue("vessels", sharedData.vessels);
             
-            // Then individually set each vessel's fields to ensure proper rendering in UI components
+            // Process each vessel in two stages to ensure proper rendering
+            // First stage - set categories for all vessels
             sharedData.vessels.forEach((vessel: any, index: number) => {
-              // Set category first
               if (vessel.category) {
+                console.log(`Setting vessel ${index} category to ${vessel.category}`);
                 form.setValue(`vessels.${index}.category`, vessel.category);
               }
-              
-              // Then explicitly set the size - this is needed for the select to render properly
-              if (vessel.size) {
-                setTimeout(() => {
-                  form.setValue(`vessels.${index}.size`, vessel.size);
-                }, 0); // Using setTimeout to ensure this happens after the category has been processed
-              }
-              
-              // Set other fields
-              if (vessel.count) {
-                form.setValue(`vessels.${index}.count`, Number(vessel.count));
-              }
-              
-              if (vessel.fuelConsumption) {
-                form.setValue(`vessels.${index}.fuelConsumption`, Number(vessel.fuelConsumption));
-              }
-              
-              if (vessel.seaDaysPerYear) {
-                form.setValue(`vessels.${index}.seaDaysPerYear`, Number(vessel.seaDaysPerYear));
-              }
             });
+            
+            // Wait for categories to be processed, then set sizes and other fields
+            setTimeout(() => {
+              sharedData.vessels.forEach((vessel: any, index: number) => {
+                // Set size with explicit forceRender
+                if (vessel.size) {
+                  console.log(`Setting vessel ${index} size to ${vessel.size}`);
+                  form.setValue(`vessels.${index}.size`, vessel.size, { 
+                    shouldValidate: true,
+                    shouldDirty: true,
+                    shouldTouch: true
+                  });
+                }
+                
+                // Set other fields
+                if (vessel.count) {
+                  form.setValue(`vessels.${index}.count`, Number(vessel.count));
+                }
+                
+                if (vessel.fuelConsumption) {
+                  form.setValue(`vessels.${index}.fuelConsumption`, Number(vessel.fuelConsumption));
+                }
+                
+                if (vessel.seaDaysPerYear) {
+                  form.setValue(`vessels.${index}.seaDaysPerYear`, Number(vessel.seaDaysPerYear));
+                }
+              });
+              
+              // Force a form update
+              form.trigger();
+            }, 100); // Slightly longer timeout to ensure DOM has updated
           }
           
           // Update fuel price
@@ -422,6 +434,7 @@ export default function CalculatorForm() {
                                 <FormControl>
                                   <Select
                                     onValueChange={(value) => {
+                                      console.log(`Size changed to: ${value}`);
                                       field.onChange(value);
                                       const category = form.getValues(
                                         `vessels.${index}.category`,
@@ -442,15 +455,20 @@ export default function CalculatorForm() {
                                               const consumption = Number((sizeData as any).defaultConsumption);
                                               const seaDays = Number((sizeData as any).defaultSeaDays);
 
-                                              // Only update if values are valid numbers
-                                              if (!isNaN(consumption)) {
+                                              // Only update if values are valid numbers and if the user hasn't modified them already
+                                              // (Don't override values from a saved state)
+                                              const currentConsumption = form.getValues(`vessels.${index}.fuelConsumption`);
+                                              const currentSeaDays = form.getValues(`vessels.${index}.seaDaysPerYear`);
+                                              
+                                              // Only set default values if current values are 0 or not yet set
+                                              if (!isNaN(consumption) && (!currentConsumption || currentConsumption === 0)) {
                                                 form.setValue(
                                                   `vessels.${index}.fuelConsumption`,
                                                   consumption
                                                 );
                                               }
 
-                                              if (!isNaN(seaDays)) {
+                                              if (!isNaN(seaDays) && (!currentSeaDays || currentSeaDays === 0)) {
                                                 form.setValue(
                                                   `vessels.${index}.seaDaysPerYear`,
                                                   seaDays
@@ -464,6 +482,7 @@ export default function CalculatorForm() {
                                       }
                                     }}
                                     value={field.value}
+                                    defaultValue={field.value}
                                   >
                                     <SelectTrigger className="bg-white">
                                       <SelectValue placeholder="Select vessel size" />
