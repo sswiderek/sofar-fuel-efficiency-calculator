@@ -1,13 +1,17 @@
 import { Card } from "@/components/ui/card";
 import { CalculationResult, vesselCategories, vesselDisplayNames, vesselIconSizes } from "@shared/schema";
-import { DollarSign, Info, LeafIcon, TrendingDown, Car, ChevronDown, Ship } from "lucide-react"; 
+import { DollarSign, Info, LeafIcon, TrendingDown, Car, ChevronDown, Ship, Share2 } from "lucide-react"; 
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"; 
 import { InfoTooltip } from "@/components/info-tooltip";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 
 interface ResultsDisplayProps {
   results: CalculationResult[];
+  originalFormData?: any;
 }
 
 const formatNumber = (num: number) => {
@@ -42,7 +46,10 @@ const getVesselIconSize = (category: string, size: string): string => {
 };
 
 
-export default function ResultsDisplay({ results }: ResultsDisplayProps) {
+export default function ResultsDisplay({ results, originalFormData }: ResultsDisplayProps) {
+  const { toast } = useToast();
+  const [isCopying, setIsCopying] = useState(false);
+
   if (!results || results.length === 0) return null;
 
   const result = results[0];
@@ -54,11 +61,58 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   const fuelPrice = result?.fuelPrice || 0;
   const estimatedSavings = result?.estimatedSavings || 0;
 
+  // Create a sharable link with calculation data
+  const handleShare = () => {
+    try {
+      setIsCopying(true);
+      
+      // Create a shareable data object that contains all necessary information
+      const shareData = {
+        vessels: result.vessels,
+        fuelPrice: result.fuelPrice,
+        estimatedSavings: 5, // Fixed at 5% in the calculator
+        results: result
+      };
+      
+      // Convert to a base64 URL-friendly string
+      const encoded = btoa(encodeURIComponent(JSON.stringify(shareData)));
+      
+      // Create the URL with the data
+      const url = `${window.location.origin}${window.location.pathname}?data=${encoded}`;
+      
+      // Copy to clipboard
+      navigator.clipboard.writeText(url).then(() => {
+        toast({
+          title: "Link copied!",
+          description: "Share this link to show your calculation results",
+          variant: "default",
+        });
+      });
+    } catch (error) {
+      toast({
+        title: "Error creating share link",
+        description: "Could not create a shareable link",
+        variant: "destructive",
+      });
+      console.error("Share error:", error);
+    } finally {
+      setIsCopying(false);
+    }
+  };
 
   return (
     <TooltipProvider>
     <div className="max-w-4xl space-y-6">
-      <h2 className="text-xl font-bold text-slate-800 mb-2">Analysis Results</h2>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-bold text-slate-800">Analysis Results</h2>
+        <Button 
+          onClick={handleShare} 
+          disabled={isCopying}
+          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white">
+          <Share2 className="h-4 w-4" />
+          {isCopying ? "Copying..." : "Share Results"}
+        </Button>
+      </div>
       <div className="grid gap-5">
         <Card className="bg-gradient-to-br from-[#175D8D] to-[#0D4A75] p-7 shadow-xl border-0">
           <div className="flex items-center gap-2.5 text-white/95">

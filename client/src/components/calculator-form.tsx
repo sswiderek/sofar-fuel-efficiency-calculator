@@ -77,11 +77,30 @@ export default function CalculatorForm() {
   const { toast } = useToast();
   const [results, setResults] = useState<CalculationResult[] | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
+  const [originalFormData, setOriginalFormData] = useState<any>(null);
+  const [sharedDataProcessed, setSharedDataProcessed] = useState(false);
 
   const { data: fuelPriceData, isError: isFuelPriceError } =
     useQuery<VLSFOPrice>({
       queryKey: ["/api/vlsfo-price"],
     });
+
+  // Parse shared data from URL if available
+  const parseSharedData = () => {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const sharedData = urlParams.get('data');
+      
+      if (sharedData) {
+        // Decode the base64 URL string
+        const decodedData = JSON.parse(decodeURIComponent(atob(sharedData)));
+        return decodedData;
+      }
+    } catch (error) {
+      console.error("Error parsing shared data:", error);
+    }
+    return null;
+  };
 
   const form = useForm<CalculatorInput>({
     resolver: zodResolver(calculatorInputSchema),
