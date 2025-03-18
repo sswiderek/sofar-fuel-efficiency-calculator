@@ -69,10 +69,26 @@ export default function ResultsDisplay({ results, originalFormData }: ResultsDis
       // Create a shareable data object that contains all necessary information
       // Use the original form data passed from the calculator component if available
       const shareData = {
-        vessels: result.vessels,
-        fuelPrice: result.fuelPrice,
+        version: "1.0",
+        timestamp: new Date().toISOString(),
+        vessels: result.vessels.map(vessel => ({
+          category: vessel.category,
+          size: vessel.size,
+          count: Number(vessel.count),
+          fuelConsumption: Number(vessel.fuelConsumption),
+          seaDaysPerYear: Number(vessel.seaDaysPerYear)
+        })),
+        fuelPrice: Number(result.fuelPrice),
         estimatedSavings: 5, // Fixed at 5% in the calculator
-        results: result
+        results: {
+          totalFuelCost: result.totalFuelCost,
+          estimatedSavings: result.estimatedSavings,
+          fuelCostWithWayfinder: result.fuelCostWithWayfinder,
+          co2Reduction: result.co2Reduction,
+          totalFuelConsumption: result.totalFuelConsumption,
+          fuelPrice: result.fuelPrice,
+          vessels: result.vessels
+        }
       };
       
       // Convert to a base64 URL-friendly string

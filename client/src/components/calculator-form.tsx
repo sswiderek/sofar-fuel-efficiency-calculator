@@ -129,9 +129,38 @@ export default function CalculatorForm() {
       if (sharedData) {
         // Update form values with shared data
         try {
-          // Update vessels data
+          // Update vessels data with special handling for the select fields
           if (sharedData.vessels && Array.isArray(sharedData.vessels)) {
+            // First set the entire vessels array to ensure the proper number of vessels is created
             form.setValue("vessels", sharedData.vessels);
+            
+            // Then individually set each vessel's fields to ensure proper rendering in UI components
+            sharedData.vessels.forEach((vessel: any, index: number) => {
+              // Set category first
+              if (vessel.category) {
+                form.setValue(`vessels.${index}.category`, vessel.category);
+              }
+              
+              // Then explicitly set the size - this is needed for the select to render properly
+              if (vessel.size) {
+                setTimeout(() => {
+                  form.setValue(`vessels.${index}.size`, vessel.size);
+                }, 0); // Using setTimeout to ensure this happens after the category has been processed
+              }
+              
+              // Set other fields
+              if (vessel.count) {
+                form.setValue(`vessels.${index}.count`, Number(vessel.count));
+              }
+              
+              if (vessel.fuelConsumption) {
+                form.setValue(`vessels.${index}.fuelConsumption`, Number(vessel.fuelConsumption));
+              }
+              
+              if (vessel.seaDaysPerYear) {
+                form.setValue(`vessels.${index}.seaDaysPerYear`, Number(vessel.seaDaysPerYear));
+              }
+            });
           }
           
           // Update fuel price
@@ -410,8 +439,8 @@ export default function CalculatorForm() {
                                                 typeof sizeData === 'object' && 
                                                 'defaultConsumption' in sizeData && 
                                                 'defaultSeaDays' in sizeData) {
-                                              const consumption = Number(sizeData.defaultConsumption);
-                                              const seaDays = Number(sizeData.defaultSeaDays);
+                                              const consumption = Number((sizeData as any).defaultConsumption);
+                                              const seaDays = Number((sizeData as any).defaultSeaDays);
 
                                               // Only update if values are valid numbers
                                               if (!isNaN(consumption)) {
