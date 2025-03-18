@@ -67,6 +67,7 @@ export default function ResultsDisplay({ results, originalFormData }: ResultsDis
       setIsCopying(true);
       
       // Create a shareable data object that contains all necessary information
+      // Use the original form data passed from the calculator component if available
       const shareData = {
         vessels: result.vessels,
         fuelPrice: result.fuelPrice,

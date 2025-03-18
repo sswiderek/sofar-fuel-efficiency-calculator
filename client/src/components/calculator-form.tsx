@@ -121,11 +121,46 @@ export default function CalculatorForm() {
 
   const resultsRef = React.useRef<HTMLDivElement>(null);
 
+  // Process shared data from URL and populate form fields
   useEffect(() => {
-    if (fuelPriceData?.price) {
+    if (!sharedDataProcessed) {
+      const sharedData = parseSharedData();
+      
+      if (sharedData) {
+        // Update form values with shared data
+        try {
+          // Update vessels data
+          if (sharedData.vessels && Array.isArray(sharedData.vessels)) {
+            form.setValue("vessels", sharedData.vessels);
+          }
+          
+          // Update fuel price
+          if (sharedData.fuelPrice) {
+            form.setValue("fuelPrice", Number(sharedData.fuelPrice));
+          }
+          
+          // Store original form data to pass to results display
+          setOriginalFormData(sharedData);
+          
+          // If results are included in the shared data, set them
+          if (sharedData.results) {
+            setResults([{ ...sharedData.results, label: "Estimated Savings" }]);
+          }
+          
+          // Mark as processed to avoid repeated processing
+          setSharedDataProcessed(true);
+        } catch (error) {
+          console.error("Error populating form with shared data:", error);
+        }
+      }
+    }
+  }, [form, sharedDataProcessed]);
+
+  useEffect(() => {
+    if (fuelPriceData?.price && !sharedDataProcessed) {
       form.setValue("fuelPrice", Number(fuelPriceData.price));
     }
-  }, [fuelPriceData, form]);
+  }, [fuelPriceData, form, sharedDataProcessed]);
 
   useEffect(() => {
     if (results && resultsRef.current) {
@@ -192,6 +227,10 @@ export default function CalculatorForm() {
         const res = await apiRequest("POST", "/api/calculate", data);
         if (!res.ok) throw new Error("API request failed");
         const json = await res.json();
+        
+        // Store the form data for sharing
+        setOriginalFormData(data);
+        
         setResults([{ ...json, label: "Estimated Savings" }]);
       } catch (error) {
         console.error("API error:", error);
@@ -780,7 +819,10 @@ export default function CalculatorForm() {
               transition={{ duration: 0.5 }}
               className="mt-2 md:mt-8"
             >
-              <ResultsDisplay results={results} />
+              <ResultsDisplay 
+                results={results} 
+                originalFormData={originalFormData || form.getValues()}
+              />
             </motion.div>
           ) : (
             <div className="h-full flex flex-col items-center justify-center gap-2 text-muted-foreground -mt-8">
