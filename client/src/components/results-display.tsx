@@ -109,9 +109,9 @@ export default function ResultsDisplay({ results, originalFormData }: ResultsDis
         <Button 
           onClick={handleShare} 
           disabled={isCopying}
-          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white">
-          <Share2 className="h-4 w-4" />
-          {isCopying ? "Copying..." : "Share Results"}
+          className="flex items-center gap-1.5 bg-gradient-to-r from-[#175D8D] to-[#0D4A75] hover:from-[#1A6BA3] hover:to-[#0F568A] text-white px-4 py-2 shadow-md rounded-md transition-all duration-200 transform hover:scale-[1.02]">
+          <Share2 className="h-4 w-4 text-white/90" />
+          <span className="font-medium tracking-wide text-sm">{isCopying ? "Copying..." : "Share Results"}</span>
         </Button>
       </div>
       <div className="grid gap-5">
