@@ -36,7 +36,7 @@ export default function Calculator() {
               />
               <div className="border-l pl-6 border-slate-200">
                 <CardTitle className="text-2xl font-bold tracking-tight text-slate-900">
-                  Maritime Fuel Savings Simulator
+                  Maritime Fuel Savings Calculator
                 </CardTitle>
                 <p className="text-sm text-slate-600 mt-1.5 tracking-wide">
                   Estimate your cost savings and{" "}
