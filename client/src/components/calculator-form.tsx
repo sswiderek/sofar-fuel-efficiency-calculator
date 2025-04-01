@@ -57,6 +57,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+// Import modified inputs with empty value handling
+import {
+  CountInput,
+  FuelConsumptionInput,
+  SeaDaysInput,
+  FuelPriceInput
+} from "../modified-inputs";
 
 interface VLSFOPrice {
   price: number | null;
@@ -628,17 +635,11 @@ export default function CalculatorForm() {
                                     </div>
                                   </div>
                                 </div>
-                                <FormControl>
-                                  <Input
-                                    type="number"
-                                    className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
-                                    placeholder="e.g. 5"
-                                    {...field}
-                                    onChange={(e) =>
-                                      field.onChange(Number(e.target.value))
-                                    }
-                                  />
-                                </FormControl>
+                                <CountInput 
+                                  field={field} 
+                                  className="w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
+                                  placeholder="e.g. 5"
+                                />
                                 <FormMessage className="text-xs mt-1.5 bg-red-50 text-red-700 px-1.5 py-0.5 rounded border border-red-200/50 inline-block" />
                               </FormItem>
                             )}
@@ -672,21 +673,10 @@ export default function CalculatorForm() {
                                   </div>
                                 </div>
                                 <div>
-                                  <FormControl>
-                                    <Input
-                                      type="number"
-                                      {...field}
-                                      className={`w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200 ${vessel.category ? "bg-slate-50 border-dashed" : ""}`}
-                                      placeholder={
-                                        vessel.category
-                                          ? "Estimated value"
-                                          : "Enter value"
-                                      }
-                                      onChange={(e) =>
-                                        field.onChange(Number(e.target.value))
-                                      }
-                                    />
-                                  </FormControl>
+                                  <FuelConsumptionInput 
+                                    field={field} 
+                                    vessel={vessel}
+                                  />
                                   {vessel.category && vessel.size && (
                                     <div className="text-xs text-amber-600 text-right mt-1.5">
                                       <span className="bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200/50">
@@ -724,21 +714,10 @@ export default function CalculatorForm() {
                                 </div>
                               </div>
                               <div>
-                                <FormControl>
-                                  <Input
-                                    type="number"
-                                    className={`w-full bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200 ${vessel.category ? "bg-slate-50 border-dashed" : ""}`}
-                                    placeholder={
-                                      vessel.category
-                                        ? "Estimated value"
-                                        : "Enter value"
-                                    }
-                                    {...field}
-                                    onChange={(e) =>
-                                      field.onChange(Number(e.target.value))
-                                    }
-                                  />
-                                </FormControl>
+                                <SeaDaysInput
+                                  field={field}
+                                  vessel={vessel}
+                                />
                               </div>
                               <FormMessage className="text-xs mt-1.5 bg-red-50 text-red-700 px-1.5 py-0.5 rounded border border-red-200/50 inline-block" />
                             </FormItem>
@@ -814,20 +793,10 @@ export default function CalculatorForm() {
                           <span className="absolute left-2.5 text-gray-500 top-[9px]">
                             $
                           </span>
-                          <FormControl>
-                            <Input
-                              placeholder="Enter fuel price"
-                              {...field}
-                              onChange={(e) =>
-                                field.onChange(
-                                  e.target.value
-                                    ? Number(e.target.value)
-                                    : undefined,
-                                )
-                              }
-                              className="w-full pl-7 bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
-                            />
-                          </FormControl>
+                          <FuelPriceInput 
+                            field={field}
+                            className="w-full pl-7 bg-white/80 border-slate-200/80 focus:border-sky-200 focus:ring-sky-200"
+                          />
                         </div>
                       </div>
                       <div className="text-xs text-slate-500 mt-1">
