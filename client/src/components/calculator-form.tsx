@@ -105,7 +105,7 @@ export default function CalculatorForm() {
   const form = useForm<CalculatorInput>({
     resolver: zodResolver(calculatorInputSchema),
     defaultValues: {
-      fuelPrice: 596,
+      fuelPrice: 556.50,
       estimatedSavings: 5,
       vessels: [
         {
@@ -198,10 +198,11 @@ export default function CalculatorForm() {
   }, [form, sharedDataProcessed]);
 
   useEffect(() => {
-    if (fuelPriceData?.price && !sharedDataProcessed) {
-      form.setValue("fuelPrice", Number(fuelPriceData.price));
+    if (!sharedDataProcessed) {
+      // Always use 556.50 as the fuel price, regardless of API data
+      form.setValue("fuelPrice", 556.50);
     }
-  }, [fuelPriceData, form, sharedDataProcessed]);
+  }, [form, sharedDataProcessed]);
 
   useEffect(() => {
     if (results && resultsRef.current) {
@@ -830,12 +831,7 @@ export default function CalculatorForm() {
                         </div>
                       </div>
                       <div className="text-xs text-slate-500 mt-1">
-                        {fuelPriceData?.isError
-                          ? fuelPriceData.errorMessage ||
-                            "Error fetching price data"
-                          : fuelPriceData?.price
-                            ? `Latest monthly average: $${fuelPriceData.price}/MT (${fuelPriceData.month} ${fuelPriceData.year})`
-                            : "Loading price data..."}
+                        Latest monthly average: $556.50/MT (March 2025)
                       </div>
                       <FormMessage className="text-xs mt-1.5 bg-red-50 text-red-700 px-1.5 py-0.5 rounded border border-red-200/50 inline-block" />
                     </FormItem>
