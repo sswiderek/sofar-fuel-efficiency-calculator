@@ -105,7 +105,7 @@ export default function CalculatorForm() {
   const form = useForm<CalculatorInput>({
     resolver: zodResolver(calculatorInputSchema),
     defaultValues: {
-      fuelPrice: 556.50,
+      fuelPrice: 596,
       estimatedSavings: 5,
       vessels: [
         {
