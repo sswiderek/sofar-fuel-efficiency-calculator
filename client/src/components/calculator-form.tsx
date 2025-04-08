@@ -468,8 +468,8 @@ export default function CalculatorForm() {
                                               const currentConsumption = form.getValues(`vessels.${index}.fuelConsumption`);
                                               const currentSeaDays = form.getValues(`vessels.${index}.seaDaysPerYear`);
                                               
-                                              // Only set default values if current values are 0 or not yet set
-                                              if (!isNaN(consumption) && (!currentConsumption || currentConsumption === 0)) {
+                                              // Always update fuel consumption when size changes
+                                              if (!isNaN(consumption)) {
                                                 form.setValue(
                                                   `vessels.${index}.fuelConsumption`,
                                                   consumption
