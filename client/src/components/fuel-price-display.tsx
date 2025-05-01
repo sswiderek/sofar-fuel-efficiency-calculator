@@ -58,7 +58,7 @@ export default function FuelPriceDisplay() {
               </span>
             </p>
             <p className="text-sm font-medium text-blue-600 mt-4 tracking-wide">
-              Global Reference Price - February 2025
+              Global Reference Price - April 2025
             </p>
           </div>
           <Tooltip>

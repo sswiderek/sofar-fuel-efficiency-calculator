@@ -92,8 +92,8 @@ export async function getVLSFOPrice(): Promise<VLSFOPrice> {
   const year = previousMonth.getFullYear();
 
   return {
-    price: 596, // Updated price here
-    month: monthName,
+    price: 531, // Updated price here
+    month: "April", // Explicitly set to April as requested
     year: year,
     isError: false,
   };
