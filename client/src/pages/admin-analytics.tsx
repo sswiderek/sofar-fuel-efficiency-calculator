@@ -150,7 +150,7 @@ export default function AdminAnalyticsDashboard() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
             <Card className="bg-gradient-to-br from-slate-50 to-blue-50 border-0 shadow-sm overflow-hidden">
               <CardContent className="p-6">
                 <div className="flex items-start justify-between">
@@ -193,45 +193,7 @@ export default function AdminAnalyticsDashboard() {
               </CardContent>
             </Card>
             
-            <Card className="bg-gradient-to-br from-slate-50 to-indigo-50 border-0 shadow-sm overflow-hidden">
-              <CardContent className="p-6">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-slate-500">Average Fleet Size</p>
-                    <h3 className="text-3xl font-bold text-slate-800 mt-1">{avgFleetSize} vessels</h3>
-                  </div>
-                  <div className="p-2 rounded-full bg-indigo-100">
-                    <Ship className="h-5 w-5 text-indigo-700" />
-                  </div>
-                </div>
-                <div className="mt-4 pt-3 border-t border-slate-200">
-                  <p className="text-xs text-indigo-600 font-medium flex items-center">
-                    <ArrowUpRight className="h-3 w-3 mr-1" />
-                    Total vessels: {demoClicks.reduce((sum, click) => sum + click.vesselCount, 0)}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-gradient-to-br from-slate-50 to-amber-50 border-0 shadow-sm overflow-hidden">
-              <CardContent className="p-6">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-slate-500">CO₂ Reduction</p>
-                    <h3 className="text-3xl font-bold text-slate-800 mt-1">{Math.round(totalCO2Reduced).toLocaleString()} MT</h3>
-                  </div>
-                  <div className="p-2 rounded-full bg-amber-100">
-                    <Leaf className="h-5 w-5 text-amber-700" />
-                  </div>
-                </div>
-                <div className="mt-4 pt-3 border-t border-slate-200">
-                  <p className="text-xs text-amber-600 font-medium flex items-center">
-                    <ArrowUpRight className="h-3 w-3 mr-1" />
-                    Fuel saved: {Math.round(totalFuelSaved).toLocaleString()} MT
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+            {/* Simplified dashboard with just two key metrics as requested */}
           </div>
 
           <h3 className="text-lg font-medium mt-8 mb-4 text-slate-800 flex items-center">
@@ -247,7 +209,7 @@ export default function AdminAnalyticsDashboard() {
                   <th className="text-right text-xs font-medium text-slate-500 uppercase px-4 py-3">Fuel Cost</th>
                   <th className="text-right text-xs font-medium text-slate-500 uppercase px-4 py-3">Savings</th>
                   <th className="text-right text-xs font-medium text-slate-500 uppercase px-4 py-3">CO₂ Reduction</th>
-                  <th className="text-right text-xs font-medium text-slate-500 uppercase px-4 py-3">Actions</th>
+                  <th className="text-right text-xs font-medium text-slate-500 uppercase px-4 py-3">Submission Results</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-200">
@@ -309,13 +271,13 @@ export default function AdminAnalyticsDashboard() {
                           onClick={() => {
                             navigator.clipboard.writeText(shareLink);
                             toast({
-                              title: "Link copied!",
-                              description: "Share link copied to clipboard",
+                              title: "Results link copied",
+                              description: "Link to view customer's submission copied to clipboard",
                             });
                           }}
                         >
                           <ExternalLink className="h-4 w-4 mr-1" />
-                          Share
+                          View
                         </Button>
                       </td>
                     </tr>
