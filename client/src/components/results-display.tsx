@@ -135,7 +135,7 @@ export default function ResultsDisplay({ results, originalFormData }: ResultsDis
             <Tooltip>
               <TooltipTrigger asChild>
                 <div className="text-xs bg-slate-100 text-slate-500 p-2 rounded-md flex items-center">
-                  <InfoIcon className="h-3.5 w-3.5 mr-1.5" /> 
+                  <Info className="h-3.5 w-3.5 mr-1.5" /> 
                   <span>Sales Rep Info</span>
                 </div>
               </TooltipTrigger>
