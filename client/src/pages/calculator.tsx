@@ -72,12 +72,7 @@ export default function Calculator() {
               <AssumptionsSection />
             </div>
             <div className="space-y-6">
-              <div className="flex justify-end">
-                <a href="/analytics" className="text-xs text-slate-500 flex items-center hover:text-slate-700 transition-colors">
-                  <LineChart className="w-3 h-3 mr-1" />
-                  Demo Request Analytics
-                </a>
-              </div>
+              {/* Admin link removed - admin page will be accessed directly via URL */}
             </div>
           </CardContent>
         </Card>

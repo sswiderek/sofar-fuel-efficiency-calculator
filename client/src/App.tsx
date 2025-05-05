@@ -4,14 +4,16 @@ import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Calculator from "@/pages/calculator";
-import AnalyticsDashboard from "@/pages/analytics";
+import AdminLogin from "@/pages/admin-login";
+import AdminAnalyticsDashboard from "@/pages/admin-analytics";
 import NotFound from "@/pages/not-found";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Calculator} />
-      <Route path="/analytics" component={AnalyticsDashboard} />
+      <Route path="/admin" component={AdminLogin} />
+      <Route path="/admin/analytics" component={AdminAnalyticsDashboard} />
       <Route component={NotFound} />
     </Switch>
   );
