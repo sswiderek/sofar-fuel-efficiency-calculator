@@ -131,33 +131,6 @@ export default function ResultsDisplay({ results, originalFormData }: ResultsDis
             <Share2 className="h-4 w-4 text-white/90" />
             <span className="font-medium tracking-wide text-sm">{isCopying ? "Copying..." : "Share Results"}</span>
           </Button>
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <div className="text-xs bg-slate-100 text-slate-500 p-2 rounded-md flex items-center">
-                  <Info className="h-3.5 w-3.5 mr-1.5" /> 
-                  <span>Sales Rep Info</span>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent side="left" className="max-w-[300px] p-4 bg-white border border-slate-200 shadow-lg">
-                <div className="space-y-3">
-                  <h4 className="text-sm font-medium text-slate-800">For Sales Representatives</h4>
-                  <p className="text-xs text-slate-600">
-                    Use the "Share Results" button to generate a link that reproduces these exact calculation results. 
-                    This link can be used during customer consultations.
-                  </p>
-                  <div className="bg-slate-50 p-2 rounded-md text-xs">
-                    <p className="text-slate-600 font-medium">Key Data Points:</p>
-                    <ul className="mt-1 space-y-1 text-slate-700">
-                      <li>• Annual Savings: ${annualSavings.toLocaleString()}</li>
-                      <li>• Fleet Size: {result.vessels.reduce((sum, v) => sum + v.count, 0)} vessels</li>
-                      <li>• CO₂ Reduction: {Math.round(co2Reduction).toLocaleString()} MT/year</li>
-                    </ul>
-                  </div>
-                </div>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
         </div>
       </div>
       <div className="grid gap-5">
@@ -447,23 +420,7 @@ export default function ResultsDisplay({ results, originalFormData }: ResultsDis
               Request a Demo
             </Button>
           </div>
-          {/* Sales rep sharing callout */}
-          <div className="mt-4 pt-4 border-t border-slate-200 flex items-start gap-3">
-            <div className="p-2 rounded-full bg-blue-100">
-              <Share2 className="h-4 w-4 text-blue-600" />
-            </div>
-            <div className="flex-1">
-              <p className="text-sm text-slate-700 font-medium">For Sales Representatives</p>
-              <p className="text-xs text-slate-500 mt-1">Use the "Share Results" button at the top to generate a link that recreates these calculation results for customer consultations.</p>
-            </div>
-            <Button 
-              variant="outline" 
-              className="text-xs border-blue-200 text-blue-700"
-              onClick={handleShare}
-            >
-              Copy Share Link
-            </Button>
-          </div>
+
         </Card>
 
         {/* Success Stories Card */}
