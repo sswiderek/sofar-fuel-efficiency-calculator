@@ -372,6 +372,21 @@ export default function ResultsDisplay({ results, originalFormData }: ResultsDis
                     // Log analytics data for debugging
                     console.log('Demo request click', analyticsData);
                     
+                    // Store analytics data in localStorage for the dashboard
+                    try {
+                      // Get existing clicks or initialize empty array
+                      const existingClicks = localStorage.getItem('demoClicks');
+                      let clicks = existingClicks ? JSON.parse(existingClicks) : [];
+                      
+                      // Add new click data
+                      clicks.push(analyticsData);
+                      
+                      // Store back in localStorage
+                      localStorage.setItem('demoClicks', JSON.stringify(clicks));
+                    } catch (storageError) {
+                      console.error('Error storing demo click in localStorage:', storageError);
+                    }
+                    
                     // Send analytics data to backend (if we want to store this)
                     fetch('/api/track-demo-click', {
                       method: 'POST',

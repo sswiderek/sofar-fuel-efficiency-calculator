@@ -12,6 +12,7 @@ import {
   TrendingUpIcon,
   TargetIcon,
   ChevronRightIcon,
+  LineChart
 } from "lucide-react";
 
 export default function Calculator() {

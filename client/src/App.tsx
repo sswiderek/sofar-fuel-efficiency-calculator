@@ -4,12 +4,14 @@ import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Calculator from "@/pages/calculator";
+import AnalyticsDashboard from "@/pages/analytics";
 import NotFound from "@/pages/not-found";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Calculator} />
+      <Route path="/analytics" component={AnalyticsDashboard} />
       <Route component={NotFound} />
     </Switch>
   );
