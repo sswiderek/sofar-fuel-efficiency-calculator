@@ -60,6 +60,7 @@ export default function ResultsDisplay({ results, originalFormData }: ResultsDis
   const totalFuelConsumption = result?.totalFuelConsumption || 0;
   const fuelPrice = result?.fuelPrice || 0;
   const estimatedSavings = result?.estimatedSavings || 0;
+  const fuelCostWithWayfinder = result?.fuelCostWithWayfinder || 0;
 
   // Create a sharable link with calculation data
   const handleShare = () => {
@@ -353,7 +354,51 @@ export default function ResultsDisplay({ results, originalFormData }: ResultsDis
             </div>
             <Button 
               className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-6 shadow-md rounded-md transition-all duration-200 transform hover:scale-[1.02] font-medium"
-              onClick={() => window.open('https://www.sofarocean.com/signup/wayfinder-demo', '_blank')}
+              onClick={() => {
+                // Track the demo request event
+                const trackDemoClick = () => {
+                  try {
+                    // Create an analytics payload with calculation data
+                    const analyticsData = {
+                      totalFuelCost: totalFuelCost,
+                      estimatedSavings: estimatedSavings,
+                      fuelCostWithWayfinder: result.fuelCostWithWayfinder,
+                      co2Reduction: co2Reduction,
+                      totalFuelConsumption: totalFuelConsumption,
+                      vesselCount: result.vessels.reduce((sum, v) => sum + v.count, 0),
+                      timestamp: new Date().toISOString()
+                    };
+                    
+                    // Log analytics data for debugging
+                    console.log('Demo request click', analyticsData);
+                    
+                    // Send analytics data to backend (if we want to store this)
+                    fetch('/api/track-demo-click', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify(analyticsData)
+                    }).catch(err => console.error('Failed to track demo click:', err));
+                  } catch (error) {
+                    console.error('Error tracking demo click:', error);
+                  }
+                };
+                
+                // Track the event
+                trackDemoClick();
+                
+                // Add tracking parameters to the URL
+                const baseUrl = 'https://www.sofarocean.com/signup/wayfinder-demo';
+                const utmParams = new URLSearchParams({
+                  utm_source: 'calculator',
+                  utm_medium: 'app',
+                  utm_campaign: 'fuel_savings_calculator',
+                  utm_content: 'results_page',
+                  savings_estimate: Math.round(estimatedSavings).toString()
+                });
+                
+                // Open demo signup URL with tracking parameters
+                window.open(`${baseUrl}?${utmParams.toString()}`, '_blank');
+              }}
             >
               Request a Demo
             </Button>
