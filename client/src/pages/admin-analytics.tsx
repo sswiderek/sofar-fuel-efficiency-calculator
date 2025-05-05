@@ -18,7 +18,8 @@ import {
   Leaf, 
   Calendar, 
   ExternalLink,
-  ArrowUpRight
+  ArrowUpRight,
+  Trash2
 } from 'lucide-react';
 
 interface DemoClick {
@@ -112,6 +113,24 @@ export default function AdminAnalyticsDashboard() {
       </div>
     );
   }
+
+  // Function to delete a demo click
+  const handleDeleteClick = (indexToDelete: number) => {
+    // Create a new array without the deleted item
+    const updatedClicks = demoClicks.filter((_, index) => index !== indexToDelete);
+    
+    // Update state
+    setDemoClicks(updatedClicks);
+    
+    // Save to localStorage
+    localStorage.setItem('demoClicks', JSON.stringify(updatedClicks));
+    
+    // Show toast
+    toast({
+      title: "Record deleted",
+      description: "Demo request record has been removed",
+    });
+  };
 
   // Calculate summary metrics
   const totalRequests = demoClicks.length;
@@ -264,15 +283,25 @@ export default function AdminAnalyticsDashboard() {
                         {Math.round(click.co2Reduction).toLocaleString()} MT
                       </td>
                       <td className="px-4 py-4 text-sm text-right">
-                        <Button 
-                          variant="ghost" 
-                          size="sm" 
-                          className="text-blue-600 hover:text-blue-800"
-                          onClick={() => window.open(shareLink, '_blank')}
-                        >
-                          <ExternalLink className="h-4 w-4 mr-1" />
-                          View
-                        </Button>
+                        <div className="flex justify-end items-center gap-2">
+                          <Button 
+                            variant="ghost" 
+                            size="sm" 
+                            className="text-blue-600 hover:text-blue-800"
+                            onClick={() => window.open(shareLink, '_blank')}
+                          >
+                            <ExternalLink className="h-4 w-4 mr-1" />
+                            View
+                          </Button>
+                          <Button 
+                            variant="ghost" 
+                            size="sm" 
+                            className="text-red-600 hover:text-red-800 hover:bg-red-50"
+                            onClick={() => handleDeleteClick(index)}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
                       </td>
                     </tr>
                   );
