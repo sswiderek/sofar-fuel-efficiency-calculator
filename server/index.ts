@@ -66,36 +66,26 @@ app.use((req, res, next) => {
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
-    // Serve static files
+    // Serve static files from the 'dist/public' directory
     app.use(express.static('dist/public'));
     
-    // Use a middleware to handle all non-API routes with the SPA
-    app.use((req, res, next) => {
-      // Skip API routes, assets, and static files
-      if (req.path.startsWith('/api') || 
-          req.path.includes('.') || 
-          req.path.startsWith('/assets/')) {
+    // Specific rewrite rule for admin routes
+    app.get(['/admin', '/admin/*'], (req, res) => {
+      res.sendFile('index.html', { root: 'dist/public' });
+    });
+    
+    // General catch-all to handle client-side routing
+    app.get('*', (req, res, next) => {
+      if (req.path.startsWith('/api')) {
+        // Skip API routes
         return next();
-      }
-      
-      // Try to send the index.html file
-      try {
-        const indexPath = path.resolve(__dirname, '../dist/public/index.html');
-        if (fs.existsSync(indexPath)) {
-          res.sendFile(indexPath);
-        } else {
-          // If file doesn't exist at the expected path, try an alternate path
-          const altPath = path.resolve('dist/public/index.html');
-          if (fs.existsSync(altPath)) {
-            res.sendFile(altPath);
-          } else {
-            log(`Index file not found at ${indexPath} or ${altPath}`);
-            res.status(500).send('Configuration error: index.html not found');
-          }
-        }
-      } catch (error) {
-        log(`Error serving index.html: ${error}`);
-        next(error);
+      } else if (req.path.includes('.')) {
+        // Skip files with extensions (they'll be handled by static middleware)
+        return next();
+      } else {
+        // Serve the main index.html for all other routes
+        // Using relative path with root option which is more robust across environments
+        res.sendFile('index.html', { root: 'dist/public' });
       }
     });
   }
