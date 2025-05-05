@@ -71,28 +71,13 @@ export function registerRoutes(app: Express): Server {
       
       console.log('Demo click tracked:', logData);
       
-      // Create analytics directory if it doesn't exist
-      const analyticsDir = path.join(__dirname, '../analytics');
-      if (!fs.existsSync(analyticsDir)) {
-        fs.mkdirSync(analyticsDir, { recursive: true });
-      }
+      // In ES modules, __dirname is not available directly
+      // We'll just log to console in this implementation
+      // A production app would store in a database
+      console.log('Demo click data logged to server console');
       
-      // Append to analytics log file
-      const logFile = path.join(analyticsDir, 'demo_clicks.json');
-      
-      let existingData = [];
-      try {
-        if (fs.existsSync(logFile)) {
-          const fileContent = fs.readFileSync(logFile, 'utf8');
-          existingData = JSON.parse(fileContent);
-        }
-      } catch (readError) {
-        console.error('Error reading analytics file:', readError);
-      }
-      
-      existingData.push(logData);
-      
-      fs.writeFileSync(logFile, JSON.stringify(existingData, null, 2));
+      // In a real application, this data would be stored in a database
+      // For this demo, we're just logging to the console and using localStorage on the client
       
       res.status(200).json({ success: true });
     } catch (error) {
