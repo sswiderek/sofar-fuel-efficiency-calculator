@@ -268,13 +268,7 @@ export default function AdminAnalyticsDashboard() {
                           variant="ghost" 
                           size="sm" 
                           className="text-blue-600 hover:text-blue-800"
-                          onClick={() => {
-                            navigator.clipboard.writeText(shareLink);
-                            toast({
-                              title: "Results link copied",
-                              description: "Link to view customer's submission copied to clipboard",
-                            });
-                          }}
+                          onClick={() => window.open(shareLink, '_blank')}
                         >
                           <ExternalLink className="h-4 w-4 mr-1" />
                           View
