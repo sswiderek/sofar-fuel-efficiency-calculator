@@ -1,92 +1,92 @@
 import { MailService } from '@sendgrid/mail';
-import { ContactFormData } from '@shared/schema';
+import { ContactFormData, CalculationResult } from '@shared/schema';
 
-// Initialize the SendGrid mail service
-let mailService: MailService | null = null;
+const mailService = new MailService();
 
-// Initialize SendGrid service with API key
-export function initializeSendGrid() {
-  if (!process.env.SENDGRID_API_KEY) {
-    console.warn("SENDGRID_API_KEY environment variable is not set. Email functionality will not work.");
+// Initialize the SendGrid mail service with the API key from environment variables
+export function initSendGrid() {
+  const apiKey = process.env.SENDGRID_API_KEY;
+  if (!apiKey) {
+    console.warn('SendGrid API key not found. Email functionality will not work.');
     return false;
   }
-
-  try {
-    mailService = new MailService();
-    mailService.setApiKey(process.env.SENDGRID_API_KEY);
-    return true;
-  } catch (error) {
-    console.error("Failed to initialize SendGrid:", error);
-    return false;
-  }
+  mailService.setApiKey(apiKey);
+  return true;
 }
 
-// Send a contact form submission
-export async function sendContactFormEmail(formData: ContactFormData): Promise<boolean> {
-  if (!mailService) {
-    if (!initializeSendGrid()) {
-      console.error("Cannot send email: SendGrid not initialized");
+// Format the vessel information for readable email content
+function formatVesselsInfo(vessels: any[]): string {
+  if (!vessels || vessels.length === 0) return 'No vessel information provided';
+  
+  return vessels.map((vessel, index) => {
+    return `Vessel ${index + 1}:\n` +
+           `- Type: ${vessel.category}\n` +
+           `- Size: ${vessel.size}\n` +
+           `- Count: ${vessel.count}\n` +
+           `- Fuel Consumption: ${vessel.fuelConsumption} MT/day\n` +
+           `- Sea Days Per Year: ${vessel.seaDaysPerYear}\n`;
+  }).join('\n');
+}
+
+// Format calculation results for readable email content
+function formatCalculationResults(calculationData: CalculationResult): string {
+  return `Calculation Results:\n` +
+         `- Total Fuel Cost: $${calculationData.totalFuelCost.toLocaleString()}\n` +
+         `- Estimated Annual Savings: $${calculationData.estimatedSavings.toLocaleString()}\n` +
+         `- CO2 Reduction: ${Math.round(calculationData.co2Reduction).toLocaleString()} MT\n` +
+         `- Fuel Price: $${calculationData.fuelPrice.toLocaleString()}/MT\n` +
+         `- Total Fuel Consumption: ${calculationData.totalFuelConsumption.toLocaleString()} MT\n`;
+}
+
+// Send a lead notification email using SendGrid
+export async function sendLeadEmail(data: ContactFormData): Promise<boolean> {
+  try {
+    if (!process.env.SENDGRID_API_KEY) {
+      console.error('SendGrid API key is not set. Cannot send email.');
       return false;
     }
-  }
-  
-  // Safety check - if still null after initialization attempt, return error
-  if (!mailService) {
-    console.error("Cannot send email: SendGrid initialization failed");
-    return false;
-  }
 
-  const { name, email, companyName, phoneNumber, message, calculationData } = formData;
-  
-  // Calculate a simple summary of the calculation results if available
-  let calculationSummary = '';
-  if (calculationData) {
-    const { totalFuelCost, estimatedSavings, co2Reduction, vessels } = calculationData;
-    const vesselCount = vessels?.length || 0;
+    // Set up the base email message
+    let emailText = `New Lead from Maritime Fuel Calculator\n\n` +
+                   `Contact Information:\n` +
+                   `- Name: ${data.name}\n` +
+                   `- Email: ${data.email}\n` +
+                   `- Company: ${data.companyName}\n`;
     
-    calculationSummary = `
-    <h3>Calculation Summary</h3>
-    <p>Fleet: ${vesselCount} vessel(s)</p>
-    <p>Annual Fuel Cost: $${totalFuelCost?.toLocaleString() || 'N/A'}</p>
-    <p>Estimated Savings: $${estimatedSavings?.toLocaleString() || 'N/A'}</p>
-    <p>CO₂ Reduction: ${Math.round(co2Reduction || 0).toLocaleString()} MT</p>
-    `;
-  }
-
-  // Prepare email content
-  const emailContent = {
-    to: process.env.SENDGRID_TO_EMAIL || 'sales@sofarocean.com', // Default recipient
-    from: process.env.SENDGRID_FROM_EMAIL || 'noreply@sofarocean.com', // Default sender
-    subject: `New Lead from Fuel Calculator: ${companyName}`,
-    text: `
-      New contact form submission from the Maritime Fuel Savings Calculator
-      
-      Name: ${name}
-      Email: ${email}
-      Company: ${companyName}
-      Phone: ${phoneNumber || 'Not provided'}
-      Message: ${message || 'Not provided'}
-    `,
-    html: `
-      <h2>New Lead from Maritime Fuel Savings Calculator</h2>
-      <p>A new potential customer has submitted their information.</p>
-      
-      <h3>Contact Information</h3>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Company:</strong> ${companyName}</p>
-      <p><strong>Phone:</strong> ${phoneNumber || 'Not provided'}</p>
-      <p><strong>Message:</strong> ${message || 'Not provided'}</p>
-      
-      ${calculationSummary}
-    `
-  };
-
-  try {
-    await mailService.send(emailContent);
+    // Add phone if provided
+    if (data.phoneNumber) {
+      emailText += `- Phone: ${data.phoneNumber}\n`;
+    }
+    
+    // Add message if provided
+    if (data.message) {
+      emailText += `\nMessage:\n${data.message}\n`;
+    }
+    
+    // Add calculation data if provided
+    if (data.calculationData) {
+      emailText += `\n${formatCalculationResults(data.calculationData as CalculationResult)}\n`;
+      emailText += `\n${formatVesselsInfo(data.calculationData.vessels)}\n`;
+    }
+    
+    // Format the HTML version of the email
+    const htmlContent = emailText.replace(/\n/g, '<br>');
+    
+    // Set up email parameters
+    const msg = {
+      to: 'sales@sofarocean.com', // Change to your sales team email
+      from: 'wayfinder@sofarocean.com', // Change to your verified sender
+      subject: `New Lead: ${data.name} from ${data.companyName}`,
+      text: emailText,
+      html: `<div style="font-family: Arial, sans-serif; line-height: 1.6;">${htmlContent}</div>`,
+    };
+    
+    // Send the email
+    await mailService.send(msg);
+    console.log('Lead email sent successfully');
     return true;
   } catch (error) {
-    console.error('Failed to send contact form email:', error);
+    console.error('Error sending lead email:', error);
     return false;
   }
 }

@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { calculatorInputSchema, contactFormSchema, type CalculationResult } from "@shared/schema";
 import { getVLSFOPrice } from "./services/openai";
-import { initializeSendGrid, sendContactFormEmail } from "./services/sendgrid";
+import { initSendGrid, sendLeadEmail } from "./services/sendgrid";
 
 export function registerRoutes(app: Express): Server {
   app.get("/api/vlsfo-price", async (req, res) => {
@@ -64,7 +64,8 @@ export function registerRoutes(app: Express): Server {
       
       // Initialize SendGrid when first contact form is submitted
       // Note: We do this lazily on demand to avoid errors at startup if API key isn't available
-      const emailSent = await sendContactFormEmail(contactData);
+      initSendGrid();
+      const emailSent = await sendLeadEmail(contactData);
       
       if (emailSent) {
         res.json({ success: true, message: "Contact form submitted successfully" });
