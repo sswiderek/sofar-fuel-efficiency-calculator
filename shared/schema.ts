@@ -172,15 +172,3 @@ export interface CalculationResult {
   fuelPrice: number;
   vessels: Vessel[];
 }
-
-// Contact form schema
-export const contactFormSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  email: z.string().email("Invalid email address"),
-  companyName: z.string().min(1, "Company name is required"),
-  phoneNumber: z.string().optional(),
-  message: z.string().optional(),
-  calculationData: z.any().optional() // For storing calculation results
-});
-
-export type ContactFormData = z.infer<typeof contactFormSchema>;

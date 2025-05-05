@@ -1,8 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { calculatorInputSchema, contactFormSchema, type CalculationResult } from "@shared/schema";
+import { calculatorInputSchema, type CalculationResult } from "@shared/schema";
 import { getVLSFOPrice } from "./services/openai";
-import { initSendGrid, sendLeadEmail } from "./services/sendgrid";
 
 export function registerRoutes(app: Express): Server {
   app.get("/api/vlsfo-price", async (req, res) => {
@@ -51,31 +50,6 @@ export function registerRoutes(app: Express): Server {
     } catch (error) {
       console.error("Calculation error:", error);
       res.status(400).json({ error: "Invalid input data" });
-    }
-  });
-
-  // Contact form submission endpoint
-  app.post("/api/contact", async (req, res) => {
-    try {
-      console.log("Received contact form submission:", req.body);
-      
-      // Validate the form data
-      const contactData = contactFormSchema.parse(req.body);
-      
-      // Initialize SendGrid when first contact form is submitted
-      // Note: We do this lazily on demand to avoid errors at startup if API key isn't available
-      initSendGrid();
-      const emailSent = await sendLeadEmail(contactData);
-      
-      if (emailSent) {
-        res.json({ success: true, message: "Contact form submitted successfully" });
-      } else {
-        // This handles the case where SendGrid is properly initialized but email sending fails
-        res.status(500).json({ success: false, message: "Failed to send contact information. Please try again later." });
-      }
-    } catch (error) {
-      console.error("Contact form submission error:", error);
-      res.status(400).json({ success: false, message: "Invalid contact form data" });
     }
   });
 

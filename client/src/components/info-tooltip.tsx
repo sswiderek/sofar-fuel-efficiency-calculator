@@ -1,29 +1,44 @@
-import { ReactNode } from 'react';
-import { Info } from 'lucide-react';
+import React from "react";
 import {
   Tooltip,
   TooltipContent,
-  TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Info } from "lucide-react";
 
 interface InfoTooltipProps {
-  children: ReactNode;
-  icon?: ReactNode;
+  children?: React.ReactNode;
+  content?: React.ReactNode;
+  className?: string;
+  iconClassName?: string;
 }
 
-export function InfoTooltip({ children, icon }: InfoTooltipProps) {
+export function InfoTooltip({ 
+  children, 
+  content,
+  className = "", 
+  iconClassName = "h-4 w-4" 
+}: InfoTooltipProps) {
+  // Use content or children, preferring content if both are provided
+  const tooltipContent = content ?? children;
+  
   return (
-    <Tooltip delayDuration={200}>
+    <Tooltip>
       <TooltipTrigger asChild>
-        <button className="p-0.5 hover:bg-slate-100 rounded-full transition-colors">
-          {icon || <Info className="h-3.5 w-3.5 text-slate-400 hover:text-slate-600" />}
+        <button 
+          type="button" 
+          className={`inline-flex items-center text-gray-400 hover:text-gray-600 ml-1 cursor-pointer ${className}`}
+        >
+          <Info className={`${iconClassName} translate-y-[0.1em]`} />
         </button>
       </TooltipTrigger>
-      <TooltipContent className="bg-white border-blue-200 shadow-lg max-w-[300px] p-3">
-        <div className="space-y-1">
-          {children}
-        </div>
+      <TooltipContent 
+        side="top" 
+        align="center" 
+        sideOffset={5} 
+        className="max-w-[300px] p-4 text-sm bg-white text-slate-800 rounded-lg shadow-lg border border-blue-200"
+      >
+        {tooltipContent}
       </TooltipContent>
     </Tooltip>
   );

@@ -1,13 +1,12 @@
 import { Card } from "@/components/ui/card";
 import { CalculationResult, vesselCategories, vesselDisplayNames, vesselIconSizes } from "@shared/schema";
-import { DollarSign, Info, LeafIcon, TrendingDown, Car, ChevronDown, Ship, Share2, PhoneCall } from "lucide-react"; 
+import { DollarSign, Info, LeafIcon, TrendingDown, Car, ChevronDown, Ship, Share2 } from "lucide-react"; 
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"; 
 import { InfoTooltip } from "@/components/info-tooltip";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
-import { ContactForm } from "./contact-form";
 
 
 interface ResultsDisplayProps {
@@ -50,7 +49,6 @@ const getVesselIconSize = (category: string, size: string): string => {
 export default function ResultsDisplay({ results, originalFormData }: ResultsDisplayProps) {
   const { toast } = useToast();
   const [isCopying, setIsCopying] = useState(false);
-  const [showContactForm, setShowContactForm] = useState(false);
 
   if (!results || results.length === 0) return null;
 
@@ -356,36 +354,6 @@ export default function ResultsDisplay({ results, originalFormData }: ResultsDis
             </div>
           </div>
         </Card>
-        
-        {/* Contact Form Section */}
-        <div className="mt-8 mb-4">
-          {!showContactForm ? (
-            <Card className="bg-gradient-to-br from-sky-50 to-indigo-50 p-6 border border-blue-100 shadow-md">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                <div className="space-y-2">
-                  <h3 className="text-xl font-bold text-slate-800">Ready to Maximize Your Savings?</h3>
-                  <p className="text-slate-600 leading-relaxed">
-                    Speak with our maritime experts to learn how Wayfinder can be implemented across your fleet. Our team will provide a personalized consultation to help you achieve these savings.
-                  </p>
-                </div>
-                <Button 
-                  onClick={() => setShowContactForm(true)}
-                  className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-6 shadow-md rounded-md transition-all duration-200 transform hover:scale-[1.02] min-w-[200px] flex items-center gap-2"
-                >
-                  <PhoneCall className="h-5 w-5 text-white/90" />
-                  <span className="font-medium">Request a Call</span>
-                </Button>
-              </div>
-            </Card>
-          ) : (
-            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <ContactForm 
-                calculationData={result} 
-                onSubmissionComplete={() => setShowContactForm(false)}
-              />
-            </div>
-          )}
-        </div>
       </div>
     </div>
     </TooltipProvider>
