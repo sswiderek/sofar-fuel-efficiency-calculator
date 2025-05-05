@@ -68,16 +68,20 @@ app.use((req, res, next) => {
     // Serve static files
     app.use(express.static('dist/public'));
     
-    // API routes should be handled before the catch-all
-    app.use('/api', (req, res, next) => {
-      if (req.path.startsWith('/api')) {
-        next();
-      }
-    });
-
-    // Handle SPA routing - serve index.html for all other routes
-    app.get('*', (_req, res) => {
+    // Handle SPA routing - serve index.html for client routes
+    app.get(['/', '/admin', '/admin/analytics', '/admin/*'], (_req, res) => {
       res.sendFile(path.resolve(__dirname, '../dist/public/index.html'));
+    });
+    
+    // Handle all other routes - fallback to index.html for client-side routing
+    app.get('*', (req, res, next) => {
+      if (req.path.startsWith('/api')) {
+        // Skip API routes, they should be handled by the API middleware
+        next();
+      } else {
+        // All other routes should load the SPA
+        res.sendFile(path.resolve(__dirname, '../dist/public/index.html'));
+      }
     });
   }
 
