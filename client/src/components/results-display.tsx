@@ -344,6 +344,23 @@ export default function ResultsDisplay({ results, originalFormData }: ResultsDis
           </div>
         </Card>
 
+        {/* Wayfinder Demo Request Button */}
+        <Card className="bg-slate-50 p-7 border-2 border-emerald-500 shadow-lg">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="space-y-2">
+              <h3 className="text-lg font-bold text-slate-800">Ready to see Wayfinder in action?</h3>
+              <p className="text-slate-600">Schedule a personalized demo to discover how Wayfinder can optimize your fleet operations and achieve the savings you've calculated above.</p>
+            </div>
+            <Button 
+              className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-6 shadow-md rounded-md transition-all duration-200 transform hover:scale-[1.02] font-medium"
+              onClick={() => window.open('https://www.sofarocean.com/signup/wayfinder-demo', '_blank')}
+            >
+              Request a Demo
+            </Button>
+          </div>
+        </Card>
+
+        {/* Success Stories Card */}
         <Card className="w-full bg-gradient-to-br from-blue-900 to-blue-800 text-white p-6 hover:from-blue-800 hover:to-blue-700 transition-all transform hover:scale-[1.02] shadow-xl hover:shadow-2xl cursor-pointer border border-blue-700" onClick={() => window.open('https://www.sofarocean.com/posts/wayfinder-voyage-optimization-savings-report-2024', '_blank')}>
           <div className="flex items-center gap-4">
             <DollarSign className="h-8 w-8 text-blue-300" />
