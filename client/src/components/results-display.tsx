@@ -1,12 +1,13 @@
 import { Card } from "@/components/ui/card";
 import { CalculationResult, vesselCategories, vesselDisplayNames, vesselIconSizes } from "@shared/schema";
-import { DollarSign, Info, LeafIcon, TrendingDown, Car, ChevronDown, Ship, Share2 } from "lucide-react"; 
+import { DollarSign, Info, LeafIcon, TrendingDown, Car, ChevronDown, Ship, Share2, PhoneCall } from "lucide-react"; 
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"; 
 import { InfoTooltip } from "@/components/info-tooltip";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { ContactForm } from "./contact-form";
 
 
 interface ResultsDisplayProps {
@@ -49,6 +50,7 @@ const getVesselIconSize = (category: string, size: string): string => {
 export default function ResultsDisplay({ results, originalFormData }: ResultsDisplayProps) {
   const { toast } = useToast();
   const [isCopying, setIsCopying] = useState(false);
+  const [showContactForm, setShowContactForm] = useState(false);
 
   if (!results || results.length === 0) return null;
 
