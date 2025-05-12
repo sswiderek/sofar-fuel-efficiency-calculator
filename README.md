@@ -3,7 +3,7 @@
 
 An advanced maritime fuel efficiency optimization tool for Sofar Ocean's Wayfinder platform, focusing on precise fuel cost calculations and strategic fleet management through interactive data exploration.
 
-[![Maritime Fuel Savings Calculator](https://voyage-calculator.sofarocean.com/assets/calculator-screenshot.png)](https://voyage-calculator.sofarocean.com/)
+![Maritime Fuel Savings Calculator](./public/images/readme_screenshot.png)
 
 **[Try the Live App: https://voyage-calculator.sofarocean.com/](https://voyage-calculator.sofarocean.com/)**
 
