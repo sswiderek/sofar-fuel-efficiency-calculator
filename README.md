@@ -3,6 +3,10 @@
 
 An advanced maritime fuel efficiency optimization tool for Sofar Ocean's Wayfinder platform, focusing on precise fuel cost calculations and strategic fleet management through interactive data exploration.
 
+[![Maritime Fuel Savings Calculator](https://voyage-calculator.sofarocean.com/assets/calculator-screenshot.png)](https://voyage-calculator.sofarocean.com/)
+
+**[Try the Live App: https://voyage-calculator.sofarocean.com/](https://voyage-calculator.sofarocean.com/)**
+
 ## Features
 
 - Real-time VLSFO (Very Low Sulfur Fuel Oil) price tracking
@@ -159,7 +163,8 @@ const { data: priceData, isLoading } = useQuery({
 
 ### Option 1: Share the Deployed App
 
-Share your deployed app URL with users so they can interact with the calculator directly.
+Share the deployed app URL: [https://voyage-calculator.sofarocean.com/](https://voyage-calculator.sofarocean.com/)
+Users can interact with the calculator and view results without installation.
 
 ### Option 2: Share Calculation Results
 
